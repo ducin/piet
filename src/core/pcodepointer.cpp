@@ -8,7 +8,7 @@
 #include "penums.h"
 
 // C++
-// none
+#include <iostream>
 
 // STL
 // none
@@ -75,6 +75,20 @@ void PCodePointer::turnDirectionPointerClockwise()
 	}
 }
 
+void PCodePointer::toggleCodelChooser()
+{
+	switch (codel_chooser) {
+		case cc_left:
+			codel_chooser = cc_right;
+			break;
+		case cc_right:
+			codel_chooser = cc_left;
+			break;
+	}
+}
+
+//==================================================================
+
 int PCodePointer::getCoordX()
 {
 	return coord_x;
@@ -86,3 +100,14 @@ int PCodePointer::getCoordY()
 }
 
 //==================================================================
+
+void PCodePointer::__dev__printCoordinates()
+{
+	std::cout << "coordinates: x=" << coord_x << " y=" << coord_y << std::endl;
+}
+
+void PCodePointer::__dev__printConsole()
+{
+	std::cout << "code-pointer" <<  std::endl;
+	__dev__printCoordinates();
+}

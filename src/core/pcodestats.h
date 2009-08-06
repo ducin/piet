@@ -18,9 +18,13 @@
 /** \file pcodestats.h
  * \brief plik nagłówkowy klasy PCodeStats
  *
- * opis
+ * Plik nagłówkowy zawiera definicję klasy PCodeStats.
  */
 
+/** \brief statystyki maszyny kodu
+ *
+ * opis
+ */
 class PCodeStats {
 
 };

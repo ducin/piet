@@ -23,9 +23,15 @@
 /** \file pcodemachine.h
  * \brief plik nagłówkowy klasy PCodeMachine
  *
- * opis
+ * Plik nagłówkowy zawiera definicję klasy PCodeMachine.
  */
 
+/** \brief maszyna kodu
+ *
+ * Klasa pełniąca funkcję tzw. "maszyny kodu" w interpreterze języka Piet. Wykonuje wszystkie najważniejsze operacje związane z odczytywaniem tzw. "obrazku kodu", używa pomocniczych obiektów do interpretacji kolorów i zliczania kodeli w blokach kolorów - czyli wszystko co związane z przetwarzaniem "obrazu kodu".
+
+Stanowi jeden z dwóch obiektów potrzebnych do pełnej interpretacji kodu, używanych przez tzw. "wirtualną maszynę Pieta", najwyższy w hierarchi obiekt.
+ */
 class PCodeMachine {
 
 	protected:
@@ -44,11 +50,16 @@ class PCodeMachine {
 		PCodeMachine(PConsole *, QString);
 		~PCodeMachine();
 
-		int countBlockCodels(); // liczy liczbę kodeli w bloku w którym jest głowica
+		void prepareToExecute();
+
+		int getCodelBlockCount();
+
+		PInstructions movePointerAndGetInstructionToExecute(); // jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera
 
 	// development:
 
 		void __dev__printImageInfo();
+		void __dev__printConsole();
 
 };
 

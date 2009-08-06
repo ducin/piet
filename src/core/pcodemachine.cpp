@@ -26,8 +26,8 @@ PCodeMachine::PCodeMachine(PConsole *given_console, QString given_filename)
 	console = given_console;
 	image = new QImage(given_filename);
 	pointer = new PCodePointer(image);
+	block_manager = new PBlockManager(image, pointer);
 	color_manager = new PColorManager();
-	block_manager = new PBlockManager();
 	debug("CONSTRUCTOR ----- code-machine END\n");
 }
 
@@ -38,17 +38,41 @@ PCodeMachine::~PCodeMachine()
 	debug("DESTRUCTOR ----- code-machine END\n");
 }
 
+void PCodeMachine::prepareToExecute()
+{
+	pointer->clear();
+}
+
+//==================================================================
+
+int PCodeMachine::getCodelBlockCount()
+{
+	return block_manager->getCodelBlockCount();
+}
+
+PInstructions PCodeMachine::movePointerAndGetInstructionToExecute()
+{
+	block_manager->searchAndFillCodels(); // oblicz liczbe kodeli bloku kolorów w którym sie znajduje kodel wskazywany przez głowicę
+
+	std::cout << block_manager->getCodelBlockCount() << std::endl;
+}
+
 //==================================================================
 
 void PCodeMachine::__dev__printImageInfo()
 {
 	std::cout << std::endl;
-	std::cout << "height > " << image->height() << std::endl;
-	std::cout << "width > " << image->width() << std::endl;
 	QRgb tmp = image->pixel(28, 0);
 	std::cout << "R: " << qRed(tmp) << std::endl;
 	std::cout << "G: " << qGreen(tmp) << std::endl;
 	std::cout << "B: " << qBlue(tmp) << std::endl;
+	std::cout << std::endl;
+}
+
+void PCodeMachine::__dev__printConsole()
+{
+	pointer->__dev__printConsole();
+	std::cout << "image size: height= " << image->height() << " width= " << image->width() << std::endl;
 	std::cout << std::endl;
 }
 

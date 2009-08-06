@@ -8,7 +8,7 @@
 #include "penums.h"
 
 // C++
-// none
+#include <iostream>
 
 // STL
 #include <list>
@@ -19,21 +19,23 @@
 PStack::PStack()
 {
 	debug("CONSTRUCTOR ----- stack START\n");
-	clear();
 	debug("CONSTRUCTOR ----- stack END\n");
 }
 
 PStack::~PStack()
 {
-
+	debug("DESTRUCTOR ----- stack START\n");
+	debug("DESTRUCTOR ----- stack END\n");
 }
 
 void PStack::clear()
 {
-/*	while( !values.empty() ) {
-		values.pop();
-	}
-*/	values.clear();
+	values.clear();
+}
+
+void PStack::prepareToExecute()
+{
+	clear();
 }
 
 //==========================================================================
@@ -61,7 +63,7 @@ void PStack::instrAdd()
 	values.push_front(el2 + el1);
 }
 
-void PStack::instrSub()
+void PStack::instrSubtract()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -70,7 +72,7 @@ void PStack::instrSub()
 	values.push_front(el2 - el1);
 }
 
-void PStack::instrMul()
+void PStack::instrMultiply()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -79,7 +81,7 @@ void PStack::instrMul()
 	values.push_front(el2 * el1);
 }
 
-void PStack::instrDiv()
+void PStack::instrDivide()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -88,7 +90,7 @@ void PStack::instrDiv()
 	values.push_front(el2 / el1);
 }
 
-void PStack::instrMod()
+void PStack::instrModulo()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -170,6 +172,19 @@ void PStack::instrOutChar()
 
 void PStack::__dev__printAllStackValues()
 {
-
+	std::cout << "size: " << values.size() << " values: ";
+	std::list<int>::iterator it;
+	for (it = values.begin(); it != values.end(); ++it) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 }
+
+void PStack::__dev__printConsole()
+{
+	std::cout << "stack" << std::endl;
+	__dev__printAllStackValues();
+	std::cout << std::endl;
+}
+
 

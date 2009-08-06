@@ -18,9 +18,13 @@
 /** \file pconsole.h
  * \brief plik nagłówkowy klasy PConsole
  *
- * Klasa realizująca wszystkie operacje wejścia wyjścia związane z instrukcjami Pieta.
+ * Plik nagłówkowy zawiera definicję klasy PConsole.
  */
 
+/** \brief maszyna kodu
+ *
+ * Klasa realizująca wszystkie operacje wejścia wyjścia związane z instrukcjami Pieta.
+ */
 class PConsole {
 
 	public:

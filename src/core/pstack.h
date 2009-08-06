@@ -18,9 +18,15 @@
 /** \file pstack.h
  * \brief plik nagłówkowy klasy PStack
  *
- * Klasa pełniąca funkcję stosu wykorzystywanego do interpretowania kodu Pieta.
+ * Plik nagłówkowy zawiera definicję klasy PStack.
  */
 
+/** \brief stos
+ *
+ * Klasa pełniąca funkcję stosu wykorzystywanego do interpretowania kodu Pieta. Wszystkie jej funkcjonalności są dokładnie określone przez instrukcje dozwolone w języku Piet - począwszy od podstawowych (kładzenie/zdejmowanie elementów), poprzez arytmetyczne i logiczne (zmieniające elementy na szczycie stosu w zależności od ich wartości) a skończywszy na operacjach sterujących głowicą (przestawianie 'codel chooser' i 'direction pointer' - patrz: specyfikacja Piet), operacjach modyfikujących strukturę elementów stosu oraz operacjach I/O.
+
+Stanowi jeden z dwóch obiektów potrzebnych do pełnej interpretacji kodu, używanych przez tzw. "wirtualną maszynę Pieta", najwyższy w hierarchi obiekt.
+ */
 class PStack {
 
 	protected:
@@ -33,6 +39,7 @@ class PStack {
 		~PStack();
 
 		void clear();
+		void prepareToExecute();
 
 	// operacje podstawowe:
 
@@ -42,10 +49,10 @@ class PStack {
 	// operacje arytmetyczne:
 
 		void instrAdd();
-		void instrSub();
-		void instrMul();
-		void instrDiv();
-		void instrMod();
+		void instrSubtract();
+		void instrMultiply();
+		void instrDivide();
+		void instrModulo();
 
 	// operacje logiczne:
 
@@ -72,6 +79,7 @@ class PStack {
 	// development:
 
 		void __dev__printAllStackValues();
+		void __dev__printConsole();
 
 };
 
