@@ -1,0 +1,73 @@
+<ui version="4.0" >
+ <class>WorkspaceWindow</class>
+ <widget class="QMainWindow" name="WorkspaceWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>996</width>
+    <height>707</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" />
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>996</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPlik" >
+    <property name="title" >
+     <string>Uruchom</string>
+    </property>
+    <addaction name="aOpen" />
+    <addaction name="aSaveAs" />
+    <addaction name="separator" />
+    <addaction name="aExit" />
+   </widget>
+   <widget class="QMenu" name="menuInne" >
+    <property name="title" >
+     <string>Wykonaj</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuO_programie" >
+    <property name="title" >
+     <string>O programie</string>
+    </property>
+    <addaction name="aAuthor" />
+   </widget>
+   <addaction name="menuPlik" />
+   <addaction name="menuInne" />
+   <addaction name="menuO_programie" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+  <action name="aOpen" >
+   <property name="text" >
+    <string>Otwórz...</string>
+   </property>
+  </action>
+  <action name="aSaveAs" >
+   <property name="text" >
+    <string>Zapisz jako...</string>
+   </property>
+  </action>
+  <action name="aExit" >
+   <property name="text" >
+    <string>Wyjdź</string>
+   </property>
+  </action>
+  <action name="aAuthor" >
+   <property name="text" >
+    <string>Autor</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
