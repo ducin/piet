@@ -6,6 +6,7 @@
 // piet core
 #include "../debug.h"
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 #include <iostream>
@@ -16,9 +17,10 @@
 // Qt
 // none
 
-PCodePointer::PCodePointer(QImage *code_image)
+PCodePointer::PCodePointer(QImage *code_image, PPoint initial)
 {
 	debug("CONSTRUCTOR ----- code-pointer START\n");
+	initial_coords = initial;
 	image = code_image; // referencja do obiektu obrazu kodu
 	debug("CONSTRUCTOR ----- code-pointer END\n");
 }
@@ -32,8 +34,8 @@ PCodePointer::~PCodePointer()
 
 void PCodePointer::clear()
 {
-	coord_x = INIT_coord_x;
-	coord_y = INIT_coord_y;
+	coords.x = initial_coords.x;
+	coords.y = initial_coords.y;
 	codel_chooser = INIT_cc;
 	direction_pointer = INIT_dp;
 }
@@ -42,19 +44,24 @@ void PCodePointer::clear()
 
 QRgb PCodePointer::getPointedPixel()
 {
-	return image->pixel(coord_x, coord_y);
+	return image->pixel(coords.x, coords.y);
+}
+
+QRgb PCodePointer::getPixel(PPoint point)
+{
+	return image->pixel(point.x, point.y);
 }
 
 //==================================================================
 
-void PCodePointer::setCodelChooser(PCodelChooserValues cc)
-{
-	codel_chooser = cc;
-}
-
 void PCodePointer::setDirectionPointer(PDirectionPointerValues dp)
 {
 	direction_pointer = dp;
+}
+
+PDirectionPointerValues PCodePointer::getDirectionPointerValue()
+{
+	return direction_pointer;
 }
 
 void PCodePointer::turnDirectionPointerClockwise()
@@ -75,6 +82,18 @@ void PCodePointer::turnDirectionPointerClockwise()
 	}
 }
 
+//==================================================================
+
+void PCodePointer::setCodelChooser(PCodelChooserValues cc)
+{
+	codel_chooser = cc;
+}
+
+PCodelChooserValues PCodePointer::getCodelChooserValue()
+{
+	return codel_chooser;
+}
+
 void PCodePointer::toggleCodelChooser()
 {
 	switch (codel_chooser) {
@@ -89,25 +108,78 @@ void PCodePointer::toggleCodelChooser()
 
 //==================================================================
 
-int PCodePointer::getCoordX()
+PPoint PCodePointer::getCoordinates()
 {
-	return coord_x;
+	return coords;
 }
 
-int PCodePointer::getCoordY()
+void PCodePointer::setCoordinates(int newX, int newY)
 {
-	return coord_y;
+	coords.x = newX;
+	coords.y = newY;
 }
 
+void PCodePointer::setCoordinates(PPoint new_point)
+{
+	coords = new_point;
+}
+
+// Metoda determinuje, czy punkt o zadanych współrzędnych mieści się w obrazie kodu.
+bool PCodePointer::pointOutsideImage(PPoint point)
+{
+	return (point.x < 0 || point.x >= image->width() || point.y < 0 || point.y >= image->height());
+}
+
+//==================================================================
+ // development
 //==================================================================
 
 void PCodePointer::__dev__printCoordinates()
 {
-	std::cout << "coordinates: x=" << coord_x << " y=" << coord_y << std::endl;
+	std::cout << "[" << coords.x << "," << coords.y << "]";
+}
+
+void PCodePointer::__dev__printDirectionPointer()
+{
+	std::cout << "DP: ";
+	switch (direction_pointer) {
+		case dp_right:
+			std::cout << "right";
+			break;
+		case dp_down:
+			std::cout << "down";
+			break;
+		case dp_left:
+			std::cout << "left";
+			break;
+		case dp_up:
+			std::cout << "up";
+			break;
+	}
+	std::cout << " (" << (int) direction_pointer << ")";
+}
+
+void PCodePointer::__dev__printCodelChooser()
+{
+	std::cout << "CC: ";
+	switch (codel_chooser) {
+		case cc_left:
+			std::cout << "left";
+			break;
+		case cc_right:
+			std::cout << "right";
+			break;
+	}
+	std::cout << " (" << (int) codel_chooser << ")";
 }
 
 void PCodePointer::__dev__printConsole()
 {
-	std::cout << "code-pointer" <<  std::endl;
+	std::cout << std::endl << "POINTER/ ";
 	__dev__printCoordinates();
+	std::cout << ", ";
+	__dev__printDirectionPointer();
+	std::cout << ", ";
+	__dev__printCodelChooser();
+	std::cout << std::endl;
 }

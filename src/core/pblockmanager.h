@@ -5,6 +5,7 @@
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 #include "pcodepointer.h"
 
 // C++
@@ -37,16 +38,23 @@ class PBlockManager {
 		void allocateMultiArray();
 		void deallocateMultiArray();
 
-		bool pixelInsideImage(int, int);
-		void reqCrawlMultiArray(QRgb, int, int);
+		void reqCrawlMultiArray(QRgb, PPoint);
 
 		void countCodels(); // zlicza kodele bloku kolorów na który wskazuje głowica
+		void findBorderCodels(); // wyznacza skrajne krawędzie bloków kolorów
+
+		int findRowMostLeftCodel(int);
+		int findRowMostRightCodel(int);
+		int findColumnTopCodel(int);
+		int findColumnBottomCodel(int);
 
 	protected:
 
 		QImage *image;
 		PCodePointer *pointer;
 		int codel_block_count; // zmienna przechowująca liczbę kodeli bloku kolorów, świeżo policzoną
+
+		int border_right_codel, border_down_codel, border_left_codel, border_up_codel;
 
 		void fillMultiArray(int);
 		void clearMultiArray();
@@ -59,9 +67,12 @@ class PBlockManager {
 		void searchAndFillCodels(); // przygotowuje pomoczniczą tablicę do użytku i podstawia potrzebną liczbę kodeli pod zmienną
 		int getCodelBlockCount();
 
+		PPoint getNextPossibleCodel();
+
 	// development:
 
 		void __dev__showMultiArray();
+		void __dev__showCountAndBorderCodels();
 
 };
 

@@ -16,6 +16,25 @@
 // Qt
 #include <QString>
 
+void setConsoleColor(int color)
+{
+	std::cout << "\033[" << color << "m";
+}
+
+void printFormattedError(std::string error)
+{
+	setConsoleColor(31);
+	std::cout << error << std::endl;
+	setConsoleColor(0);
+}
+
+void printFormattedMessage(std::string message)
+{
+	setConsoleColor(32);
+	std::cout << message << std::endl;
+	setConsoleColor(0);
+}
+
 PVirtualMachine *m;
 
 int runMenu()
@@ -51,25 +70,25 @@ int runProgram()
 		switch (choice)
 		{
 			case 1:
-				m->startMachine();
+				if ( m->startMachine() ) {
+					printFormattedMessage("ok");
+				} else {
+					printFormattedError("machine not ready");
+				}
 				break;
 			case 2:
 				m->restartMachine();
 				break;
 			case 3:
-				m->executeInstr();
+				if ( m->executeInstr() ) {
+					printFormattedMessage("ok");
+				} else {
+					printFormattedError("machine not started");
+				}
 				break;
 			case 4:
 				// spytaj ile instrukcji do przodu ma pójść
 				m->executeInstr();
-				break;
-			case 5:
-				m->revokeInstr();
-				break;
-			case 6:
-				// spytaj ile instrukcji wstecz chcesz isc...
-				int z;
-				m->goBack(z);
 				break;
 			case 9:
 				m->stopMachine();
@@ -82,25 +101,18 @@ int runProgram()
 	m->__dev__printConsole();
 
 	if (choice != 9)
-		std::cout << "finished" << std::endl;
+		std::cout << "application finished" << std::endl;
 	else
-		std::cout << "aborted" << std::endl;
+		std::cout << "application aborted" << std::endl;
 
 	m->clean();
-}
-
-void setConsoleColor(int color)
-{
-	std::cout << "\033[" << color << "m";
 }
 
 int main(int argc, char **argv)
 {
 	if ( argc != 2 ) // zle wywolany program
 	{
-		setConsoleColor(32);
-		std::cout << "Run the program with the code filename" << std::endl;
-		setConsoleColor(0);
+		printFormattedMessage("Run the program with the code filename");
 		return 1;
 	}
 	std::string STD_STR_code_path = "data/" + std::string(argv[1]);
@@ -108,9 +120,7 @@ int main(int argc, char **argv)
 	std::ifstream fin(STD_STR_code_path.c_str());
 	if ( !fin )
 	{
-		setConsoleColor(31);
-		std::cout << "File doesn't exist, check code files and run again" << std::endl;
-		setConsoleColor(0);
+		printFormattedMessage("File doesn't exist, check code files and run again");
 		return 2;
 	}
 

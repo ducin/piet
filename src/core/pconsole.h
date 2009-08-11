@@ -5,6 +5,7 @@
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 // none
@@ -31,6 +32,11 @@ class PConsole {
 
 		PConsole();
 		~PConsole();
+
+		void printChar(int);
+		void printNumber(int);
+		int readChar();
+		int readNumber();
 
 };
 

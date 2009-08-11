@@ -1,11 +1,12 @@
 //// includes
 
 // header file
-#include "pstack.h"
+#include "pcalcstack.h"
 
 // piet core
 #include "../debug.h"
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 #include <iostream>
@@ -16,24 +17,29 @@
 // Qt
 // none
 
-PStack::PStack()
+PCalcStack::PCalcStack()
 {
-	debug("CONSTRUCTOR ----- stack START\n");
-	debug("CONSTRUCTOR ----- stack END\n");
+	debug("CONSTRUCTOR ----- calc stack START\n");
+	debug("CONSTRUCTOR ----- calc stack END\n");
 }
 
-PStack::~PStack()
+PCalcStack::~PCalcStack()
 {
-	debug("DESTRUCTOR ----- stack START\n");
-	debug("DESTRUCTOR ----- stack END\n");
+	debug("DESTRUCTOR ----- calc stack START\n");
+	debug("DESTRUCTOR ----- calc stack END\n");
 }
 
-void PStack::clear()
+void PCalcStack::clear()
 {
 	values.clear();
 }
 
-void PStack::prepareToExecute()
+int PCalcStack::size()
+{
+	return values.size();
+}
+
+void PCalcStack::prepareToExecute()
 {
 	clear();
 }
@@ -41,20 +47,22 @@ void PStack::prepareToExecute()
 //==========================================================================
 	// operacje podstawowe:
 
-void PStack::instrPush(int item)
+void PCalcStack::instrPush(int item)
 {
 	values.push_front(item);
 }
 
-void PStack::instrPop()
+int PCalcStack::instrPop()
 {
+	int el = values.front();
 	values.pop_front();
+	return el;
 }
 
 //==========================================================================
 	// operacje arytmetyczne:
 
-void PStack::instrAdd()
+void PCalcStack::instrAdd()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -63,7 +71,7 @@ void PStack::instrAdd()
 	values.push_front(el2 + el1);
 }
 
-void PStack::instrSubtract()
+void PCalcStack::instrSubtract()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -72,7 +80,7 @@ void PStack::instrSubtract()
 	values.push_front(el2 - el1);
 }
 
-void PStack::instrMultiply()
+void PCalcStack::instrMultiply()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -81,7 +89,7 @@ void PStack::instrMultiply()
 	values.push_front(el2 * el1);
 }
 
-void PStack::instrDivide()
+void PCalcStack::instrDivide()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -90,7 +98,7 @@ void PStack::instrDivide()
 	values.push_front(el2 / el1);
 }
 
-void PStack::instrModulo()
+void PCalcStack::instrModulo()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -102,14 +110,14 @@ void PStack::instrModulo()
 //==========================================================================
 	// operacje logiczne:
 
-void PStack::instrNot()
+void PCalcStack::instrNot()
 {
 	int el = values.front();
 	values.pop_front();
 	values.push_front(el != 0 ? 0 : 1);
 }
 
-void PStack::instrGreater()
+void PCalcStack::instrGreater()
 {
 	int el1 = values.front();
 	values.pop_front();
@@ -119,58 +127,31 @@ void PStack::instrGreater()
 }
 
 //==========================================================================
-	// operacje na głowicy maszyny:
-
-int PStack::instrPointer()
-{
-
-}
-
-int PStack::instrSwitch()
-{
-
-}
-
-//==========================================================================
 	// operacje na stosie:
 
-void PStack::instrDuplicate()
+void PCalcStack::instrDuplicate()
 {
-
+	int el = values.front();
+	values.push_front(el);
 }
 
-void PStack::instrRoll()
+void PCalcStack::instrRoll()
 {
-
-}
-
-//==========================================================================
-	// operacje I/O:
-
-void PStack::instrInNumber()
-{
-
-}
-
-void PStack::instrInChar()
-{
-
-}
-
-void PStack::instrOutNumber()
-{
-
-}
-
-void PStack::instrOutChar()
-{
-
+	int loop_count = values.front();
+	values.pop_front();
+	int depth = values.front();
+	values.pop_front();
+	if (depth > 0) {
+		////////////////////////
+		// :] ?
+		////////////////////////
+	}
 }
 
 //==========================================================================
 	// development:
 
-void PStack::__dev__printAllStackValues()
+void PCalcStack::__dev__printAllStackValues()
 {
 	std::cout << "size: " << values.size() << " values: ";
 	std::list<int>::iterator it;
@@ -180,9 +161,9 @@ void PStack::__dev__printAllStackValues()
 	std::cout << std::endl;
 }
 
-void PStack::__dev__printConsole()
+void PCalcStack::__dev__printConsole()
 {
-	std::cout << "stack" << std::endl;
+	std::cout << "STACK/ ";
 	__dev__printAllStackValues();
 	std::cout << std::endl;
 }

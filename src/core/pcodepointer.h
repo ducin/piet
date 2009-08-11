@@ -5,6 +5,7 @@
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 // none
@@ -30,15 +31,20 @@ Obok managera kolorów i managera bloków koloru jest trzecim elementem wykorzys
  */
 class PCodePointer {
 
-	static const int INIT_coord_x = 0, INIT_coord_y = 0;
 	static const PCodelChooserValues INIT_cc = cc_left;
 	static const PDirectionPointerValues INIT_dp = dp_right;
+
+	private:
+
+		PPoint initial_coords;
+		PPoint coords; // współrzędne na które wskazuje głowica
 
 	protected:
 
 		QImage *image; // obraz kodu (plik graficzny którego pixle będą interpretowane)
 
-		int coord_x, coord_y; // współrzędne na które wskazuje głowica
+		void setCoordinateX(int);
+		void setCoordinateY(int);
 
 		PCodelChooserValues codel_chooser;; // codel chooser
 		void setCodelChooser(PCodelChooserValues);
@@ -50,22 +56,31 @@ class PCodePointer {
 
 	public:
 
-		PCodePointer(QImage *);
+		PCodePointer(QImage *, PPoint);
 		~PCodePointer();
 
-		int getCoordX();
-		int getCoordY();
+		PPoint getCoordinates();
+		void setCoordinates(int, int);
+		void setCoordinates(PPoint);
 
+		bool pointOutsideImage(PPoint);
+
+		PDirectionPointerValues getDirectionPointerValue();
 		void turnDirectionPointerClockwise();
+
+		PCodelChooserValues getCodelChooserValue();
 		void toggleCodelChooser();
 
 		QRgb getPointedPixel();
+		QRgb getPixel(PPoint);
 
 		void clear();
 
 	// development:
 
 		void __dev__printCoordinates();
+		void __dev__printDirectionPointer();
+		void __dev__printCodelChooser();
 		void __dev__printConsole();
 
 };

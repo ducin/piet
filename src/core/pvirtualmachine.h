@@ -5,9 +5,10 @@
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 #include "pcodemachine.h"
 #include "pconsole.h"
-#include "pstack.h"
+#include "pcalcstack.h"
 
 // C++
 // none
@@ -41,7 +42,7 @@ class PVirtualMachine {
 	protected:
 
 		PCodeMachine *code_machine; // maszyna kodu
-		PStack *stack; // stos
+		PCalcStack *stack; // stos
 		PConsole *console; // konsola I/O
 
 		PMachineStates getState();
@@ -65,10 +66,8 @@ class PVirtualMachine {
 		void clean(); // czyszczenie danych maszyny (zwalnianie pamięci pod obiekty)
 
 		// TODO zastanowic sie jaki typ ma zwracac
-		void executeAllInstr(); // wykonywanie instrukcji do końca działania programu
-		void executeInstr(); // wykonanie jednej instrukcji
-		bool revokeInstr(); // cofniecie jednej instrukcji
-		bool goBack(int);
+		bool executeAllInstr(); // wykonywanie instrukcji do końca działania programu
+		bool executeInstr(); // wykonanie jednej instrukcji
 
 	// development:
 

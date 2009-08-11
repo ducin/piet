@@ -6,9 +6,11 @@
 // piet core
 #include "../debug.h"
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
-// none
+#include <iostream>
+#include <iomanip>
 
 // STL
 // none
@@ -30,3 +32,31 @@ PConsole::~PConsole()
 	debug("DESTRUCTOR ----- console END\n");
 }
 
+void PConsole::printNumber(int I)
+{
+	std::cout << "CONSOLE/out-number: " << I << std::endl;
+}
+
+void PConsole::printChar(int I)
+{
+	unsigned char UC = I;
+	std::cout << "CONSOLE/out-char: ";
+	std::cout << std::setw(3) << UC << std::endl;
+}
+
+int PConsole::readNumber()
+{
+	int var;
+	std::cout << "CONSOLE/in-number: ";
+	std::cin >> var;
+	return var;
+}
+
+int PConsole::readChar()
+{
+	char C;
+	std::cout << "CONSOLE/in-char: ";
+	std::cin >> C;
+	int I = (int) C;
+	return I;
+}

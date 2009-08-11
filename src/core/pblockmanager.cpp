@@ -6,6 +6,7 @@
 // piet core
 #include "../debug.h"
 #include "penums.h"
+#include "pstructs.h"
 #include "pcodepointer.h"
 
 // C++
@@ -79,51 +80,50 @@ void PBlockManager::fillMultiArray(int value)
 void PBlockManager::clearMultiArray()
 {
 	fillMultiArray(0);
+	codel_block_count = 0;
+	border_right_codel = 0;
+	border_down_codel = 0;
+	border_left_codel = 0;
+	border_up_codel = 0;
 }
 
 
 //==================================================================
 // oznaczanie i obliczanie liczby kodeli w bloku kolorów
 
-// Metoda determinuje, czy punkt o zadanych współrzędnych mieści się w obrazie kodu.
-bool PBlockManager::pixelInsideImage(int x, int y)
-{
-	return (x >= 0 && x < width && y >= 0 && y < height);
-}
-
 // Rekursywna metoda oznaczająca wszystkie kodele które są tego samego koloru co zadany parametrem kolor oraz są sąsiadujące z pierwszym, oryginalnym kodelem (co jest właściwie formalną definicją bloku kolorów). Kodel spełniający warunek (ten sam kolor co zadany parametrem kolor) jest zaznaczany jako '1'. Kolor inny - '2', kodel niesprawdzony - pozostaje '0' (ma to miejsce, gdy blok kolorów został "odgrodzony" kodelami innych kolorów - wówczas nie jest zachowany warunek sąsiadowania kodeli).
-void PBlockManager::reqCrawlMultiArray(QRgb color, int x, int y)
+void PBlockManager::reqCrawlMultiArray(QRgb seedColor, PPoint seedPoint)
 {
-	int tmpX, tmpY; // zmienne tymczasowe używane do określenia współrzędnych ewentualnych sąsiednich kodeli (sąsiadnich dla zadanego, badanego aktualnie kodela), zostaną użyte jeśli aktualnie badany kodel spełni warunek (ten sam kolor co zadany parametrem).
-	if (image->pixel(x, y) == color) { // aktualnie sprawdzany kodel spełnia warunek
-		fields[y][x] = 1; // oznacz go '1' (że spełnia warunek)
+	PPoint tmpPoint; // zmienne tymczasowe używane do określenia współrzędnych ewentualnych sąsiednich kodeli (sąsiadnich dla zadanego, badanego aktualnie kodela), zostaną użyte jeśli aktualnie badany kodel spełni warunek (ten sam kolor co zadany parametrem).
+	if (image->pixel(seedPoint.x, seedPoint.y) == seedColor) { // aktualnie sprawdzany kodel spełnia warunek
+		fields[seedPoint.y][seedPoint.x] = 1; // oznacz go '1' (że spełnia warunek)
 
 		// i sprawdź jego wszystkie 4 sąsiednie punkty (pion, poziom, nie skos)
 		// podstaw pod robocze zmienne współrzędne hipotetycznego kodela
 		// sprawdź czy mieści się w rysunku i czy nie został już oznaczony
 		// jeśli powyższe warunki spełnione, wywołaj rekursywnie tą samą metodę dla nowego kodela
 
-		tmpX = x; tmpY = y+1;
-		if (pixelInsideImage(tmpX, tmpY) && fields[tmpY][tmpX] == 0) {
-			reqCrawlMultiArray(color, tmpX, tmpY);
+		tmpPoint.x = seedPoint.x; tmpPoint.y = seedPoint.y + 1;
+		if (!pointer->pointOutsideImage(tmpPoint) && fields[tmpPoint.y][tmpPoint.x] == 0) {
+			reqCrawlMultiArray(seedColor, tmpPoint);
 		}
 
-		tmpX = x; tmpY = y-1;
-		if (pixelInsideImage(tmpX, tmpY) && fields[tmpY][tmpX] == 0) {
-			reqCrawlMultiArray(color, tmpX, tmpY);
+		tmpPoint.x = seedPoint.x; tmpPoint.y = seedPoint.y - 1;
+		if (!pointer->pointOutsideImage(tmpPoint) && fields[tmpPoint.y][tmpPoint.x] == 0) {
+			reqCrawlMultiArray(seedColor, tmpPoint);
 		}
 
-		tmpX = x+1; tmpY = y;
-		if (pixelInsideImage(tmpX, tmpY) && fields[tmpY][tmpX] == 0) {
-			reqCrawlMultiArray(color, tmpX, tmpY);
+		tmpPoint.x = seedPoint.x + 1; tmpPoint.y = seedPoint.y;
+		if (!pointer->pointOutsideImage(tmpPoint) && fields[tmpPoint.y][tmpPoint.x] == 0) {
+			reqCrawlMultiArray(seedColor, tmpPoint);
 		}
 
-		tmpX = x-1; tmpY = y;
-		if (pixelInsideImage(tmpX, tmpY) && fields[tmpY][tmpX] == 0) {
-			reqCrawlMultiArray(color, tmpX, tmpY);
+		tmpPoint.x = seedPoint.x - 1; tmpPoint.y = seedPoint.y;
+		if (!pointer->pointOutsideImage(tmpPoint) && fields[tmpPoint.y][tmpPoint.x] == 0) {
+			reqCrawlMultiArray(seedColor, tmpPoint);
 		}
 	} else {
-		fields[y][x] = 2; // oznacz, że kodel ma inny kolor niż zadany parametrem
+		fields[seedPoint.y][seedPoint.x] = 2; // oznacz, że kodel ma inny kolor niż zadany parametrem
 	}
 }
 
@@ -150,8 +150,138 @@ int PBlockManager::getCodelBlockCount()
 void PBlockManager::searchAndFillCodels()
 {
 	clearMultiArray(); // przygotuj tablicę aby można było na niej nanosić oznaczenia (wyzeruj)
-	reqCrawlMultiArray(image->pixel(pointer->getCoordX(), pointer->getCoordY()), pointer->getCoordX(), pointer->getCoordY()); // rekursywne oznaczanie kodeli
+	reqCrawlMultiArray(pointer->getPointedPixel(), pointer->getCoordinates()); // rekursywne oznaczanie kodeli
 	countCodels();
+	findBorderCodels();
+}
+
+//==================================================================
+
+int PBlockManager::findRowMostLeftCodel(int row)
+{
+	int column = 0;
+	while ( fields[row][column] != 1 )
+		column++;
+	return column;
+}
+
+int PBlockManager::findRowMostRightCodel(int row)
+{
+	int column = width - 1;
+	while ( fields[row][column] != 1 )
+		column--;
+	return column;
+}
+
+int PBlockManager::findColumnTopCodel(int column)
+{
+	int row = 0;
+	while ( fields[row][column] != 1 )
+		row++;
+	return row;
+}
+
+int PBlockManager::findColumnBottomCodel(int column)
+{
+	int row = height - 1;
+	while ( fields[row][column] != 1 )
+		row--;
+	return row;
+}
+
+//
+void PBlockManager::findBorderCodels()
+{
+	bool found = false;
+	int h;
+	for (int i=0; i<height; i++) {
+		for (int j=0; j<width; j++) {
+			if (fields[i][j] == 1) {
+				h = i;
+				if ( !found) {
+					found = true;
+					border_up_codel = i;
+					border_right_codel = j;
+					border_left_codel = j;
+				}
+				if ( j < border_left_codel) {
+					border_left_codel = j;
+				}
+				if ( j > border_right_codel) {
+					border_right_codel = j;
+				}
+			}
+		}
+	}
+	border_down_codel = h;
+}
+
+PPoint PBlockManager::getNextPossibleCodel()
+{
+	PPoint new_point;
+	PPoint actual_point = pointer->getCoordinates();
+	// w zależności od wartości DIRECTION POINTER
+	switch( pointer->getDirectionPointerValue() ) {
+	// dla każdego z 4 kierunków sprawdź wartość CODEL CHOOSER
+	// i na tej podstawie jednoznacznie określ nowego kodela (z następnego bloku)
+		case dp_right:
+			switch ( pointer->getCodelChooserValue() ) {
+				case cc_left:
+					// dp = prawo, cc = lewo, kierunek = skrajny górny
+					new_point.y = findColumnTopCodel(border_right_codel);
+					break;
+				case cc_right:
+					// dp = prawo, cc = prawo, kierunek = skrajny dolny
+					new_point.y = findColumnBottomCodel(border_right_codel);
+					break;
+			}
+			new_point.x = border_right_codel + 1;
+			break;
+		case dp_down:
+			switch ( pointer->getCodelChooserValue() ) {
+				case cc_left:
+					// dp = dół, cc = lewo, kierunek = skrajny prawy
+					new_point.x = findRowMostRightCodel(border_down_codel);
+					break;
+				case cc_right:
+					// dp = dół, cc = prawo, kierunek = skrajny lewy
+					new_point.x = findRowMostLeftCodel(border_down_codel);
+					break;
+			}
+			new_point.y = border_down_codel + 1;
+			break;
+		case dp_left:
+			switch ( pointer->getCodelChooserValue() ) {
+				case cc_left:
+					// dp = lewo, cc = lewo, kierunek = skrajny dolny
+					new_point.y = findColumnBottomCodel(border_left_codel);
+					break;
+				case cc_right:
+					// dp = lewo, cc = prawo, kierunek = skrajny górny
+					new_point.y = findColumnTopCodel(border_left_codel);
+					break;
+			}
+			new_point.x = border_left_codel - 1;
+			break;
+		case dp_up:
+			switch ( pointer->getCodelChooserValue() ) {
+				case cc_left:
+					// dp = góra, cc = lewo, kierunek = skrajny lewy
+					new_point.x = findRowMostLeftCodel(border_up_codel);
+					break;
+				case cc_right:
+					// dp = góra, cc = prawo, kierunek = skrajny prawy
+					new_point.x = findRowMostRightCodel(border_up_codel);
+					break;
+			}
+			new_point.y = border_up_codel - 1;
+			break;
+		default:
+			// ERROR
+			exit(1);
+			break;
+	}
+	return new_point;
 }
 
 //==================================================================
@@ -166,5 +296,14 @@ void PBlockManager::__dev__showMultiArray()
 		}
 		std::cout << std::endl;
 	}
+	std::cout << std::endl;
+}
+
+// Metoda testowa.
+// Metoda wyświetla liczbę kodeli w aktualym bloku kolorów oraz skrajne kodele
+void PBlockManager::__dev__showCountAndBorderCodels()
+{
+	std::cout << "codel block count: " << codel_block_count << std::endl;
+	std::cout << "border codels: right=" << border_right_codel << " down=" << border_down_codel << " left=" << border_left_codel << " up=" << border_up_codel << std::endl;
 	std::cout << std::endl;
 }

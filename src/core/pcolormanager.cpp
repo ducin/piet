@@ -6,15 +6,16 @@
 // piet core
 #include "../debug.h"
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
-// none
+#include <iostream>
 
 // STL
 // none
 
 // Qt
-// none
+#include <QRgb>
 
 PColorManager::PColorManager()
 {
@@ -61,3 +62,156 @@ void PColorManager::initColorValues()
 	BLACK = qRgb(0, 0, 0);
 }
 
+PStdColors PColorManager::getColorName(QRgb color)
+{
+	if (color ==  LIGHT_RED) {
+		return color_light_red;
+	} else if (color == NORMAL_RED) {
+		return color_normal_red;
+	} else if (color == DARK_RED) {
+		return color_dark_red;
+	} else if (color == LIGHT_YELLOW) {
+		return color_light_yellow;
+	} else if (color == NORMAL_YELLOW) {
+		return color_normal_yellow;
+	} else if (color == DARK_YELLOW) {
+		return color_dark_yellow;
+	} else if (color == LIGHT_GREEN) {
+		return color_light_green;
+	} else if (color == NORMAL_GREEN) {
+		return color_normal_green;
+	} else if (color == DARK_GREEN) {
+		return color_dark_green;
+	} else if (color == LIGHT_CYAN) {
+		return color_light_cyan;
+	} else if (color == NORMAL_CYAN) {
+		return color_normal_cyan;
+	} else if (color == DARK_CYAN) {
+		return color_dark_cyan;
+	} else if (color == LIGHT_BLUE) {
+		return color_light_blue;
+	} else if (color == NORMAL_BLUE) {
+		return color_normal_blue;
+	} else if (color == DARK_BLUE) {
+		return color_dark_blue;
+	} else if (color == LIGHT_MAGENTA) {
+		return color_light_magenta;
+	} else if (color == NORMAL_MAGENTA) {
+		return color_normal_magenta;
+	} else if (color == DARK_MAGENTA) {
+		return color_dark_magenta;
+	} else if (color == WHITE) {
+		return color_white;
+	} else if (color == BLACK) {
+		return color_black;
+	} else exit(1);
+}
+
+int PColorManager::lightnessCycleDifference(PStdColors c1, PStdColors c2)
+{
+	int c1code = (int) c1, c2code = (int) c2;
+	return ((c1code - c2code + 21) % 3);
+}
+
+int PColorManager::saturationCycleDifference(PStdColors c1, PStdColors c2)
+{
+	int c1code = (int) c1, c2code = (int) c2;
+	std::cout << "---------------------" << std::endl;
+	std::cout << c1code << ", " << c2code << std::endl;
+	std::cout << c1code / 3 << ", " << c2code / 3 << std::endl;
+	std::cout << (c1code / 3) - (c2code / 3) << std::endl;
+	std::cout << ( ( (c1code / 3) - (c2code / 3) + 6 ) % 6) << std::endl;
+	std::cout << "---------------------" << std::endl;
+	return ( ( (c1code / 3) - (c2code / 3) + 6) % 6);
+}
+
+int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
+{
+	PStdColors p_old_color = getColorName(old_color);
+	PStdColors p_new_color = getColorName(new_color);
+
+	std::cout << "old: "; __dev__printColor(p_old_color); std::cout << "(" << ( (int) p_old_color ) << ")" << std::endl;
+	std::cout << "new: "; __dev__printColor(p_new_color); std::cout << "(" << ( (int) p_new_color ) << ")" << std::endl;
+
+	int lightness_diff = lightnessCycleDifference(p_new_color, p_old_color);
+	int saturation_diff = saturationCycleDifference(p_new_color, p_old_color);
+
+	std::cout << "light: " << lightness_diff << std::endl;
+	std::cout << "sat: " << saturation_diff << std::endl;
+	std::cout << "total: " << ( 3 * saturation_diff + lightness_diff ) << std::endl;
+
+	return ( 3 * saturation_diff + lightness_diff );
+}
+
+//=========================================================================
+ // development
+//=========================================================================
+
+void PColorManager::__dev__printColor(PStdColors color)
+{
+	switch (color) {
+		case color_light_red:
+			std::cout << "light red";
+			break;
+		case color_normal_red:
+			std::cout << "normal red";
+			break;
+		case color_dark_red:
+			std::cout << "dark red";
+			break;
+		case color_light_yellow:
+			std::cout << "light yellow";
+			break;
+		case color_normal_yellow:
+			std::cout << "normal yellow";
+			break;
+		case color_dark_yellow:
+			std::cout << "dark yellow";
+			break;
+		case color_light_green:
+			std::cout << "light green";
+			break;
+		case color_normal_green:
+			std::cout << "normal green";
+			break;
+		case color_dark_green:
+			std::cout << "dark green";
+			break;
+		case color_light_cyan:
+			std::cout << "light cyan";
+			break;
+		case color_normal_cyan:
+			std::cout << "normal cyan";
+			break;
+		case color_dark_cyan:
+			std::cout << "dark cyan";
+			break;
+		case color_light_blue:
+			std::cout << "light blue";
+			break;
+		case color_normal_blue:
+			std::cout << "normal blue";
+			break;
+		case color_dark_blue:
+			std::cout << "dark blue";
+			break;
+		case color_light_magenta:
+			std::cout << "light magenta";
+			break;
+		case color_normal_magenta:
+			std::cout << "normal magenta";
+			break;
+		case color_dark_magenta:
+			std::cout << "dark magenta";
+			break;
+		case color_white:
+			std::cout << "white";
+			break;
+		case color_black:
+			std::cout << "black";
+			break;
+		default:
+			std::cout << "error";
+			break;
+	}
+}

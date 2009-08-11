@@ -5,6 +5,7 @@
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 // none
@@ -27,10 +28,21 @@
  */
 class PColorManager {
 
+	private:
+
+		int lightnessCycleDifference(PStdColors, PStdColors);
+		int saturationCycleDifference(PStdColors, PStdColors);
+
+	protected:
+
+		void initColorValues(QRgb, QRgb);
+
 	public:
 
 		PColorManager();
 		~PColorManager();
+
+		int getInstructionIndex(QRgb, QRgb);
 
 	QRgb LIGHT_RED, NORMAL_RED, DARK_RED;
 	QRgb LIGHT_YELLOW, NORMAL_YELLOW, DARK_YELLOW;
@@ -40,7 +52,13 @@ class PColorManager {
 	QRgb LIGHT_MAGENTA, NORMAL_MAGENTA, DARK_MAGENTA;
 	QRgb WHITE, BLACK;
 
+		PStdColors getColorName(QRgb);
+
 		void initColorValues();
+
+	// development:
+
+		void __dev__printColor(PStdColors);
 
 };
 

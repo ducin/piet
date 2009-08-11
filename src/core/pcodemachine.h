@@ -5,6 +5,7 @@
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 #include "pblockmanager.h"
 #include "pcolormanager.h"
 #include "pcodepointer.h"
@@ -50,15 +51,19 @@ class PCodeMachine {
 		PCodeMachine(PConsole *, QString);
 		~PCodeMachine();
 
+		PCodePointer* getPointer();
+
 		void prepareToExecute();
 
 		int getCodelBlockCount();
 
 		PInstructions movePointerAndGetInstructionToExecute(); // jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera
 
+		PInstructions getInstructionByIndex(int);
+
 	// development:
 
-		void __dev__printImageInfo();
+		void __dev__printPointedCodelInfo();
 		void __dev__printConsole();
 
 };

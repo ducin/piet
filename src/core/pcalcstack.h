@@ -1,10 +1,11 @@
-#ifndef P_STACK
-#define P_STACK
+#ifndef P_CALC_STACK
+#define P_CALC_STACK
 
 //// includes
 
 // piet core
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 // none
@@ -15,10 +16,10 @@
 // Qt
 // none
 
-/** \file pstack.h
- * \brief plik nagłówkowy klasy PStack
+/** \file pcalcstack.h
+ * \brief plik nagłówkowy klasy PCalcStack
  *
- * Plik nagłówkowy zawiera definicję klasy PStack.
+ * Plik nagłówkowy zawiera definicję klasy PCalcStack.
  */
 
 /** \brief stos
@@ -27,7 +28,7 @@
 
 Stanowi jeden z dwóch obiektów potrzebnych do pełnej interpretacji kodu, używanych przez tzw. "wirtualną maszynę Pieta", najwyższy w hierarchi obiekt.
  */
-class PStack {
+class PCalcStack {
 
 	protected:
 
@@ -35,16 +36,17 @@ class PStack {
 
 	public:
 
-		PStack();
-		~PStack();
+		PCalcStack();
+		~PCalcStack();
 
 		void clear();
+		int size();
 		void prepareToExecute();
 
 	// operacje podstawowe:
 
 		void instrPush(int);
-		void instrPop();
+		int instrPop();
 
 	// operacje arytmetyczne:
 
@@ -59,22 +61,10 @@ class PStack {
 		void instrNot();
 		void instrGreater();
 
-	// operacje na głowicy maszyny:
-
-		int instrPointer(); // zwraca liczbę obrotów DP (co dalej jest wykonywane przez maszynę kodu)
-		int instrSwitch();
-
-	// operacje na stosie:
+	// operacje na strukturze elementów:
 
 		void instrDuplicate();
 		void instrRoll();
-
-	// operacje I/O:
-
-		void instrInNumber();
-		void instrInChar();
-		void instrOutNumber();
-		void instrOutChar();
 
 	// development:
 

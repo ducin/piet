@@ -6,6 +6,7 @@
 // piet core
 #include "../debug.h"
 #include "penums.h"
+#include "pstructs.h"
 
 // C++
 // none

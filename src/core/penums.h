@@ -2,10 +2,37 @@
 #define P_ENUMS
 
 /** \file penums.h
- * \brief wszystkie enumeracje
+ * \brief wszystkie definicje enumeracji
  *
- * Plik nagłówkowy zawiera wszystkie enumeracje które są wykorzystywane w projekcie.
+ * Plik nagłówkowy zawiera wszystkie definicje enumeracji które są wykorzystywane w projekcie.
  */
+
+/** \brief standardowe kolory
+ *
+ * Enumeracja wyszczególniająca kolory standardowe wykorzystywane do określania wykonywanej instrukcji
+ */
+enum PStdColors {
+	color_light_red,
+	color_normal_red,
+	color_dark_red,
+	color_light_yellow,
+	color_normal_yellow,
+	color_dark_yellow,
+	color_light_green,
+	color_normal_green,
+	color_dark_green,
+	color_light_cyan,
+	color_normal_cyan,
+	color_dark_cyan,
+	color_light_blue,
+	color_normal_blue,
+	color_dark_blue,
+	color_light_magenta,
+	color_normal_magenta,
+	color_dark_magenta,
+	color_white,
+	color_black
+};
 
 /** \brief interpretacja niestandardowych kolorów
  *
@@ -54,7 +81,7 @@ enum PMachineStates {
  * Enumeracja wyszczególniająca wszystkie instrukcje wykonywane przez język Piet.
  */
 enum PInstructions {
-	pietInstr_empty, /* 0 */
+	pietInstr_special_terminate, /* 0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu */
 	pietInstr_stack_push, /* 1 */
 	pietInstr_stack_pop, /* 2 */
 	pietInstr_arithm_add, /* 3 */
