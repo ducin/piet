@@ -6,8 +6,10 @@
 // piet core
 #include "penums.h"
 #include "pstructs.h"
-#include "pcodemachine.h"
 #include "pconsole.h"
+#include "pblockmanager.h"
+#include "pcolormanager.h"
+#include "pcodepointer.h"
 #include "pcalcstack.h"
 
 // C++
@@ -18,6 +20,7 @@
 
 // Qt
 #include <QString>
+#include <QImage>
 
 /** \file pvirtualmachine.h
  * \brief plik nagłówkowy klasy PVirtualMachine
@@ -38,10 +41,13 @@ class PVirtualMachine {
 	private:
 
 		PMachineStates state;
+		QImage *image; // obraz kodu (plik graficzny którego pixle będą interpretowane)
+		PCodePointer *pointer; // wskaźnik czytający obraz powyższy kodu
+		PColorManager *color_manager; // maszyna zajmująca się przetwarzaniem i interpretacją kolorów
+		PBlockManager *block_manager;
 
 	protected:
 
-		PCodeMachine *code_machine; // maszyna kodu
 		PCalcStack *stack; // stos
 		PConsole *console; // konsola I/O
 
@@ -63,18 +69,22 @@ class PVirtualMachine {
 		bool restartMachine();
 		bool stopMachine();
 
-		void clean(); // czyszczenie danych maszyny (zwalnianie pamięci pod obiekty)
-
 		// TODO zastanowic sie jaki typ ma zwracac
 		bool executeAllInstr(); // wykonywanie instrukcji do końca działania programu
 		bool executeInstr(); // wykonanie jednej instrukcji
 
+		bool pointIsBlackOrOutside(PPoint);
+		bool pointIsWhite(PPoint);
+		PInstructions movePointerAndGetInstructionToExecute(); // jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera
+
+		PInstructions getInstructionByIndex(int);
+
+
 	// development:
 
-		std::string __dev__transformBinaryStateToString(PMachineStates);
+		void __dev__printImageInfo();
+		void __dev__printPointedCodelInfo();
 		void __dev__printConsole();
-		void __dev__destroyGrid();
-		void __dev__runProgram(); // TESTOWE // testowa metoda wykonywania programu dla maszyny, która wczytała już swój kod
 
 };
 

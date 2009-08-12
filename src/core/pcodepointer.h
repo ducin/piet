@@ -52,29 +52,29 @@ class PCodePointer {
 		PDirectionPointerValues direction_pointer; // direction pointer
 		void setDirectionPointer(PDirectionPointerValues);
 
-		// w jaki sposób głowica powinna mieć dostęp do samego rysunku
+		void turnDirectionPointerClockwise();
+		void turnDirectionPointerAnticlockwise();
 
 	public:
 
 		PCodePointer(QImage *, PPoint);
 		~PCodePointer();
 
+		void clear();
+
 		PPoint getCoordinates();
 		void setCoordinates(int, int);
 		void setCoordinates(PPoint);
+		QRgb getPointedPixel();
 
+		QRgb getPixel(PPoint);
 		bool pointOutsideImage(PPoint);
 
 		PDirectionPointerValues getDirectionPointerValue();
-		void turnDirectionPointerClockwise();
-
 		PCodelChooserValues getCodelChooserValue();
 		void toggleCodelChooser();
-
-		QRgb getPointedPixel();
-		QRgb getPixel(PPoint);
-
-		void clear();
+		void toggleDirectionPointer();
+		void toggle();
 
 	// development:
 
@@ -82,7 +82,6 @@ class PCodePointer {
 		void __dev__printDirectionPointer();
 		void __dev__printCodelChooser();
 		void __dev__printConsole();
-
 };
 
 #endif

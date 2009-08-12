@@ -64,6 +64,20 @@ PDirectionPointerValues PCodePointer::getDirectionPointerValue()
 	return direction_pointer;
 }
 
+//==================================================================
+
+void PCodePointer::setCodelChooser(PCodelChooserValues cc)
+{
+	codel_chooser = cc;
+}
+
+PCodelChooserValues PCodePointer::getCodelChooserValue()
+{
+	return codel_chooser;
+}
+
+//==================================================================
+
 void PCodePointer::turnDirectionPointerClockwise()
 {
 	switch (direction_pointer) {
@@ -82,16 +96,22 @@ void PCodePointer::turnDirectionPointerClockwise()
 	}
 }
 
-//==================================================================
-
-void PCodePointer::setCodelChooser(PCodelChooserValues cc)
+void PCodePointer::turnDirectionPointerAnticlockwise()
 {
-	codel_chooser = cc;
-}
-
-PCodelChooserValues PCodePointer::getCodelChooserValue()
-{
-	return codel_chooser;
+	switch (direction_pointer) {
+		case dp_right:
+			direction_pointer = dp_up;
+			break;
+		case dp_down:
+			direction_pointer = dp_right;
+			break;
+		case dp_left:
+			direction_pointer = dp_down;
+			break;
+		case dp_up:
+			direction_pointer = dp_left;
+			break;
+	}
 }
 
 void PCodePointer::toggleCodelChooser()
@@ -103,6 +123,21 @@ void PCodePointer::toggleCodelChooser()
 		case cc_right:
 			codel_chooser = cc_left;
 			break;
+	}
+}
+
+void PCodePointer::toggleDirectionPointer()
+{
+	turnDirectionPointerClockwise();
+}
+
+void PCodePointer::toggle()
+{
+	if (codel_chooser == cc_left) {
+		toggleCodelChooser();
+	} else {
+		toggleCodelChooser();
+		turnDirectionPointerClockwise();
 	}
 }
 

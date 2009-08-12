@@ -60,6 +60,7 @@ int runMenu()
 int runProgram()
 {
 	int continued = 1, choice;
+	int trace_step = 0;
 
 	while (continued)
 	{
@@ -80,6 +81,7 @@ int runProgram()
 				m->restartMachine();
 				break;
 			case 3:
+				std::cout << "trace step: " << trace_step++ << std::endl;
 				if ( m->executeInstr() ) {
 					printFormattedMessage("ok");
 				} else {
@@ -101,11 +103,9 @@ int runProgram()
 	m->__dev__printConsole();
 
 	if (choice != 9)
-		std::cout << "application finished" << std::endl;
+		printFormattedMessage("Application finished");
 	else
-		std::cout << "application aborted" << std::endl;
-
-	m->clean();
+		printFormattedError("Application aborted");
 }
 
 int main(int argc, char **argv)

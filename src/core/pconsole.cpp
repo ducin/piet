@@ -41,7 +41,7 @@ void PConsole::printChar(int I)
 {
 	unsigned char UC = I;
 	std::cout << "CONSOLE/out-char: ";
-	std::cout << std::setw(3) << UC << std::endl;
+	std::cout << std::setw(3) << UC << " (" << I << ")" << std::endl;
 }
 
 int PConsole::readNumber()

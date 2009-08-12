@@ -116,12 +116,10 @@ int PColorManager::lightnessCycleDifference(PStdColors c1, PStdColors c2)
 int PColorManager::saturationCycleDifference(PStdColors c1, PStdColors c2)
 {
 	int c1code = (int) c1, c2code = (int) c2;
-	std::cout << "---------------------" << std::endl;
-	std::cout << c1code << ", " << c2code << std::endl;
-	std::cout << c1code / 3 << ", " << c2code / 3 << std::endl;
-	std::cout << (c1code / 3) - (c2code / 3) << std::endl;
-	std::cout << ( ( (c1code / 3) - (c2code / 3) + 6 ) % 6) << std::endl;
-	std::cout << "---------------------" << std::endl;
+//	std::cout << "---- color ---- " << c1code << ", " << c2code << std::endl;
+//	std::cout << c1code / 3 << ", " << c2code / 3 << " / ";
+//	std::cout << (c1code / 3) - (c2code / 3) << " / ";
+//	std::cout << ( ( (c1code / 3) - (c2code / 3) + 6 ) % 6) << std::endl;
 	return ( ( (c1code / 3) - (c2code / 3) + 6) % 6);
 }
 
@@ -136,9 +134,7 @@ int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
 	int lightness_diff = lightnessCycleDifference(p_new_color, p_old_color);
 	int saturation_diff = saturationCycleDifference(p_new_color, p_old_color);
 
-	std::cout << "light: " << lightness_diff << std::endl;
-	std::cout << "sat: " << saturation_diff << std::endl;
-	std::cout << "total: " << ( 3 * saturation_diff + lightness_diff ) << std::endl;
+//	std::cout << "lightness: " << lightness_diff << "; " << "saturation: " << saturation_diff << "; " << "result: " << ( 3 * saturation_diff + lightness_diff ) << std::endl;
 
 	return ( 3 * saturation_diff + lightness_diff );
 }
