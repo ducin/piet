@@ -270,6 +270,9 @@ block_manager->__dev__showCountAndBorderCodels();
 		possible_point = block_manager->getNextPossibleCodel(); // wyznacz hipotetyczny nowy kodel
 std::cout << "attempt " << attempts << ", possible next coords:" << possible_point.x << "," << possible_point.y;
 pointer->__dev__printConsole();
+
+std::cout << "HELLO MAAAN :)" << std::endl;
+
 		if ( pointIsBlackOrOutside(possible_point) ) {
 			// nie udało się
 			attempts++;
