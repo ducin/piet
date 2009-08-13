@@ -85,7 +85,7 @@ int runProgram()
 				if ( m->executeInstr() ) {
 					printFormattedMessage("ok");
 				} else {
-					printFormattedError("machine not started");
+					printFormattedError("some kind of error");
 				}
 				break;
 			case 4:

@@ -40,8 +40,10 @@ class PCalcStack {
 		~PCalcStack();
 
 		void clear();
-		int size();
 		void prepareToExecute();
+
+		int size();
+		bool hasAtLeastNElements(int);
 
 	// operacje podstawowe:
 

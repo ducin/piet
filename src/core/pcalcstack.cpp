@@ -34,14 +34,19 @@ void PCalcStack::clear()
 	values.clear();
 }
 
+void PCalcStack::prepareToExecute()
+{
+	clear();
+}
+
 int PCalcStack::size()
 {
 	return values.size();
 }
 
-void PCalcStack::prepareToExecute()
+bool PCalcStack::hasAtLeastNElements(int elements)
 {
-	clear();
+	return (values.size() >= elements);
 }
 
 //==========================================================================

@@ -161,6 +161,7 @@ bool PVirtualMachine::executeAllInstr()
 // wykonuje pojedynczą instrukcję
 bool PVirtualMachine::executeInstr()
 {
+	bool result = true; // czy operacja została wykonana
 	int ivar;
 	if ( isRunning() ) {
 		PInstructions instruction = movePointerAndGetInstructionToExecute();
@@ -179,42 +180,90 @@ bool PVirtualMachine::executeInstr()
 				stack->instrPush( block_manager->getCodelBlockCount() ); // połóż na stosie liczbę równą liczbie kodeli w bloku kolorów wskazywanym aktualnie przez głowicę
 				break;
 			case pietInstr_stack_pop:
-				ivar = stack->instrPop(); // zdejmuje ze stosu liczbę (i nic z nią nie robi)
+				if (stack->hasAtLeastNElements(1)) {
+					ivar = stack->instrPop(); // zdejmuje ze stosu liczbę (i nic z nią nie robi)
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_arithm_add:
-				stack->instrAdd(); // zdejmuje 2 szczytowe elementy i odkłada ich sumę
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrAdd(); // zdejmuje 2 szczytowe elementy i odkłada ich sumę
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_arithm_subtract:
-				stack->instrSubtract(); // zdejmuje 2 szczytowe elementy i odkłada ich różnicę
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrSubtract(); // zdejmuje 2 szczytowe elementy i odkłada ich różnicę
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_arithm_multiply:
-				stack->instrMultiply(); // zdejmuje 2 szczytowe elementy i odkłada ich iloczyn
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrMultiply(); // zdejmuje 2 szczytowe elementy i odkłada ich iloczyn
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_arithm_divide:
-				stack->instrDivide(); // zdejmuje 2 szczytowe elementy i odkłada ich iloraz
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrDivide(); // zdejmuje 2 szczytowe elementy i odkłada ich iloraz
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_arithm_modulo:
-				stack->instrModulo(); // zdejmuje 2 szczytowe elementy i odkłada resztę z ich dzielenia
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrModulo(); // zdejmuje 2 szczytowe elementy i odkłada resztę z ich dzielenia
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_logic_not:
-				stack->instrNot(); // zdejmuje element szczytowy i odkłada 1 (el = 0) lub 0 (el != 0)
+				if (stack->hasAtLeastNElements(1)) {
+					stack->instrNot(); // zdejmuje element szczytowy i odkłada 1 (el = 0) lub 0 (el != 0)
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_logic_greater:
-				stack->instrGreater(); // zdejmuje 2 szczytowe elementy i odkłada 1 (jeśli ostatni większy) lub 0 (przeciwnie)
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrGreater(); // zdejmuje 2 szczytowe elementy i odkłada 1 (jeśli ostatni większy) lub 0 (przeciwnie)
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_runtime_pointer:
-				for (int num = stack->instrPop(); num > 0; num--)
-					pointer->toggleDirectionPointer();
+				if (stack->hasAtLeastNElements(1)) {
+					for (int num = stack->instrPop(); num > 0; num--)
+						pointer->toggleDirectionPointer();
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_runtime_switch:
-				if (stack->instrPop() % 2)
-					pointer->toggleCodelChooser();
+				if (stack->hasAtLeastNElements(1)) {
+					if (stack->instrPop() % 2)
+						pointer->toggleCodelChooser();
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_stack_duplicate:
-				stack->instrDuplicate();
+				if (stack->hasAtLeastNElements(1)) {
+					stack->instrDuplicate();
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_stack_roll:
-				stack->instrRoll();
+				if (stack->hasAtLeastNElements(2)) {
+					stack->instrRoll();
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_io_in_number:
 				stack->instrPush(console->readNumber());
@@ -223,19 +272,27 @@ bool PVirtualMachine::executeInstr()
 				stack->instrPush(console->readChar());
 				break;
 			case pietInstr_io_out_number:
-				console->printNumber(stack->instrPop());
+				if (stack->hasAtLeastNElements(1)) {
+					console->printNumber(stack->instrPop());
+				} else {
+					result = false;
+				}
 				break;
 			case pietInstr_io_out_char:
-				console->printChar(stack->instrPop());
+				if (stack->hasAtLeastNElements(1)) {
+					console->printChar(stack->instrPop());
+				} else {
+					result = false;
+				}
 				break;
 			default:
 				std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
 				exit(1);
 		}
-		return true;
 	} else {
-		return false;
+		result = false;
 	}
+	return result;
 }
 
 //==================================================================
