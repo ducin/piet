@@ -104,7 +104,11 @@ PStdColors PColorManager::getColorName(QRgb color)
 		return color_white;
 	} else if (color == BLACK) {
 		return color_black;
-	} else exit(1);
+	} else {
+		std::cout << "ERROR: PStdColors PColorManager::getColorName(QRgb color)" << std::endl;
+		std::cout << "R:" << qRed(color) << " G:" << qGreen(color) << " B:" << qBlue(color) << std::endl;
+		exit(1);
+	}
 }
 
 int PColorManager::lightnessCycleDifference(PStdColors c1, PStdColors c2)

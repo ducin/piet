@@ -82,6 +82,7 @@ class PVirtualMachine {
 
 	// development:
 
+		void __dev__printInstruction(PInstructions);
 		void __dev__printImageInfo();
 		void __dev__printPointedCodelInfo();
 		void __dev__printConsole();

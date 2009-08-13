@@ -277,9 +277,8 @@ PPoint PBlockManager::getNextPossibleCodel()
 			new_point.y = border_up_codel - 1;
 			break;
 		default:
-			// ERROR
+			std::cout << "ERROR: PPoint PBlockManager::getNextPossibleCodel()" << std::endl;
 			exit(1);
-			break;
 	}
 	return new_point;
 }

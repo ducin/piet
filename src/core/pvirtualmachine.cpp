@@ -171,6 +171,7 @@ bool PVirtualMachine::executeInstr()
 			case pietInstr_special_terminate:
 				// 8 nieudanych prób przesunięcia głowicy do następnego kodela kończy pracę interpretera
 				if ( !stopMachine() ) {
+					std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
 					exit(1);
 				}
 				break;
@@ -228,9 +229,8 @@ bool PVirtualMachine::executeInstr()
 				console->printChar(stack->instrPop());
 				break;
 			default:
-				// ERROR
+				std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
 				exit(1);
-				break;
 		}
 		return true;
 	} else {
@@ -242,11 +242,11 @@ bool PVirtualMachine::executeInstr()
 
 bool PVirtualMachine::pointIsBlackOrOutside(PPoint point)
 {
-	return (
-		pointer->pointOutsideImage(point)
-	||
-		(color_manager->getColorName(pointer->getPixel(point)) == color_black )
-	);
+	bool black = false, outside = pointer->pointOutsideImage(point);
+	if (!outside) {
+		black = (color_manager->getColorName(pointer->getPixel(point)) == color_black );
+	}
+	return ( outside || black );
 }
 
 bool PVirtualMachine::pointIsWhite(PPoint point)
@@ -271,12 +271,14 @@ block_manager->__dev__showCountAndBorderCodels();
 std::cout << "attempt " << attempts << ", possible next coords:" << possible_point.x << "," << possible_point.y;
 pointer->__dev__printConsole();
 
-std::cout << "HELLO MAAAN :)" << std::endl;
-
 		if ( pointIsBlackOrOutside(possible_point) ) {
 			// nie udało się
 			attempts++;
-			pointer->toggle();
+			if (attempts % 2) {
+				pointer->toggleCodelChooser();
+			} else {
+				pointer->toggleDirectionPointer();
+			}
 			continued = (attempts < 8);
 		} else {
 			if ( pointIsWhite(possible_point) ) {
@@ -294,6 +296,7 @@ std::cout << "HELLO MAAAN :)" << std::endl;
 		QRgb new_color = pointer->getPointedPixel(); // odczytanie koloru kodelu wskazywanego przez głowicę po przesunięciu
 		result_instr = getInstructionByIndex( color_manager->getInstructionIndex(old_color, new_color) ); // interpretacja instrukcji do wykonanai na podstawie kolorów kodeli - starego i nowego
 	}
+std::cout << "instr: "; __dev__printInstruction(result_instr); std::cout << std::endl;
 	return result_instr; // zwrócenie wyniku (instrukcji do wykonania)
 }
 
@@ -339,12 +342,72 @@ PInstructions PVirtualMachine::getInstructionByIndex(int index)
 		case 17:
 			return pietInstr_io_out_char;
 		default:
-			// error
+			std::cout << "ERROR: PInstructions PVirtualMachine::getInstructionByIndex(int index)" << std::endl;
 			exit(1);
 	}
 }
 
 //=========================================================
+
+void PVirtualMachine::__dev__printInstruction(PInstructions instr)
+{
+	switch(instr) {
+		case 0:
+			std::cout << "terminate";
+			break;
+		case 1:
+			std::cout << "push";
+			break;
+		case 2:
+			std::cout << "pop";
+			break;
+		case 3:
+			std::cout << "add";
+			break;
+		case 4:
+			std::cout << "subtract";
+			break;
+		case 5:
+			std::cout << "multiply";
+			break;
+		case 6:
+			std::cout << "divide";
+			break;
+		case 7:
+			std::cout << "modulo";
+			break;
+		case 8:
+			std::cout << "not";
+			break;
+		case 9:
+			std::cout << "greater";
+			break;
+		case 10:
+			std::cout << "pointer";
+			break;
+		case 11:
+			std::cout << "switch";
+			break;
+		case 12:
+			std::cout << "duplicate";
+			break;
+		case 13:
+			std::cout << "roll";
+			break;
+		case 14:
+			std::cout << "in-number";
+			break;
+		case 15:
+			std::cout << "in-char";
+			break;
+		case 16:
+			std::cout << "out-number";
+			break;
+		case 17:
+			std::cout << "out-char";
+			break;
+	}
+}
 
 void PVirtualMachine::__dev__printImageInfo()
 {
