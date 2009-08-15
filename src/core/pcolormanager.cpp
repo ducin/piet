@@ -17,9 +17,12 @@
 // Qt
 #include <QRgb>
 
-PColorManager::PColorManager()
+PColorManager::PColorManager(bool verbose_mode)
 {
 	debug("CONSTRUCTOR ----- color-manager START\n");
+
+	verbose = verbose_mode;
+
 	initColorValues();
 	debug("CONSTRUCTOR ----- color-manager END\n");
 }
@@ -132,13 +135,13 @@ int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
 	PStdColors p_old_color = getColorName(old_color);
 	PStdColors p_new_color = getColorName(new_color);
 
-	std::cout << "old: "; __dev__printColor(p_old_color); std::cout << "(" << ( (int) p_old_color ) << ")" << std::endl;
-	std::cout << "new: "; __dev__printColor(p_new_color); std::cout << "(" << ( (int) p_new_color ) << ")" << std::endl;
+	if (verbose) {
+		std::cout << "old: "; __dev__printColor(p_old_color); std::cout << "(" << ( (int) p_old_color ) << ")" << std::endl;
+		std::cout << "new: "; __dev__printColor(p_new_color); std::cout << "(" << ( (int) p_new_color ) << ")" << std::endl;
+	}
 
 	int lightness_diff = lightnessCycleDifference(p_new_color, p_old_color);
 	int saturation_diff = saturationCycleDifference(p_new_color, p_old_color);
-
-//	std::cout << "lightness: " << lightness_diff << "; " << "saturation: " << saturation_diff << "; " << "result: " << ( 3 * saturation_diff + lightness_diff ) << std::endl;
 
 	return ( 3 * saturation_diff + lightness_diff );
 }

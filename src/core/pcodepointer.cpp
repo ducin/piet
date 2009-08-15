@@ -17,9 +17,12 @@
 // Qt
 // none
 
-PCodePointer::PCodePointer(QImage *code_image, PPoint initial)
+PCodePointer::PCodePointer(QImage *code_image, PPoint initial, bool verbose_mode)
 {
 	debug("CONSTRUCTOR ----- code-pointer START\n");
+
+	verbose = verbose_mode;
+
 	initial_coords = initial;
 	image = code_image; // referencja do obiektu obrazu kodu
 	debug("CONSTRUCTOR ----- code-pointer END\n");
@@ -148,10 +151,34 @@ PPoint PCodePointer::getCoordinates()
 	return coords;
 }
 
-void PCodePointer::setCoordinates(int newX, int newY)
+void PCodePointer::setCoordinateX(int newX)
 {
 	coords.x = newX;
+}
+
+void PCodePointer::incCoordinateX()
+{
+	coords.x++;
+}
+
+void PCodePointer::decCoordinateX()
+{
+	coords.x--;
+}
+
+void PCodePointer::setCoordinateY(int newY)
+{
 	coords.y = newY;
+}
+
+void PCodePointer::incCoordinateY()
+{
+	coords.y++;
+}
+
+void PCodePointer::decCoordinateY()
+{
+	coords.y--;
 }
 
 void PCodePointer::setCoordinates(PPoint new_point)

@@ -23,28 +23,32 @@
 
 // konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet
 // tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
-PVirtualMachine::PVirtualMachine(QString filename)
+PVirtualMachine::PVirtualMachine(QString filename, bool verbose_mode)
 {
 	debug("CONSTRUCTOR - virtual-machine START\n");
+
+	// tryb gadatliwości (debugowanie)
+	verbose = verbose_mode;
+
 	// stworzenie obiektu obrazu kodu, po którym będzie poruszać się głowica
 	image = new QImage(filename);
 
 	// punkt współrzędnych początkowych - oraz stworzenie głowicy poruszającej się po powyższym obrazie
 	PPoint initial;
 	initial.x = initial.y = 0;
-	pointer = new PCodePointer(image, initial);
+	pointer = new PCodePointer(image, initial, verbose);
 
 	// obiekt odpowiedzialny za geometryczną interpretację bloków kolorów
-	block_manager = new PBlockManager(image, pointer);
+	block_manager = new PBlockManager(image, pointer, verbose);
 
 	// obiekt przetwarzający wszystko związane z kolorami
-	color_manager = new PColorManager();
+	color_manager = new PColorManager(verbose);
 
 	// stos przechowujący tymczasowe wartości
-	stack = new PCalcStack();
+	stack = new PCalcStack(verbose);
 
 	// obiekt odpowiedzialny za wczytywanie i wyświetlanie danych od użytkownika
-	console = new PConsole();
+	console = new PConsole(verbose);
 
 	// przygotowanie maszyny do uruchomienia ("wyzerowanie")
 	prepareToExecute();
@@ -169,12 +173,8 @@ bool PVirtualMachine::executeInstr()
 		switch(instruction)
 		{
 		// wykonaj inną operację używając stosu
-			case pietInstr_special_terminate:
-				// 8 nieudanych prób przesunięcia głowicy do następnego kodela kończy pracę interpretera
-				if ( !stopMachine() ) {
-					std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
-					exit(1);
-				}
+			case pietInstr_special_empty:
+				// pusta instrukcja - głowica przesunięta po białym bloku
 				break;
 			case pietInstr_stack_push:
 				stack->instrPush( block_manager->getCodelBlockCount() ); // połóż na stosie liczbę równą liczbie kodeli w bloku kolorów wskazywanym aktualnie przez głowicę
@@ -285,6 +285,13 @@ bool PVirtualMachine::executeInstr()
 					result = false;
 				}
 				break;
+			case pietInstr_special_terminate:
+				// 8 nieudanych prób przesunięcia głowicy do następnego kodela kończy pracę interpretera
+				if ( !stopMachine() ) {
+					std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
+					exit(1);
+				}
+				break;
 			default:
 				std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
 				exit(1);
@@ -311,6 +318,52 @@ bool PVirtualMachine::pointIsWhite(PPoint point)
 	return (color_manager->getColorName(pointer->getPixel(point)) == color_white );
 }
 
+void PVirtualMachine::slidePointerAcrossWhiteBlock()
+{
+	while (color_manager->getColorName(pointer->getPointedPixel()) == color_white)
+	switch (pointer->getDirectionPointerValue()) {
+		case dp_right:
+			pointer->incCoordinateX();
+			break;
+		case dp_down:
+			pointer->incCoordinateY();
+			break;
+		case dp_left:
+			pointer->decCoordinateX();
+			break;
+		case dp_up:
+			pointer->decCoordinateY();
+			break;
+	}
+}
+
+void PVirtualMachine::slideAcrossWhiteBlock(PPoint &point)
+{
+	while ( (!pointer->pointOutsideImage(point)) && (color_manager->getColorName(pointer->getPixel(point)) == color_white) )
+	switch (pointer->getDirectionPointerValue()) {
+		case dp_right:
+			point.x++;
+			if (verbose)
+				std::cout << "right: " << point.x << "," << point.y << std::endl;
+			break;
+		case dp_down:
+			point.y++;
+			if (verbose)
+				std::cout << "down: " << point.x << "," << point.y << std::endl;
+			break;
+		case dp_left:
+			point.x--;
+			if (verbose)
+				std::cout << "left: " << point.x << "," << point.y << std::endl;
+			break;
+		case dp_up:
+			point.y--;
+			if (verbose)
+				std::cout << "up: " << point.x << "," << point.y << std::endl;
+			break;
+	}
+}
+
 // Metoda nakazuje przesunięcie głowicy oraz wyznacza jaka instrukcja ma zostać wykonana (wszystko wykorzystując pomocnicze obiekty wirtualnej maszyny).
 // Jedna z ważniejszych i bardziej skomplikowanych metod.
 PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
@@ -319,16 +372,32 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 	PPoint possible_point; // nowy, szukany kodel na który ma zostać przesunięta głowica
 	QRgb old_color = pointer->getPointedPixel(); // kolor pierwotnego kodela, czyli wskazywanego przez głowicę przed jej przesunięciem
 	block_manager->searchAndFillCodels(); // oblicza liczbę kodeli bloku koloru w którym się znajduje kodel wskazywany przez głowicę
-block_manager->__dev__showCountAndBorderCodels();
+	bool isWhite = false, isBlack;
+
+	if (verbose)
+		block_manager->__dev__showCountAndBorderCodels();
 
 	int attempts = 0; // licznik prób wykonania przez głowicę ruchu (patrz: specyfikacja, "czarne bloki i granice") Jeśli po 8 próbach nie uda się wykonać ruchu, program kończy działanie.
 	bool continued = true; // zmienna sterująca pętlą
 	while (continued) {
+		isBlack = false; // odznaczenie informacji na początek każdego obrotu pętli (odświeżenie)
 		possible_point = block_manager->getNextPossibleCodel(); // wyznacz hipotetyczny nowy kodel
-std::cout << "attempt " << attempts << ", possible next coords:" << possible_point.x << "," << possible_point.y;
-pointer->__dev__printConsole();
+		if (verbose) {
+			std::cout << "attempt " << attempts << ", possible next coords:" << possible_point.x << "," << possible_point.y;
+			pointer->__dev__printConsole();
+		}
 
 		if ( pointIsBlackOrOutside(possible_point) ) {
+			isBlack = true;
+		} else if ( pointIsWhite(possible_point) ) {
+			slideAcrossWhiteBlock(possible_point);
+			isWhite = true;
+			if ( pointIsBlackOrOutside(possible_point) ) {
+				isBlack = true;
+			}
+		}
+
+		if (isBlack) {
 			// nie udało się
 			attempts++;
 			if (attempts % 2) {
@@ -338,13 +407,14 @@ pointer->__dev__printConsole();
 			}
 			continued = (attempts < 8);
 		} else {
-			if ( pointIsWhite(possible_point) ) {
-				std::cout << "POINT IS WHITE, DO STH WITH IT!!!" << std::endl;
-			}
 			pointer->setCoordinates(possible_point);
-			std::cout << "coordinates set to: [" << possible_point.x << "," << possible_point.y << "]" << std::endl;
+			if (verbose)
+				std::cout << "coordinates set to: [" << possible_point.x << "," << possible_point.y << "]" << std::endl;
 			continued = false;
 		}
+	}
+	if (isWhite) {
+		result_instr = pietInstr_special_empty;
 	}
 	// pętla zerwana - albo przesunięto głowicę albo program zakończony, poniżej selekcja
 	if (attempts == 8) {
@@ -353,7 +423,9 @@ pointer->__dev__printConsole();
 		QRgb new_color = pointer->getPointedPixel(); // odczytanie koloru kodelu wskazywanego przez głowicę po przesunięciu
 		result_instr = getInstructionByIndex( color_manager->getInstructionIndex(old_color, new_color) ); // interpretacja instrukcji do wykonanai na podstawie kolorów kodeli - starego i nowego
 	}
-std::cout << "instr: "; __dev__printInstruction(result_instr); std::cout << std::endl;
+	if (verbose) {
+		std::cout << "instr: "; __dev__printInstruction(result_instr); std::cout << std::endl;
+	}
 	return result_instr; // zwrócenie wyniku (instrukcji do wykonania)
 }
 
@@ -363,7 +435,7 @@ PInstructions PVirtualMachine::getInstructionByIndex(int index)
 {
 	switch(index) {
 		case 0:
-			return pietInstr_special_terminate;
+			return pietInstr_special_empty;
 		case 1:
 			return pietInstr_stack_push;
 		case 2:
@@ -398,6 +470,8 @@ PInstructions PVirtualMachine::getInstructionByIndex(int index)
 			return pietInstr_io_out_number;
 		case 17:
 			return pietInstr_io_out_char;
+		case 18:
+			return pietInstr_special_terminate;
 		default:
 			std::cout << "ERROR: PInstructions PVirtualMachine::getInstructionByIndex(int index)" << std::endl;
 			exit(1);
@@ -410,7 +484,7 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 {
 	switch(instr) {
 		case 0:
-			std::cout << "terminate";
+			std::cout << "empty";
 			break;
 		case 1:
 			std::cout << "push";
@@ -462,6 +536,9 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 			break;
 		case 17:
 			std::cout << "out-char";
+			break;
+		case 18:
+			std::cout << "terminate";
 			break;
 	}
 }

@@ -48,6 +48,8 @@ class PBlockManager {
 		int findColumnTopCodel(int);
 		int findColumnBottomCodel(int);
 
+		bool verbose;
+
 	protected:
 
 		QImage *image;
@@ -61,7 +63,7 @@ class PBlockManager {
 
 	public:
 
-		PBlockManager(QImage *, PCodePointer *);
+		PBlockManager(QImage *, PCodePointer *, bool);
 		~PBlockManager();
 
 		void searchAndFillCodels(); // przygotowuje pomoczniczą tablicę do użytku i podstawia potrzebną liczbę kodeli pod zmienną

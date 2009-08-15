@@ -39,12 +39,11 @@ class PCodePointer {
 		PPoint initial_coords;
 		PPoint coords; // współrzędne na które wskazuje głowica
 
+		bool verbose;
+
 	protected:
 
 		QImage *image; // obraz kodu (plik graficzny którego pixle będą interpretowane)
-
-		void setCoordinateX(int);
-		void setCoordinateY(int);
 
 		PCodelChooserValues codel_chooser;; // codel chooser
 		void setCodelChooser(PCodelChooserValues);
@@ -57,13 +56,18 @@ class PCodePointer {
 
 	public:
 
-		PCodePointer(QImage *, PPoint);
+		PCodePointer(QImage *, PPoint, bool);
 		~PCodePointer();
 
 		void clear();
 
 		PPoint getCoordinates();
-		void setCoordinates(int, int);
+		void setCoordinateX(int);
+		void incCoordinateX();
+		void decCoordinateX();
+		void setCoordinateY(int);
+		void incCoordinateY();
+		void decCoordinateY();
 		void setCoordinates(PPoint);
 		QRgb getPointedPixel();
 

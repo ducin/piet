@@ -81,7 +81,7 @@ enum PMachineStates {
  * Enumeracja wyszczególniająca wszystkie instrukcje wykonywane przez język Piet.
  */
 enum PInstructions {
-	pietInstr_special_terminate, /* 0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu */
+	pietInstr_special_empty, /* 0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu */
 	pietInstr_stack_push, /* 1 */
 	pietInstr_stack_pop, /* 2 */
 	pietInstr_arithm_add, /* 3 */
@@ -98,7 +98,8 @@ enum PInstructions {
 	pietInstr_io_in_number, /* 14 */
 	pietInstr_io_in_char, /* 15 */
 	pietInstr_io_out_number, /* 16 */
-	pietInstr_io_out_char /* 17 */
+	pietInstr_io_out_char, /* 17 */
+	pietInstr_special_terminate, /* 18 */
 };
 
 #endif

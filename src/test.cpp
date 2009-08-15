@@ -16,6 +16,8 @@
 // Qt
 #include <QString>
 
+bool verbose = false;
+
 void setConsoleColor(int color)
 {
 	std::cout << "\033[" << color << "m";
@@ -64,7 +66,8 @@ int runProgram()
 
 	while (continued)
 	{
-		m->__dev__printConsole();
+		if (verbose)
+			m->__dev__printConsole();
 
 		choice = runMenu();
 
@@ -81,7 +84,8 @@ int runProgram()
 				m->restartMachine();
 				break;
 			case 3:
-				std::cout << "trace step: " << trace_step++ << std::endl;
+				if (verbose)
+					std::cout << "trace step: " << trace_step++ << std::endl;
 				if ( m->executeInstr() ) {
 					printFormattedMessage("ok");
 				} else {
@@ -126,7 +130,7 @@ int main(int argc, char **argv)
 
 	QString QSTR_code_path(STD_STR_code_path.c_str());
 
-	m = new PVirtualMachine(QSTR_code_path);
+	m = new PVirtualMachine(QSTR_code_path, verbose);
 	runProgram();
 	m->~PVirtualMachine();
 	debug("MAIN BYE\n");

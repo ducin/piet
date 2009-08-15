@@ -28,9 +28,13 @@
  */
 class PConsole {
 
+	private:
+
+		bool verbose;
+
 	public:
 
-		PConsole();
+		PConsole(bool);
 		~PConsole();
 
 		void printChar(int);

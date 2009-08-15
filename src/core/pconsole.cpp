@@ -18,9 +18,11 @@
 // Qt
 // none
 
-PConsole::PConsole()
+PConsole::PConsole(bool verbose_mode)
 {
 	debug("CONSTRUCTOR ----- console START\n");
+
+	verbose = verbose_mode;
 
 	debug("CONSTRUCTOR ----- console END\n");
 }
@@ -34,20 +36,29 @@ PConsole::~PConsole()
 
 void PConsole::printNumber(int I)
 {
-	std::cout << "CONSOLE/out-number: " << I << std::endl;
+	if (verbose)
+		std::cout << "CONSOLE/out-number: ";
+	std::cout << I << std::endl;
 }
 
 void PConsole::printChar(int I)
 {
 	unsigned char UC = I;
-	std::cout << "CONSOLE/out-char: ";
-	std::cout << std::setw(3) << UC << " (" << I << ")" << std::endl;
+	if (verbose)
+		std::cout << "CONSOLE/out-char: ";
+	std::cout << std::setw(3) << UC;
+	if (verbose)
+		std::cout << " (" << I << ")" << std::endl;
 }
 
 int PConsole::readNumber()
 {
 	int var;
-	std::cout << "CONSOLE/in-number: ";
+	if (verbose) {
+		std::cout << "CONSOLE/in-number: ";
+	} else {
+		std::cout << "? ";
+	}
 	std::cin >> var;
 	return var;
 }
@@ -55,7 +66,11 @@ int PConsole::readNumber()
 int PConsole::readChar()
 {
 	char C;
+	if (verbose) {
 	std::cout << "CONSOLE/in-char: ";
+	} else {
+		std::cout << "? ";
+	}
 	std::cin >> C;
 	int I = (int) C;
 	return I;

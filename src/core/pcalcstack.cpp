@@ -17,9 +17,12 @@
 // Qt
 // none
 
-PCalcStack::PCalcStack()
+PCalcStack::PCalcStack(bool verbose_mode)
 {
 	debug("CONSTRUCTOR ----- calc stack START\n");
+
+	verbose = verbose_mode;
+
 	debug("CONSTRUCTOR ----- calc stack END\n");
 }
 
@@ -142,14 +145,31 @@ void PCalcStack::instrDuplicate()
 
 void PCalcStack::instrRoll()
 {
+	std::list<int> tmp;
 	int loop_count = values.front();
 	values.pop_front();
 	int depth = values.front();
 	values.pop_front();
 	if (depth > 0) {
-		////////////////////////
-		// :] ?
-		////////////////////////
+		for (int i = 0; i < depth; i++) {
+			tmp.push_back(values.front());
+			values.pop_front();
+		}
+		if (loop_count > 0) {
+			for (int i = loop_count; i > 0; i--) {
+				tmp.push_back(tmp.front());
+				tmp.pop_front();
+			}
+		} else {
+			for (int i = loop_count; i < 0; i++) {
+				tmp.push_front(tmp.back());
+				tmp.pop_back();
+			}
+		}
+		for (int i = 0; i < depth; i++) {
+			values.push_front(tmp.back());
+			tmp.pop_back();
+		}
 	}
 }
 

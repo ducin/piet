@@ -30,13 +30,17 @@ Stanowi jeden z dwóch obiektów potrzebnych do pełnej interpretacji kodu, uży
  */
 class PCalcStack {
 
+	private:
+
+		bool verbose;
+
 	protected:
 
 		std::list<int> values;
 
 	public:
 
-		PCalcStack();
+		PCalcStack(bool);
 		~PCalcStack();
 
 		void clear();

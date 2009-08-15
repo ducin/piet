@@ -46,6 +46,8 @@ class PVirtualMachine {
 		PColorManager *color_manager; // maszyna zajmująca się przetwarzaniem i interpretacją kolorów
 		PBlockManager *block_manager;
 
+		bool verbose;
+
 	protected:
 
 		PCalcStack *stack; // stos
@@ -58,7 +60,7 @@ class PVirtualMachine {
 
 	public:
 
-		PVirtualMachine(QString); // konstruktor
+		PVirtualMachine(QString, bool); // konstruktor
 		~PVirtualMachine(); // destruktor
 
 		bool isRunning(); // czy maszyna działa (sprawdzany stan maszyny)
@@ -75,6 +77,9 @@ class PVirtualMachine {
 
 		bool pointIsBlackOrOutside(PPoint);
 		bool pointIsWhite(PPoint);
+		void slidePointerAcrossWhiteBlock();
+		void slideAcrossWhiteBlock(PPoint &);
+
 		PInstructions movePointerAndGetInstructionToExecute(); // jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera
 
 		PInstructions getInstructionByIndex(int);

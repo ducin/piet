@@ -23,9 +23,12 @@
  *
  * xyz...
  */
-PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
+PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer, bool verbose_mode)
 {
 	debug("CONSTRUCTOR ----- block-manager START\n");
+
+	verbose = verbose_mode;
+
 	image = given_image;
 	pointer = given_pointer;
 	height = image->height();

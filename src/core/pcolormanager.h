@@ -33,13 +33,15 @@ class PColorManager {
 		int lightnessCycleDifference(PStdColors, PStdColors);
 		int saturationCycleDifference(PStdColors, PStdColors);
 
+		bool verbose;
+
 	protected:
 
 		void initColorValues(QRgb, QRgb);
 
 	public:
 
-		PColorManager();
+		PColorManager(bool);
 		~PColorManager();
 
 		int getInstructionIndex(QRgb, QRgb);
