@@ -63,8 +63,10 @@ class PBlockManager {
 
 	public:
 
-		PBlockManager(QImage *, PCodePointer *, bool);
+		PBlockManager(QImage *, PCodePointer *);
 		~PBlockManager();
+
+		void setVerbosity(bool);
 
 		void searchAndFillCodels(); // przygotowuje pomoczniczą tablicę do użytku i podstawia potrzebną liczbę kodeli pod zmienną
 		int getCodelBlockCount();

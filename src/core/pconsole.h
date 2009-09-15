@@ -34,8 +34,10 @@ class PConsole {
 
 	public:
 
-		PConsole(bool);
+		PConsole();
 		~PConsole();
+
+		void setVerbosity(bool);
 
 		void printChar(int);
 		void printNumber(int);

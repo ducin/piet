@@ -17,12 +17,10 @@
 // Qt
 // none
 
-PCodePointer::PCodePointer(QImage *code_image, PPoint initial, bool verbose_mode)
+PCodePointer::PCodePointer(QImage *code_image, PPoint initial)
 {
 	debug("CONSTRUCTOR ----- code-pointer START\n");
-
-	verbose = verbose_mode;
-
+	verbose = false;
 	initial_coords = initial;
 	image = code_image; // referencja do obiektu obrazu kodu
 	debug("CONSTRUCTOR ----- code-pointer END\n");
@@ -33,6 +31,11 @@ PCodePointer::~PCodePointer()
 	debug("DESTRUCTOR ----- code-pointer START\n");
 
 	debug("DESTRUCTOR ----- code-pointer END\n");
+}
+
+void PCodePointer::setVerbosity(bool verbosity)
+{
+	verbose = verbosity;
 }
 
 void PCodePointer::clear()
@@ -203,7 +206,7 @@ void PCodePointer::__dev__printCoordinates()
 
 void PCodePointer::__dev__printDirectionPointer()
 {
-	std::cout << "DP: ";
+	std::cout << "DP:";
 	switch (direction_pointer) {
 		case dp_right:
 			std::cout << "right";
@@ -218,12 +221,12 @@ void PCodePointer::__dev__printDirectionPointer()
 			std::cout << "up";
 			break;
 	}
-	std::cout << " (" << (int) direction_pointer << ")";
+	std::cout << "(" << (int) direction_pointer << ")";
 }
 
 void PCodePointer::__dev__printCodelChooser()
 {
-	std::cout << "CC: ";
+	std::cout << "CC:";
 	switch (codel_chooser) {
 		case cc_left:
 			std::cout << "left";
@@ -232,16 +235,16 @@ void PCodePointer::__dev__printCodelChooser()
 			std::cout << "right";
 			break;
 	}
-	std::cout << " (" << (int) codel_chooser << ")";
+	std::cout << "(" << (int) codel_chooser << ")";
 }
 
 void PCodePointer::__dev__printConsole()
 {
-	std::cout << std::endl << "POINTER/ ";
+	std::cout << "GŁOWICA/";
 	__dev__printCoordinates();
-	std::cout << ", ";
+	std::cout << ",";
 	__dev__printDirectionPointer();
-	std::cout << ", ";
+	std::cout << ",";
 	__dev__printCodelChooser();
-	std::cout << std::endl;
+	std::cout << "; ";
 }

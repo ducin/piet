@@ -41,8 +41,10 @@ class PColorManager {
 
 	public:
 
-		PColorManager(bool);
+		PColorManager();
 		~PColorManager();
+
+		void setVerbosity(bool);
 
 		int getInstructionIndex(QRgb, QRgb);
 

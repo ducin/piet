@@ -56,8 +56,10 @@ class PCodePointer {
 
 	public:
 
-		PCodePointer(QImage *, PPoint, bool);
+		PCodePointer(QImage *, PPoint);
 		~PCodePointer();
+
+		void setVerbosity(bool);
 
 		void clear();
 

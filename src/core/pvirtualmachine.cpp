@@ -23,12 +23,11 @@
 
 // konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet
 // tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
-PVirtualMachine::PVirtualMachine(QString filename, bool verbose_mode)
+PVirtualMachine::PVirtualMachine(QString filename)
 {
 	debug("CONSTRUCTOR - virtual-machine START\n");
 
-	// tryb gadatliwości (debugowanie)
-	verbose = verbose_mode;
+	verbose = false;
 
 	// stworzenie obiektu obrazu kodu, po którym będzie poruszać się głowica
 	image = new QImage(filename);
@@ -36,19 +35,19 @@ PVirtualMachine::PVirtualMachine(QString filename, bool verbose_mode)
 	// punkt współrzędnych początkowych - oraz stworzenie głowicy poruszającej się po powyższym obrazie
 	PPoint initial;
 	initial.x = initial.y = 0;
-	pointer = new PCodePointer(image, initial, verbose);
+	pointer = new PCodePointer(image, initial);
 
 	// obiekt odpowiedzialny za geometryczną interpretację bloków kolorów
-	block_manager = new PBlockManager(image, pointer, verbose);
+	block_manager = new PBlockManager(image, pointer);
 
 	// obiekt przetwarzający wszystko związane z kolorami
-	color_manager = new PColorManager(verbose);
+	color_manager = new PColorManager();
 
 	// stos przechowujący tymczasowe wartości
-	stack = new PCalcStack(verbose);
+	stack = new PCalcStack();
 
 	// obiekt odpowiedzialny za wczytywanie i wyświetlanie danych od użytkownika
-	console = new PConsole(verbose);
+	console = new PConsole();
 
 	// przygotowanie maszyny do uruchomienia ("wyzerowanie")
 	prepareToExecute();
@@ -75,11 +74,12 @@ PVirtualMachine::~PVirtualMachine()
  * Metoda używana w celu przygotowania wirtualnej maszyny do uruchomienia. Maszyna mogła być w trakcie działania, mogła zakończyć działanie l
  * \return stan w jakim znajdowała się maszyna (PMachineStates)
  */
-PMachineStates PVirtualMachine::prepareToExecute()
+void PVirtualMachine::prepareToExecute()
 {
 	stack->clear();
 	pointer->clear();
 	setState(state_ready);
+	step = 0;
 }
 
 //=============================================================================
@@ -132,7 +132,7 @@ bool PVirtualMachine::startMachine()
 
 bool PVirtualMachine::restartMachine()
 {
-//
+	prepareToExecute();
 }
 
 bool PVirtualMachine::stopMachine()
@@ -147,28 +147,59 @@ bool PVirtualMachine::stopMachine()
 
 //=========================================================
 
+void PVirtualMachine::setVerbosityRecursively(bool verbosity)
+{
+	verbose = verbosity;
+	console->setVerbosity(verbosity);
+	color_manager->setVerbosity(verbosity);
+	block_manager->setVerbosity(verbosity);
+	stack->setVerbosity(verbosity);
+	pointer->setVerbosity(verbosity);
+}
+
+bool PVirtualMachine::isVerbose()
+{
+	return verbose;
+}
+
+void PVirtualMachine::toggleVerbosity()
+{
+	if (verbose) {
+		setVerbosityRecursively(false);
+	} else {
+		setVerbosityRecursively(true);
+	}
+}
+
+//=========================================================
+
 /**
  * Wykonuje wszystkie instrukcje
  */
-bool PVirtualMachine::executeAllInstr()
+void PVirtualMachine::executeAllInstr()
 {
-	if ( isRunning() ) {
-		while (getState() != state_finished) {
-			executeInstr();
-		}
-		return true;
-	} else {
-		return false;
+	if (verbose) {
+		__dev__printImageInfo();
+	}
+	while ( isRunning() ) {
+		executeSingleInstr();
 	}
 }
 
 // wykonuje pojedynczą instrukcję
-bool PVirtualMachine::executeInstr()
+bool PVirtualMachine::executeSingleInstr()
 {
+	if (verbose) {
+		std::cout << std::endl << "krok:" << step << "; ";
+		__dev__printConsole();
+	}
 	bool result = true; // czy operacja została wykonana
 	int ivar;
 	if ( isRunning() ) {
 		PInstructions instruction = movePointerAndGetInstructionToExecute();
+		if (verbose) {
+			std::cout << "instr: "; __dev__printInstruction(instruction); std::cout << std::endl;
+		}
 		// w zależności od tego jaką instrukcję zwróci maszyna kodu
 		switch(instruction)
 		{
@@ -288,17 +319,18 @@ bool PVirtualMachine::executeInstr()
 			case pietInstr_special_terminate:
 				// 8 nieudanych prób przesunięcia głowicy do następnego kodela kończy pracę interpretera
 				if ( !stopMachine() ) {
-					std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
+					std::cout << "ERROR: bool PVirtualMachine::executeSingleInstr()" << std::endl;
 					exit(1);
 				}
 				break;
 			default:
-				std::cout << "ERROR: bool PVirtualMachine::executeInstr()" << std::endl;
+				std::cout << "ERROR: bool PVirtualMachine::executeSingleInstr()" << std::endl;
 				exit(1);
 		}
 	} else {
 		result = false;
 	}
+	step++;
 	return result;
 }
 
@@ -343,23 +375,15 @@ void PVirtualMachine::slideAcrossWhiteBlock(PPoint &point)
 	switch (pointer->getDirectionPointerValue()) {
 		case dp_right:
 			point.x++;
-			if (verbose)
-				std::cout << "right: " << point.x << "," << point.y << std::endl;
 			break;
 		case dp_down:
 			point.y++;
-			if (verbose)
-				std::cout << "down: " << point.x << "," << point.y << std::endl;
 			break;
 		case dp_left:
 			point.x--;
-			if (verbose)
-				std::cout << "left: " << point.x << "," << point.y << std::endl;
 			break;
 		case dp_up:
 			point.y--;
-			if (verbose)
-				std::cout << "up: " << point.x << "," << point.y << std::endl;
 			break;
 	}
 }
@@ -380,11 +404,10 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 	int attempts = 0; // licznik prób wykonania przez głowicę ruchu (patrz: specyfikacja, "czarne bloki i granice") Jeśli po 8 próbach nie uda się wykonać ruchu, program kończy działanie.
 	bool continued = true; // zmienna sterująca pętlą
 	while (continued) {
-		isBlack = false; // odznaczenie informacji na początek każdego obrotu pętli (odświeżenie)
+		isBlack = isWhite = false; // odznaczenie informacji na początek każdego obrotu pętli (odświeżenie)
 		possible_point = block_manager->getNextPossibleCodel(); // wyznacz hipotetyczny nowy kodel
 		if (verbose) {
-			std::cout << "attempt " << attempts << ", possible next coords:" << possible_point.x << "," << possible_point.y;
-			pointer->__dev__printConsole();
+			std::cout << "próba:" << attempts << "[" << possible_point.x << "," << possible_point.y << "]; ";
 		}
 
 		if ( pointIsBlackOrOutside(possible_point) ) {
@@ -409,22 +432,18 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 		} else {
 			pointer->setCoordinates(possible_point);
 			if (verbose)
-				std::cout << "coordinates set to: [" << possible_point.x << "," << possible_point.y << "]" << std::endl;
+				std::cout << "nowe:[" << possible_point.x << "," << possible_point.y << "]" << "; ";
 			continued = false;
 		}
-	}
-	if (isWhite) {
-		result_instr = pietInstr_special_empty;
 	}
 	// pętla zerwana - albo przesunięto głowicę albo program zakończony, poniżej selekcja
 	if (attempts == 8) {
 		result_instr = pietInstr_special_terminate; // zakończenie programu, 8 nieudanych prób
+	} else if (isWhite) {
+		result_instr = pietInstr_special_empty;
 	} else { // głowica została przesunięta
 		QRgb new_color = pointer->getPointedPixel(); // odczytanie koloru kodelu wskazywanego przez głowicę po przesunięciu
 		result_instr = getInstructionByIndex( color_manager->getInstructionIndex(old_color, new_color) ); // interpretacja instrukcji do wykonanai na podstawie kolorów kodeli - starego i nowego
-	}
-	if (verbose) {
-		std::cout << "instr: "; __dev__printInstruction(result_instr); std::cout << std::endl;
 	}
 	return result_instr; // zwrócenie wyniku (instrukcji do wykonania)
 }
@@ -496,16 +515,16 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 			std::cout << "add";
 			break;
 		case 4:
-			std::cout << "subtract";
+			std::cout << "sub";
 			break;
 		case 5:
-			std::cout << "multiply";
+			std::cout << "mul";
 			break;
 		case 6:
-			std::cout << "divide";
+			std::cout << "div";
 			break;
 		case 7:
-			std::cout << "modulo";
+			std::cout << "mod";
 			break;
 		case 8:
 			std::cout << "not";
@@ -526,16 +545,16 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 			std::cout << "roll";
 			break;
 		case 14:
-			std::cout << "in-number";
+			std::cout << "in(number)";
 			break;
 		case 15:
-			std::cout << "in-char";
+			std::cout << "in(char)";
 			break;
 		case 16:
-			std::cout << "out-number";
+			std::cout << "out(number)";
 			break;
 		case 17:
-			std::cout << "out-char";
+			std::cout << "out(char)";
 			break;
 		case 18:
 			std::cout << "terminate";
@@ -545,12 +564,12 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 
 void PVirtualMachine::__dev__printImageInfo()
 {
-	std::cout << std::endl << "IMAGE/ " << "[" << image->width() << "x" << image->height() << "]";
+	std::cout << std::endl << "IMAGE/ " << "[" << image->width() << "x" << image->height() << "]" << std::endl;
 }
 
 void PVirtualMachine::__dev__printConsole()
 {
-	__dev__printImageInfo();
+	//__dev__printImageInfo();
 	pointer->__dev__printConsole();
 	stack->__dev__printConsole();
 }

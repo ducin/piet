@@ -40,8 +40,10 @@ class PCalcStack {
 
 	public:
 
-		PCalcStack(bool);
+		PCalcStack();
 		~PCalcStack();
+
+		void setVerbosity(bool);
 
 		void clear();
 		void prepareToExecute();

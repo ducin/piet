@@ -17,12 +17,10 @@
 // Qt
 #include <QRgb>
 
-PColorManager::PColorManager(bool verbose_mode)
+PColorManager::PColorManager()
 {
 	debug("CONSTRUCTOR ----- color-manager START\n");
-
-	verbose = verbose_mode;
-
+	verbose = false;
 	initColorValues();
 	debug("CONSTRUCTOR ----- color-manager END\n");
 }
@@ -32,6 +30,11 @@ PColorManager::~PColorManager()
 	debug("DESTRUCTOR ----- color-manager START\n");
 
 	debug("DESTRUCTOR ----- color-manager END\n");
+}
+
+void PColorManager::setVerbosity(bool verbosity)
+{
+	verbose = verbosity;
 }
 
 void PColorManager::initColorValues()
@@ -136,8 +139,9 @@ int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
 	PStdColors p_new_color = getColorName(new_color);
 
 	if (verbose) {
-		std::cout << "old: "; __dev__printColor(p_old_color); std::cout << "(" << ( (int) p_old_color ) << ")" << std::endl;
-		std::cout << "new: "; __dev__printColor(p_new_color); std::cout << "(" << ( (int) p_new_color ) << ")" << std::endl;
+		__dev__printColor(p_old_color); std::cout << "(" << ( (int) p_old_color ) << ")";
+		std::cout << " -> ";
+		__dev__printColor(p_new_color); std::cout << "(" << ( (int) p_new_color ) << ")" << "; ";
 	}
 
 	int lightness_diff = lightnessCycleDifference(p_new_color, p_old_color);

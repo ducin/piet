@@ -16,8 +16,6 @@
 // Qt
 #include <QString>
 
-bool verbose = false;
-
 void setConsoleColor(int color)
 {
 	std::cout << "\033[" << color << "m";
@@ -42,13 +40,11 @@ PVirtualMachine *m;
 int runMenu()
 {
 	std::cout << "wybierz opcję:" << std::endl;
-	std::cout << "1. uruchom maszynę" << std::endl;
-	std::cout << "2. zrestartuj maszynę" << std::endl;
-	std::cout << "3. wykonaj instrukcję" << std::endl;
-	std::cout << "4. wykonaj podaną ilość instrukcji" << std::endl;
-	std::cout << "5. cofnij ostatnią instrukcję" << std::endl;
-	std::cout << "6. cofnij o podaną ilość kroków" << std::endl;
-	std::cout << "9. koniec" << std::endl;
+	std::cout << "1. uruchom maszynę i wykonuj instrukcje krok po kroku" << std::endl;
+	std::cout << "2. uruchom maszynę i wykonaj wszystkie instrukcje" << std::endl;
+	std::cout << "3. zrestartuj maszynę" << std::endl;
+	std::cout << "4. włącz/wyłącz tryb gadatliwy (" << (m->isVerbose() ? "włączony" : "wyłączony" ) << ")" << std::endl;
+	std::cout << "0. koniec" << std::endl;
 
 	std::string answer;
 	std::cout << std::endl << "> "; getline(std::cin, answer); std::cout << std::endl;
@@ -62,13 +58,10 @@ int runMenu()
 int runProgram()
 {
 	int continued = 1, choice;
-	int trace_step = 0;
+	int final_choice = 0;
 
 	while (continued)
 	{
-		if (verbose)
-			m->__dev__printConsole();
-
 		choice = runMenu();
 
 		switch (choice)
@@ -76,37 +69,43 @@ int runProgram()
 			case 1:
 				if ( m->startMachine() ) {
 					printFormattedMessage("ok");
+					std::string confirm_str;
+					while (m->isRunning())
+					{
+						if ( m->executeSingleInstr() ) {
+							printFormattedMessage("ok");
+						} else {
+							printFormattedError("some kind of error");
+						}
+						std::cout << "naciśnij enter"; std::cin >> confirm_str;
+					}
 				} else {
 					printFormattedError("machine not ready");
 				}
 				break;
 			case 2:
-				m->restartMachine();
-				break;
-			case 3:
-				if (verbose)
-					std::cout << "trace step: " << trace_step++ << std::endl;
-				if ( m->executeInstr() ) {
-					printFormattedMessage("ok");
+				if ( m->startMachine() ) {
+					printFormattedMessage("machine started");
+					m->executeAllInstr();
 				} else {
-					printFormattedError("some kind of error");
+					printFormattedError("machine not ready");
 				}
 				break;
-			case 4:
-				// spytaj ile instrukcji do przodu ma pójść
-				m->executeInstr();
+			case 3:
+				m->restartMachine();
 				break;
-			case 9:
+			case 4:
+				m->toggleVerbosity();
+				break;
+			case 0:
 				m->stopMachine();
 				break;
 		}
 		
-		continued = (choice != 9) && (m->isRunning() || m->isReady());
+		continued = (choice != final_choice) && (m->isRunning() || m->isReady());
 	}
 
-	m->__dev__printConsole();
-
-	if (choice != 9)
+	if (choice != final_choice)
 		printFormattedMessage("Application finished");
 	else
 		printFormattedError("Application aborted");
@@ -130,7 +129,8 @@ int main(int argc, char **argv)
 
 	QString QSTR_code_path(STD_STR_code_path.c_str());
 
-	m = new PVirtualMachine(QSTR_code_path, verbose);
+	bool verbose = true; // domyślna gadatliwość która będzie przypisana mazynie wirtualnej
+	m = new PVirtualMachine(QSTR_code_path);
 	runProgram();
 	m->~PVirtualMachine();
 	debug("MAIN BYE\n");

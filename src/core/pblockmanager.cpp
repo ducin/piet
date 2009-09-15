@@ -23,12 +23,10 @@
  *
  * xyz...
  */
-PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer, bool verbose_mode)
+PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
 {
 	debug("CONSTRUCTOR ----- block-manager START\n");
-
-	verbose = verbose_mode;
-
+	verbose = false;
 	image = given_image;
 	pointer = given_pointer;
 	height = image->height();
@@ -46,6 +44,11 @@ PBlockManager::~PBlockManager()
 	debug("DESTRUCTOR ----- block-manager START\n");
 	deallocateMultiArray();
 	debug("DESTRUCTOR ----- block-manager END\n");
+}
+
+void PBlockManager::setVerbosity(bool verbosity)
+{
+	verbose = verbosity;
 }
 
 //==================================================================
@@ -305,7 +308,6 @@ void PBlockManager::__dev__showMultiArray()
 // Metoda wyświetla liczbę kodeli w aktualym bloku kolorów oraz skrajne kodele
 void PBlockManager::__dev__showCountAndBorderCodels()
 {
-	std::cout << "codel block count: " << codel_block_count << std::endl;
-	std::cout << "border codels: right=" << border_right_codel << " down=" << border_down_codel << " left=" << border_left_codel << " up=" << border_up_codel << std::endl;
-	std::cout << std::endl;
+	std::cout << "kodele:" << codel_block_count;
+	std::cout << ",graniczne: right=" << border_right_codel << " down=" << border_down_codel << " left=" << border_left_codel << " up=" << border_up_codel << std::endl;
 }

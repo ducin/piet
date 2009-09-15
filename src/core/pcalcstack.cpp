@@ -17,12 +17,10 @@
 // Qt
 // none
 
-PCalcStack::PCalcStack(bool verbose_mode)
+PCalcStack::PCalcStack()
 {
 	debug("CONSTRUCTOR ----- calc stack START\n");
-
-	verbose = verbose_mode;
-
+	verbose = false;
 	debug("CONSTRUCTOR ----- calc stack END\n");
 }
 
@@ -30,6 +28,11 @@ PCalcStack::~PCalcStack()
 {
 	debug("DESTRUCTOR ----- calc stack START\n");
 	debug("DESTRUCTOR ----- calc stack END\n");
+}
+
+void PCalcStack::setVerbosity(bool verbosity)
+{
+	verbose = verbosity;
 }
 
 void PCalcStack::clear()
@@ -178,7 +181,7 @@ void PCalcStack::instrRoll()
 
 void PCalcStack::__dev__printAllStackValues()
 {
-	std::cout << "size: " << values.size() << " values: ";
+	std::cout << "rozm:" << values.size() << " elem: ";
 	std::list<int>::iterator it;
 	for (it = values.begin(); it != values.end(); ++it) {
 		std::cout << *it << " ";
@@ -188,9 +191,8 @@ void PCalcStack::__dev__printAllStackValues()
 
 void PCalcStack::__dev__printConsole()
 {
-	std::cout << "STACK/ ";
+	std::cout << "STOS/";
 	__dev__printAllStackValues();
-	std::cout << std::endl;
 }
 
 

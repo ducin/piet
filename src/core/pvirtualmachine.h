@@ -46,7 +46,10 @@ class PVirtualMachine {
 		PColorManager *color_manager; // maszyna zajmująca się przetwarzaniem i interpretacją kolorów
 		PBlockManager *block_manager;
 
+		int step;
+
 		bool verbose;
+		void setVerbosityRecursively(bool);
 
 	protected:
 
@@ -56,11 +59,11 @@ class PVirtualMachine {
 		PMachineStates getState();
 		void setState(PMachineStates);
 
-		PMachineStates prepareToExecute();
+		void prepareToExecute();
 
 	public:
 
-		PVirtualMachine(QString, bool); // konstruktor
+		PVirtualMachine(QString); // konstruktor
 		~PVirtualMachine(); // destruktor
 
 		bool isRunning(); // czy maszyna działa (sprawdzany stan maszyny)
@@ -71,9 +74,12 @@ class PVirtualMachine {
 		bool restartMachine();
 		bool stopMachine();
 
+		bool isVerbose();
+		void toggleVerbosity();
+
 		// TODO zastanowic sie jaki typ ma zwracac
-		bool executeAllInstr(); // wykonywanie instrukcji do końca działania programu
-		bool executeInstr(); // wykonanie jednej instrukcji
+		void executeAllInstr(); // wykonywanie instrukcji do końca działania programu
+		bool executeSingleInstr(); // wykonanie jednej instrukcji
 
 		bool pointIsBlackOrOutside(PPoint);
 		bool pointIsWhite(PPoint);

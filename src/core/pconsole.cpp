@@ -18,12 +18,10 @@
 // Qt
 // none
 
-PConsole::PConsole(bool verbose_mode)
+PConsole::PConsole()
 {
 	debug("CONSTRUCTOR ----- console START\n");
-
-	verbose = verbose_mode;
-
+	verbose = false;
 	debug("CONSTRUCTOR ----- console END\n");
 }
 
@@ -34,11 +32,18 @@ PConsole::~PConsole()
 	debug("DESTRUCTOR ----- console END\n");
 }
 
+void PConsole::setVerbosity(bool verbosity)
+{
+	verbose = verbosity;
+}
+
 void PConsole::printNumber(int I)
 {
 	if (verbose)
 		std::cout << "CONSOLE/out-number: ";
-	std::cout << I << std::endl;
+	std::cout << I;
+	if (verbose)
+		std::cout << std::endl;
 }
 
 void PConsole::printChar(int I)
@@ -46,7 +51,8 @@ void PConsole::printChar(int I)
 	unsigned char UC = I;
 	if (verbose)
 		std::cout << "CONSOLE/out-char: ";
-	std::cout << std::setw(3) << UC;
+//	std::cout << std::setw(3) << UC;
+	std::cout << UC;
 	if (verbose)
 		std::cout << " (" << I << ")" << std::endl;
 }
