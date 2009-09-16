@@ -59,56 +59,57 @@
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054         <span class="keyword">protected</span>:
 <a name="l00055"></a>00055 
-<a name="l00056"></a>00056                 <a class="code" href="classPCalcStack.html" title="Stos.">PCalcStack</a> *stack; <span class="comment">// stos</span>
-<a name="l00057"></a>00057                 <a class="code" href="classPConsole.html" title="Konsola wejścia/wyjścia.">PConsole</a> *console; <span class="comment">// konsola I/O</span>
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059                 <a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a> <a class="code" href="classPVirtualMachine.html#699839f4df2106065458127c36b4bfca" title="zwraca stan wirtualnej maszyny Salvadora">getState</a>();
-<a name="l00060"></a>00060                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#bede8c1e068c19b9bc61a957de70cda8" title="ustawia stan wirtualnej maszyny Salvadora">setState</a>(<a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a>);
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#513af8673f1430cd04fd0a0e46abedd4" title="przygotowanie do uruchomienia/zresetowania wirtualnej maszyny">prepareToExecute</a>();
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064         <span class="keyword">public</span>:
+<a name="l00059"></a><a class="code" href="classPVirtualMachine.html#fe929445de96589087a96a8f1188fac0">00059</a>                 <a class="code" href="classPCalcStack.html" title="Stos.">PCalcStack</a> *<a class="code" href="classPVirtualMachine.html#fe929445de96589087a96a8f1188fac0">stack</a>;
+<a name="l00060"></a>00060 
+<a name="l00064"></a><a class="code" href="classPVirtualMachine.html#67feeb2d88b4c8b766d10d6f7d8eb65b">00064</a>                 <a class="code" href="classPConsole.html" title="Konsola wejścia/wyjścia.">PConsole</a> *<a class="code" href="classPVirtualMachine.html#67feeb2d88b4c8b766d10d6f7d8eb65b">console</a>;
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066                 <a class="code" href="classPVirtualMachine.html" title="Wirtualna maszyna Pieta.">PVirtualMachine</a>(QString); <span class="comment">// konstruktor</span>
-<a name="l00067"></a>00067                 ~<a class="code" href="classPVirtualMachine.html" title="Wirtualna maszyna Pieta.">PVirtualMachine</a>(); <span class="comment">// destruktor</span>
+<a name="l00066"></a>00066                 <a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a> <a class="code" href="classPVirtualMachine.html#699839f4df2106065458127c36b4bfca" title="zwraca stan wirtualnej maszyny Salvadora">getState</a>();
+<a name="l00067"></a>00067                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#bede8c1e068c19b9bc61a957de70cda8" title="ustawia stan wirtualnej maszyny Salvadora">setState</a>(<a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a>);
 <a name="l00068"></a>00068 
-<a name="l00069"></a>00069                 <span class="keywordtype">bool</span> isRunning(); <span class="comment">// czy maszyna działa (sprawdzany stan maszyny)</span>
-<a name="l00070"></a>00070                 <span class="keywordtype">bool</span> isReady(); <span class="comment">// czy maszyna jest gotowa do rozpoczęcia pracy</span>
-<a name="l00071"></a>00071                 <span class="keywordtype">bool</span> isFinished();
+<a name="l00069"></a>00069                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#513af8673f1430cd04fd0a0e46abedd4" title="przygotowanie do uruchomienia/zresetowania wirtualnej maszyny">prepareToExecute</a>();
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <span class="keyword">public</span>:
 <a name="l00072"></a>00072 
-<a name="l00073"></a>00073                 <span class="keywordtype">bool</span> startMachine();
-<a name="l00074"></a>00074                 <span class="keywordtype">bool</span> restartMachine();
-<a name="l00075"></a>00075                 <span class="keywordtype">bool</span> stopMachine();
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077                 <span class="keywordtype">bool</span> isVerbose();
-<a name="l00078"></a>00078                 <span class="keywordtype">void</span> toggleVerbosity();
+<a name="l00073"></a>00073                 <a class="code" href="classPVirtualMachine.html" title="Wirtualna maszyna Pieta.">PVirtualMachine</a>(QString); <span class="comment">// konstruktor</span>
+<a name="l00074"></a>00074                 ~<a class="code" href="classPVirtualMachine.html" title="Wirtualna maszyna Pieta.">PVirtualMachine</a>(); <span class="comment">// destruktor</span>
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076                 <span class="keywordtype">bool</span> isRunning(); <span class="comment">// czy maszyna działa (sprawdzany stan maszyny)</span>
+<a name="l00077"></a>00077                 <span class="keywordtype">bool</span> isReady(); <span class="comment">// czy maszyna jest gotowa do rozpoczęcia pracy</span>
+<a name="l00078"></a>00078                 <span class="keywordtype">bool</span> isFinished();
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080                 <span class="comment">// TODO zastanowic sie jaki typ ma zwracac</span>
-<a name="l00081"></a>00081                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#40e1780e122ce7fe4ebadc526c47fbea">executeAllInstr</a>(); <span class="comment">// wykonywanie instrukcji do końca działania programu</span>
-<a name="l00082"></a>00082                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#7bbb22aabe782de2208139bc01f65050">executeSingleInstr</a>(); <span class="comment">// wykonanie jednej instrukcji</span>
+<a name="l00080"></a>00080                 <span class="keywordtype">bool</span> startMachine();
+<a name="l00081"></a>00081                 <span class="keywordtype">bool</span> restartMachine();
+<a name="l00082"></a>00082                 <span class="keywordtype">bool</span> stopMachine();
 <a name="l00083"></a>00083 
-<a name="l00084"></a>00084                 <span class="keywordtype">bool</span> pointIsBlackOrOutside(PPoint);
-<a name="l00085"></a>00085                 <span class="keywordtype">bool</span> pointIsWhite(PPoint);
-<a name="l00086"></a>00086                 <span class="keywordtype">void</span> slidePointerAcrossWhiteBlock();
-<a name="l00087"></a>00087                 <span class="keywordtype">void</span> slideAcrossWhiteBlock(PPoint &amp;);
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> movePointerAndGetInstructionToExecute(); <span class="comment">// jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera</span>
+<a name="l00084"></a>00084                 <span class="keywordtype">bool</span> isVerbose();
+<a name="l00085"></a>00085                 <span class="keywordtype">void</span> toggleVerbosity();
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087                 <span class="comment">// TODO zastanowic sie jaki typ ma zwracac</span>
+<a name="l00088"></a>00088                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#40e1780e122ce7fe4ebadc526c47fbea">executeAllInstr</a>(); <span class="comment">// wykonywanie instrukcji do końca działania programu</span>
+<a name="l00089"></a>00089                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#7bbb22aabe782de2208139bc01f65050">executeSingleInstr</a>(); <span class="comment">// wykonanie jednej instrukcji</span>
 <a name="l00090"></a>00090 
-<a name="l00091"></a>00091                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> getInstructionByIndex(<span class="keywordtype">int</span>);
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094         <span class="comment">// development:</span>
+<a name="l00091"></a>00091                 <span class="keywordtype">bool</span> pointIsBlackOrOutside(PPoint);
+<a name="l00092"></a>00092                 <span class="keywordtype">bool</span> pointIsWhite(PPoint);
+<a name="l00093"></a>00093                 <span class="keywordtype">void</span> slidePointerAcrossWhiteBlock();
+<a name="l00094"></a>00094                 <span class="keywordtype">void</span> slideAcrossWhiteBlock(PPoint &amp;);
 <a name="l00095"></a>00095 
-<a name="l00096"></a>00096                 <span class="keywordtype">void</span> __dev__printInstruction(<a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a>);
-<a name="l00097"></a>00097                 <span class="keywordtype">void</span> __dev__printImageInfo();
-<a name="l00098"></a>00098                 <span class="keywordtype">void</span> __dev__printPointedCodelInfo();
-<a name="l00099"></a>00099                 <span class="keywordtype">void</span> __dev__printConsole();
+<a name="l00096"></a>00096                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> movePointerAndGetInstructionToExecute(); <span class="comment">// jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera</span>
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> getInstructionByIndex(<span class="keywordtype">int</span>);
+<a name="l00099"></a>00099 
 <a name="l00100"></a>00100 
-<a name="l00101"></a>00101 };
+<a name="l00101"></a>00101         <span class="comment">// development:</span>
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="preprocessor">#endif</span>
+<a name="l00103"></a>00103                 <span class="keywordtype">void</span> __dev__printInstruction(<a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a>);
+<a name="l00104"></a>00104                 <span class="keywordtype">void</span> __dev__printImageInfo();
+<a name="l00105"></a>00105                 <span class="keywordtype">void</span> __dev__printPointedCodelInfo();
+<a name="l00106"></a>00106                 <span class="keywordtype">void</span> __dev__printConsole();
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 };
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Wygenerowano Wed Sep 16 23:57:43 2009 dla Projekt Piet programem&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 00:04:02 2009 dla Projekt Piet programem&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>
