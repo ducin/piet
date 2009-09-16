@@ -1,0 +1,150 @@
+\hypertarget{penums_8h}{
+\section{Dokumentacja pliku src/core/penums.h}
+\label{penums_8h}\index{src/core/penums.h@{src/core/penums.h}}
+}
+wszystkie definicje enumeracji  
+
+
+\subsection*{Wyliczenia}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}{PStdColors} \{ \par
+\textbf{color\_\-light\_\-red}, 
+\textbf{color\_\-normal\_\-red}, 
+\textbf{color\_\-dark\_\-red}, 
+\textbf{color\_\-light\_\-yellow}, 
+\par
+\textbf{color\_\-normal\_\-yellow}, 
+\textbf{color\_\-dark\_\-yellow}, 
+\textbf{color\_\-light\_\-green}, 
+\textbf{color\_\-normal\_\-green}, 
+\par
+\textbf{color\_\-dark\_\-green}, 
+\textbf{color\_\-light\_\-cyan}, 
+\textbf{color\_\-normal\_\-cyan}, 
+\textbf{color\_\-dark\_\-cyan}, 
+\par
+\textbf{color\_\-light\_\-blue}, 
+\textbf{color\_\-normal\_\-blue}, 
+\textbf{color\_\-dark\_\-blue}, 
+\textbf{color\_\-light\_\-magenta}, 
+\par
+\textbf{color\_\-normal\_\-magenta}, 
+\textbf{color\_\-dark\_\-magenta}, 
+\textbf{color\_\-white}, 
+\textbf{color\_\-black}
+ \}
+\begin{CompactList}\small\item\em standardowe kolory \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_680063dc1cb094b4c3fb8715c3270776}{PNonStdColorBehavior} \{ \par
+\textbf{beh\_\-treat\_\-as\_\-white}, 
+\textbf{beh\_\-treat\_\-as\_\-black}, 
+\textbf{beh\_\-nearest\_\-upper}, 
+\textbf{beh\_\-nearest\_\-lower}, 
+\par
+\textbf{beh\_\-nearest\_\-neighbour}
+ \}
+\begin{CompactList}\small\item\em interpretacja niestandardowych kolorów \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_59dc57d526e2ce263bdf851c0d4fef3e}{PCodelChooserValues} \{ \textbf{cc\_\-left}, 
+\textbf{cc\_\-right}
+ \}
+\begin{CompactList}\small\item\em tryby codel chooser \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_6d3256570150238c718cbbb5f81c82df}{PDirectionPointerValues} \{ \textbf{dp\_\-right}, 
+\textbf{dp\_\-down}, 
+\textbf{dp\_\-left}, 
+\textbf{dp\_\-up}
+ \}
+\begin{CompactList}\small\item\em tryby direction pointer \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_3b12ec7c990da3435462047165bc0c6d}{PMachineStates} \{ \textbf{state\_\-ready}, 
+\textbf{state\_\-running}, 
+\textbf{state\_\-finished}
+ \}
+\begin{CompactList}\small\item\em stany maszyny wirtualnej \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \{ \par
+\textbf{pietInstr\_\-special\_\-empty}, 
+\textbf{pietInstr\_\-stack\_\-push}, 
+\textbf{pietInstr\_\-stack\_\-pop}, 
+\textbf{pietInstr\_\-arithm\_\-add}, 
+\par
+\textbf{pietInstr\_\-arithm\_\-subtract}, 
+\textbf{pietInstr\_\-arithm\_\-multiply}, 
+\textbf{pietInstr\_\-arithm\_\-divide}, 
+\textbf{pietInstr\_\-arithm\_\-modulo}, 
+\par
+\textbf{pietInstr\_\-logic\_\-not}, 
+\textbf{pietInstr\_\-logic\_\-greater}, 
+\textbf{pietInstr\_\-runtime\_\-pointer}, 
+\textbf{pietInstr\_\-runtime\_\-switch}, 
+\par
+\textbf{pietInstr\_\-stack\_\-duplicate}, 
+\textbf{pietInstr\_\-stack\_\-roll}, 
+\textbf{pietInstr\_\-io\_\-in\_\-number}, 
+\textbf{pietInstr\_\-io\_\-in\_\-char}, 
+\par
+\textbf{pietInstr\_\-io\_\-out\_\-number}, 
+\textbf{pietInstr\_\-io\_\-out\_\-char}, 
+\textbf{pietInstr\_\-special\_\-terminate}
+ \}
+\begin{CompactList}\small\item\em instrukcje Pieta \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+wszystkie definicje enumeracji 
+
+Plik nagłówkowy zawiera wszystkie definicje enumeracji które są wykorzystywane w projekcie. 
+
+\subsection{Dokumentacja typów wyliczanych}
+\hypertarget{penums_8h_59dc57d526e2ce263bdf851c0d4fef3e}{
+\index{penums.h@{penums.h}!PCodelChooserValues@{PCodelChooserValues}}
+\index{PCodelChooserValues@{PCodelChooserValues}!penums.h@{penums.h}}
+\subsubsection[{PCodelChooserValues}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PCodelChooserValues}}}
+\label{penums_8h_59dc57d526e2ce263bdf851c0d4fef3e}
+
+
+tryby codel chooser 
+
+Enumeracja wyszczególniająca tryby pracy codel chooser, czyli kierunki w których głowica ma szukać skrajnego kodela po dojściu do granicy bloku w kierunku wskazanym przez direction pointer. \hypertarget{penums_8h_6d3256570150238c718cbbb5f81c82df}{
+\index{penums.h@{penums.h}!PDirectionPointerValues@{PDirectionPointerValues}}
+\index{PDirectionPointerValues@{PDirectionPointerValues}!penums.h@{penums.h}}
+\subsubsection[{PDirectionPointerValues}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PDirectionPointerValues}}}
+\label{penums_8h_6d3256570150238c718cbbb5f81c82df}
+
+
+tryby direction pointer 
+
+Enumeracja wyszczególniająca tryby pracy direction pointer, czyli kierunki w których głowica ma poruszać się aż dojdzie do granicy bloku kolorów (potem codel chooser określa z której strony przejdzie do nowego bloku - dzięki temu glowica przechodzi z jednego bloku kolorów do drugiego i wykonują się instrukcje Pieta). \hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a}{
+\index{penums.h@{penums.h}!PInstructions@{PInstructions}}
+\index{PInstructions@{PInstructions}!penums.h@{penums.h}}
+\subsubsection[{PInstructions}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PInstructions}}}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a}
+
+
+instrukcje Pieta 
+
+Enumeracja wyszczególniająca wszystkie instrukcje wykonywane przez język Piet. \hypertarget{penums_8h_3b12ec7c990da3435462047165bc0c6d}{
+\index{penums.h@{penums.h}!PMachineStates@{PMachineStates}}
+\index{PMachineStates@{PMachineStates}!penums.h@{penums.h}}
+\subsubsection[{PMachineStates}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PMachineStates}}}
+\label{penums_8h_3b12ec7c990da3435462047165bc0c6d}
+
+
+stany maszyny wirtualnej 
+
+Enumeracja wyszczególniająca stany tzw. \char`\"{}maszyny wirtualnej Pieta\char`\"{}, która zajmuje się pełną interpretacją kodu Pieta. \hypertarget{penums_8h_680063dc1cb094b4c3fb8715c3270776}{
+\index{penums.h@{penums.h}!PNonStdColorBehavior@{PNonStdColorBehavior}}
+\index{PNonStdColorBehavior@{PNonStdColorBehavior}!penums.h@{penums.h}}
+\subsubsection[{PNonStdColorBehavior}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PNonStdColorBehavior}}}
+\label{penums_8h_680063dc1cb094b4c3fb8715c3270776}
+
+
+interpretacja niestandardowych kolorów 
+
+Enumeracja wyszczególniająca możliwe sposoby interpretacji kolorów niestandardowych \hypertarget{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}{
+\index{penums.h@{penums.h}!PStdColors@{PStdColors}}
+\index{PStdColors@{PStdColors}!penums.h@{penums.h}}
+\subsubsection[{PStdColors}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PStdColors}}}
+\label{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}
+
+
+standardowe kolory 
+
+Enumeracja wyszczególniająca kolory standardowe wykorzystywane do określania wykonywanej instrukcji 

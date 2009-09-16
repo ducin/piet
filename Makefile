@@ -46,7 +46,6 @@ SOURCES       = src/test.cpp \
 		src/core/pblockmanager.cpp \
 		src/core/pcalcstack.cpp \
 		src/core/pcodepointer.cpp \
-		src/core/pcodestats.cpp \
 		src/core/pcolormanager.cpp \
 		src/core/pconsole.cpp \
 		src/core/pvirtualmachine.cpp 
@@ -54,7 +53,6 @@ OBJECTS       = obj/test.o \
 		obj/pblockmanager.o \
 		obj/pcalcstack.o \
 		obj/pcodepointer.o \
-		obj/pcodestats.o \
 		obj/pcolormanager.o \
 		obj/pconsole.o \
 		obj/pvirtualmachine.o
@@ -150,7 +148,7 @@ qmake:  FORCE
 
 dist: 
 	@$(CHK_DIR_EXISTS) .tmp/piet1.0.0 || $(MKDIR) .tmp/piet1.0.0 
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/piet1.0.0/ && $(COPY_FILE) --parents src/debug.h src/core/pblockmanager.h src/core/pcalcstack.h src/core/pcodepointer.h src/core/pcodestats.h src/core/pcolormanager.h src/core/pconsole.h src/core/penums.h src/core/pstructs.h src/core/pvirtualmachine.h .tmp/piet1.0.0/ && $(COPY_FILE) --parents src/test.cpp src/core/pblockmanager.cpp src/core/pcalcstack.cpp src/core/pcodepointer.cpp src/core/pcodestats.cpp src/core/pcolormanager.cpp src/core/pconsole.cpp src/core/pvirtualmachine.cpp .tmp/piet1.0.0/ && (cd `dirname .tmp/piet1.0.0` && $(TAR) piet1.0.0.tar piet1.0.0 && $(COMPRESS) piet1.0.0.tar) && $(MOVE) `dirname .tmp/piet1.0.0`/piet1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/piet1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/piet1.0.0/ && $(COPY_FILE) --parents src/debug.h src/core/pblockmanager.h src/core/pcalcstack.h src/core/pcodepointer.h src/core/pcolormanager.h src/core/pconsole.h src/core/penums.h src/core/pstructs.h src/core/pvirtualmachine.h .tmp/piet1.0.0/ && $(COPY_FILE) --parents src/test.cpp src/core/pblockmanager.cpp src/core/pcalcstack.cpp src/core/pcodepointer.cpp src/core/pcolormanager.cpp src/core/pconsole.cpp src/core/pvirtualmachine.cpp .tmp/piet1.0.0/ && (cd `dirname .tmp/piet1.0.0` && $(TAR) piet1.0.0.tar piet1.0.0 && $(COMPRESS) piet1.0.0.tar) && $(MOVE) `dirname .tmp/piet1.0.0`/piet1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/piet1.0.0
 
 
 clean:compiler_clean 
@@ -219,12 +217,6 @@ obj/pcodepointer.o: src/core/pcodepointer.cpp src/core/pcodepointer.h \
 		src/core/pstructs.h \
 		src/debug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/pcodepointer.o src/core/pcodepointer.cpp
-
-obj/pcodestats.o: src/core/pcodestats.cpp src/core/pcodestats.h \
-		src/core/penums.h \
-		src/core/pstructs.h \
-		src/debug.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/pcodestats.o src/core/pcodestats.cpp
 
 obj/pcolormanager.o: src/core/pcolormanager.cpp src/core/pcolormanager.h \
 		src/core/penums.h \

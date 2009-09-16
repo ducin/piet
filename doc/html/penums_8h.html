@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Projekt Piet: Dokumentacja pliku src/core/penums.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Lista&nbsp;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&nbsp;plików</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentacja pliku src/core/penums.h</h1>wszystkie definicje enumeracji  
+<a href="#_details">Więcej...</a>
+<p>
+
+<p>
+<a href="penums_8h-source.html">Idź do kodu źródłowego tego pliku.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Wyliczenia</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec">PStdColors</a> { <br>
+&nbsp;&nbsp;<b>color_light_red</b>, 
+<b>color_normal_red</b>, 
+<b>color_dark_red</b>, 
+<b>color_light_yellow</b>, 
+<br>
+&nbsp;&nbsp;<b>color_normal_yellow</b>, 
+<b>color_dark_yellow</b>, 
+<b>color_light_green</b>, 
+<b>color_normal_green</b>, 
+<br>
+&nbsp;&nbsp;<b>color_dark_green</b>, 
+<b>color_light_cyan</b>, 
+<b>color_normal_cyan</b>, 
+<b>color_dark_cyan</b>, 
+<br>
+&nbsp;&nbsp;<b>color_light_blue</b>, 
+<b>color_normal_blue</b>, 
+<b>color_dark_blue</b>, 
+<b>color_light_magenta</b>, 
+<br>
+&nbsp;&nbsp;<b>color_normal_magenta</b>, 
+<b>color_dark_magenta</b>, 
+<b>color_white</b>, 
+<b>color_black</b>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">standardowe kolory  <a href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec">Więcej...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776">PNonStdColorBehavior</a> { <br>
+&nbsp;&nbsp;<b>beh_treat_as_white</b>, 
+<b>beh_treat_as_black</b>, 
+<b>beh_nearest_upper</b>, 
+<b>beh_nearest_lower</b>, 
+<br>
+&nbsp;&nbsp;<b>beh_nearest_neighbour</b>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">interpretacja niestandardowych kolorów  <a href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776">Więcej...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e">PCodelChooserValues</a> { <b>cc_left</b>, 
+<b>cc_right</b>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">tryby codel chooser  <a href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e">Więcej...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df">PDirectionPointerValues</a> { <b>dp_right</b>, 
+<b>dp_down</b>, 
+<b>dp_left</b>, 
+<b>dp_up</b>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">tryby direction pointer  <a href="penums_8h.html#6d3256570150238c718cbbb5f81c82df">Więcej...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d">PMachineStates</a> { <b>state_ready</b>, 
+<b>state_running</b>, 
+<b>state_finished</b>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">stany maszyny wirtualnej  <a href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d">Więcej...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="penums_8h.html#797d2a71195500b970298fbf455ff83a">PInstructions</a> { <br>
+&nbsp;&nbsp;<b>pietInstr_special_empty</b>, 
+<b>pietInstr_stack_push</b>, 
+<b>pietInstr_stack_pop</b>, 
+<b>pietInstr_arithm_add</b>, 
+<br>
+&nbsp;&nbsp;<b>pietInstr_arithm_subtract</b>, 
+<b>pietInstr_arithm_multiply</b>, 
+<b>pietInstr_arithm_divide</b>, 
+<b>pietInstr_arithm_modulo</b>, 
+<br>
+&nbsp;&nbsp;<b>pietInstr_logic_not</b>, 
+<b>pietInstr_logic_greater</b>, 
+<b>pietInstr_runtime_pointer</b>, 
+<b>pietInstr_runtime_switch</b>, 
+<br>
+&nbsp;&nbsp;<b>pietInstr_stack_duplicate</b>, 
+<b>pietInstr_stack_roll</b>, 
+<b>pietInstr_io_in_number</b>, 
+<b>pietInstr_io_in_char</b>, 
+<br>
+&nbsp;&nbsp;<b>pietInstr_io_out_number</b>, 
+<b>pietInstr_io_out_char</b>, 
+<b>pietInstr_special_terminate</b>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">instrukcje Pieta  <a href="penums_8h.html#797d2a71195500b970298fbf455ff83a">Więcej...</a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Opis szczegółowy</h2>
+wszystkie definicje enumeracji 
+<p>
+Plik nagłówkowy zawiera wszystkie definicje enumeracji które są wykorzystywane w projekcie. <hr><h2>Dokumentacja typów wyliczanych</h2>
+<a class="anchor" name="59dc57d526e2ce263bdf851c0d4fef3e"></a><!-- doxytag: member="penums.h::PCodelChooserValues" ref="59dc57d526e2ce263bdf851c0d4fef3e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e">PCodelChooserValues</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+tryby codel chooser 
+<p>
+Enumeracja wyszczególniająca tryby pracy codel chooser, czyli kierunki w których głowica ma szukać skrajnego kodela po dojściu do granicy bloku w kierunku wskazanym przez direction pointer. 
+</div>
+</div><p>
+<a class="anchor" name="6d3256570150238c718cbbb5f81c82df"></a><!-- doxytag: member="penums.h::PDirectionPointerValues" ref="6d3256570150238c718cbbb5f81c82df" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df">PDirectionPointerValues</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+tryby direction pointer 
+<p>
+Enumeracja wyszczególniająca tryby pracy direction pointer, czyli kierunki w których głowica ma poruszać się aż dojdzie do granicy bloku kolorów (potem codel chooser określa z której strony przejdzie do nowego bloku - dzięki temu glowica przechodzi z jednego bloku kolorów do drugiego i wykonują się instrukcje Pieta). 
+</div>
+</div><p>
+<a class="anchor" name="797d2a71195500b970298fbf455ff83a"></a><!-- doxytag: member="penums.h::PInstructions" ref="797d2a71195500b970298fbf455ff83a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="penums_8h.html#797d2a71195500b970298fbf455ff83a">PInstructions</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+instrukcje Pieta 
+<p>
+Enumeracja wyszczególniająca wszystkie instrukcje wykonywane przez język Piet. 
+</div>
+</div><p>
+<a class="anchor" name="3b12ec7c990da3435462047165bc0c6d"></a><!-- doxytag: member="penums.h::PMachineStates" ref="3b12ec7c990da3435462047165bc0c6d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d">PMachineStates</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+stany maszyny wirtualnej 
+<p>
+Enumeracja wyszczególniająca stany tzw. "maszyny wirtualnej Pieta", która zajmuje się pełną interpretacją kodu Pieta. 
+</div>
+</div><p>
+<a class="anchor" name="680063dc1cb094b4c3fb8715c3270776"></a><!-- doxytag: member="penums.h::PNonStdColorBehavior" ref="680063dc1cb094b4c3fb8715c3270776" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776">PNonStdColorBehavior</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+interpretacja niestandardowych kolorów 
+<p>
+Enumeracja wyszczególniająca możliwe sposoby interpretacji kolorów niestandardowych 
+</div>
+</div><p>
+<a class="anchor" name="4fb01e50a2da85245f7cea7856eca8ec"></a><!-- doxytag: member="penums.h::PStdColors" ref="4fb01e50a2da85245f7cea7856eca8ec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec">PStdColors</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+standardowe kolory 
+<p>
+Enumeracja wyszczególniająca kolory standardowe wykorzystywane do określania wykonywanej instrukcji 
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Wed Sep 16 23:57:43 2009 dla Projekt Piet programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

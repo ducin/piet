@@ -1,0 +1,199 @@
+\hypertarget{classPVirtualMachine}{
+\section{Dokumentacja klasy PVirtualMachine}
+\label{classPVirtualMachine}\index{PVirtualMachine@{PVirtualMachine}}
+}
+Wirtualna maszyna Pieta.  
+
+
+{\tt \#include $<$pvirtualmachine.h$>$}
+
+\subsection*{Metody publiczne}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPVirtualMachine_0af0326622a3f47b6c2020413cdd3e05}{
+\textbf{PVirtualMachine} (QString)}
+\label{classPVirtualMachine_0af0326622a3f47b6c2020413cdd3e05}
+
+\item 
+\hypertarget{classPVirtualMachine_823195d3ae1615c791dfeb6c8d365a0e}{
+bool \textbf{isRunning} ()}
+\label{classPVirtualMachine_823195d3ae1615c791dfeb6c8d365a0e}
+
+\item 
+\hypertarget{classPVirtualMachine_5132bedd5e8480185b48ea6c4783c770}{
+bool \textbf{isReady} ()}
+\label{classPVirtualMachine_5132bedd5e8480185b48ea6c4783c770}
+
+\item 
+\hypertarget{classPVirtualMachine_6b19e3e51a584b13e79c44fc5b842c2b}{
+bool \textbf{isFinished} ()}
+\label{classPVirtualMachine_6b19e3e51a584b13e79c44fc5b842c2b}
+
+\item 
+\hypertarget{classPVirtualMachine_4b6bb128d63569e855684128b5e09f1c}{
+bool \textbf{startMachine} ()}
+\label{classPVirtualMachine_4b6bb128d63569e855684128b5e09f1c}
+
+\item 
+\hypertarget{classPVirtualMachine_f4cdf5d80b7a169e2dfdebffe2588e4b}{
+bool \textbf{restartMachine} ()}
+\label{classPVirtualMachine_f4cdf5d80b7a169e2dfdebffe2588e4b}
+
+\item 
+\hypertarget{classPVirtualMachine_fa30f1871832c1af18519db03c397ac0}{
+bool \textbf{stopMachine} ()}
+\label{classPVirtualMachine_fa30f1871832c1af18519db03c397ac0}
+
+\item 
+\hypertarget{classPVirtualMachine_219cd1d08de6d3d5a9117eecc5348d9c}{
+bool \textbf{isVerbose} ()}
+\label{classPVirtualMachine_219cd1d08de6d3d5a9117eecc5348d9c}
+
+\item 
+\hypertarget{classPVirtualMachine_1e48dcf68b3b80d7f6d3c67b3f796e51}{
+void \textbf{toggleVerbosity} ()}
+\label{classPVirtualMachine_1e48dcf68b3b80d7f6d3c67b3f796e51}
+
+\item 
+void \hyperlink{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}{executeAllInstr} ()
+\item 
+bool \hyperlink{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}{executeSingleInstr} ()
+\item 
+\hypertarget{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}{
+bool \textbf{pointIsBlackOrOutside} (PPoint)}
+\label{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}
+
+\item 
+\hypertarget{classPVirtualMachine_cae537f70c35487220818e8d18978e07}{
+bool \textbf{pointIsWhite} (PPoint)}
+\label{classPVirtualMachine_cae537f70c35487220818e8d18978e07}
+
+\item 
+\hypertarget{classPVirtualMachine_e37d4dfa512c3dd97b9958f013ffb7b3}{
+void \textbf{slidePointerAcrossWhiteBlock} ()}
+\label{classPVirtualMachine_e37d4dfa512c3dd97b9958f013ffb7b3}
+
+\item 
+\hypertarget{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{
+void \textbf{slideAcrossWhiteBlock} (PPoint \&)}
+\label{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}
+
+\item 
+\hypertarget{classPVirtualMachine_29279548406a588bce03e320354cd857}{
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \textbf{movePointerAndGetInstructionToExecute} ()}
+\label{classPVirtualMachine_29279548406a588bce03e320354cd857}
+
+\item 
+\hypertarget{classPVirtualMachine_69d12176d3f9719b2bdf93a9f55cefde}{
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \textbf{getInstructionByIndex} (int)}
+\label{classPVirtualMachine_69d12176d3f9719b2bdf93a9f55cefde}
+
+\item 
+\hypertarget{classPVirtualMachine_91c888349242ed7700d5ddff5b187c19}{
+void \textbf{\_\-\_\-dev\_\-\_\-printInstruction} (\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions})}
+\label{classPVirtualMachine_91c888349242ed7700d5ddff5b187c19}
+
+\item 
+\hypertarget{classPVirtualMachine_d0ac4994cbf5c218a40442df49a3cd29}{
+void \textbf{\_\-\_\-dev\_\-\_\-printImageInfo} ()}
+\label{classPVirtualMachine_d0ac4994cbf5c218a40442df49a3cd29}
+
+\item 
+\hypertarget{classPVirtualMachine_7fa0eaf24d0e5f6fa1dca0aa105d147e}{
+void \textbf{\_\-\_\-dev\_\-\_\-printPointedCodelInfo} ()}
+\label{classPVirtualMachine_7fa0eaf24d0e5f6fa1dca0aa105d147e}
+
+\item 
+\hypertarget{classPVirtualMachine_9fbb7c0313e22051eebfd2e316ec609b}{
+void \textbf{\_\-\_\-dev\_\-\_\-printConsole} ()}
+\label{classPVirtualMachine_9fbb7c0313e22051eebfd2e316ec609b}
+
+\end{CompactItemize}
+\subsection*{Metody chronione}
+\begin{CompactItemize}
+\item 
+\hyperlink{penums_8h_3b12ec7c990da3435462047165bc0c6d}{PMachineStates} \hyperlink{classPVirtualMachine_699839f4df2106065458127c36b4bfca}{getState} ()
+\begin{CompactList}\small\item\em zwraca stan wirtualnej maszyny Salvadora \item\end{CompactList}\item 
+void \hyperlink{classPVirtualMachine_bede8c1e068c19b9bc61a957de70cda8}{setState} (\hyperlink{penums_8h_3b12ec7c990da3435462047165bc0c6d}{PMachineStates})
+\begin{CompactList}\small\item\em ustawia stan wirtualnej maszyny Salvadora \item\end{CompactList}\item 
+void \hyperlink{classPVirtualMachine_513af8673f1430cd04fd0a0e46abedd4}{prepareToExecute} ()
+\begin{CompactList}\small\item\em przygotowanie do uruchomienia/zresetowania wirtualnej maszyny \item\end{CompactList}\end{CompactItemize}
+\subsection*{Atrybuty chronione}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPVirtualMachine_fe929445de96589087a96a8f1188fac0}{
+\hyperlink{classPCalcStack}{PCalcStack} $\ast$ \textbf{stack}}
+\label{classPVirtualMachine_fe929445de96589087a96a8f1188fac0}
+
+\item 
+\hypertarget{classPVirtualMachine_67feeb2d88b4c8b766d10d6f7d8eb65b}{
+\hyperlink{classPConsole}{PConsole} $\ast$ \textbf{console}}
+\label{classPVirtualMachine_67feeb2d88b4c8b766d10d6f7d8eb65b}
+
+\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Wirtualna maszyna Pieta. 
+
+Klasa realizująca tzw. \char`\"{}wirtualną maszynę Pieta\char`\"{}, która posiada wszystkie mechanizmy potrzebne do egzekucji kodu Pieta.
+
+Klasa sama w sobie posiada niewiele mechanizmów (precyzyjniej: najmniej jak to było możliwe), aby wszystkie szczegółowe operacje wydzielić dla pozostałych klas w obrębie projektu. Wirtualna maszyna zajmuje się (oprócz tworzenia pomocniczych obiektów) tylko egzekucją pojedynczych instrukcji Pieta (oraz związane z tym zatrzymywanie, uruchamianie, przygotowywanie maszyny).
+
+Jej dwoma najważniejszymi elementami są: stos, na którym przechowywane są tymczasowe wartości, oraz tzw. \char`\"{}maszyna kodu\char`\"{}, odpowiedzialna za pełną interpretację kodu. 
+
+\subsection{Dokumentacja funkcji składowych}
+\hypertarget{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}{
+\index{PVirtualMachine@{PVirtualMachine}!executeAllInstr@{executeAllInstr}}
+\index{executeAllInstr@{executeAllInstr}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{executeAllInstr}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::executeAllInstr ()}}
+\label{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}
+
+
+Wykonuje WSZYSTKIE instrukcje aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane. \hypertarget{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}{
+\index{PVirtualMachine@{PVirtualMachine}!executeSingleInstr@{executeSingleInstr}}
+\index{executeSingleInstr@{executeSingleInstr}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{executeSingleInstr}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::executeSingleInstr ()}}
+\label{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}
+
+
+Wykonuje POJEDYNCZĄ instrukcję aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane. \hypertarget{classPVirtualMachine_699839f4df2106065458127c36b4bfca}{
+\index{PVirtualMachine@{PVirtualMachine}!getState@{getState}}
+\index{getState@{getState}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{getState}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PMachineStates} PVirtualMachine::getState ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_699839f4df2106065458127c36b4bfca}
+
+
+zwraca stan wirtualnej maszyny Salvadora 
+
+W każdej chwili istnienia, wirtualna maszyna Pieta musi znajdować się w jakimś stanie (PMachineStates). Metoda zwraca aktualny stan wirtualnej maszyny. \hypertarget{classPVirtualMachine_513af8673f1430cd04fd0a0e46abedd4}{
+\index{PVirtualMachine@{PVirtualMachine}!prepareToExecute@{prepareToExecute}}
+\index{prepareToExecute@{prepareToExecute}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{prepareToExecute}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::prepareToExecute ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_513af8673f1430cd04fd0a0e46abedd4}
+
+
+przygotowanie do uruchomienia/zresetowania wirtualnej maszyny 
+
+Metoda używana w celu przygotowania wirtualnej maszyny do uruchomienia. Maszyna mogła być w trakcie działania, mogła zakończyć działanie l \begin{Desc}
+\item[Zwraca:]stan w jakim znajdowała się maszyna (PMachineStates) \end{Desc}
+\hypertarget{classPVirtualMachine_bede8c1e068c19b9bc61a957de70cda8}{
+\index{PVirtualMachine@{PVirtualMachine}!setState@{setState}}
+\index{setState@{setState}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{setState}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::setState ({\bf PMachineStates} {\em state})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_bede8c1e068c19b9bc61a957de70cda8}
+
+
+ustawia stan wirtualnej maszyny Salvadora 
+
+W każdej chwili istnienia, wirtualna maszyna Pieta musi znajdować się w jakimś stanie (PMachineStates). Metoda ustawia stan wirtualnej maszyny. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em state}]stan jaki zostanie przypisany wirtualnej maszynie \end{description}
+\end{Desc}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików:\begin{CompactItemize}
+\item 
+src/core/\hyperlink{pvirtualmachine_8h}{pvirtualmachine.h}\item 
+src/core/\hyperlink{pvirtualmachine_8cpp}{pvirtualmachine.cpp}\end{CompactItemize}

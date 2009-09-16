@@ -1,0 +1,123 @@
+\hypertarget{classPCalcStack}{
+\section{Dokumentacja klasy PCalcStack}
+\label{classPCalcStack}\index{PCalcStack@{PCalcStack}}
+}
+Stos.  
+
+
+{\tt \#include $<$pcalcstack.h$>$}
+
+\subsection*{Metody publiczne}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPCalcStack_6a831a20f4dec457de9f880202cf2e33}{
+void \textbf{setVerbosity} (bool)}
+\label{classPCalcStack_6a831a20f4dec457de9f880202cf2e33}
+
+\item 
+\hypertarget{classPCalcStack_7b1abd7a77db664dcf9e0bd56c17301f}{
+void \textbf{clear} ()}
+\label{classPCalcStack_7b1abd7a77db664dcf9e0bd56c17301f}
+
+\item 
+\hypertarget{classPCalcStack_b3129921fea95a4df231201e2601e1c0}{
+void \textbf{prepareToExecute} ()}
+\label{classPCalcStack_b3129921fea95a4df231201e2601e1c0}
+
+\item 
+\hypertarget{classPCalcStack_e334a37c1749b028e75e0d251afe47f7}{
+int \textbf{size} ()}
+\label{classPCalcStack_e334a37c1749b028e75e0d251afe47f7}
+
+\item 
+\hypertarget{classPCalcStack_39d4d9e53e8b57fa934ee1a5b9171dc8}{
+bool \textbf{hasAtLeastNElements} (unsigned int)}
+\label{classPCalcStack_39d4d9e53e8b57fa934ee1a5b9171dc8}
+
+\item 
+\hypertarget{classPCalcStack_269ca0f8f0a4395a0035fa0a9bc813a1}{
+void \textbf{instrPush} (int)}
+\label{classPCalcStack_269ca0f8f0a4395a0035fa0a9bc813a1}
+
+\item 
+\hypertarget{classPCalcStack_796ba40ffc60b05a8a116d881aa2e37f}{
+int \textbf{instrPop} ()}
+\label{classPCalcStack_796ba40ffc60b05a8a116d881aa2e37f}
+
+\item 
+\hypertarget{classPCalcStack_04ef30536acac1b02093153f1cb83353}{
+void \textbf{instrAdd} ()}
+\label{classPCalcStack_04ef30536acac1b02093153f1cb83353}
+
+\item 
+\hypertarget{classPCalcStack_a35493e8dc971fc2f47a113a6d400784}{
+void \textbf{instrSubtract} ()}
+\label{classPCalcStack_a35493e8dc971fc2f47a113a6d400784}
+
+\item 
+\hypertarget{classPCalcStack_0d2b0b03f9a14c875364d4a5dabb6d7a}{
+void \textbf{instrMultiply} ()}
+\label{classPCalcStack_0d2b0b03f9a14c875364d4a5dabb6d7a}
+
+\item 
+\hypertarget{classPCalcStack_f642cacff51d21c2f25487dae1a5b84c}{
+void \textbf{instrDivide} ()}
+\label{classPCalcStack_f642cacff51d21c2f25487dae1a5b84c}
+
+\item 
+\hypertarget{classPCalcStack_bda10d125ac0b2dee9398ce185435fdb}{
+void \textbf{instrModulo} ()}
+\label{classPCalcStack_bda10d125ac0b2dee9398ce185435fdb}
+
+\item 
+\hypertarget{classPCalcStack_5fe0eb9337f3e18416e02c082c14dc66}{
+void \textbf{instrNot} ()}
+\label{classPCalcStack_5fe0eb9337f3e18416e02c082c14dc66}
+
+\item 
+\hypertarget{classPCalcStack_b656cedeb6038c6e3af6e01df21d8c1b}{
+void \textbf{instrGreater} ()}
+\label{classPCalcStack_b656cedeb6038c6e3af6e01df21d8c1b}
+
+\item 
+\hypertarget{classPCalcStack_0424a6bcacc8bee1a5ff074dea87be1e}{
+void \textbf{instrDuplicate} ()}
+\label{classPCalcStack_0424a6bcacc8bee1a5ff074dea87be1e}
+
+\item 
+\hypertarget{classPCalcStack_1be80d765fdc530467d76594d94c6746}{
+void \textbf{instrRoll} ()}
+\label{classPCalcStack_1be80d765fdc530467d76594d94c6746}
+
+\item 
+\hypertarget{classPCalcStack_e28932817d21f528cb3ebe06471df9a2}{
+void \textbf{\_\-\_\-dev\_\-\_\-printAllStackValues} ()}
+\label{classPCalcStack_e28932817d21f528cb3ebe06471df9a2}
+
+\item 
+\hypertarget{classPCalcStack_dbfaddfaadb912324c965390a70ae323}{
+void \textbf{\_\-\_\-dev\_\-\_\-printConsole} ()}
+\label{classPCalcStack_dbfaddfaadb912324c965390a70ae323}
+
+\end{CompactItemize}
+\subsection*{Atrybuty chronione}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPCalcStack_4777b5f859158a71a18deb0bc0978653}{
+std::list$<$ int $>$ \textbf{values}}
+\label{classPCalcStack_4777b5f859158a71a18deb0bc0978653}
+
+\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Stos. 
+
+Klasa pełniąca funkcję stosu wykorzystywanego do interpretowania kodu Pieta. Wszystkie jej funkcjonalności są dokładnie określone przez instrukcje dozwolone w języku Piet - począwszy od podstawowych (kładzenie/zdejmowanie elementów), poprzez arytmetyczne i logiczne (zmieniające elementy na szczycie stosu w zależności od ich wartości) a skończywszy na operacjach sterujących głowicą (przestawianie 'codel chooser' i 'direction pointer' - patrz: specyfikacja Piet), operacjach modyfikujących strukturę elementów stosu oraz operacjach I/O.
+
+Stanowi jeden z dwóch obiektów potrzebnych do pełnej interpretacji kodu, używanych przez tzw. \char`\"{}wirtualną maszynę Pieta\char`\"{}, najwyższy w hierarchi obiekt. 
+
+Dokumentacja dla tej klasy została wygenerowana z plików:\begin{CompactItemize}
+\item 
+src/core/\hyperlink{pcalcstack_8h}{pcalcstack.h}\item 
+src/core/\hyperlink{pcalcstack_8cpp}{pcalcstack.cpp}\end{CompactItemize}

@@ -1,0 +1,129 @@
+\hypertarget{classPBlockManager}{
+\section{Dokumentacja klasy PBlockManager}
+\label{classPBlockManager}\index{PBlockManager@{PBlockManager}}
+}
+Manager bloków kolorów.  
+
+
+{\tt \#include $<$pblockmanager.h$>$}
+
+\subsection*{Metody publiczne}
+\begin{CompactItemize}
+\item 
+\hyperlink{classPBlockManager_f5a95fca85a31c0257b38b57cbb3378a}{PBlockManager} (QImage $\ast$, \hyperlink{classPCodePointer}{PCodePointer} $\ast$)
+\begin{CompactList}\small\item\em konstruktor klasy \hyperlink{classPBlockManager}{PBlockManager} \item\end{CompactList}\item 
+\hyperlink{classPBlockManager_52d7abb7f858625e9e014fb555f571a6}{$\sim$PBlockManager} ()
+\begin{CompactList}\small\item\em destruktor \item\end{CompactList}\item 
+\hypertarget{classPBlockManager_926e182e360300d6524fbb01fb90866b}{
+void \textbf{setVerbosity} (bool)}
+\label{classPBlockManager_926e182e360300d6524fbb01fb90866b}
+
+\item 
+\hypertarget{classPBlockManager_88f9f5226179e0fbd9d148001de10e97}{
+void \textbf{searchAndFillCodels} ()}
+\label{classPBlockManager_88f9f5226179e0fbd9d148001de10e97}
+
+\item 
+\hypertarget{classPBlockManager_ba7919eedd6b806f2f4da408423723ea}{
+int \textbf{getCodelBlockCount} ()}
+\label{classPBlockManager_ba7919eedd6b806f2f4da408423723ea}
+
+\item 
+\hypertarget{classPBlockManager_667f3673eda6cf4476ecb34d01db665b}{
+PPoint \textbf{getNextPossibleCodel} ()}
+\label{classPBlockManager_667f3673eda6cf4476ecb34d01db665b}
+
+\item 
+\hypertarget{classPBlockManager_e6298891058bd316c07071db0c851b2f}{
+void \textbf{\_\-\_\-dev\_\-\_\-showMultiArray} ()}
+\label{classPBlockManager_e6298891058bd316c07071db0c851b2f}
+
+\item 
+\hypertarget{classPBlockManager_d0ed8ac41d59c34eb88aa30428961a82}{
+void \textbf{\_\-\_\-dev\_\-\_\-showCountAndBorderCodels} ()}
+\label{classPBlockManager_d0ed8ac41d59c34eb88aa30428961a82}
+
+\end{CompactItemize}
+\subsection*{Metody chronione}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPBlockManager_c31dc0993286be444a82ae5e51f32415}{
+void \textbf{fillMultiArray} (int)}
+\label{classPBlockManager_c31dc0993286be444a82ae5e51f32415}
+
+\item 
+\hypertarget{classPBlockManager_ab82616c7ee28fa12d4cfec944f550a0}{
+void \textbf{clearMultiArray} ()}
+\label{classPBlockManager_ab82616c7ee28fa12d4cfec944f550a0}
+
+\end{CompactItemize}
+\subsection*{Atrybuty chronione}
+\begin{CompactItemize}
+\item 
+\hypertarget{classPBlockManager_429ddf44eba8dc97ccd38d67d4b8172f}{
+QImage $\ast$ \textbf{image}}
+\label{classPBlockManager_429ddf44eba8dc97ccd38d67d4b8172f}
+
+\item 
+\hypertarget{classPBlockManager_835bfe00bdbea928d1b4ad6212cf733c}{
+\hyperlink{classPCodePointer}{PCodePointer} $\ast$ \textbf{pointer}}
+\label{classPBlockManager_835bfe00bdbea928d1b4ad6212cf733c}
+
+\item 
+\hypertarget{classPBlockManager_679ed25c188f4a6d2fd20a167a4bb4eb}{
+int \textbf{codel\_\-block\_\-count}}
+\label{classPBlockManager_679ed25c188f4a6d2fd20a167a4bb4eb}
+
+\item 
+\hypertarget{classPBlockManager_8d73c339ef6be4cd3a960b96b0c4f1fe}{
+int \textbf{border\_\-right\_\-codel}}
+\label{classPBlockManager_8d73c339ef6be4cd3a960b96b0c4f1fe}
+
+\item 
+\hypertarget{classPBlockManager_9a2e17b1fa59c0b083e760a385b3565f}{
+int \textbf{border\_\-down\_\-codel}}
+\label{classPBlockManager_9a2e17b1fa59c0b083e760a385b3565f}
+
+\item 
+\hypertarget{classPBlockManager_2bb1887ef5658a211da5edbc3a248058}{
+int \textbf{border\_\-left\_\-codel}}
+\label{classPBlockManager_2bb1887ef5658a211da5edbc3a248058}
+
+\item 
+\hypertarget{classPBlockManager_80de22998ec78cc92162eadd6036506f}{
+int \textbf{border\_\-up\_\-codel}}
+\label{classPBlockManager_80de22998ec78cc92162eadd6036506f}
+
+\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Manager bloków kolorów. 
+
+Klasa odpowiedzialna właściwie tylko za jedną, ale dosyć skomplikowaną operację - obliczanie ilości kodeli w danym bloku koloru. Ta wydzielona klasa posiada własne struktury danych i algorytm i zwraca maszynie kodu (klasie opakowującej) liczbę kodeli w danym bloku. 
+
+\subsection{Dokumentacja konstruktora i destruktora}
+\hypertarget{classPBlockManager_f5a95fca85a31c0257b38b57cbb3378a}{
+\index{PBlockManager@{PBlockManager}!PBlockManager@{PBlockManager}}
+\index{PBlockManager@{PBlockManager}!PBlockManager@{PBlockManager}}
+\subsubsection[{PBlockManager}]{\setlength{\rightskip}{0pt plus 5cm}PBlockManager::PBlockManager (QImage $\ast$ {\em given\_\-image}, \/  {\bf PCodePointer} $\ast$ {\em given\_\-pointer})}}
+\label{classPBlockManager_f5a95fca85a31c0257b38b57cbb3378a}
+
+
+konstruktor klasy \hyperlink{classPBlockManager}{PBlockManager} 
+
+xyz... \hypertarget{classPBlockManager_52d7abb7f858625e9e014fb555f571a6}{
+\index{PBlockManager@{PBlockManager}!$\sim$PBlockManager@{$\sim$PBlockManager}}
+\index{$\sim$PBlockManager@{$\sim$PBlockManager}!PBlockManager@{PBlockManager}}
+\subsubsection[{$\sim$PBlockManager}]{\setlength{\rightskip}{0pt plus 5cm}PBlockManager::$\sim$PBlockManager ()}}
+\label{classPBlockManager_52d7abb7f858625e9e014fb555f571a6}
+
+
+destruktor 
+
+abc... 
+
+Dokumentacja dla tej klasy została wygenerowana z plików:\begin{CompactItemize}
+\item 
+src/core/\hyperlink{pblockmanager_8h}{pblockmanager.h}\item 
+src/core/\hyperlink{pblockmanager_8cpp}{pblockmanager.cpp}\end{CompactItemize}
