@@ -8,6 +8,9 @@
 #include "penums.h"
 #include "pstructs.h"
 
+//C
+#include <cstdlib>
+
 // C++
 #include <iostream>
 
