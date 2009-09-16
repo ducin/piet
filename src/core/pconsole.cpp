@@ -24,6 +24,9 @@
  * Plik zawiera kod źródłowy klasy PConsole.
  */
 
+/**
+ * Konstruktor konsoli wejścia/wyjścia. Nie robi nic szczególnego.
+ */
 PConsole::PConsole()
 {
 	debug("CONSTRUCTOR ----- console START\n");
@@ -31,6 +34,9 @@ PConsole::PConsole()
 	debug("CONSTRUCTOR ----- console END\n");
 }
 
+/**
+ * Destruktor konsoli wejścia/wyjścia. Nie robi nic szczególnego.
+ */
 PConsole::~PConsole()
 {
 	debug("DESTRUCTOR ----- console START\n");
@@ -38,11 +44,19 @@ PConsole::~PConsole()
 	debug("DESTRUCTOR ----- console END\n");
 }
 
+/**
+ * Ustala tryb gadatliwy.
+ * @param verbosity tryb gadatliwy
+ */
 void PConsole::setVerbosity(bool verbosity)
 {
 	verbose = verbosity;
 }
 
+/**
+ * Wyświetla liczbę na konsolę.
+ * @param I liczba
+ */
 void PConsole::printNumber(int I)
 {
 	if (verbose)
@@ -52,6 +66,10 @@ void PConsole::printNumber(int I)
 		std::cout << std::endl;
 }
 
+/**
+ * Wyświetla znak na konsolę.
+ * @param I znak reprezentowany maszynowo przez liczbę
+ */
 void PConsole::printChar(int I)
 {
 	unsigned char UC = I;
@@ -63,6 +81,10 @@ void PConsole::printChar(int I)
 		std::cout << " (" << I << ")" << std::endl;
 }
 
+/**
+ * Wczytuje z koncoli liczbę.
+ * @return wczytana liczba
+ */
 int PConsole::readNumber()
 {
 	int var;
@@ -75,6 +97,10 @@ int PConsole::readNumber()
 	return var;
 }
 
+/**
+ * Wczytuje z koncoli znak.
+ * @return wczytany znak reprezentowany maszynowo przez liczbę
+ */
 int PConsole::readChar()
 {
 	char C;

@@ -27,8 +27,9 @@
  * Plik zawiera kod źródłowy klasy PVirtualMachine.
  */
 
-// konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet
-// tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
+/**
+ * Konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet. Tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
+ */
 PVirtualMachine::PVirtualMachine(QString filename)
 {
 	debug("CONSTRUCTOR - virtual-machine START\n");
@@ -61,7 +62,9 @@ PVirtualMachine::PVirtualMachine(QString filename)
 	debug("CONSTRUCTOR - virtual-machine END\n");
 }
 
-// destruktor wirtualnej maszyny Pieta. Wywołuje destruktory dla pomocniczych obiektów tworzonych w konstruktorze wirtualnej maszyny.
+/**
+ * Destruktor wirtualnej maszyny Pieta. Wywołuje destruktory dla pomocniczych obiektów tworzonych w konstruktorze wirtualnej maszyny.
+ */
 PVirtualMachine::~PVirtualMachine()
 {
 	debug("DESTRUCTOR - virtual-machine START\n");
@@ -75,10 +78,9 @@ PVirtualMachine::~PVirtualMachine()
 	debug("DESTRUCTOR - virtual-machine END\n");
 }
 
-/** \brief przygotowanie do uruchomienia/zresetowania wirtualnej maszyny
+/** \brief Przygotowanie do uruchomienia/zresetowania wirtualnej maszyny
  *
- * Metoda używana w celu przygotowania wirtualnej maszyny do uruchomienia. Maszyna mogła być w trakcie działania, mogła zakończyć działanie l
- * \return stan w jakim znajdowała się maszyna (PMachineStates)
+ * Metoda używana w celu przygotowania wirtualnej maszyny do uruchomienia. Maszyna mogła być w trakcie działania, mogła zakończyć działanie lub mogła być gotowa do uruchomienia.
  */
 void PVirtualMachine::prepareToExecute()
 {
@@ -109,16 +111,28 @@ void PVirtualMachine::setState(PMachineStates state)
 	this->state = state;
 }
 
+/**
+ * Sprawdza czy maszyna jest gotowa do rozpoczęcia pracy (sprawdzany stan maszyny).
+ * @return czy maszyna jest gotowa do uruchomienia
+ */
 bool PVirtualMachine::isReady()
 {
 	return (state == state_ready);
 }
 
+/**
+ * Sprawdza czy maszyna pracuje (sprawdzany stan maszyny).
+ * @return czy maszyna pracuje
+ */
 bool PVirtualMachine::isRunning()
 {
 	return (state == state_running);
 }
 
+/**
+ * Sprawdza czy maszyna zakończyła działanie (sprawdzany stan maszyny).
+ * @return czy maszyna zakończyła działanie
+ */
 bool PVirtualMachine::isFinished()
 {
 	return (state == state_finished);
@@ -126,6 +140,10 @@ bool PVirtualMachine::isFinished()
 
 //=========================================================
 
+/**
+ * Uruchamia maszynę (ustawia odpowiedni stan).
+ * @return czy operacja się powiodła
+ */
 bool PVirtualMachine::startMachine()
 {
 	if (isReady()) {
@@ -136,12 +154,20 @@ bool PVirtualMachine::startMachine()
 	}
 }
 
+/**
+ * Restartuje maszynę (ustawia odpowiedni stan).
+ * @return czy operacja się powiodła
+ */
 bool PVirtualMachine::restartMachine()
 {
 	prepareToExecute();
 	return true;
 }
 
+/**
+ * Zatrzymuje maszynę (ustawia odpowiedni stan).
+ * @return czy operacja się powiodła
+ */
 bool PVirtualMachine::stopMachine()
 {
 	if (isRunning()) {
@@ -164,11 +190,18 @@ void PVirtualMachine::setVerbosityRecursively(bool verbosity)
 	pointer->setVerbosity(verbosity);
 }
 
+/**
+ * Sprawdza, czy maszyna ma włączony tryb gadatliwy
+ * @return tryb gadatliwy
+ */
 bool PVirtualMachine::isVerbose()
 {
 	return verbose;
 }
 
+/**
+ * Przełącza tryb gadatliwy na przeciwny. Przełącza tryb we wszystkich podrzędnych obiektach.
+ */
 void PVirtualMachine::toggleVerbosity()
 {
 	if (verbose) {
@@ -345,6 +378,11 @@ bool PVirtualMachine::executeSingleInstr()
 
 //==================================================================
 
+/**
+ * Sprawdza, czy wskazany punkt jest koloru czarnego lub się znajduje poza granicami obrazu kodu. Jeśli tak, głowica będzie musiała zmienić swoje DP i/lub CC. Wirtualna maszyna wykorzystuje do tego głowicę obrazu kodu oraz menadżera kolorów.
+ * @param point wskazany punkt
+ * @return czy punkt jest czarny lub poza granicami obrazu kodu
+ */
 bool PVirtualMachine::pointIsBlackOrOutside(PPoint point)
 {
 	bool black = false, outside = pointer->pointOutsideImage(point);
@@ -354,11 +392,19 @@ bool PVirtualMachine::pointIsBlackOrOutside(PPoint point)
 	return ( outside || black );
 }
 
+/**
+ * Sprawdza, czy wskazany punkt jest koloru białego. Jeśli tak, to jeśli głowica dodatkowo prześlizgnie się przez biały blok, nie wykona w tym krokużadnej operacji. Wirtualna maszyna wykorzystuje do tego głowicę obrazu kodu oraz menadżera kolorów.
+ * @param point wskazany punkt
+ * @return czy punkt jest biały
+ */
 bool PVirtualMachine::pointIsWhite(PPoint point)
 {
 	return (color_manager->getColorName(pointer->getPixel(point)) == color_white );
 }
 
+/**
+ * Przesuwa głowicę o jeden kodel przez biały blok. Metoda wywoływana wielokrotnie przez metodę slideAcrossWhiteBlock().
+ */
 void PVirtualMachine::slidePointerAcrossWhiteBlock()
 {
 	while (color_manager->getColorName(pointer->getPointedPixel()) == color_white)
@@ -378,6 +424,10 @@ void PVirtualMachine::slidePointerAcrossWhiteBlock()
 	}
 }
 
+/**
+ * Przesuwa głowicę, uwzględniając jej wartości DP i CC, na koniec białego bloku (parametr point, przekazywany przez zmienną - ulega zmianie w trakcie wykonywania operacji). Następnie wirtualna maszyna bada, czy otrzymany punkt znajduje się poza obrazem kodu lub jest czarny (wtedy głowica zmienia wartości DP i/lub CC i być może ponownie będzie wędrowała z wyjściowego punktu przez biały blok).
+ * @param point wskazany punkt
+ */
 void PVirtualMachine::slideAcrossWhiteBlock(PPoint &point)
 {
 	while ( (!pointer->pointOutsideImage(point)) && (color_manager->getColorName(pointer->getPixel(point)) == color_white) )
@@ -397,8 +447,9 @@ void PVirtualMachine::slideAcrossWhiteBlock(PPoint &point)
 	}
 }
 
-// Metoda nakazuje przesunięcie głowicy oraz wyznacza jaka instrukcja ma zostać wykonana (wszystko wykorzystując pomocnicze obiekty wirtualnej maszyny).
-// Jedna z ważniejszych i bardziej skomplikowanych metod.
+/**
+ * Metoda nakazuje przesunięcie głowicy oraz wyznacza jaka instrukcja ma zostać wykonana (wszystko wykorzystując pomocnicze obiekty wirtualnej maszyny). Jedna z ważniejszych i bardziej skomplikowanych metod całego interpretera.
+ */
 PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 {
 	PInstructions result_instr; // robocza zmienna wynikowa
@@ -459,6 +510,11 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 
 //==================================================================
 
+/**
+ * Zwraca instrukcję Pieta (element enumeracji) dla zadanego indeksu instrukcji Pieta.
+ * @param index indeks instrukcji Pieta
+ * @return instrukcja Pieta
+ */
 PInstructions PVirtualMachine::getInstructionByIndex(int index)
 {
 	switch(index) {
@@ -508,6 +564,10 @@ PInstructions PVirtualMachine::getInstructionByIndex(int index)
 
 //=========================================================
 
+/**
+ * METODA TESTOWA. Wyświetla nazwę zadanej instrukcji Pieta.
+ * @param instr instrukcja
+ */
 void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 {
 	switch(instr) {
@@ -571,11 +631,17 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 	}
 }
 
+/**
+ * METODA TESTOWA. Wyświetla informacje o obrazie kodu.
+ */
 void PVirtualMachine::__dev__printImageInfo()
 {
 	std::cout << std::endl << "IMAGE/ " << "[" << image->width() << "x" << image->height() << "]" << std::endl;
 }
 
+/**
+ * METODA TESTOWA. Wyświetla informacje o całej maszynie i jej elementach składowych.
+ */
 void PVirtualMachine::__dev__printConsole()
 {
 	//__dev__printImageInfo();

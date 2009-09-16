@@ -32,6 +32,9 @@ class PCalcStack {
 
 	private:
 
+		/**
+		 * Pole logiczne definiujące tryb gadatliwy.
+		 */
 		bool verbose;
 
 	protected:

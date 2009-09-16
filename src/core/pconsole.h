@@ -30,6 +30,9 @@ class PConsole {
 
 	private:
 
+		/**
+		 * Pole logiczne definiujące tryb gadatliwy.
+		 */
 		bool verbose;
 
 	public:

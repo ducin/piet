@@ -33,11 +33,10 @@ class PColorManager {
 		int lightnessCycleDifference(PStdColors, PStdColors);
 		int saturationCycleDifference(PStdColors, PStdColors);
 
+		/**
+		 * Pole logiczne definiujące tryb gadatliwy.
+		 */
 		bool verbose;
-
-	protected:
-
-		void initColorValues(QRgb, QRgb);
 
 	public:
 
@@ -48,13 +47,13 @@ class PColorManager {
 
 		int getInstructionIndex(QRgb, QRgb);
 
-	QRgb LIGHT_RED, NORMAL_RED, DARK_RED;
-	QRgb LIGHT_YELLOW, NORMAL_YELLOW, DARK_YELLOW;
-	QRgb LIGHT_GREEN, NORMAL_GREEN, DARK_GREEN;
-	QRgb LIGHT_CYAN, NORMAL_CYAN, DARK_CYAN;
-	QRgb LIGHT_BLUE, NORMAL_BLUE, DARK_BLUE;
-	QRgb LIGHT_MAGENTA, NORMAL_MAGENTA, DARK_MAGENTA;
-	QRgb WHITE, BLACK;
+	QRgb /** kolor jasny czerwony */ LIGHT_RED, /** kolor czerwony */ NORMAL_RED, /** kolor ciemny czerwony */ DARK_RED;
+	QRgb /** kolor jasny żółty */ LIGHT_YELLOW, /** kolor żółty */ NORMAL_YELLOW, /** kolor ciemny żółty */ DARK_YELLOW;
+	QRgb /** kolor jasny zielony */ LIGHT_GREEN, /** kolor zielony */ NORMAL_GREEN, /** kolor ziemny zielony */ DARK_GREEN;
+	QRgb /** kolor jasny błękitny */ LIGHT_CYAN, /** kolor błękitny */ NORMAL_CYAN, /** kolor ciemny błękitny */ DARK_CYAN;
+	QRgb /** kolor jasny niebieski */ LIGHT_BLUE, /** kolor niebieski */ NORMAL_BLUE, /** kolor ciemny niebieski */ DARK_BLUE;
+	QRgb /** kolor jasny magenta */ LIGHT_MAGENTA, /** kolor magenta */ NORMAL_MAGENTA, /** kolor ciemny magenta */ DARK_MAGENTA;
+	QRgb /** kolor biały */ WHITE, /** kolor czarny */ BLACK;
 
 		PStdColors getColorName(QRgb);
 

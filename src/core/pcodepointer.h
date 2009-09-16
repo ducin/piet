@@ -39,15 +39,27 @@ class PCodePointer {
 		PPoint initial_coords;
 		PPoint coords; // współrzędne na które wskazuje głowica
 
+		/**
+		 * Pole logiczne definiujące tryb gadatliwy.
+		 */
 		bool verbose;
 
 	protected:
 
+		/**
+		 * Referencja do obrazu kodu, po którym porusza się głowica.
+		 */
 		QImage *image; // obraz kodu (plik graficzny którego pixle będą interpretowane)
 
-		PCodelChooserValues codel_chooser;; // codel chooser
+		/**
+		 * Codel chooser (CC, selektor kodeli).
+		 */
+		PCodelChooserValues codel_chooser;
 		void setCodelChooser(PCodelChooserValues);
 
+		/**
+		 * Direction pointer (DP, wskaźnik kierunku).
+		 */
 		PDirectionPointerValues direction_pointer; // direction pointer
 		void setDirectionPointer(PDirectionPointerValues);
 

@@ -48,6 +48,9 @@ class PBlockManager {
 		int findColumnTopCodel(int);
 		int findColumnBottomCodel(int);
 
+		/**
+		 * Pole logiczne definiujące tryb gadatliwy.
+		 */
 		bool verbose;
 
 	protected:

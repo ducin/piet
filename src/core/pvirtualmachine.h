@@ -53,8 +53,14 @@ class PVirtualMachine {
 
 	protected:
 
-		PCalcStack *stack; // stos
-		PConsole *console; // konsola I/O
+		/**
+		 * Stos przechowujący wszystkie tymczasowe wartości
+		 */
+		PCalcStack *stack;
+		/**
+		 * Konsola wejścia/wyjścia Pieta, obsługująca operacje komunikacji z użytkownikiem
+		 */
+		PConsole *console;
 
 		PMachineStates getState();
 		void setState(PMachineStates);
@@ -63,11 +69,11 @@ class PVirtualMachine {
 
 	public:
 
-		PVirtualMachine(QString); // konstruktor
-		~PVirtualMachine(); // destruktor
+		PVirtualMachine(QString);
+		~PVirtualMachine();
 
-		bool isRunning(); // czy maszyna działa (sprawdzany stan maszyny)
-		bool isReady(); // czy maszyna jest gotowa do rozpoczęcia pracy
+		bool isReady();
+		bool isRunning();
 		bool isFinished();
 
 		bool startMachine();
@@ -90,12 +96,10 @@ class PVirtualMachine {
 
 		PInstructions getInstructionByIndex(int);
 
-
 	// development:
 
 		void __dev__printInstruction(PInstructions);
 		void __dev__printImageInfo();
-		void __dev__printPointedCodelInfo();
 		void __dev__printConsole();
 
 };

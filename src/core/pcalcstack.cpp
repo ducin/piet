@@ -36,6 +36,10 @@ PCalcStack::~PCalcStack()
 	debug("DESTRUCTOR ----- calc stack END\n");
 }
 
+/**
+ * Ustala tryb gadatliwy.
+ * @param verbosity tryb gadatliwy
+ */
 void PCalcStack::setVerbosity(bool verbosity)
 {
 	verbose = verbosity;

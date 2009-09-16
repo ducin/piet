@@ -58,41 +58,41 @@
 <a name="l00048"></a>00048                 <span class="keywordtype">int</span> findColumnTopCodel(<span class="keywordtype">int</span>);
 <a name="l00049"></a>00049                 <span class="keywordtype">int</span> findColumnBottomCodel(<span class="keywordtype">int</span>);
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051                 <span class="keywordtype">bool</span> verbose;
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053         <span class="keyword">protected</span>:
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055                 QImage *image;
-<a name="l00056"></a>00056                 <a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a> *pointer;
-<a name="l00057"></a>00057                 <span class="keywordtype">int</span> codel_block_count; <span class="comment">// zmienna przechowująca liczbę kodeli bloku kolorów, świeżo policzoną</span>
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059                 <span class="keywordtype">int</span> border_right_codel, border_down_codel, border_left_codel, border_up_codel;
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061                 <span class="keywordtype">void</span> fillMultiArray(<span class="keywordtype">int</span>);
-<a name="l00062"></a>00062                 <span class="keywordtype">void</span> clearMultiArray();
+<a name="l00054"></a>00054                 <span class="keywordtype">bool</span> verbose;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         <span class="keyword">protected</span>:
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058                 QImage *image;
+<a name="l00059"></a>00059                 <a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a> *pointer;
+<a name="l00060"></a>00060                 <span class="keywordtype">int</span> codel_block_count; <span class="comment">// zmienna przechowująca liczbę kodeli bloku kolorów, świeżo policzoną</span>
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062                 <span class="keywordtype">int</span> border_right_codel, border_down_codel, border_left_codel, border_up_codel;
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064         <span class="keyword">public</span>:
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066                 <a class="code" href="classPBlockManager.html#f5a95fca85a31c0257b38b57cbb3378a" title="konstruktor klasy PBlockManager">PBlockManager</a>(QImage *, <a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a> *);
-<a name="l00067"></a>00067                 <a class="code" href="classPBlockManager.html#52d7abb7f858625e9e014fb555f571a6" title="destruktor">~PBlockManager</a>();
+<a name="l00064"></a>00064                 <span class="keywordtype">void</span> fillMultiArray(<span class="keywordtype">int</span>);
+<a name="l00065"></a>00065                 <span class="keywordtype">void</span> clearMultiArray();
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keyword">public</span>:
 <a name="l00068"></a>00068 
-<a name="l00069"></a>00069                 <span class="keywordtype">void</span> setVerbosity(<span class="keywordtype">bool</span>);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071                 <span class="keywordtype">void</span> searchAndFillCodels(); <span class="comment">// przygotowuje pomoczniczą tablicę do użytku i podstawia potrzebną liczbę kodeli pod zmienną</span>
-<a name="l00072"></a>00072                 <span class="keywordtype">int</span> getCodelBlockCount();
+<a name="l00069"></a>00069                 <a class="code" href="classPBlockManager.html#f5a95fca85a31c0257b38b57cbb3378a">PBlockManager</a>(QImage *, <a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a> *);
+<a name="l00070"></a>00070                 <a class="code" href="classPBlockManager.html#52d7abb7f858625e9e014fb555f571a6">~PBlockManager</a>();
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                 <span class="keywordtype">void</span> <a class="code" href="classPBlockManager.html#926e182e360300d6524fbb01fb90866b">setVerbosity</a>(<span class="keywordtype">bool</span>);
 <a name="l00073"></a>00073 
-<a name="l00074"></a>00074                 PPoint getNextPossibleCodel();
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076         <span class="comment">// development:</span>
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078                 <span class="keywordtype">void</span> __dev__showMultiArray();
-<a name="l00079"></a>00079                 <span class="keywordtype">void</span> __dev__showCountAndBorderCodels();
+<a name="l00074"></a>00074                 <span class="keywordtype">void</span> searchAndFillCodels(); <span class="comment">// przygotowuje pomoczniczą tablicę do użytku i podstawia potrzebną liczbę kodeli pod zmienną</span>
+<a name="l00075"></a>00075                 <span class="keywordtype">int</span> getCodelBlockCount();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077                 PPoint getNextPossibleCodel();
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="comment">// development:</span>
 <a name="l00080"></a>00080 
-<a name="l00081"></a>00081 };
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="preprocessor">#endif</span>
+<a name="l00081"></a>00081                 <span class="keywordtype">void</span> __dev__showMultiArray();
+<a name="l00082"></a>00082                 <span class="keywordtype">void</span> __dev__showCountAndBorderCodels();
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 };
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 00:04:02 2009 dla Projekt Piet programem&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 01:48:32 2009 dla Projekt Piet programem&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

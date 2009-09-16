@@ -25,9 +25,8 @@
  * Plik zawiera kod źródłowy klasy PBlockManager.
  */
 
-/** \brief konstruktor klasy PBlockManager
- *
- * xyz...
+/** 
+ * Konstruktor
  */
 PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
 {
@@ -41,9 +40,8 @@ PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
 	debug("CONSTRUCTOR ----- block-manager END\n");
 }
 
-/** \brief destruktor
- *
- * abc...
+/**
+ * Destruktor
  */
 PBlockManager::~PBlockManager()
 {
@@ -52,6 +50,10 @@ PBlockManager::~PBlockManager()
 	debug("DESTRUCTOR ----- block-manager END\n");
 }
 
+/**
+ * Ustala tryb gadatliwy.
+ * @param verbosity tryb gadatliwy
+ */
 void PBlockManager::setVerbosity(bool verbosity)
 {
 	verbose = verbosity;

@@ -47,60 +47,60 @@
 <a name="l00039"></a>00039                 PPoint initial_coords;
 <a name="l00040"></a>00040                 PPoint coords; <span class="comment">// współrzędne na które wskazuje głowica</span>
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042                 <span class="keywordtype">bool</span> verbose;
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044         <span class="keyword">protected</span>:
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046                 QImage *image; <span class="comment">// obraz kodu (plik graficzny którego pixle będą interpretowane)</span>
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048                 <a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a> codel_chooser;; <span class="comment">// codel chooser</span>
-<a name="l00049"></a>00049                 <span class="keywordtype">void</span> setCodelChooser(<a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a>);
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051                 <a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a> direction_pointer; <span class="comment">// direction pointer</span>
-<a name="l00052"></a>00052                 <span class="keywordtype">void</span> setDirectionPointer(<a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a>);
+<a name="l00045"></a>00045                 <span class="keywordtype">bool</span> verbose;
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047         <span class="keyword">protected</span>:
+<a name="l00048"></a>00048 
+<a name="l00052"></a><a class="code" href="classPCodePointer.html#9f6689e6425046abd85001f915ba1221">00052</a>                 QImage *<a class="code" href="classPCodePointer.html#9f6689e6425046abd85001f915ba1221">image</a>; <span class="comment">// obraz kodu (plik graficzny którego pixle będą interpretowane)</span>
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054                 <span class="keywordtype">void</span> turnDirectionPointerClockwise();
-<a name="l00055"></a>00055                 <span class="keywordtype">void</span> turnDirectionPointerAnticlockwise();
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057         <span class="keyword">public</span>:
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059                 <a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a>(QImage *, PPoint);
-<a name="l00060"></a>00060                 ~<a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a>();
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062                 <span class="keywordtype">void</span> setVerbosity(<span class="keywordtype">bool</span>);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064                 <span class="keywordtype">void</span> clear();
+<a name="l00057"></a><a class="code" href="classPCodePointer.html#a3d7ea2563c9e1363ddcb0fb19b35f5a">00057</a>                 <a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a> <a class="code" href="classPCodePointer.html#a3d7ea2563c9e1363ddcb0fb19b35f5a">codel_chooser</a>;
+<a name="l00058"></a>00058                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#b5c13bf294dddd672ca9fe7675eb258b">setCodelChooser</a>(<a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a>);
+<a name="l00059"></a>00059 
+<a name="l00063"></a><a class="code" href="classPCodePointer.html#b285be0011b9b5c8b35bd1ba27ee935f">00063</a>                 <a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a> <a class="code" href="classPCodePointer.html#b285be0011b9b5c8b35bd1ba27ee935f">direction_pointer</a>; <span class="comment">// direction pointer</span>
+<a name="l00064"></a>00064                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#0b97bd6b4383e976e54c5738178c7815">setDirectionPointer</a>(<a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a>);
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066                 PPoint getCoordinates();
-<a name="l00067"></a>00067                 <span class="keywordtype">void</span> setCoordinateX(<span class="keywordtype">int</span>);
-<a name="l00068"></a>00068                 <span class="keywordtype">void</span> incCoordinateX();
-<a name="l00069"></a>00069                 <span class="keywordtype">void</span> decCoordinateX();
-<a name="l00070"></a>00070                 <span class="keywordtype">void</span> setCoordinateY(<span class="keywordtype">int</span>);
-<a name="l00071"></a>00071                 <span class="keywordtype">void</span> incCoordinateY();
-<a name="l00072"></a>00072                 <span class="keywordtype">void</span> decCoordinateY();
-<a name="l00073"></a>00073                 <span class="keywordtype">void</span> setCoordinates(PPoint);
-<a name="l00074"></a>00074                 QRgb getPointedPixel();
+<a name="l00066"></a>00066                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#a3ad29e6327d54faf0b081892e720aca">turnDirectionPointerClockwise</a>();
+<a name="l00067"></a>00067                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#3f43e8205a0554bf7baa3821e01ab4a2">turnDirectionPointerAnticlockwise</a>();
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         <span class="keyword">public</span>:
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071                 <a class="code" href="classPCodePointer.html#cd5cd1cd86ff9cf89ac6d2aae5cb52d8">PCodePointer</a>(QImage *, PPoint);
+<a name="l00072"></a>00072                 <a class="code" href="classPCodePointer.html#dc12b4bda6ed4b1045b0767b41ff2efa">~PCodePointer</a>();
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#d738019c8cb766c0863e2c00622d9fc9">setVerbosity</a>(<span class="keywordtype">bool</span>);
 <a name="l00075"></a>00075 
-<a name="l00076"></a>00076                 QRgb getPixel(PPoint);
-<a name="l00077"></a>00077                 <span class="keywordtype">bool</span> pointOutsideImage(PPoint);
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079                 <a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a> getDirectionPointerValue();
-<a name="l00080"></a>00080                 <a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a> getCodelChooserValue();
-<a name="l00081"></a>00081                 <span class="keywordtype">void</span> toggleCodelChooser();
-<a name="l00082"></a>00082                 <span class="keywordtype">void</span> toggleDirectionPointer();
-<a name="l00083"></a>00083                 <span class="keywordtype">void</span> toggle();
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085         <span class="comment">// development:</span>
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087                 <span class="keywordtype">void</span> __dev__printCoordinates();
-<a name="l00088"></a>00088                 <span class="keywordtype">void</span> __dev__printDirectionPointer();
-<a name="l00089"></a>00089                 <span class="keywordtype">void</span> __dev__printCodelChooser();
-<a name="l00090"></a>00090                 <span class="keywordtype">void</span> __dev__printConsole();
-<a name="l00091"></a>00091 };
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 <span class="preprocessor">#endif</span>
+<a name="l00076"></a>00076                 <span class="keywordtype">void</span> clear();
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078                 PPoint <a class="code" href="classPCodePointer.html#c792e5bc527542482542ed22acc9cca4">getCoordinates</a>();
+<a name="l00079"></a>00079                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#9bcf58c97f704e3be2deefb588f91312">setCoordinateX</a>(<span class="keywordtype">int</span>);
+<a name="l00080"></a>00080                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#ef8324dbdca82baa094e47e36f978669">incCoordinateX</a>();
+<a name="l00081"></a>00081                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#3b98e9637236aa9d975dc59c0397e625">decCoordinateX</a>();
+<a name="l00082"></a>00082                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#9fd77f14e39cc30f8cfc583ce97aa2f2">setCoordinateY</a>(<span class="keywordtype">int</span>);
+<a name="l00083"></a>00083                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#58c15d4d1abb1fb971170f19c3b9e8cf">incCoordinateY</a>();
+<a name="l00084"></a>00084                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#cc8b95bb3786748c1aff41eed6d299e1">decCoordinateY</a>();
+<a name="l00085"></a>00085                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#117bf9322b4fdcb189c41a6f2f113a4b">setCoordinates</a>(PPoint);
+<a name="l00086"></a>00086                 QRgb getPointedPixel();
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088                 QRgb getPixel(PPoint);
+<a name="l00089"></a>00089                 <span class="keywordtype">bool</span> <a class="code" href="classPCodePointer.html#a9e836354b61f96ed39208c8b37d57d3">pointOutsideImage</a>(PPoint);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                 <a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a> <a class="code" href="classPCodePointer.html#e0461a3d72af876b5b3c838a8b45a729">getDirectionPointerValue</a>();
+<a name="l00092"></a>00092                 <a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a> <a class="code" href="classPCodePointer.html#529b0f2f65c1d17082d755813fec0194">getCodelChooserValue</a>();
+<a name="l00093"></a>00093                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#56d2ef632779fbe64937030e82b027d1">toggleCodelChooser</a>();
+<a name="l00094"></a>00094                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#4aab1f30e01bb0fb3d78b5e6aa93535c">toggleDirectionPointer</a>();
+<a name="l00095"></a>00095                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#5b34ab0f6bb3ddb3bd7e44a7d9a613ca">toggle</a>();
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         <span class="comment">// development:</span>
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#ce0986ca3dc000a06a0155d20cd83d26">__dev__printCoordinates</a>();
+<a name="l00100"></a>00100                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#103c79ebd3257261d5c72322bc4eb742">__dev__printDirectionPointer</a>();
+<a name="l00101"></a>00101                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#21810c2cdb66ea83cabafde33e8a0206">__dev__printCodelChooser</a>();
+<a name="l00102"></a>00102                 <span class="keywordtype">void</span> <a class="code" href="classPCodePointer.html#fe765c0487ab59dbbbdd47b78842bbcb">__dev__printConsole</a>();
+<a name="l00103"></a>00103 };
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 00:04:02 2009 dla Projekt Piet programem&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 01:48:32 2009 dla Projekt Piet programem&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

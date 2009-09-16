@@ -41,11 +41,18 @@ PColorManager::~PColorManager()
 	debug("DESTRUCTOR ----- color-manager END\n");
 }
 
+/**
+ * Ustala tryb gadatliwy.
+ * @param verbosity tryb gadatliwy
+ */
 void PColorManager::setVerbosity(bool verbosity)
 {
 	verbose = verbosity;
 }
 
+/**
+ * Inicjuje wartości zmiennych typu QRgb reprezentujących wszystkie 20 kolorów standardowych Pieta. Są one potem wykorzystywane praktycznie cały czas: do wyznaczania instrukcji które powinny być wykonane, do sprawdzania białych lub czarnych bloków.
+ */
 void PColorManager::initColorValues()
 {
 	// red
@@ -77,6 +84,11 @@ void PColorManager::initColorValues()
 	BLACK = qRgb(0, 0, 0);
 }
 
+/**
+ * Zwraca kolor jako element enumeracji dla zadanej wartości koloru typu QRgb.
+ * @param color zadany kolor (wartość)
+ * @return kolor (element enumeracji)
+ */
 PStdColors PColorManager::getColorName(QRgb color)
 {
 	if (color ==  LIGHT_RED) {
@@ -142,6 +154,12 @@ int PColorManager::saturationCycleDifference(PStdColors c1, PStdColors c2)
 	return ( ( (c1code / 3) - (c2code / 3) + 6) % 6);
 }
 
+/**
+ * Wyznacza instrukcję Pieat jaka ma zostać wykonana na podstawie dwóch kolorów bloków: pierwszy - który głowica opuściła i drugi - do którego głowica weszła. Metoda implementuje algorytm wyznaczania instrukcji opisany w tabeli 1.2 w rozdziale 1 pracy magisterskiej.
+ * @param old_color kolor bloku który głowica opuściła
+ * @param new_color kolor bloku do którego głowica weszła
+ * @return indeks instrukcji która powinna zostać wykonana
+ */
 int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
 {
 	PStdColors p_old_color = getColorName(old_color);
@@ -163,6 +181,10 @@ int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
  // development
 //=========================================================================
 
+/**
+ * METODA TESTOWA. Wyświetla nazwę koloru
+ * @param color kolor
+ */
 void PColorManager::__dev__printColor(PStdColors color)
 {
 	switch (color) {
