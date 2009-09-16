@@ -24,7 +24,7 @@
  * Plik nagłówkowy zawiera definicję klasy PBlockManager.
  */
 
-/** \brief manager bloków kolorów
+/** \brief Manager bloków kolorów
  *
  * Klasa odpowiedzialna właściwie tylko za jedną, ale dosyć skomplikowaną operację - obliczanie ilości kodeli w danym bloku koloru. Ta wydzielona klasa posiada własne struktury danych i algorytm i zwraca maszynie kodu (klasie opakowującej) liczbę kodeli w danym bloku.
  */

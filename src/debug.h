@@ -2,9 +2,9 @@
 #define P_DEBUG
 
 /** \file debug.h
- * \brief plik nagłówkowy debuggera
+ * \brief Plik nagłówkowy debuggera
  *
- * Plik zawiera makro definiujące operacje debuggera
+ * Plik zawiera makro definiujące operacje debuggera.
  */
 
 	#ifdef DEBUG

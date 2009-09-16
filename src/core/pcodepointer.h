@@ -23,7 +23,7 @@
  * Plik nagłówkowy zawiera definicję klasy PCodePointer.
  */
 
-/** \brief głowica obrazu kodu
+/** \brief Głowica obrazu kodu
  *
  * Klasa pełniąca funkcję głowicy która porusza się po tzw. "obrazie kodu". Wykonuje wszystkie operacje bezpośrednio związane z odczytywaniem piksli z obrazu, posiada (zmieniające się w trakcie działania programu) współrzędne oraz dodatkowe elementy, takie jak 'codel chooser' i 'direction pointer' (patrz: specyfikacja języka Piet).
 

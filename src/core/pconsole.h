@@ -22,7 +22,7 @@
  * Plik nagłówkowy zawiera definicję klasy PConsole.
  */
 
-/** \brief maszyna kodu
+/** \brief Konsola wejścia/wyjścia
  *
  * Klasa realizująca wszystkie operacje wejścia wyjścia związane z instrukcjami Pieta.
  */

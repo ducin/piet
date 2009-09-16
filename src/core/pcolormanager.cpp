@@ -20,6 +20,12 @@
 // Qt
 #include <QRgb>
 
+/** \file pcolormanager.cpp
+ * \brief Plik z kodem źródłowym klasy PColorManager
+ *
+ * Plik zawiera kod źródłowy klasy PColorManager.
+ */
+
 PColorManager::PColorManager()
 {
 	debug("CONSTRUCTOR ----- color-manager START\n");

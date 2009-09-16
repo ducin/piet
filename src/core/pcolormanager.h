@@ -22,7 +22,7 @@
  * Plik nagłówkowy zawiera definicję klasy PColorManager.
  */
 
-/** \brief maszyna kodu
+/** \brief Maszyna kodu
  *
  * Klasa odpowiedzialna za właściwe interpretowanie kolorów, determinowanie czy kolor jest standardowy, jeśli niestandardowy - przydziela go do odpowiedniego koloru standardowego wg odpowiedniego algorytmu.
  */

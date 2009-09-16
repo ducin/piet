@@ -18,6 +18,12 @@
 // Qt
 // none
 
+/** \file pconsole.cpp
+ * \brief Plik z kodem źródłowym klasy PConsole
+ *
+ * Plik zawiera kod źródłowy klasy PConsole.
+ */
+
 PConsole::PConsole()
 {
 	debug("CONSTRUCTOR ----- console START\n");

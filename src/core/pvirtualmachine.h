@@ -28,11 +28,11 @@
  * Plik nagłówkowy zawiera definicję klasy PVirtualMachine.
  */
 
-/** \brief wirtualna maszyna Pieta
+/** \brief Wirtualna maszyna Pieta
  *
- * Klasa pełniąca funkcję tzw. "wirtualnej maszyny Pieta", która posiada wszystkie mechanizmy potrzebne do egzekucji kodu Pieta.
+ * Klasa realizująca tzw. "wirtualną maszynę Pieta", która posiada wszystkie mechanizmy potrzebne do egzekucji kodu Pieta.
 
-Klasa sama w sobie posiada niewiele mechanizmów (mówiąc dokładniej: najmniej jak to było możliwe), aby wszystkie szczegółowe operacje wydzielić dla pozostałych klas w obrębie projektu. Wirtualna maszyna zajmuje się (oprócz tworzenia pomocniczych obiektów) tylko egzekucją pojedynczych instrukcji Pieta (oraz związane z tym zatrzymywanie, uruchamianie, przygotowywanie maszyny).
+Klasa sama w sobie posiada niewiele mechanizmów (precyzyjniej: najmniej jak to było możliwe), aby wszystkie szczegółowe operacje wydzielić dla pozostałych klas w obrębie projektu. Wirtualna maszyna zajmuje się (oprócz tworzenia pomocniczych obiektów) tylko egzekucją pojedynczych instrukcji Pieta (oraz związane z tym zatrzymywanie, uruchamianie, przygotowywanie maszyny).
 
 Jej dwoma najważniejszymi elementami są: stos, na którym przechowywane są tymczasowe wartości, oraz tzw. "maszyna kodu", odpowiedzialna za pełną interpretację kodu.
  */

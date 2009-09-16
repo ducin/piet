@@ -22,7 +22,7 @@
  * Plik nagłówkowy zawiera definicję klasy PCalcStack.
  */
 
-/** \brief stos
+/** \brief Stos
  *
  * Klasa pełniąca funkcję stosu wykorzystywanego do interpretowania kodu Pieta. Wszystkie jej funkcjonalności są dokładnie określone przez instrukcje dozwolone w języku Piet - począwszy od podstawowych (kładzenie/zdejmowanie elementów), poprzez arytmetyczne i logiczne (zmieniające elementy na szczycie stosu w zależności od ich wartości) a skończywszy na operacjach sterujących głowicą (przestawianie 'codel chooser' i 'direction pointer' - patrz: specyfikacja Piet), operacjach modyfikujących strukturę elementów stosu oraz operacjach I/O.
 
@@ -49,7 +49,7 @@ class PCalcStack {
 		void prepareToExecute();
 
 		int size();
-		bool hasAtLeastNElements(int);
+		bool hasAtLeastNElements(unsigned int);
 
 	// operacje podstawowe:
 

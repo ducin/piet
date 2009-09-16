@@ -17,6 +17,12 @@
 // Qt
 // none
 
+/** \file pcodepointer.cpp
+ * \brief Plik z kodem źródłowym klasy PCodePointer
+ *
+ * Plik zawiera kod źródłowy klasy PCodePointer.
+ */
+
 PCodePointer::PCodePointer(QImage *code_image, PPoint initial)
 {
 	debug("CONSTRUCTOR ----- code-pointer START\n");

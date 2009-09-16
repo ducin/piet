@@ -19,6 +19,12 @@
 #include <QImage>
 #include <QRgb>
 
+/** \file pblockmanager.cpp
+ * \brief Plik z kodem źródłowym klasy PBlockManager
+ *
+ * Plik zawiera kod źródłowy klasy PBlockManager.
+ */
+
 /** \brief konstruktor klasy PBlockManager
  *
  * xyz...

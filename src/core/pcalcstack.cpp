@@ -17,6 +17,12 @@
 // Qt
 // none
 
+/** \file pcalcstack.cpp
+ * \brief Plik z kodem źródłowym klasy PCalcStack
+ *
+ * Plik zawiera kod źródłowy klasy PCalcStack.
+ */
+
 PCalcStack::PCalcStack()
 {
 	debug("CONSTRUCTOR ----- calc stack START\n");
@@ -50,7 +56,7 @@ int PCalcStack::size()
 	return values.size();
 }
 
-bool PCalcStack::hasAtLeastNElements(int elements)
+bool PCalcStack::hasAtLeastNElements(unsigned int elements)
 {
 	return (values.size() >= elements);
 }

@@ -21,6 +21,12 @@
 #include <QImage>
 #include <QRgb>
 
+/** \file pvirtualmachine.cpp
+ * \brief Plik z kodem źródłowym klasy PVirtualMachine
+ *
+ * Plik zawiera kod źródłowy klasy PVirtualMachine.
+ */
+
 // konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet
 // tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
 PVirtualMachine::PVirtualMachine(QString filename)
@@ -133,6 +139,7 @@ bool PVirtualMachine::startMachine()
 bool PVirtualMachine::restartMachine()
 {
 	prepareToExecute();
+	return true;
 }
 
 bool PVirtualMachine::stopMachine()
@@ -174,7 +181,7 @@ void PVirtualMachine::toggleVerbosity()
 //=========================================================
 
 /**
- * Wykonuje wszystkie instrukcje
+ * Wykonuje WSZYSTKIE instrukcje aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane.
  */
 void PVirtualMachine::executeAllInstr()
 {
@@ -186,7 +193,9 @@ void PVirtualMachine::executeAllInstr()
 	}
 }
 
-// wykonuje pojedynczą instrukcję
+/**
+ * Wykonuje POJEDYNCZĄ instrukcję aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane.
+ */
 bool PVirtualMachine::executeSingleInstr()
 {
 	if (verbose) {
