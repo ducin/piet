@@ -34,13 +34,13 @@ void \hyperlink{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}{executeAl
 \item 
 bool \hyperlink{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}{executeSingleInstr} ()
 \item 
-bool \hyperlink{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}{pointIsBlackOrOutside} (PPoint)
+bool \hyperlink{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}{pointIsBlackOrOutside} (\hyperlink{structstruct__point}{PPoint})
 \item 
-bool \hyperlink{classPVirtualMachine_cae537f70c35487220818e8d18978e07}{pointIsWhite} (PPoint)
+bool \hyperlink{classPVirtualMachine_cae537f70c35487220818e8d18978e07}{pointIsWhite} (\hyperlink{structstruct__point}{PPoint})
 \item 
 void \hyperlink{classPVirtualMachine_e37d4dfa512c3dd97b9958f013ffb7b3}{slidePointerAcrossWhiteBlock} ()
 \item 
-void \hyperlink{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{slideAcrossWhiteBlock} (PPoint \&)
+void \hyperlink{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{slideAcrossWhiteBlock} (\hyperlink{structstruct__point}{PPoint} \&)
 \item 
 \hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \hyperlink{classPVirtualMachine_29279548406a588bce03e320354cd857}{movePointerAndGetInstructionToExecute} ()
 \item 
@@ -206,7 +206,7 @@ Sprawdza, czy maszyna ma włączony tryb gadatliwy \begin{Desc}
 Metoda nakazuje przesunięcie głowicy oraz wyznacza jaka instrukcja ma zostać wykonana (wszystko wykorzystując pomocnicze obiekty wirtualnej maszyny). Jedna z ważniejszych i bardziej skomplikowanych metod całego interpretera. \hypertarget{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}{
 \index{PVirtualMachine@{PVirtualMachine}!pointIsBlackOrOutside@{pointIsBlackOrOutside}}
 \index{pointIsBlackOrOutside@{pointIsBlackOrOutside}!PVirtualMachine@{PVirtualMachine}}
-\subsubsection[{pointIsBlackOrOutside}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::pointIsBlackOrOutside (PPoint {\em point})}}
+\subsubsection[{pointIsBlackOrOutside}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::pointIsBlackOrOutside ({\bf PPoint} {\em point})}}
 \label{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}
 
 
@@ -220,7 +220,7 @@ Sprawdza, czy wskazany punkt jest koloru czarnego lub się znajduje poza granica
 \hypertarget{classPVirtualMachine_cae537f70c35487220818e8d18978e07}{
 \index{PVirtualMachine@{PVirtualMachine}!pointIsWhite@{pointIsWhite}}
 \index{pointIsWhite@{pointIsWhite}!PVirtualMachine@{PVirtualMachine}}
-\subsubsection[{pointIsWhite}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::pointIsWhite (PPoint {\em point})}}
+\subsubsection[{pointIsWhite}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::pointIsWhite ({\bf PPoint} {\em point})}}
 \label{classPVirtualMachine_cae537f70c35487220818e8d18978e07}
 
 
@@ -266,7 +266,7 @@ W każdej chwili istnienia, wirtualna maszyna Pieta musi znajdować się w jakim
 \hypertarget{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{
 \index{PVirtualMachine@{PVirtualMachine}!slideAcrossWhiteBlock@{slideAcrossWhiteBlock}}
 \index{slideAcrossWhiteBlock@{slideAcrossWhiteBlock}!PVirtualMachine@{PVirtualMachine}}
-\subsubsection[{slideAcrossWhiteBlock}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::slideAcrossWhiteBlock (PPoint \& {\em point})}}
+\subsubsection[{slideAcrossWhiteBlock}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::slideAcrossWhiteBlock ({\bf PPoint} \& {\em point})}}
 \label{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}
 
 

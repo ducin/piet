@@ -24,14 +24,14 @@
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00005"></a>00005 
 <a name="l00006"></a>00006 <span class="comment">// piet core</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="penums_8h.html" title="wszystkie definicje enumeracji">penums.h</a>"</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="pstructs_8h.html" title="wszystkie definicje rekordów">pstructs.h</a>"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="penums_8h.html" title="Plik nagłówkowy z definicjami enumeracji.">penums.h</a>"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="pstructs_8h.html" title="Plik nagłówkowy z definicjami rekordów.">pstructs.h</a>"</span>
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="comment">// C++</span>
 <a name="l00011"></a>00011 <span class="comment">// none</span>
 <a name="l00012"></a>00012 
 <a name="l00013"></a>00013 <span class="comment">// STL</span>
-<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;list&gt;</span> <span class="comment">// lista użyta celowo, aby ułatwić wyświetlanie zawartości stosu</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;list&gt;</span> <span class="comment">// lista użyta celowo (a nie stos &lt;stack&gt;), aby ułatwić wyświetlanie zawartości stosu</span>
 <a name="l00015"></a>00015 
 <a name="l00016"></a>00016 <span class="comment">// Qt</span>
 <a name="l00017"></a>00017 <span class="comment">// none</span>
@@ -44,54 +44,54 @@
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040         <span class="keyword">protected</span>:
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042                 std::list&lt;int&gt; values;
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044         <span class="keyword">public</span>:
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046                 <a class="code" href="classPCalcStack.html" title="Stos.">PCalcStack</a>();
-<a name="l00047"></a>00047                 ~<a class="code" href="classPCalcStack.html" title="Stos.">PCalcStack</a>();
+<a name="l00045"></a><a class="code" href="classPCalcStack.html#4777b5f859158a71a18deb0bc0978653">00045</a>                 std::list&lt;int&gt; <a class="code" href="classPCalcStack.html#4777b5f859158a71a18deb0bc0978653">values</a>;
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047         <span class="keyword">public</span>:
 <a name="l00048"></a>00048 
-<a name="l00049"></a>00049                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#6a831a20f4dec457de9f880202cf2e33">setVerbosity</a>(<span class="keywordtype">bool</span>);
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051                 <span class="keywordtype">void</span> clear();
-<a name="l00052"></a>00052                 <span class="keywordtype">void</span> prepareToExecute();
+<a name="l00049"></a>00049                 <a class="code" href="classPCalcStack.html#cc7266cec193eaee5770560743e0b4f2">PCalcStack</a>();
+<a name="l00050"></a>00050                 <a class="code" href="classPCalcStack.html#0576403e030755933fa56263aed99765">~PCalcStack</a>();
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#6a831a20f4dec457de9f880202cf2e33">setVerbosity</a>(<span class="keywordtype">bool</span>);
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054                 <span class="keywordtype">int</span> size();
-<a name="l00055"></a>00055                 <span class="keywordtype">bool</span> hasAtLeastNElements(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);
+<a name="l00054"></a>00054                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#7b1abd7a77db664dcf9e0bd56c17301f">clear</a>();
+<a name="l00055"></a>00055                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#b3129921fea95a4df231201e2601e1c0">prepareToExecute</a>();
 <a name="l00056"></a>00056 
-<a name="l00057"></a>00057         <span class="comment">// operacje podstawowe:</span>
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059                 <span class="keywordtype">void</span> instrPush(<span class="keywordtype">int</span>);
-<a name="l00060"></a>00060                 <span class="keywordtype">int</span> instrPop();
+<a name="l00057"></a>00057                 <span class="keywordtype">int</span> <a class="code" href="classPCalcStack.html#e334a37c1749b028e75e0d251afe47f7">size</a>();
+<a name="l00058"></a>00058                 <span class="keywordtype">bool</span> <a class="code" href="classPCalcStack.html#39d4d9e53e8b57fa934ee1a5b9171dc8">hasAtLeastNElements</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="comment">// operacje podstawowe:</span>
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062         <span class="comment">// operacje arytmetyczne:</span>
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064                 <span class="keywordtype">void</span> instrAdd();
-<a name="l00065"></a>00065                 <span class="keywordtype">void</span> instrSubtract();
-<a name="l00066"></a>00066                 <span class="keywordtype">void</span> instrMultiply();
-<a name="l00067"></a>00067                 <span class="keywordtype">void</span> instrDivide();
-<a name="l00068"></a>00068                 <span class="keywordtype">void</span> instrModulo();
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070         <span class="comment">// operacje logiczne:</span>
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072                 <span class="keywordtype">void</span> instrNot();
-<a name="l00073"></a>00073                 <span class="keywordtype">void</span> instrGreater();
+<a name="l00062"></a>00062                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#269ca0f8f0a4395a0035fa0a9bc813a1">instrPush</a>(<span class="keywordtype">int</span>);
+<a name="l00063"></a>00063                 <span class="keywordtype">int</span> <a class="code" href="classPCalcStack.html#796ba40ffc60b05a8a116d881aa2e37f">instrPop</a>();
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065         <span class="comment">// operacje arytmetyczne:</span>
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#04ef30536acac1b02093153f1cb83353">instrAdd</a>();
+<a name="l00068"></a>00068                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#a35493e8dc971fc2f47a113a6d400784">instrSubtract</a>();
+<a name="l00069"></a>00069                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#0d2b0b03f9a14c875364d4a5dabb6d7a">instrMultiply</a>();
+<a name="l00070"></a>00070                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#f642cacff51d21c2f25487dae1a5b84c">instrDivide</a>();
+<a name="l00071"></a>00071                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#bda10d125ac0b2dee9398ce185435fdb">instrModulo</a>();
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073         <span class="comment">// operacje logiczne:</span>
 <a name="l00074"></a>00074 
-<a name="l00075"></a>00075         <span class="comment">// operacje na strukturze elementów:</span>
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077                 <span class="keywordtype">void</span> instrDuplicate();
-<a name="l00078"></a>00078                 <span class="keywordtype">void</span> instrRoll();
+<a name="l00075"></a>00075                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#5fe0eb9337f3e18416e02c082c14dc66">instrNot</a>();
+<a name="l00076"></a>00076                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#b656cedeb6038c6e3af6e01df21d8c1b">instrGreater</a>();
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <span class="comment">// operacje na strukturze elementów:</span>
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080         <span class="comment">// development:</span>
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082                 <span class="keywordtype">void</span> __dev__printAllStackValues();
-<a name="l00083"></a>00083                 <span class="keywordtype">void</span> __dev__printConsole();
+<a name="l00080"></a>00080                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#0424a6bcacc8bee1a5ff074dea87be1e">instrDuplicate</a>();
+<a name="l00081"></a>00081                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#1be80d765fdc530467d76594d94c6746">instrRoll</a>();
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="comment">// development:</span>
 <a name="l00084"></a>00084 
-<a name="l00085"></a>00085 };
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="preprocessor">#endif</span>
+<a name="l00085"></a>00085                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#e28932817d21f528cb3ebe06471df9a2">__dev__printAllStackValues</a>();
+<a name="l00086"></a>00086                 <span class="keywordtype">void</span> <a class="code" href="classPCalcStack.html#dbfaddfaadb912324c965390a70ae323">__dev__printConsole</a>();
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 };
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 01:48:32 2009 dla Projekt Piet programem&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 23:10:45 2009 dla Projekt Piet programem&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

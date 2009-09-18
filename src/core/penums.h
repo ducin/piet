@@ -2,14 +2,14 @@
 #define P_ENUMS
 
 /** \file penums.h
- * \brief wszystkie definicje enumeracji
+ * \brief Plik nagłówkowy z definicjami enumeracji
  *
  * Plik nagłówkowy zawiera wszystkie definicje enumeracji które są wykorzystywane w projekcie.
  */
 
-/** \brief standardowe kolory
+/** \brief Standardowe kolory
  *
- * Enumeracja wyszczególniająca kolory standardowe wykorzystywane do określania wykonywanej instrukcji
+ * Enumeracja wyszczególniająca kolory standardowe wykorzystywane do określania wykonywanej instrukcji.
  */
 enum PStdColors {
 	color_light_red,
@@ -34,9 +34,9 @@ enum PStdColors {
 	color_black
 };
 
-/** \brief interpretacja niestandardowych kolorów
+/** \brief Interpretacja niestandardowych kolorów
  *
- * Enumeracja wyszczególniająca możliwe sposoby interpretacji kolorów niestandardowych
+ * Enumeracja wyszczególniająca możliwe sposoby interpretacji kolorów niestandardowych.
  */
 enum PNonStdColorBehavior {
 	beh_treat_as_white,
@@ -46,7 +46,7 @@ enum PNonStdColorBehavior {
 	beh_nearest_neighbour
 };
 
-/** \brief tryby codel chooser
+/** \brief Tryby codel chooser
  *
  * Enumeracja wyszczególniająca tryby pracy codel chooser, czyli kierunki w których głowica ma szukać skrajnego kodela po dojściu do granicy bloku w kierunku wskazanym przez direction pointer.
  */
@@ -55,7 +55,7 @@ enum PCodelChooserValues {
 	cc_right
 };
 
-/** \brief tryby direction pointer
+/** \brief Tryby direction pointer
  *
  * Enumeracja wyszczególniająca tryby pracy direction pointer, czyli kierunki w których głowica ma poruszać się aż dojdzie do granicy bloku kolorów (potem codel chooser określa z której strony przejdzie do nowego bloku - dzięki temu glowica przechodzi z jednego bloku kolorów do drugiego i wykonują się instrukcje Pieta).
  */
@@ -81,25 +81,25 @@ enum PMachineStates {
  * Enumeracja wyszczególniająca wszystkie instrukcje wykonywane przez język Piet.
  */
 enum PInstructions {
-	pietInstr_special_empty, /* 0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu */
-	pietInstr_stack_push, /* 1 */
-	pietInstr_stack_pop, /* 2 */
-	pietInstr_arithm_add, /* 3 */
-	pietInstr_arithm_subtract, /* 4 */
-	pietInstr_arithm_multiply, /* 5 */
-	pietInstr_arithm_divide, /* 6 */
-	pietInstr_arithm_modulo, /* 7 */
-	pietInstr_logic_not, /* 8 */
-	pietInstr_logic_greater, /* 9 */
-	pietInstr_runtime_pointer, /* 10 */
-	pietInstr_runtime_switch, /* 11 */
-	pietInstr_stack_duplicate, /* 12 */
-	pietInstr_stack_roll, /* 13 */
-	pietInstr_io_in_number, /* 14 */
-	pietInstr_io_in_char, /* 15 */
-	pietInstr_io_out_number, /* 16 */
-	pietInstr_io_out_char, /* 17 */
-	pietInstr_special_terminate, /* 18 */
+	pietInstr_special_empty, /** 0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu */
+	pietInstr_stack_push, /** 1 - instrukcja PUSH */
+	pietInstr_stack_pop, /** 2 - instrukcja POP */
+	pietInstr_arithm_add, /** 3 - instrukcja ADD */
+	pietInstr_arithm_subtract, /** 4 - instrukcja SUB */
+	pietInstr_arithm_multiply, /** 5 - instrukcja MUL */
+	pietInstr_arithm_divide, /** 6 - instrukcja DIV */
+	pietInstr_arithm_modulo, /** 7 - instrukcja MOD */
+	pietInstr_logic_not, /** 8 - instrukcja NOT */
+	pietInstr_logic_greater, /** 9 - instrukcja GREATER */
+	pietInstr_runtime_pointer, /** 10 - instrukcja POINER */
+	pietInstr_runtime_switch, /** 11 - instrukcja SWITCH */
+	pietInstr_stack_duplicate, /** 12 - instrukcja DUP */
+	pietInstr_stack_roll, /** 13 - instrukcja ROLL */
+	pietInstr_io_in_number, /** 14 - instrukcja IN(number) */
+	pietInstr_io_in_char, /** 15 - instrukcja IN(char) */
+	pietInstr_io_out_number, /** 16 - instrukcja OUT(number) */
+	pietInstr_io_out_char, /** 17 - instrukcja OUT(char) */
+	pietInstr_special_terminate, /* 18 - instrukcja TERMINATE */
 };
 
 #endif

@@ -11,7 +11,7 @@
 // none
 
 // STL
-#include <list> // lista użyta celowo, aby ułatwić wyświetlanie zawartości stosu
+#include <list> // lista użyta celowo (a nie stos <stack>), aby ułatwić wyświetlanie zawartości stosu
 
 // Qt
 // none
@@ -39,6 +39,9 @@ class PCalcStack {
 
 	protected:
 
+		/**
+		 * Struktura przechowująca wszystkie wartości stosu. Jest nią lista a nie stos - celowo - aby ułatwić implementację niektórych operacji: operacji Pieta ROLL. wyświetlanie wszystkich elementów stosu itd. Użycie zwykłego stosu skomplikowałoby zakodowanie tych metod bardzo znacznie - i niepotrzebnie.
+		 */
 		std::list<int> values;
 
 	public:

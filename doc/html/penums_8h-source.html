@@ -22,7 +22,7 @@
 <h1>src/core/penums.h</h1><a href="penums_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef P_ENUMS</span>
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define P_ENUMS</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
-<a name="l00014"></a><a class="code" href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec">00014</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec" title="standardowe kolory">PStdColors</a> {
+<a name="l00014"></a><a class="code" href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec">00014</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#4fb01e50a2da85245f7cea7856eca8ec" title="Standardowe kolory.">PStdColors</a> {
 <a name="l00015"></a>00015         color_light_red,
 <a name="l00016"></a>00016         color_normal_red,
 <a name="l00017"></a>00017         color_dark_red,
@@ -45,7 +45,7 @@
 <a name="l00034"></a>00034         color_black
 <a name="l00035"></a>00035 };
 <a name="l00036"></a>00036 
-<a name="l00041"></a><a class="code" href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776">00041</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776" title="interpretacja niestandardowych kolorów">PNonStdColorBehavior</a> {
+<a name="l00041"></a><a class="code" href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776">00041</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#680063dc1cb094b4c3fb8715c3270776" title="Interpretacja niestandardowych kolorów.">PNonStdColorBehavior</a> {
 <a name="l00042"></a>00042         beh_treat_as_white,
 <a name="l00043"></a>00043         beh_treat_as_black,
 <a name="l00044"></a>00044         beh_nearest_upper,
@@ -53,12 +53,12 @@
 <a name="l00046"></a>00046         beh_nearest_neighbour
 <a name="l00047"></a>00047 };
 <a name="l00048"></a>00048 
-<a name="l00053"></a><a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e">00053</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="tryby codel chooser">PCodelChooserValues</a> {
+<a name="l00053"></a><a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e">00053</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#59dc57d526e2ce263bdf851c0d4fef3e" title="Tryby codel chooser.">PCodelChooserValues</a> {
 <a name="l00054"></a>00054         cc_left,
 <a name="l00055"></a>00055         cc_right
 <a name="l00056"></a>00056 };
 <a name="l00057"></a>00057 
-<a name="l00062"></a><a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df">00062</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="tryby direction pointer">PDirectionPointerValues</a> {
+<a name="l00062"></a><a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df">00062</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#6d3256570150238c718cbbb5f81c82df" title="Tryby direction pointer.">PDirectionPointerValues</a> {
 <a name="l00063"></a>00063         dp_right,
 <a name="l00064"></a>00064         dp_down,
 <a name="l00065"></a>00065         dp_left,
@@ -72,30 +72,30 @@
 <a name="l00077"></a>00077 };
 <a name="l00078"></a>00078 
 <a name="l00083"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a">00083</a> <span class="keyword">enum</span> <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> {
-<a name="l00084"></a>00084         pietInstr_special_empty, <span class="comment">/* 0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu */</span>
-<a name="l00085"></a>00085         pietInstr_stack_push, <span class="comment">/* 1 */</span>
-<a name="l00086"></a>00086         pietInstr_stack_pop, <span class="comment">/* 2 */</span>
-<a name="l00087"></a>00087         pietInstr_arithm_add, <span class="comment">/* 3 */</span>
-<a name="l00088"></a>00088         pietInstr_arithm_subtract, <span class="comment">/* 4 */</span>
-<a name="l00089"></a>00089         pietInstr_arithm_multiply, <span class="comment">/* 5 */</span>
-<a name="l00090"></a>00090         pietInstr_arithm_divide, <span class="comment">/* 6 */</span>
-<a name="l00091"></a>00091         pietInstr_arithm_modulo, <span class="comment">/* 7 */</span>
-<a name="l00092"></a>00092         pietInstr_logic_not, <span class="comment">/* 8 */</span>
-<a name="l00093"></a>00093         pietInstr_logic_greater, <span class="comment">/* 9 */</span>
-<a name="l00094"></a>00094         pietInstr_runtime_pointer, <span class="comment">/* 10 */</span>
-<a name="l00095"></a>00095         pietInstr_runtime_switch, <span class="comment">/* 11 */</span>
-<a name="l00096"></a>00096         pietInstr_stack_duplicate, <span class="comment">/* 12 */</span>
-<a name="l00097"></a>00097         pietInstr_stack_roll, <span class="comment">/* 13 */</span>
-<a name="l00098"></a>00098         pietInstr_io_in_number, <span class="comment">/* 14 */</span>
-<a name="l00099"></a>00099         pietInstr_io_in_char, <span class="comment">/* 15 */</span>
-<a name="l00100"></a>00100         pietInstr_io_out_number, <span class="comment">/* 16 */</span>
-<a name="l00101"></a>00101         pietInstr_io_out_char, <span class="comment">/* 17 */</span>
-<a name="l00102"></a>00102         pietInstr_special_terminate, <span class="comment">/* 18 */</span>
+<a name="l00084"></a>00084         pietInstr_special_empty, 
+<a name="l00085"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a789d88bf87d2da1e369297ba6cadfabb">00085</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a789d88bf87d2da1e369297ba6cadfabb">pietInstr_stack_push</a>, 
+<a name="l00086"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a853afa131fd8094a049d2e2ccdbb636a">00086</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a853afa131fd8094a049d2e2ccdbb636a">pietInstr_stack_pop</a>, 
+<a name="l00087"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a7979824024dddd5b61b66b82e53ee981">00087</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a7979824024dddd5b61b66b82e53ee981">pietInstr_arithm_add</a>, 
+<a name="l00088"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a97b0c06f10f44ead2c27017d44bff22d">00088</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a97b0c06f10f44ead2c27017d44bff22d">pietInstr_arithm_subtract</a>, 
+<a name="l00089"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a184ae081a543d49a8ef82a0447967835">00089</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a184ae081a543d49a8ef82a0447967835">pietInstr_arithm_multiply</a>, 
+<a name="l00090"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83abe2a839d88121a513bb3582c567a2a01">00090</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83abe2a839d88121a513bb3582c567a2a01">pietInstr_arithm_divide</a>, 
+<a name="l00091"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83afc26cd2910d97efe1aa30295d6d86e65">00091</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83afc26cd2910d97efe1aa30295d6d86e65">pietInstr_arithm_modulo</a>, 
+<a name="l00092"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a649cbcd3b416a49a8350cd00289865a3">00092</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a649cbcd3b416a49a8350cd00289865a3">pietInstr_logic_not</a>, 
+<a name="l00093"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a272fe16f093664e0927e557a042d93f4">00093</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a272fe16f093664e0927e557a042d93f4">pietInstr_logic_greater</a>, 
+<a name="l00094"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a0035d7fc7ca1ed7f733a79eb9f4294ef">00094</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a0035d7fc7ca1ed7f733a79eb9f4294ef">pietInstr_runtime_pointer</a>, 
+<a name="l00095"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a86c59da6db4e1ff03d25e55a532033ee">00095</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a86c59da6db4e1ff03d25e55a532033ee">pietInstr_runtime_switch</a>, 
+<a name="l00096"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a1d51c89966910ebf6028e48137f91138">00096</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a1d51c89966910ebf6028e48137f91138">pietInstr_stack_duplicate</a>, 
+<a name="l00097"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a23d450b1624140ff388cb7d08d4c25a8">00097</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a23d450b1624140ff388cb7d08d4c25a8">pietInstr_stack_roll</a>, 
+<a name="l00098"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a3a58aadcfdc3e0615cce284bc36b86db">00098</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a3a58aadcfdc3e0615cce284bc36b86db">pietInstr_io_in_number</a>, 
+<a name="l00099"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a11d47b0649b9d2545e93c38295041420">00099</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a11d47b0649b9d2545e93c38295041420">pietInstr_io_in_char</a>, 
+<a name="l00100"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a6ff91d117360b8037d606a2a089cf1f6">00100</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a6ff91d117360b8037d606a2a089cf1f6">pietInstr_io_out_number</a>, 
+<a name="l00101"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a874042bd0e176772cfcecc0e70ed91a0">00101</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a874042bd0e176772cfcecc0e70ed91a0">pietInstr_io_out_char</a>, 
+<a name="l00102"></a><a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83ae23b8ef2a454f14dddcd8c6394b7363e">00102</a>         <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83ae23b8ef2a454f14dddcd8c6394b7363e">pietInstr_special_terminate</a>, <span class="comment">/* 18 - instrukcja TERMINATE */</span>
 <a name="l00103"></a>00103 };
 <a name="l00104"></a>00104 
 <a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 01:48:32 2009 dla Projekt Piet programem&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 23:10:45 2009 dla Projekt Piet programem&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

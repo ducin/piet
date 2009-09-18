@@ -24,8 +24,8 @@
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00005"></a>00005 
 <a name="l00006"></a>00006 <span class="comment">// piet core</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="penums_8h.html" title="wszystkie definicje enumeracji">penums.h</a>"</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="pstructs_8h.html" title="wszystkie definicje rekordów">pstructs.h</a>"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="penums_8h.html" title="Plik nagłówkowy z definicjami enumeracji.">penums.h</a>"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="pstructs_8h.html" title="Plik nagłówkowy z definicjami rekordów.">pstructs.h</a>"</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#include "<a class="code" href="pconsole_8h.html" title="plik nagłówkowy klasy PConsole">pconsole.h</a>"</span>
 <a name="l00010"></a>00010 <span class="preprocessor">#include "<a class="code" href="pblockmanager_8h.html" title="plik nagłówkowy klasy PBlockManager">pblockmanager.h</a>"</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include "<a class="code" href="pcolormanager_8h.html" title="plik nagłówkowy klasy PColorManager">pcolormanager.h</a>"</span>
@@ -87,10 +87,10 @@
 <a name="l00087"></a>00087                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#40e1780e122ce7fe4ebadc526c47fbea">executeAllInstr</a>(); <span class="comment">// wykonywanie instrukcji do końca działania programu</span>
 <a name="l00088"></a>00088                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#7bbb22aabe782de2208139bc01f65050">executeSingleInstr</a>(); <span class="comment">// wykonanie jednej instrukcji</span>
 <a name="l00089"></a>00089 
-<a name="l00090"></a>00090                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#6daa9fea05af4bfc30b881c893fbd725">pointIsBlackOrOutside</a>(PPoint);
-<a name="l00091"></a>00091                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#cae537f70c35487220818e8d18978e07">pointIsWhite</a>(PPoint);
+<a name="l00090"></a>00090                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#6daa9fea05af4bfc30b881c893fbd725">pointIsBlackOrOutside</a>(<a class="code" href="structstruct__point.html">PPoint</a>);
+<a name="l00091"></a>00091                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#cae537f70c35487220818e8d18978e07">pointIsWhite</a>(<a class="code" href="structstruct__point.html">PPoint</a>);
 <a name="l00092"></a>00092                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#e37d4dfa512c3dd97b9958f013ffb7b3">slidePointerAcrossWhiteBlock</a>();
-<a name="l00093"></a>00093                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#4b2ebb998393324c5240dc48fdb14f3a">slideAcrossWhiteBlock</a>(PPoint &amp;);
+<a name="l00093"></a>00093                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#4b2ebb998393324c5240dc48fdb14f3a">slideAcrossWhiteBlock</a>(<a class="code" href="structstruct__point.html">PPoint</a> &amp;);
 <a name="l00094"></a>00094 
 <a name="l00095"></a>00095                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> <a class="code" href="classPVirtualMachine.html#29279548406a588bce03e320354cd857">movePointerAndGetInstructionToExecute</a>(); <span class="comment">// jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera</span>
 <a name="l00096"></a>00096 
@@ -106,7 +106,7 @@
 <a name="l00106"></a>00106 
 <a name="l00107"></a>00107 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 01:48:32 2009 dla Projekt Piet programem&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Thu Sep 17 23:10:45 2009 dla Projekt Piet programem&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

@@ -55,11 +55,23 @@ class PBlockManager {
 
 	protected:
 
+		/**
+		 * Referencja do obrazu kodu.
+		 */
 		QImage *image;
+		/**
+		 * Referencja do glowicy obrazu kodu.
+		 */
 		PCodePointer *pointer;
-		int codel_block_count; // zmienna przechowująca liczbę kodeli bloku kolorów, świeżo policzoną
+		/**
+		 * Pole przechowujące liczbę kodeli bloku kolorów (liczoną osobno przy wykonywaniu każdej instrukcji przez wirtualną maszynę).
+		 */
+		int codel_block_count;
 
-		int border_right_codel, border_down_codel, border_left_codel, border_up_codel;
+		/** Pole określające odciętą (współrzędną) skrajnego kodela z prawej strony, znajdującego się w aktualnie badanym bloku koloru. */ int border_right_codel;
+		/** Pole określające rzędną (współrzędną) skrajnego kodela z dołu, znajdującego się w aktualnie badanym bloku koloru. */ int border_down_codel;
+		/** Pole określające odciętą (współrzędną) skrajnego kodela z lewej strony, znajdującego się w aktualnie badanym bloku koloru. */ int border_left_codel;
+		/** Pole określające rzędną (współrzędną) skrajnego kodela z góry, znajdującego się w aktualnie badanym bloku koloru. */ int border_up_codel;
 
 		void fillMultiArray(int);
 		void clearMultiArray();

@@ -10,18 +10,15 @@ Głowica obrazu kodu.
 \subsection*{Metody publiczne}
 \begin{CompactItemize}
 \item 
-\hyperlink{classPCodePointer_cd5cd1cd86ff9cf89ac6d2aae5cb52d8}{PCodePointer} (QImage $\ast$, PPoint)
+\hyperlink{classPCodePointer_cd5cd1cd86ff9cf89ac6d2aae5cb52d8}{PCodePointer} (QImage $\ast$, \hyperlink{structstruct__point}{PPoint})
 \item 
 \hyperlink{classPCodePointer_dc12b4bda6ed4b1045b0767b41ff2efa}{$\sim$PCodePointer} ()
 \item 
 void \hyperlink{classPCodePointer_d738019c8cb766c0863e2c00622d9fc9}{setVerbosity} (bool)
 \item 
-\hypertarget{classPCodePointer_fb47282905de53ad98a0c3d76dbd0fb0}{
-void \textbf{clear} ()}
-\label{classPCodePointer_fb47282905de53ad98a0c3d76dbd0fb0}
-
+void \hyperlink{classPCodePointer_fb47282905de53ad98a0c3d76dbd0fb0}{clear} ()
 \item 
-PPoint \hyperlink{classPCodePointer_c792e5bc527542482542ed22acc9cca4}{getCoordinates} ()
+\hyperlink{structstruct__point}{PPoint} \hyperlink{classPCodePointer_c792e5bc527542482542ed22acc9cca4}{getCoordinates} ()
 \item 
 void \hyperlink{classPCodePointer_9bcf58c97f704e3be2deefb588f91312}{setCoordinateX} (int)
 \item 
@@ -35,19 +32,13 @@ void \hyperlink{classPCodePointer_58c15d4d1abb1fb971170f19c3b9e8cf}{incCoordinat
 \item 
 void \hyperlink{classPCodePointer_cc8b95bb3786748c1aff41eed6d299e1}{decCoordinateY} ()
 \item 
-void \hyperlink{classPCodePointer_117bf9322b4fdcb189c41a6f2f113a4b}{setCoordinates} (PPoint)
+void \hyperlink{classPCodePointer_117bf9322b4fdcb189c41a6f2f113a4b}{setCoordinates} (\hyperlink{structstruct__point}{PPoint})
 \item 
-\hypertarget{classPCodePointer_6544ee43112dcafb5fc7c865ced682f0}{
-QRgb \textbf{getPointedPixel} ()}
-\label{classPCodePointer_6544ee43112dcafb5fc7c865ced682f0}
-
+QRgb \hyperlink{classPCodePointer_6544ee43112dcafb5fc7c865ced682f0}{getPointedPixel} ()
 \item 
-\hypertarget{classPCodePointer_e9f3396a98b84d090e820ad37c6dca21}{
-QRgb \textbf{getPixel} (PPoint)}
-\label{classPCodePointer_e9f3396a98b84d090e820ad37c6dca21}
-
+QRgb \hyperlink{classPCodePointer_e9f3396a98b84d090e820ad37c6dca21}{getPixel} (\hyperlink{structstruct__point}{PPoint})
 \item 
-bool \hyperlink{classPCodePointer_a9e836354b61f96ed39208c8b37d57d3}{pointOutsideImage} (PPoint)
+bool \hyperlink{classPCodePointer_a9e836354b61f96ed39208c8b37d57d3}{pointOutsideImage} (\hyperlink{structstruct__point}{PPoint})
 \item 
 \hyperlink{penums_8h_6d3256570150238c718cbbb5f81c82df}{PDirectionPointerValues} \hyperlink{classPCodePointer_e0461a3d72af876b5b3c838a8b45a729}{getDirectionPointerValue} ()
 \item 
@@ -100,7 +91,7 @@ Obok managera kolorów i managera bloków koloru jest trzecim elementem wykorzys
 \hypertarget{classPCodePointer_cd5cd1cd86ff9cf89ac6d2aae5cb52d8}{
 \index{PCodePointer@{PCodePointer}!PCodePointer@{PCodePointer}}
 \index{PCodePointer@{PCodePointer}!PCodePointer@{PCodePointer}}
-\subsubsection[{PCodePointer}]{\setlength{\rightskip}{0pt plus 5cm}PCodePointer::PCodePointer (QImage $\ast$ {\em code\_\-image}, \/  PPoint {\em initial})}}
+\subsubsection[{PCodePointer}]{\setlength{\rightskip}{0pt plus 5cm}PCodePointer::PCodePointer (QImage $\ast$ {\em code\_\-image}, \/  {\bf PPoint} {\em initial})}}
 \label{classPCodePointer_cd5cd1cd86ff9cf89ac6d2aae5cb52d8}
 
 
@@ -142,7 +133,14 @@ METODA TESTOWA. Wyświetla na konsoli informacje o współrzędnych głowicy. \h
 \label{classPCodePointer_103c79ebd3257261d5c72322bc4eb742}
 
 
-METODA TESTOWA. Wyświetla na konsoli informacje o DP. \hypertarget{classPCodePointer_3b98e9637236aa9d975dc59c0397e625}{
+METODA TESTOWA. Wyświetla na konsoli informacje o DP. \hypertarget{classPCodePointer_fb47282905de53ad98a0c3d76dbd0fb0}{
+\index{PCodePointer@{PCodePointer}!clear@{clear}}
+\index{clear@{clear}!PCodePointer@{PCodePointer}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void PCodePointer::clear ()}}
+\label{classPCodePointer_fb47282905de53ad98a0c3d76dbd0fb0}
+
+
+Ustawia atrybuty głowicy (współrzędne oraz DP i CC) na wartości domyślne. \hypertarget{classPCodePointer_3b98e9637236aa9d975dc59c0397e625}{
 \index{PCodePointer@{PCodePointer}!decCoordinateX@{decCoordinateX}}
 \index{decCoordinateX@{decCoordinateX}!PCodePointer@{PCodePointer}}
 \subsubsection[{decCoordinateX}]{\setlength{\rightskip}{0pt plus 5cm}void PCodePointer::decCoordinateX ()}}
@@ -168,7 +166,7 @@ Zwraca wartość DP. \begin{Desc}
 \hypertarget{classPCodePointer_c792e5bc527542482542ed22acc9cca4}{
 \index{PCodePointer@{PCodePointer}!getCoordinates@{getCoordinates}}
 \index{getCoordinates@{getCoordinates}!PCodePointer@{PCodePointer}}
-\subsubsection[{getCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}PPoint PCodePointer::getCoordinates ()}}
+\subsubsection[{getCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PPoint} PCodePointer::getCoordinates ()}}
 \label{classPCodePointer_c792e5bc527542482542ed22acc9cca4}
 
 
@@ -183,6 +181,29 @@ Zwraca współrzędne głowicy. \begin{Desc}
 
 Zwraca wartość DP. \begin{Desc}
 \item[Zwraca:]wartość DP \end{Desc}
+\hypertarget{classPCodePointer_e9f3396a98b84d090e820ad37c6dca21}{
+\index{PCodePointer@{PCodePointer}!getPixel@{getPixel}}
+\index{getPixel@{getPixel}!PCodePointer@{PCodePointer}}
+\subsubsection[{getPixel}]{\setlength{\rightskip}{0pt plus 5cm}QRgb PCodePointer::getPixel ({\bf PPoint} {\em point})}}
+\label{classPCodePointer_e9f3396a98b84d090e820ad37c6dca21}
+
+
+Zwraca piksel o zadanych współrzędnych. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em point}]współrzędne punktu \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]piksel o wskazanych współrzędnych \end{Desc}
+\hypertarget{classPCodePointer_6544ee43112dcafb5fc7c865ced682f0}{
+\index{PCodePointer@{PCodePointer}!getPointedPixel@{getPointedPixel}}
+\index{getPointedPixel@{getPointedPixel}!PCodePointer@{PCodePointer}}
+\subsubsection[{getPointedPixel}]{\setlength{\rightskip}{0pt plus 5cm}QRgb PCodePointer::getPointedPixel ()}}
+\label{classPCodePointer_6544ee43112dcafb5fc7c865ced682f0}
+
+
+Zwraca piksel wskazywany przez głowicę. \begin{Desc}
+\item[Zwraca:]piksel wskazywany przez głowicę \end{Desc}
 \hypertarget{classPCodePointer_ef8324dbdca82baa094e47e36f978669}{
 \index{PCodePointer@{PCodePointer}!incCoordinateX@{incCoordinateX}}
 \index{incCoordinateX@{incCoordinateX}!PCodePointer@{PCodePointer}}
@@ -200,7 +221,7 @@ Inkrementuje współrzędną X głowicy. \hypertarget{classPCodePointer_58c15d4d
 Inkrementuje współrzędną Y głowicy. \hypertarget{classPCodePointer_a9e836354b61f96ed39208c8b37d57d3}{
 \index{PCodePointer@{PCodePointer}!pointOutsideImage@{pointOutsideImage}}
 \index{pointOutsideImage@{pointOutsideImage}!PCodePointer@{PCodePointer}}
-\subsubsection[{pointOutsideImage}]{\setlength{\rightskip}{0pt plus 5cm}bool PCodePointer::pointOutsideImage (PPoint {\em point})}}
+\subsubsection[{pointOutsideImage}]{\setlength{\rightskip}{0pt plus 5cm}bool PCodePointer::pointOutsideImage ({\bf PPoint} {\em point})}}
 \label{classPCodePointer_a9e836354b61f96ed39208c8b37d57d3}
 
 
@@ -226,7 +247,7 @@ Ustala wartość CC. \begin{Desc}
 \hypertarget{classPCodePointer_117bf9322b4fdcb189c41a6f2f113a4b}{
 \index{PCodePointer@{PCodePointer}!setCoordinates@{setCoordinates}}
 \index{setCoordinates@{setCoordinates}!PCodePointer@{PCodePointer}}
-\subsubsection[{setCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}void PCodePointer::setCoordinates (PPoint {\em new\_\-point})}}
+\subsubsection[{setCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}void PCodePointer::setCoordinates ({\bf PPoint} {\em new\_\-point})}}
 \label{classPCodePointer_117bf9322b4fdcb189c41a6f2f113a4b}
 
 

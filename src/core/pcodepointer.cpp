@@ -54,6 +54,9 @@ void PCodePointer::setVerbosity(bool verbosity)
 	verbose = verbosity;
 }
 
+/**
+ * Ustawia atrybuty głowicy (współrzędne oraz DP i CC) na wartości domyślne.
+ */
 void PCodePointer::clear()
 {
 	coords.x = initial_coords.x;
@@ -64,11 +67,20 @@ void PCodePointer::clear()
 
 //==================================================================
 
+/**
+ * Zwraca piksel wskazywany przez głowicę.
+ * @return piksel wskazywany przez głowicę
+ */
 QRgb PCodePointer::getPointedPixel()
 {
 	return image->pixel(coords.x, coords.y);
 }
 
+/**
+ * Zwraca piksel o zadanych współrzędnych.
+ * @param point współrzędne punktu
+ * @return piksel o wskazanych współrzędnych
+ */
 QRgb PCodePointer::getPixel(PPoint point)
 {
 	return image->pixel(point.x, point.y);

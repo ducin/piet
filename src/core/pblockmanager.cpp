@@ -26,7 +26,7 @@
  */
 
 /** 
- * Konstruktor
+ * Konstruktor menadżera bloków. Pobiera informacje o obrazie z których będzie korzystał za każdym razem gdy wirtualna maszyna będzie chciała wykonać jakąkolwiek instrukcję. Ponadto, alokuje pamięć pod 2-wymiarową tablicę pomocniczą służącą do obliczania ilości kodeli w danym bloku koloru.
  */
 PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
 {
@@ -41,7 +41,7 @@ PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
 }
 
 /**
- * Destruktor
+ * Destruktor menadżera bloków. Dealokouje pamięć przeznaczoną dla 2-wymiarowej tablicy pomocniczej służącej do obliczania ilości kodeli w danym bloku koloru.
  */
 PBlockManager::~PBlockManager()
 {
@@ -62,7 +62,9 @@ void PBlockManager::setVerbosity(bool verbosity)
 //==================================================================
 // zarządzanie pomocniczą 2-wymiarową tablicą
 
-// przydziela pamięć pod 2-wymiarową tablicę pomocniczą służącą do obliczenia ilości kodeli w bloku koloru. Metoda wywoływana tylko raz, w konstruktorze. Tablica ta, używana wielokrotnie, jest czyszczona, nie tworzy się jej od nowa przy każdym użyciu.
+/**
+ * Przydziela pamięć pod 2-wymiarową tablicę pomocniczą służącą do obliczenia ilości kodeli w bloku koloru. Metoda wywoływana tylko raz, w konstruktorze. Tablica ta, używana wielokrotnie, jest czyszczona, nie tworzy się jej od nowa przy każdym użyciu.
+ */
 void PBlockManager::allocateMultiArray()
 {
 	fields = new int *[height];
@@ -71,7 +73,9 @@ void PBlockManager::allocateMultiArray()
 	}
 }
 
-// zwalnia pamięć używaną przez 2-wymiarową tablicę pomocniczą. Metoda wywoływana tylko raz, w destruktorze.
+/**
+ * Zwalnia pamięć używaną przez 2-wymiarową tablicę pomocniczą. Metoda wywoływana tylko raz, w destruktorze.
+ */
 void PBlockManager::deallocateMultiArray()
 {
 	for (int i=0; i<height; i++) {
@@ -80,7 +84,9 @@ void PBlockManager::deallocateMultiArray()
 	delete [] fields;
 }
 
-// Metoda wstawia zadaną wartość do kodeli w 2-wymiarowej tablicy pomocniczej.
+/**
+ * Metoda wstawia zadaną wartość do kodeli w 2-wymiarowej tablicy pomocniczej.
+ */
 void PBlockManager::fillMultiArray(int value)
 {
 	for (int i=0; i<height; i++) {
@@ -91,6 +97,9 @@ void PBlockManager::fillMultiArray(int value)
 }
 
 // Metoda, używając metody fillMultiArray (wypełniając zerami) czyści 2-wymiarową tablicę pomocniczą. Oznacza to, że każdy z kodeli jest niesprawdzony, a cała tablica gotowa do ponownego użycia.
+/**
+ * Przydziela pamięć pod 2-wymiarową tablicę pomocniczą służącą do obliczenia ilości kodeli w bloku koloru. Metoda wywoływana tylko raz, w konstruktorze. Tablica ta, używana wielokrotnie, jest czyszczona, nie tworzy się jej od nowa przy każdym użyciu.
+ */
 void PBlockManager::clearMultiArray()
 {
 	fillMultiArray(0);
@@ -141,7 +150,9 @@ void PBlockManager::reqCrawlMultiArray(QRgb seedColor, PPoint seedPoint)
 	}
 }
 
-// Metoda zlicza liczbę kodeli w pomocniczej 2-wymiarowej tabeli (która została właśnie sprawdzona) oznaczonych '1', czyli kodeli spełniających warunek (ten sam kolor co kolor zadany).
+/**
+ * Metoda zlicza liczbę kodeli w pomocniczej 2-wymiarowej tabeli (która została właśnie sprawdzona) oznaczonych '1', czyli kodeli spełniających warunek (ten sam kolor co kolor zadany).
+ */
 void PBlockManager::countCodels()
 {
 	int count = 0;
@@ -153,14 +164,18 @@ void PBlockManager::countCodels()
 	codel_block_count = count;
 }
 
-// Metoda zwraca liczbę kodeli w bloku koloru wskazywanym przez zadane parametrami współrzędne.
-// Najbardziej zewnętrzna metoda całego mechanizmu, używa wielu innych metod.
+/**
+ * Metoda zwraca liczbę kodeli w bloku koloru wskazywanym przez zadane parametrami współrzędne. Najbardziej zewnętrzna metoda całego mechanizmu, używa wielu innych metod.
+ @return rozmiar bloku koloru
+ */
 int PBlockManager::getCodelBlockCount()
 {
 	return codel_block_count; // zwracanie liczby kodeli, przechowywanej w osobnym polu obiektu
 }
 
-// Metoda oznacza odpowiednimi wartościami ('1' lub '2') kodele na pomocniczej 2-wymiarowej tablicy i na koniec zlicza liczbę kodeli.
+/**
+ * Metoda oznacza odpowiednimi wartościami ('1' lub '2') kodele na pomocniczej 2-wymiarowej tablicy i na koniec zlicza liczbę kodeli.
+ */
 void PBlockManager::searchAndFillCodels()
 {
 	clearMultiArray(); // przygotuj tablicę aby można było na niej nanosić oznaczenia (wyzeruj)
@@ -230,6 +245,10 @@ void PBlockManager::findBorderCodels()
 	border_down_codel = h;
 }
 
+/**
+ * Wyznacza współrzędne punktu sąsiadującego bloku kolorów, od którego przesunie się głowica przy aktualnych wartościach DP i CC.
+ * @return współrzedne punktu
+ */
 PPoint PBlockManager::getNextPossibleCodel()
 {
 	PPoint new_point;
@@ -299,8 +318,9 @@ PPoint PBlockManager::getNextPossibleCodel()
 
 //==================================================================
 
-// Metoda testowa.
-// Metoda wyświetla na stdout 2-wymiarową tablicę pomocniczą.
+/**
+ * METODA TESTOWA. Metoda wyświetla na stdout 2-wymiarową tablicę pomocniczą.
+ */
 void PBlockManager::__dev__showMultiArray()
 {
 	for (int i=0; i<height; i++) {
@@ -312,8 +332,9 @@ void PBlockManager::__dev__showMultiArray()
 	std::cout << std::endl;
 }
 
-// Metoda testowa.
-// Metoda wyświetla liczbę kodeli w aktualym bloku kolorów oraz skrajne kodele
+/**
+ * METODA TESTOWA. Metoda wyświetla liczbę kodeli w aktualym bloku kolorów oraz skrajne kodele.
+ */
 void PBlockManager::__dev__showCountAndBorderCodels()
 {
 	std::cout << "kodele:" << codel_block_count;
