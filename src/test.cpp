@@ -79,7 +79,7 @@ void runWelcome()
 	std::cout << std::endl;
 	std::cout << "Interpreter języka Piet" << std::endl;
 	std::cout << "Załącznik do pracy magisterskiej:" << std::endl;
-	std::cout << "\"Języki ezoteryczne Piet i Salvador jako uniwersalne maszyny obliczeniowe\"" << std::endl;
+	std::cout << "\"Graficzne języki programowania na przykładzie języków Piet i Salvador\"" << std::endl;
 	std::cout << "Tomasz Ducin, 2009" << std::endl;
 	setConsoleColor(0);
 	std::cout << std::endl;
@@ -180,7 +180,7 @@ int main(int argc, char **argv)
 	std::ifstream fin(STD_STR_code_path.c_str());
 	if ( !fin )
 	{
-		printFormattedMessage("Plik nie istnieje, sprawdź przyczynę błdu i spróbuj ponownie");
+		printFormattedMessage("Plik nie istnieje, sprawdź przyczynę błędu i spróbuj ponownie");
 		return 2;
 	}
 	// zmienna robocza przechowująca ścieżkę do pliku z kodem Pieta
