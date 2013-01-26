@@ -1,0 +1,84 @@
+\documentclass[a4paper]{book}
+\usepackage{a4wide}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{times}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage[T1]{fontenc}
+
+\usepackage{doxygen}
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large Projekt Piet \\[1ex]\large wersja 1.0 }\\
+\vspace*{1cm}
+{\large Wygenerowano przez Doxygen 1.5.8}\\
+\vspace*{0.5cm}
+{\small Tue Sep 22 04:20:20 2009}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\chapter{Dokumentacja kodu projektu Piet}
+\label{index}\hypertarget{index}{}\input{main}
+\chapter{Indeks klas}
+\input{annotated}
+\chapter{Indeks plików}
+\input{files}
+\chapter{Dokumentacja klas}
+\input{classPBlockManager}
+\include{classPCalcStack}
+\include{classPCodePointer}
+\include{classPColorManager}
+\include{classPConsole}
+\include{classPVirtualMachine}
+\include{structstruct__point}
+\chapter{Dokumentacja plików}
+\input{pblockmanager_8cpp}
+\include{pblockmanager_8h}
+\include{pcalcstack_8cpp}
+\include{pcalcstack_8h}
+\include{pcodepointer_8cpp}
+\include{pcodepointer_8h}
+\include{pcolormanager_8cpp}
+\include{pcolormanager_8h}
+\include{pconsole_8cpp}
+\include{pconsole_8h}
+\include{penums_8h}
+\include{pstructs_8h}
+\include{pvirtualmachine_8cpp}
+\include{pvirtualmachine_8h}
+\include{debug_8h}
+\include{test_8cpp}
+\printindex
+\end{document}

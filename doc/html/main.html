@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Projekt Piet: Dokumentacja kodu projektu Piet</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li class="current"><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li><a href="files.html"><span>Pliki</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentacja kodu projektu Piet</h1>
+<p>
+<h3 align="center">wersja 1.0 </h3><b>Piet</b> to graficzny język programowania autorstwa <b>Davida Morgan-Mar</b>. <b>Interpreter</b> został stworzony przez <b>Tomasza Ducina</b>. Poniższy tekst pochodzi ze wstępu do rozdziału 1, <em>"Język Piet"</em>, pracy magisterskiej Tomasza Ducina pt. <em>"Języki ezoteryczne Piet i Salvador jako uniwersalne maszyny obliczeniowe"</em>.<p>
+Język zawdzięcza swoją nazwę imieniu malarza, Pieta Mondriana, malarza który zapoczątkował gałąź geometrycznego malarstwa abstrakcyjnego. Z założenia, programy mają przypominać obrazy malarstwa abstrakcyjnego.<p>
+Interpreter Pieta wyposażony jest w głowicę, która odczytuje piksle z obrazu, przesuwając się po nim. Dane przetwarzane w trakcie działania programu są umieszczane na stosie.<p>
+Sposób pisania kodu (a szczególnie algorytmów obliczeniowych) różni się bardzo znacząco od programowania w innych językach nie tylko z powodu iż Piet jest językiem graficznym. Najważniejszymi dwiema cechami egzekucji kodu są: [1] porównywanie sąsiednich kolorów w celu wyboru instrukcji do wykonania (za pomocą głowicy) oraz [2] tzw. bloki kolorów (w których sąsiadujące piksle mają ten sam kolor). Na kod Pieta należy patrzeć „całościowo”, ogarniając kształt całości obrazu, a nie tylko dowolne niewielkie fragmenty. To jest właśnie zasadnicza różnica w sposobie programowania między Pietem i językami imperatywnymi (a również Salvadorem). W uproszczeniu, egzekucja kodu imperatywnego może wyglądać tak: „podstaw wartość pod zmienną, następnie na jej podstawie oblicz kolejne wyrażenie i podstaw pod inną zmienną. Teraz, mając przygotowane wszystkie pomocnicze wartości, sprawdzamy jedną z nich: jeśli sprawdzana wartość jest dodatnia, wykonaj blok instrukcji nr 1, jeśli ujemna, wykonaj blok nr 2, jeśli zero, wyświetl komunikat”. W językach imperatywnych mamy ściśle określoną, liniową kolejność wykonywania instrukcji, łatwo nam ją kontrolować. W Piecie natomiast kierunek w którym przesunie się głowica (czyli kolejność wykonywania instrukcji) zależy od trzech czynników: [1] aktualnego kierunku ruchu głowicy, [2] kolorów po których porusza się głowica i [3] kształtu bloków kolorów. Sprawia to, że programowanie skomplikowanych algorytmów jest stosunkowo trudne. </div>
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Tue Sep 22 04:20:20 2009 dla Projekt Piet programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

@@ -1,0 +1,228 @@
+\hypertarget{penums_8h}{
+\section{Dokumentacja pliku src/core/penums.h}
+\label{penums_8h}\index{src/core/penums.h@{src/core/penums.h}}
+}
+Plik nagłówkowy z definicjami enumeracji.  
+
+
+\subsection*{Wyliczenia}
+\begin{CompactItemize}
+\item 
+enum \hyperlink{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}{PStdColors} \{ \par
+\textbf{color\_\-light\_\-red}, 
+\textbf{color\_\-normal\_\-red}, 
+\textbf{color\_\-dark\_\-red}, 
+\textbf{color\_\-light\_\-yellow}, 
+\par
+\textbf{color\_\-normal\_\-yellow}, 
+\textbf{color\_\-dark\_\-yellow}, 
+\textbf{color\_\-light\_\-green}, 
+\textbf{color\_\-normal\_\-green}, 
+\par
+\textbf{color\_\-dark\_\-green}, 
+\textbf{color\_\-light\_\-cyan}, 
+\textbf{color\_\-normal\_\-cyan}, 
+\textbf{color\_\-dark\_\-cyan}, 
+\par
+\textbf{color\_\-light\_\-blue}, 
+\textbf{color\_\-normal\_\-blue}, 
+\textbf{color\_\-dark\_\-blue}, 
+\textbf{color\_\-light\_\-magenta}, 
+\par
+\textbf{color\_\-normal\_\-magenta}, 
+\textbf{color\_\-dark\_\-magenta}, 
+\textbf{color\_\-white}, 
+\textbf{color\_\-black}
+ \}
+\begin{CompactList}\small\item\em Standardowe kolory. \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_680063dc1cb094b4c3fb8715c3270776}{PNonStdColorBehavior} \{ \par
+\textbf{beh\_\-treat\_\-as\_\-white}, 
+\textbf{beh\_\-treat\_\-as\_\-black}, 
+\textbf{beh\_\-nearest\_\-upper}, 
+\textbf{beh\_\-nearest\_\-lower}, 
+\par
+\textbf{beh\_\-nearest\_\-neighbour}
+ \}
+\begin{CompactList}\small\item\em Interpretacja niestandardowych kolorów. \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_59dc57d526e2ce263bdf851c0d4fef3e}{PCodelChooserValues} \{ \textbf{cc\_\-left}, 
+\textbf{cc\_\-right}
+ \}
+\begin{CompactList}\small\item\em Tryby codel chooser. \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_6d3256570150238c718cbbb5f81c82df}{PDirectionPointerValues} \{ \textbf{dp\_\-right}, 
+\textbf{dp\_\-down}, 
+\textbf{dp\_\-left}, 
+\textbf{dp\_\-up}
+ \}
+\begin{CompactList}\small\item\em Tryby direction pointer. \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_3b12ec7c990da3435462047165bc0c6d}{PMachineStates} \{ \textbf{state\_\-ready}, 
+\textbf{state\_\-running}, 
+\textbf{state\_\-finished}
+ \}
+\begin{CompactList}\small\item\em stany maszyny wirtualnej \item\end{CompactList}\item 
+enum \hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \{ \par
+\textbf{pietInstr\_\-special\_\-empty}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a789d88bf87d2da1e369297ba6cadfabb}{pietInstr\_\-stack\_\-push}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a853afa131fd8094a049d2e2ccdbb636a}{pietInstr\_\-stack\_\-pop}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a7979824024dddd5b61b66b82e53ee981}{pietInstr\_\-arithm\_\-add}, 
+\par
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a97b0c06f10f44ead2c27017d44bff22d}{pietInstr\_\-arithm\_\-subtract}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a184ae081a543d49a8ef82a0447967835}{pietInstr\_\-arithm\_\-multiply}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83abe2a839d88121a513bb3582c567a2a01}{pietInstr\_\-arithm\_\-divide}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83afc26cd2910d97efe1aa30295d6d86e65}{pietInstr\_\-arithm\_\-modulo}, 
+\par
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a649cbcd3b416a49a8350cd00289865a3}{pietInstr\_\-logic\_\-not}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a272fe16f093664e0927e557a042d93f4}{pietInstr\_\-logic\_\-greater}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a0035d7fc7ca1ed7f733a79eb9f4294ef}{pietInstr\_\-runtime\_\-pointer}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a86c59da6db4e1ff03d25e55a532033ee}{pietInstr\_\-runtime\_\-switch}, 
+\par
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a1d51c89966910ebf6028e48137f91138}{pietInstr\_\-stack\_\-duplicate}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a23d450b1624140ff388cb7d08d4c25a8}{pietInstr\_\-stack\_\-roll}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a3a58aadcfdc3e0615cce284bc36b86db}{pietInstr\_\-io\_\-in\_\-number}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a11d47b0649b9d2545e93c38295041420}{pietInstr\_\-io\_\-in\_\-char}, 
+\par
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a6ff91d117360b8037d606a2a089cf1f6}{pietInstr\_\-io\_\-out\_\-number}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a874042bd0e176772cfcecc0e70ed91a0}{pietInstr\_\-io\_\-out\_\-char}, 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83ae23b8ef2a454f14dddcd8c6394b7363e}{pietInstr\_\-special\_\-terminate}
+ \}
+\begin{CompactList}\small\item\em instrukcje Pieta \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Plik nagłówkowy z definicjami enumeracji. 
+
+Plik nagłówkowy zawiera wszystkie definicje enumeracji które są wykorzystywane w projekcie. 
+
+\subsection{Dokumentacja typów wyliczanych}
+\hypertarget{penums_8h_59dc57d526e2ce263bdf851c0d4fef3e}{
+\index{penums.h@{penums.h}!PCodelChooserValues@{PCodelChooserValues}}
+\index{PCodelChooserValues@{PCodelChooserValues}!penums.h@{penums.h}}
+\subsubsection[{PCodelChooserValues}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PCodelChooserValues}}}
+\label{penums_8h_59dc57d526e2ce263bdf851c0d4fef3e}
+
+
+Tryby codel chooser. 
+
+Enumeracja wyszczególniająca tryby pracy codel chooser, czyli kierunki w których głowica ma szukać skrajnego kodela po dojściu do granicy bloku w kierunku wskazanym przez direction pointer. \hypertarget{penums_8h_6d3256570150238c718cbbb5f81c82df}{
+\index{penums.h@{penums.h}!PDirectionPointerValues@{PDirectionPointerValues}}
+\index{PDirectionPointerValues@{PDirectionPointerValues}!penums.h@{penums.h}}
+\subsubsection[{PDirectionPointerValues}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PDirectionPointerValues}}}
+\label{penums_8h_6d3256570150238c718cbbb5f81c82df}
+
+
+Tryby direction pointer. 
+
+Enumeracja wyszczególniająca tryby pracy direction pointer, czyli kierunki w których głowica ma poruszać się aż dojdzie do granicy bloku kolorów (potem codel chooser określa z której strony przejdzie do nowego bloku - dzięki temu glowica przechodzi z jednego bloku kolorów do drugiego i wykonują się instrukcje Pieta). \hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a}{
+\index{penums.h@{penums.h}!PInstructions@{PInstructions}}
+\index{PInstructions@{PInstructions}!penums.h@{penums.h}}
+\subsubsection[{PInstructions}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PInstructions}}}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a}
+
+
+instrukcje Pieta 
+
+Enumeracja wyszczególniająca wszystkie instrukcje wykonywane przez język Piet. \begin{Desc}
+\item[Wartości wyliczeń: ]\par
+\begin{description}
+\index{pietInstr\_\-stack\_\-push@{pietInstr\_\-stack\_\-push}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-stack\_\-push@{pietInstr\_\-stack\_\-push}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a789d88bf87d2da1e369297ba6cadfabb}{
+pietInstr\_\-stack\_\-push}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a789d88bf87d2da1e369297ba6cadfabb}
+}]0 - dodatkowa instrukcja wysyłana do wirtualnej maszyny komunikująca o 8 nieudanych próbach wykonania przez głowicę ruchu, zakończenie pracy programu \index{pietInstr\_\-stack\_\-pop@{pietInstr\_\-stack\_\-pop}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-stack\_\-pop@{pietInstr\_\-stack\_\-pop}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a853afa131fd8094a049d2e2ccdbb636a}{
+pietInstr\_\-stack\_\-pop}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a853afa131fd8094a049d2e2ccdbb636a}
+}]1 - instrukcja PUSH \index{pietInstr\_\-arithm\_\-add@{pietInstr\_\-arithm\_\-add}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-arithm\_\-add@{pietInstr\_\-arithm\_\-add}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a7979824024dddd5b61b66b82e53ee981}{
+pietInstr\_\-arithm\_\-add}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a7979824024dddd5b61b66b82e53ee981}
+}]2 - instrukcja POP \index{pietInstr\_\-arithm\_\-subtract@{pietInstr\_\-arithm\_\-subtract}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-arithm\_\-subtract@{pietInstr\_\-arithm\_\-subtract}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a97b0c06f10f44ead2c27017d44bff22d}{
+pietInstr\_\-arithm\_\-subtract}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a97b0c06f10f44ead2c27017d44bff22d}
+}]3 - instrukcja ADD \index{pietInstr\_\-arithm\_\-multiply@{pietInstr\_\-arithm\_\-multiply}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-arithm\_\-multiply@{pietInstr\_\-arithm\_\-multiply}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a184ae081a543d49a8ef82a0447967835}{
+pietInstr\_\-arithm\_\-multiply}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a184ae081a543d49a8ef82a0447967835}
+}]4 - instrukcja SUB \index{pietInstr\_\-arithm\_\-divide@{pietInstr\_\-arithm\_\-divide}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-arithm\_\-divide@{pietInstr\_\-arithm\_\-divide}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83abe2a839d88121a513bb3582c567a2a01}{
+pietInstr\_\-arithm\_\-divide}
+\label{penums_8h_797d2a71195500b970298fbf455ff83abe2a839d88121a513bb3582c567a2a01}
+}]5 - instrukcja MUL \index{pietInstr\_\-arithm\_\-modulo@{pietInstr\_\-arithm\_\-modulo}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-arithm\_\-modulo@{pietInstr\_\-arithm\_\-modulo}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83afc26cd2910d97efe1aa30295d6d86e65}{
+pietInstr\_\-arithm\_\-modulo}
+\label{penums_8h_797d2a71195500b970298fbf455ff83afc26cd2910d97efe1aa30295d6d86e65}
+}]6 - instrukcja DIV \index{pietInstr\_\-logic\_\-not@{pietInstr\_\-logic\_\-not}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-logic\_\-not@{pietInstr\_\-logic\_\-not}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a649cbcd3b416a49a8350cd00289865a3}{
+pietInstr\_\-logic\_\-not}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a649cbcd3b416a49a8350cd00289865a3}
+}]7 - instrukcja MOD \index{pietInstr\_\-logic\_\-greater@{pietInstr\_\-logic\_\-greater}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-logic\_\-greater@{pietInstr\_\-logic\_\-greater}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a272fe16f093664e0927e557a042d93f4}{
+pietInstr\_\-logic\_\-greater}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a272fe16f093664e0927e557a042d93f4}
+}]8 - instrukcja NOT \index{pietInstr\_\-runtime\_\-pointer@{pietInstr\_\-runtime\_\-pointer}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-runtime\_\-pointer@{pietInstr\_\-runtime\_\-pointer}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a0035d7fc7ca1ed7f733a79eb9f4294ef}{
+pietInstr\_\-runtime\_\-pointer}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a0035d7fc7ca1ed7f733a79eb9f4294ef}
+}]9 - instrukcja GREATER \index{pietInstr\_\-runtime\_\-switch@{pietInstr\_\-runtime\_\-switch}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-runtime\_\-switch@{pietInstr\_\-runtime\_\-switch}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a86c59da6db4e1ff03d25e55a532033ee}{
+pietInstr\_\-runtime\_\-switch}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a86c59da6db4e1ff03d25e55a532033ee}
+}]10 - instrukcja POINER \index{pietInstr\_\-stack\_\-duplicate@{pietInstr\_\-stack\_\-duplicate}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-stack\_\-duplicate@{pietInstr\_\-stack\_\-duplicate}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a1d51c89966910ebf6028e48137f91138}{
+pietInstr\_\-stack\_\-duplicate}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a1d51c89966910ebf6028e48137f91138}
+}]11 - instrukcja SWITCH \index{pietInstr\_\-stack\_\-roll@{pietInstr\_\-stack\_\-roll}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-stack\_\-roll@{pietInstr\_\-stack\_\-roll}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a23d450b1624140ff388cb7d08d4c25a8}{
+pietInstr\_\-stack\_\-roll}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a23d450b1624140ff388cb7d08d4c25a8}
+}]12 - instrukcja DUP \index{pietInstr\_\-io\_\-in\_\-number@{pietInstr\_\-io\_\-in\_\-number}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-io\_\-in\_\-number@{pietInstr\_\-io\_\-in\_\-number}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a3a58aadcfdc3e0615cce284bc36b86db}{
+pietInstr\_\-io\_\-in\_\-number}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a3a58aadcfdc3e0615cce284bc36b86db}
+}]13 - instrukcja ROLL \index{pietInstr\_\-io\_\-in\_\-char@{pietInstr\_\-io\_\-in\_\-char}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-io\_\-in\_\-char@{pietInstr\_\-io\_\-in\_\-char}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a11d47b0649b9d2545e93c38295041420}{
+pietInstr\_\-io\_\-in\_\-char}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a11d47b0649b9d2545e93c38295041420}
+}]14 - instrukcja IN(number) \index{pietInstr\_\-io\_\-out\_\-number@{pietInstr\_\-io\_\-out\_\-number}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-io\_\-out\_\-number@{pietInstr\_\-io\_\-out\_\-number}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a6ff91d117360b8037d606a2a089cf1f6}{
+pietInstr\_\-io\_\-out\_\-number}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a6ff91d117360b8037d606a2a089cf1f6}
+}]15 - instrukcja IN(char) \index{pietInstr\_\-io\_\-out\_\-char@{pietInstr\_\-io\_\-out\_\-char}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-io\_\-out\_\-char@{pietInstr\_\-io\_\-out\_\-char}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83a874042bd0e176772cfcecc0e70ed91a0}{
+pietInstr\_\-io\_\-out\_\-char}
+\label{penums_8h_797d2a71195500b970298fbf455ff83a874042bd0e176772cfcecc0e70ed91a0}
+}]16 - instrukcja OUT(number) \index{pietInstr\_\-special\_\-terminate@{pietInstr\_\-special\_\-terminate}!penums.h@{penums.h}}\index{penums.h@{penums.h}!pietInstr\_\-special\_\-terminate@{pietInstr\_\-special\_\-terminate}}\item[{\em 
+\hypertarget{penums_8h_797d2a71195500b970298fbf455ff83ae23b8ef2a454f14dddcd8c6394b7363e}{
+pietInstr\_\-special\_\-terminate}
+\label{penums_8h_797d2a71195500b970298fbf455ff83ae23b8ef2a454f14dddcd8c6394b7363e}
+}]17 - instrukcja OUT(char) \end{description}
+\end{Desc}
+
+\hypertarget{penums_8h_3b12ec7c990da3435462047165bc0c6d}{
+\index{penums.h@{penums.h}!PMachineStates@{PMachineStates}}
+\index{PMachineStates@{PMachineStates}!penums.h@{penums.h}}
+\subsubsection[{PMachineStates}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PMachineStates}}}
+\label{penums_8h_3b12ec7c990da3435462047165bc0c6d}
+
+
+stany maszyny wirtualnej 
+
+Enumeracja wyszczególniająca stany tzw. \char`\"{}maszyny wirtualnej Pieta\char`\"{}, która zajmuje się pełną interpretacją kodu Pieta. \hypertarget{penums_8h_680063dc1cb094b4c3fb8715c3270776}{
+\index{penums.h@{penums.h}!PNonStdColorBehavior@{PNonStdColorBehavior}}
+\index{PNonStdColorBehavior@{PNonStdColorBehavior}!penums.h@{penums.h}}
+\subsubsection[{PNonStdColorBehavior}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PNonStdColorBehavior}}}
+\label{penums_8h_680063dc1cb094b4c3fb8715c3270776}
+
+
+Interpretacja niestandardowych kolorów. 
+
+Enumeracja wyszczególniająca możliwe sposoby interpretacji kolorów niestandardowych. \hypertarget{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}{
+\index{penums.h@{penums.h}!PStdColors@{PStdColors}}
+\index{PStdColors@{PStdColors}!penums.h@{penums.h}}
+\subsubsection[{PStdColors}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf PStdColors}}}
+\label{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}
+
+
+Standardowe kolory. 
+
+Enumeracja wyszczególniająca kolory standardowe wykorzystywane do określania wykonywanej instrukcji. 

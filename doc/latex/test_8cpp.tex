@@ -1,0 +1,126 @@
+\hypertarget{test_8cpp}{
+\section{Dokumentacja pliku src/test.cpp}
+\label{test_8cpp}\index{src/test.cpp@{src/test.cpp}}
+}
+Plik z kodem źródłowym aplikacji.  
+
+
+{\tt \#include \char`\"{}core/pvirtualmachine.h\char`\"{}}\par
+{\tt \#include \char`\"{}core/penums.h\char`\"{}}\par
+{\tt \#include \char`\"{}debug.h\char`\"{}}\par
+{\tt \#include $<$iostream$>$}\par
+{\tt \#include $<$fstream$>$}\par
+{\tt \#include $<$string$>$}\par
+{\tt \#include $<$QString$>$}\par
+\subsection*{Funkcje}
+\begin{CompactItemize}
+\item 
+void \hyperlink{test_8cpp_3ebfca17648870bd0b802e3742db1b51}{setConsoleColor} (int color)
+\item 
+void \hyperlink{test_8cpp_d15ce8354f955da3aa71e04a89011c50}{printFormattedError} (std::string error)
+\item 
+void \hyperlink{test_8cpp_b771de3d51d2056379290ba1f7f981f2}{printFormattedMessage} (std::string message)
+\item 
+void \hyperlink{test_8cpp_4daa93846a5ef739539e10772d176bc1}{runWelcome} ()
+\item 
+int \hyperlink{test_8cpp_a01ef0daafd23a3cca3b70eb23e01151}{runMenu} ()
+\item 
+void \hyperlink{test_8cpp_ace6b288e5cbf8113bb8b224b95fc08f}{runProgram} ()
+\item 
+int \hyperlink{test_8cpp_3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{CompactItemize}
+\subsection*{Zmienne}
+\begin{CompactItemize}
+\item 
+\hyperlink{classPVirtualMachine}{PVirtualMachine} $\ast$ \hyperlink{test_8cpp_18860b292576393855fd861b9b5a2499}{m}
+\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Plik z kodem źródłowym aplikacji. 
+
+Plik zawiera kod źródłowy aplikacji testującej interpreter języka Piet. Program przeznaczony do użytku pod konsolą systemu Unix. 
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{test_8cpp_3c04138a5bfe5d72780bb7e82a18e627}{
+\index{test.cpp@{test.cpp}!main@{main}}
+\index{main@{main}!test.cpp@{test.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$$\ast$ {\em argv})}}
+\label{test_8cpp_3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Procedura wejściowa aplikacji, pośrednicząca z linią poleceń (wczytuje nazwę programu z tablicy parametrów). Tworzy wszystkie potrzebne zmienne i wywołuje \hyperlink{test_8cpp_ace6b288e5cbf8113bb8b224b95fc08f}{runProgram()}. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em argc}]liczba parametrów pobranych z komendy uruchamiającej program \item[{\em argv}]tablica z wartościami parametrów pobranych z komendy uruchamiającej program \end{description}
+\end{Desc}
+\hypertarget{test_8cpp_d15ce8354f955da3aa71e04a89011c50}{
+\index{test.cpp@{test.cpp}!printFormattedError@{printFormattedError}}
+\index{printFormattedError@{printFormattedError}!test.cpp@{test.cpp}}
+\subsubsection[{printFormattedError}]{\setlength{\rightskip}{0pt plus 5cm}void printFormattedError (std::string {\em error})}}
+\label{test_8cpp_d15ce8354f955da3aa71e04a89011c50}
+
+
+Wyświetla komunikat błędu na konsolę. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em error}]tekst komunikatu błędu \end{description}
+\end{Desc}
+\hypertarget{test_8cpp_b771de3d51d2056379290ba1f7f981f2}{
+\index{test.cpp@{test.cpp}!printFormattedMessage@{printFormattedMessage}}
+\index{printFormattedMessage@{printFormattedMessage}!test.cpp@{test.cpp}}
+\subsubsection[{printFormattedMessage}]{\setlength{\rightskip}{0pt plus 5cm}void printFormattedMessage (std::string {\em message})}}
+\label{test_8cpp_b771de3d51d2056379290ba1f7f981f2}
+
+
+Wyświetla standardowy komunikat na konsolę. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em message}]tekst standardowego komunikatu \end{description}
+\end{Desc}
+\hypertarget{test_8cpp_a01ef0daafd23a3cca3b70eb23e01151}{
+\index{test.cpp@{test.cpp}!runMenu@{runMenu}}
+\index{runMenu@{runMenu}!test.cpp@{test.cpp}}
+\subsubsection[{runMenu}]{\setlength{\rightskip}{0pt plus 5cm}int runMenu ()}}
+\label{test_8cpp_a01ef0daafd23a3cca3b70eb23e01151}
+
+
+Wyświetla menu programu, prosi użytkownika o wybór zadania i zwraca ów wybór. \begin{Desc}
+\item[Zwraca:]numer zadania wybrany przez użytkownika \end{Desc}
+\hypertarget{test_8cpp_ace6b288e5cbf8113bb8b224b95fc08f}{
+\index{test.cpp@{test.cpp}!runProgram@{runProgram}}
+\index{runProgram@{runProgram}!test.cpp@{test.cpp}}
+\subsubsection[{runProgram}]{\setlength{\rightskip}{0pt plus 5cm}void runProgram ()}}
+\label{test_8cpp_ace6b288e5cbf8113bb8b224b95fc08f}
+
+
+Główna procedura całej aplikacji. Wyświetla przywitanie, potem w pętli pobiera od użytkownika numer zadania i wykonuje je. Działanie programu zależy od decyzji użytkownika. \hypertarget{test_8cpp_4daa93846a5ef739539e10772d176bc1}{
+\index{test.cpp@{test.cpp}!runWelcome@{runWelcome}}
+\index{runWelcome@{runWelcome}!test.cpp@{test.cpp}}
+\subsubsection[{runWelcome}]{\setlength{\rightskip}{0pt plus 5cm}void runWelcome ()}}
+\label{test_8cpp_4daa93846a5ef739539e10772d176bc1}
+
+
+Wyświetla tekst powitalny programu. \hypertarget{test_8cpp_3ebfca17648870bd0b802e3742db1b51}{
+\index{test.cpp@{test.cpp}!setConsoleColor@{setConsoleColor}}
+\index{setConsoleColor@{setConsoleColor}!test.cpp@{test.cpp}}
+\subsubsection[{setConsoleColor}]{\setlength{\rightskip}{0pt plus 5cm}void setConsoleColor (int {\em color})}}
+\label{test_8cpp_3ebfca17648870bd0b802e3742db1b51}
+
+
+Ustawia kolor czcionki konsoli Unix. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em color}]liczba definiująca kolor czcionki pod konsolą (escape string) \end{description}
+\end{Desc}
+
+
+\subsection{Dokumentacja zmiennych}
+\hypertarget{test_8cpp_18860b292576393855fd861b9b5a2499}{
+\index{test.cpp@{test.cpp}!m@{m}}
+\index{m@{m}!test.cpp@{test.cpp}}
+\subsubsection[{m}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PVirtualMachine}$\ast$ {\bf m}}}
+\label{test_8cpp_18860b292576393855fd861b9b5a2499}
+
+
+Wirtualna maszyna Pieta - globalna zmienna 

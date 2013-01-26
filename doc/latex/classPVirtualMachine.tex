@@ -1,0 +1,332 @@
+\hypertarget{classPVirtualMachine}{
+\section{Dokumentacja klasy PVirtualMachine}
+\label{classPVirtualMachine}\index{PVirtualMachine@{PVirtualMachine}}
+}
+Wirtualna maszyna Pieta.  
+
+
+{\tt \#include $<$pvirtualmachine.h$>$}
+
+\subsection*{Metody publiczne}
+\begin{CompactItemize}
+\item 
+\hyperlink{classPVirtualMachine_0af0326622a3f47b6c2020413cdd3e05}{PVirtualMachine} (QString)
+\item 
+\hyperlink{classPVirtualMachine_4b24d240f1a45515cf4c8d4df932da62}{$\sim$PVirtualMachine} ()
+\item 
+bool \hyperlink{classPVirtualMachine_5132bedd5e8480185b48ea6c4783c770}{isReady} ()
+\item 
+bool \hyperlink{classPVirtualMachine_823195d3ae1615c791dfeb6c8d365a0e}{isRunning} ()
+\item 
+bool \hyperlink{classPVirtualMachine_6b19e3e51a584b13e79c44fc5b842c2b}{isFinished} ()
+\item 
+bool \hyperlink{classPVirtualMachine_4b6bb128d63569e855684128b5e09f1c}{startMachine} ()
+\item 
+bool \hyperlink{classPVirtualMachine_f4cdf5d80b7a169e2dfdebffe2588e4b}{restartMachine} ()
+\item 
+bool \hyperlink{classPVirtualMachine_fa30f1871832c1af18519db03c397ac0}{stopMachine} ()
+\item 
+bool \hyperlink{classPVirtualMachine_219cd1d08de6d3d5a9117eecc5348d9c}{isVerbose} ()
+\item 
+void \hyperlink{classPVirtualMachine_1e48dcf68b3b80d7f6d3c67b3f796e51}{toggleVerbosity} ()
+\item 
+void \hyperlink{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}{executeAllInstr} ()
+\item 
+bool \hyperlink{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}{executeSingleInstr} ()
+\item 
+bool \hyperlink{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}{pointIsBlackOrOutside} (\hyperlink{structstruct__point}{PPoint})
+\item 
+bool \hyperlink{classPVirtualMachine_cae537f70c35487220818e8d18978e07}{pointIsWhite} (\hyperlink{structstruct__point}{PPoint})
+\item 
+void \hyperlink{classPVirtualMachine_e37d4dfa512c3dd97b9958f013ffb7b3}{slidePointerAcrossWhiteBlock} ()
+\item 
+void \hyperlink{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{slideAcrossWhiteBlock} (\hyperlink{structstruct__point}{PPoint} \&)
+\item 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \hyperlink{classPVirtualMachine_29279548406a588bce03e320354cd857}{movePointerAndGetInstructionToExecute} ()
+\item 
+\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions} \hyperlink{classPVirtualMachine_69d12176d3f9719b2bdf93a9f55cefde}{getInstructionByIndex} (int)
+\item 
+void \hyperlink{classPVirtualMachine_91c888349242ed7700d5ddff5b187c19}{\_\-\_\-dev\_\-\_\-printInstruction} (\hyperlink{penums_8h_797d2a71195500b970298fbf455ff83a}{PInstructions})
+\item 
+void \hyperlink{classPVirtualMachine_d0ac4994cbf5c218a40442df49a3cd29}{\_\-\_\-dev\_\-\_\-printImageInfo} ()
+\item 
+void \hyperlink{classPVirtualMachine_9fbb7c0313e22051eebfd2e316ec609b}{\_\-\_\-dev\_\-\_\-printConsole} ()
+\end{CompactItemize}
+\subsection*{Metody chronione}
+\begin{CompactItemize}
+\item 
+\hyperlink{penums_8h_3b12ec7c990da3435462047165bc0c6d}{PMachineStates} \hyperlink{classPVirtualMachine_699839f4df2106065458127c36b4bfca}{getState} ()
+\begin{CompactList}\small\item\em zwraca stan wirtualnej maszyny Salvadora \item\end{CompactList}\item 
+void \hyperlink{classPVirtualMachine_bede8c1e068c19b9bc61a957de70cda8}{setState} (\hyperlink{penums_8h_3b12ec7c990da3435462047165bc0c6d}{PMachineStates})
+\begin{CompactList}\small\item\em ustawia stan wirtualnej maszyny Salvadora \item\end{CompactList}\item 
+void \hyperlink{classPVirtualMachine_513af8673f1430cd04fd0a0e46abedd4}{prepareToExecute} ()
+\begin{CompactList}\small\item\em Przygotowanie do uruchomienia/zresetowania wirtualnej maszyny. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Atrybuty chronione}
+\begin{CompactItemize}
+\item 
+\hyperlink{classPCalcStack}{PCalcStack} $\ast$ \hyperlink{classPVirtualMachine_fe929445de96589087a96a8f1188fac0}{stack}
+\item 
+\hyperlink{classPConsole}{PConsole} $\ast$ \hyperlink{classPVirtualMachine_67feeb2d88b4c8b766d10d6f7d8eb65b}{console}
+\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Wirtualna maszyna Pieta. 
+
+Klasa realizująca tzw. \char`\"{}wirtualną maszynę Pieta\char`\"{}, która posiada wszystkie mechanizmy potrzebne do egzekucji kodu Pieta.
+
+Klasa sama w sobie posiada niewiele mechanizmów (precyzyjniej: najmniej jak to było możliwe), aby wszystkie szczegółowe operacje wydzielić dla pozostałych klas w obrębie projektu. Wirtualna maszyna zajmuje się (oprócz tworzenia pomocniczych obiektów) tylko egzekucją pojedynczych instrukcji Pieta (oraz związane z tym zatrzymywanie, uruchamianie, przygotowywanie maszyny).
+
+Jej dwoma najważniejszymi elementami są: stos, na którym przechowywane są tymczasowe wartości, oraz tzw. \char`\"{}maszyna kodu\char`\"{}, odpowiedzialna za pełną interpretację kodu. 
+
+\subsection{Dokumentacja konstruktora i destruktora}
+\hypertarget{classPVirtualMachine_0af0326622a3f47b6c2020413cdd3e05}{
+\index{PVirtualMachine@{PVirtualMachine}!PVirtualMachine@{PVirtualMachine}}
+\index{PVirtualMachine@{PVirtualMachine}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{PVirtualMachine}]{\setlength{\rightskip}{0pt plus 5cm}PVirtualMachine::PVirtualMachine (QString {\em filename})}}
+\label{classPVirtualMachine_0af0326622a3f47b6c2020413cdd3e05}
+
+
+Konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet. Tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę. \hypertarget{classPVirtualMachine_4b24d240f1a45515cf4c8d4df932da62}{
+\index{PVirtualMachine@{PVirtualMachine}!$\sim$PVirtualMachine@{$\sim$PVirtualMachine}}
+\index{$\sim$PVirtualMachine@{$\sim$PVirtualMachine}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{$\sim$PVirtualMachine}]{\setlength{\rightskip}{0pt plus 5cm}PVirtualMachine::$\sim$PVirtualMachine ()}}
+\label{classPVirtualMachine_4b24d240f1a45515cf4c8d4df932da62}
+
+
+Destruktor wirtualnej maszyny Pieta. Wywołuje destruktory dla pomocniczych obiektów tworzonych w konstruktorze wirtualnej maszyny. 
+
+\subsection{Dokumentacja funkcji składowych}
+\hypertarget{classPVirtualMachine_9fbb7c0313e22051eebfd2e316ec609b}{
+\index{PVirtualMachine@{PVirtualMachine}!\_\-\_\-dev\_\-\_\-printConsole@{\_\-\_\-dev\_\-\_\-printConsole}}
+\index{\_\-\_\-dev\_\-\_\-printConsole@{\_\-\_\-dev\_\-\_\-printConsole}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{\_\-\_\-dev\_\-\_\-printConsole}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::\_\-\_\-dev\_\-\_\-printConsole ()}}
+\label{classPVirtualMachine_9fbb7c0313e22051eebfd2e316ec609b}
+
+
+METODA TESTOWA. Wyświetla informacje o całej maszynie i jej elementach składowych. \hypertarget{classPVirtualMachine_d0ac4994cbf5c218a40442df49a3cd29}{
+\index{PVirtualMachine@{PVirtualMachine}!\_\-\_\-dev\_\-\_\-printImageInfo@{\_\-\_\-dev\_\-\_\-printImageInfo}}
+\index{\_\-\_\-dev\_\-\_\-printImageInfo@{\_\-\_\-dev\_\-\_\-printImageInfo}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{\_\-\_\-dev\_\-\_\-printImageInfo}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::\_\-\_\-dev\_\-\_\-printImageInfo ()}}
+\label{classPVirtualMachine_d0ac4994cbf5c218a40442df49a3cd29}
+
+
+METODA TESTOWA. Wyświetla informacje o obrazie kodu. \hypertarget{classPVirtualMachine_91c888349242ed7700d5ddff5b187c19}{
+\index{PVirtualMachine@{PVirtualMachine}!\_\-\_\-dev\_\-\_\-printInstruction@{\_\-\_\-dev\_\-\_\-printInstruction}}
+\index{\_\-\_\-dev\_\-\_\-printInstruction@{\_\-\_\-dev\_\-\_\-printInstruction}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{\_\-\_\-dev\_\-\_\-printInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::\_\-\_\-dev\_\-\_\-printInstruction ({\bf PInstructions} {\em instr})}}
+\label{classPVirtualMachine_91c888349242ed7700d5ddff5b187c19}
+
+
+METODA TESTOWA. Wyświetla nazwę zadanej instrukcji Pieta. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em instr}]instrukcja \end{description}
+\end{Desc}
+\hypertarget{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}{
+\index{PVirtualMachine@{PVirtualMachine}!executeAllInstr@{executeAllInstr}}
+\index{executeAllInstr@{executeAllInstr}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{executeAllInstr}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::executeAllInstr ()}}
+\label{classPVirtualMachine_40e1780e122ce7fe4ebadc526c47fbea}
+
+
+Wykonuje WSZYSTKIE instrukcje aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane. \hypertarget{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}{
+\index{PVirtualMachine@{PVirtualMachine}!executeSingleInstr@{executeSingleInstr}}
+\index{executeSingleInstr@{executeSingleInstr}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{executeSingleInstr}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::executeSingleInstr ()}}
+\label{classPVirtualMachine_7bbb22aabe782de2208139bc01f65050}
+
+
+Wykonuje POJEDYNCZĄ instrukcję aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane. \hypertarget{classPVirtualMachine_69d12176d3f9719b2bdf93a9f55cefde}{
+\index{PVirtualMachine@{PVirtualMachine}!getInstructionByIndex@{getInstructionByIndex}}
+\index{getInstructionByIndex@{getInstructionByIndex}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{getInstructionByIndex}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PInstructions} PVirtualMachine::getInstructionByIndex (int {\em index})}}
+\label{classPVirtualMachine_69d12176d3f9719b2bdf93a9f55cefde}
+
+
+Zwraca instrukcję Pieta (element enumeracji) dla zadanego indeksu instrukcji Pieta. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em index}]indeks instrukcji Pieta \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]instrukcja Pieta \end{Desc}
+\hypertarget{classPVirtualMachine_699839f4df2106065458127c36b4bfca}{
+\index{PVirtualMachine@{PVirtualMachine}!getState@{getState}}
+\index{getState@{getState}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{getState}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PMachineStates} PVirtualMachine::getState ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_699839f4df2106065458127c36b4bfca}
+
+
+zwraca stan wirtualnej maszyny Salvadora 
+
+W każdej chwili istnienia, wirtualna maszyna Pieta musi znajdować się w jakimś stanie (PMachineStates). Metoda zwraca aktualny stan wirtualnej maszyny. \hypertarget{classPVirtualMachine_6b19e3e51a584b13e79c44fc5b842c2b}{
+\index{PVirtualMachine@{PVirtualMachine}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{isFinished}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::isFinished ()}}
+\label{classPVirtualMachine_6b19e3e51a584b13e79c44fc5b842c2b}
+
+
+Sprawdza czy maszyna zakończyła działanie (sprawdzany stan maszyny). \begin{Desc}
+\item[Zwraca:]czy maszyna zakończyła działanie \end{Desc}
+\hypertarget{classPVirtualMachine_5132bedd5e8480185b48ea6c4783c770}{
+\index{PVirtualMachine@{PVirtualMachine}!isReady@{isReady}}
+\index{isReady@{isReady}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{isReady}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::isReady ()}}
+\label{classPVirtualMachine_5132bedd5e8480185b48ea6c4783c770}
+
+
+Sprawdza czy maszyna jest gotowa do rozpoczęcia pracy (sprawdzany stan maszyny). \begin{Desc}
+\item[Zwraca:]czy maszyna jest gotowa do uruchomienia \end{Desc}
+\hypertarget{classPVirtualMachine_823195d3ae1615c791dfeb6c8d365a0e}{
+\index{PVirtualMachine@{PVirtualMachine}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{isRunning}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::isRunning ()}}
+\label{classPVirtualMachine_823195d3ae1615c791dfeb6c8d365a0e}
+
+
+Sprawdza czy maszyna pracuje (sprawdzany stan maszyny). \begin{Desc}
+\item[Zwraca:]czy maszyna pracuje \end{Desc}
+\hypertarget{classPVirtualMachine_219cd1d08de6d3d5a9117eecc5348d9c}{
+\index{PVirtualMachine@{PVirtualMachine}!isVerbose@{isVerbose}}
+\index{isVerbose@{isVerbose}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{isVerbose}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::isVerbose ()}}
+\label{classPVirtualMachine_219cd1d08de6d3d5a9117eecc5348d9c}
+
+
+Sprawdza, czy maszyna ma włączony tryb gadatliwy \begin{Desc}
+\item[Zwraca:]tryb gadatliwy \end{Desc}
+\hypertarget{classPVirtualMachine_29279548406a588bce03e320354cd857}{
+\index{PVirtualMachine@{PVirtualMachine}!movePointerAndGetInstructionToExecute@{movePointerAndGetInstructionToExecute}}
+\index{movePointerAndGetInstructionToExecute@{movePointerAndGetInstructionToExecute}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{movePointerAndGetInstructionToExecute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PInstructions} PVirtualMachine::movePointerAndGetInstructionToExecute ()}}
+\label{classPVirtualMachine_29279548406a588bce03e320354cd857}
+
+
+Metoda nakazuje przesunięcie głowicy oraz wyznacza jaka instrukcja ma zostać wykonana (wszystko wykorzystując pomocnicze obiekty wirtualnej maszyny). Jedna z ważniejszych i bardziej skomplikowanych metod całego interpretera. \hypertarget{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}{
+\index{PVirtualMachine@{PVirtualMachine}!pointIsBlackOrOutside@{pointIsBlackOrOutside}}
+\index{pointIsBlackOrOutside@{pointIsBlackOrOutside}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{pointIsBlackOrOutside}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::pointIsBlackOrOutside ({\bf PPoint} {\em point})}}
+\label{classPVirtualMachine_6daa9fea05af4bfc30b881c893fbd725}
+
+
+Sprawdza, czy wskazany punkt jest koloru czarnego lub się znajduje poza granicami obrazu kodu. Jeśli tak, głowica będzie musiała zmienić swoje DP i/lub CC. Wirtualna maszyna wykorzystuje do tego głowicę obrazu kodu oraz menadżera kolorów. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em point}]wskazany punkt \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]czy punkt jest czarny lub poza granicami obrazu kodu \end{Desc}
+\hypertarget{classPVirtualMachine_cae537f70c35487220818e8d18978e07}{
+\index{PVirtualMachine@{PVirtualMachine}!pointIsWhite@{pointIsWhite}}
+\index{pointIsWhite@{pointIsWhite}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{pointIsWhite}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::pointIsWhite ({\bf PPoint} {\em point})}}
+\label{classPVirtualMachine_cae537f70c35487220818e8d18978e07}
+
+
+Sprawdza, czy wskazany punkt jest koloru białego. Jeśli tak, to jeśli głowica dodatkowo prześlizgnie się przez biały blok, nie wykona w tym krokużadnej operacji. Wirtualna maszyna wykorzystuje do tego głowicę obrazu kodu oraz menadżera kolorów. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em point}]wskazany punkt \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]czy punkt jest biały \end{Desc}
+\hypertarget{classPVirtualMachine_513af8673f1430cd04fd0a0e46abedd4}{
+\index{PVirtualMachine@{PVirtualMachine}!prepareToExecute@{prepareToExecute}}
+\index{prepareToExecute@{prepareToExecute}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{prepareToExecute}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::prepareToExecute ()\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_513af8673f1430cd04fd0a0e46abedd4}
+
+
+Przygotowanie do uruchomienia/zresetowania wirtualnej maszyny. 
+
+Metoda używana w celu przygotowania wirtualnej maszyny do uruchomienia. Maszyna mogła być w trakcie działania, mogła zakończyć działanie lub mogła być gotowa do uruchomienia. \hypertarget{classPVirtualMachine_f4cdf5d80b7a169e2dfdebffe2588e4b}{
+\index{PVirtualMachine@{PVirtualMachine}!restartMachine@{restartMachine}}
+\index{restartMachine@{restartMachine}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{restartMachine}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::restartMachine ()}}
+\label{classPVirtualMachine_f4cdf5d80b7a169e2dfdebffe2588e4b}
+
+
+Restartuje maszynę (ustawia odpowiedni stan). \begin{Desc}
+\item[Zwraca:]czy operacja się powiodła \end{Desc}
+\hypertarget{classPVirtualMachine_bede8c1e068c19b9bc61a957de70cda8}{
+\index{PVirtualMachine@{PVirtualMachine}!setState@{setState}}
+\index{setState@{setState}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{setState}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::setState ({\bf PMachineStates} {\em state})\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_bede8c1e068c19b9bc61a957de70cda8}
+
+
+ustawia stan wirtualnej maszyny Salvadora 
+
+W każdej chwili istnienia, wirtualna maszyna Pieta musi znajdować się w jakimś stanie (PMachineStates). Metoda ustawia stan wirtualnej maszyny. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em state}]stan jaki zostanie przypisany wirtualnej maszynie \end{description}
+\end{Desc}
+\hypertarget{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{
+\index{PVirtualMachine@{PVirtualMachine}!slideAcrossWhiteBlock@{slideAcrossWhiteBlock}}
+\index{slideAcrossWhiteBlock@{slideAcrossWhiteBlock}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{slideAcrossWhiteBlock}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::slideAcrossWhiteBlock ({\bf PPoint} \& {\em point})}}
+\label{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}
+
+
+Przesuwa głowicę, uwzględniając jej wartości DP i CC, na koniec białego bloku (parametr point, przekazywany przez zmienną - ulega zmianie w trakcie wykonywania operacji). Następnie wirtualna maszyna bada, czy otrzymany punkt znajduje się poza obrazem kodu lub jest czarny (wtedy głowica zmienia wartości DP i/lub CC i być może ponownie będzie wędrowała z wyjściowego punktu przez biały blok). \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em point}]wskazany punkt \end{description}
+\end{Desc}
+\hypertarget{classPVirtualMachine_e37d4dfa512c3dd97b9958f013ffb7b3}{
+\index{PVirtualMachine@{PVirtualMachine}!slidePointerAcrossWhiteBlock@{slidePointerAcrossWhiteBlock}}
+\index{slidePointerAcrossWhiteBlock@{slidePointerAcrossWhiteBlock}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{slidePointerAcrossWhiteBlock}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::slidePointerAcrossWhiteBlock ()}}
+\label{classPVirtualMachine_e37d4dfa512c3dd97b9958f013ffb7b3}
+
+
+Przesuwa głowicę o jeden kodel przez biały blok. Metoda wywoływana wielokrotnie przez metodę \hyperlink{classPVirtualMachine_4b2ebb998393324c5240dc48fdb14f3a}{slideAcrossWhiteBlock()}. \hypertarget{classPVirtualMachine_4b6bb128d63569e855684128b5e09f1c}{
+\index{PVirtualMachine@{PVirtualMachine}!startMachine@{startMachine}}
+\index{startMachine@{startMachine}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{startMachine}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::startMachine ()}}
+\label{classPVirtualMachine_4b6bb128d63569e855684128b5e09f1c}
+
+
+Uruchamia maszynę (ustawia odpowiedni stan). \begin{Desc}
+\item[Zwraca:]czy operacja się powiodła \end{Desc}
+\hypertarget{classPVirtualMachine_fa30f1871832c1af18519db03c397ac0}{
+\index{PVirtualMachine@{PVirtualMachine}!stopMachine@{stopMachine}}
+\index{stopMachine@{stopMachine}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{stopMachine}]{\setlength{\rightskip}{0pt plus 5cm}bool PVirtualMachine::stopMachine ()}}
+\label{classPVirtualMachine_fa30f1871832c1af18519db03c397ac0}
+
+
+Zatrzymuje maszynę (ustawia odpowiedni stan). \begin{Desc}
+\item[Zwraca:]czy operacja się powiodła \end{Desc}
+\hypertarget{classPVirtualMachine_1e48dcf68b3b80d7f6d3c67b3f796e51}{
+\index{PVirtualMachine@{PVirtualMachine}!toggleVerbosity@{toggleVerbosity}}
+\index{toggleVerbosity@{toggleVerbosity}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{toggleVerbosity}]{\setlength{\rightskip}{0pt plus 5cm}void PVirtualMachine::toggleVerbosity ()}}
+\label{classPVirtualMachine_1e48dcf68b3b80d7f6d3c67b3f796e51}
+
+
+Przełącza tryb gadatliwy na przeciwny. Przełącza tryb we wszystkich podrzędnych obiektach. 
+
+\subsection{Dokumentacja atrybutów składowych}
+\hypertarget{classPVirtualMachine_67feeb2d88b4c8b766d10d6f7d8eb65b}{
+\index{PVirtualMachine@{PVirtualMachine}!console@{console}}
+\index{console@{console}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{console}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PConsole}$\ast$ {\bf PVirtualMachine::console}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_67feeb2d88b4c8b766d10d6f7d8eb65b}
+
+
+Konsola wejścia/wyjścia Pieta, obsługująca operacje komunikacji z użytkownikiem \hypertarget{classPVirtualMachine_fe929445de96589087a96a8f1188fac0}{
+\index{PVirtualMachine@{PVirtualMachine}!stack@{stack}}
+\index{stack@{stack}!PVirtualMachine@{PVirtualMachine}}
+\subsubsection[{stack}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PCalcStack}$\ast$ {\bf PVirtualMachine::stack}\hspace{0.3cm}{\tt  \mbox{[}protected\mbox{]}}}}
+\label{classPVirtualMachine_fe929445de96589087a96a8f1188fac0}
+
+
+Stos przechowujący wszystkie tymczasowe wartości 
+
+Dokumentacja dla tej klasy została wygenerowana z plików:\begin{CompactItemize}
+\item 
+src/core/\hyperlink{pvirtualmachine_8h}{pvirtualmachine.h}\item 
+src/core/\hyperlink{pvirtualmachine_8cpp}{pvirtualmachine.cpp}\end{CompactItemize}

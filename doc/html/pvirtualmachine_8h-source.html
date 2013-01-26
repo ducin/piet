@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Projekt Piet: Plik źródłowy src/core/pvirtualmachine.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Lista&nbsp;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&nbsp;plików</span></a></li>
+    </ul>
+  </div>
+<h1>src/core/pvirtualmachine.h</h1><a href="pvirtualmachine_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef P_VIRTUAL_MACHINE</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define P_VIRTUAL_MACHINE</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 <span class="comment">// piet core</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="penums_8h.html" title="Plik nagłówkowy z definicjami enumeracji.">penums.h</a>"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="pstructs_8h.html" title="Plik nagłówkowy z definicjami rekordów.">pstructs.h</a>"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "<a class="code" href="pconsole_8h.html" title="plik nagłówkowy klasy PConsole">pconsole.h</a>"</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include "<a class="code" href="pblockmanager_8h.html" title="plik nagłówkowy klasy PBlockManager">pblockmanager.h</a>"</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include "<a class="code" href="pcolormanager_8h.html" title="plik nagłówkowy klasy PColorManager">pcolormanager.h</a>"</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include "<a class="code" href="pcodepointer_8h.html" title="plik nagłówkowy klasy PCodePointer">pcodepointer.h</a>"</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include "<a class="code" href="pcalcstack_8h.html" title="plik nagłówkowy klasy PCalcStack">pcalcstack.h</a>"</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="comment">// C++</span>
+<a name="l00016"></a>00016 <span class="comment">// none</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="comment">// STL</span>
+<a name="l00019"></a>00019 <span class="comment">// none</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="comment">// Qt</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;QString&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;QImage&gt;</span>
+<a name="l00024"></a>00024 
+<a name="l00039"></a><a class="code" href="classPVirtualMachine.html">00039</a> <span class="keyword">class </span><a class="code" href="classPVirtualMachine.html" title="Wirtualna maszyna Pieta.">PVirtualMachine</a> {
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <span class="keyword">private</span>:
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043                 <a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a> state;
+<a name="l00044"></a>00044                 QImage *image; <span class="comment">// obraz kodu (plik graficzny którego pixle będą interpretowane)</span>
+<a name="l00045"></a>00045                 <a class="code" href="classPCodePointer.html" title="Głowica obrazu kodu.">PCodePointer</a> *pointer; <span class="comment">// wskaźnik czytający obraz powyższy kodu</span>
+<a name="l00046"></a>00046                 <a class="code" href="classPColorManager.html" title="Maszyna kodu.">PColorManager</a> *color_manager; <span class="comment">// maszyna zajmująca się przetwarzaniem i interpretacją kolorów</span>
+<a name="l00047"></a>00047                 <a class="code" href="classPBlockManager.html" title="Manager bloków kolorów.">PBlockManager</a> *block_manager;
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049                 <span class="keywordtype">int</span> step;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051                 <span class="keywordtype">bool</span> verbose;
+<a name="l00052"></a>00052                 <span class="keywordtype">void</span> setVerbosityRecursively(<span class="keywordtype">bool</span>);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <span class="keyword">protected</span>:
+<a name="l00055"></a>00055 
+<a name="l00059"></a><a class="code" href="classPVirtualMachine.html#fe929445de96589087a96a8f1188fac0">00059</a>                 <a class="code" href="classPCalcStack.html" title="Stos.">PCalcStack</a> *<a class="code" href="classPVirtualMachine.html#fe929445de96589087a96a8f1188fac0">stack</a>;
+<a name="l00063"></a><a class="code" href="classPVirtualMachine.html#67feeb2d88b4c8b766d10d6f7d8eb65b">00063</a>                 <a class="code" href="classPConsole.html" title="Konsola wejścia/wyjścia.">PConsole</a> *<a class="code" href="classPVirtualMachine.html#67feeb2d88b4c8b766d10d6f7d8eb65b">console</a>;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065                 <a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a> <a class="code" href="classPVirtualMachine.html#699839f4df2106065458127c36b4bfca" title="zwraca stan wirtualnej maszyny Salvadora">getState</a>();
+<a name="l00066"></a>00066                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#bede8c1e068c19b9bc61a957de70cda8" title="ustawia stan wirtualnej maszyny Salvadora">setState</a>(<a class="code" href="penums_8h.html#3b12ec7c990da3435462047165bc0c6d" title="stany maszyny wirtualnej">PMachineStates</a>);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#513af8673f1430cd04fd0a0e46abedd4" title="Przygotowanie do uruchomienia/zresetowania wirtualnej maszyny.">prepareToExecute</a>();
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070         <span class="keyword">public</span>:
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                 <a class="code" href="classPVirtualMachine.html#0af0326622a3f47b6c2020413cdd3e05">PVirtualMachine</a>(QString);
+<a name="l00073"></a>00073                 <a class="code" href="classPVirtualMachine.html#4b24d240f1a45515cf4c8d4df932da62">~PVirtualMachine</a>();
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#5132bedd5e8480185b48ea6c4783c770">isReady</a>();
+<a name="l00076"></a>00076                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#823195d3ae1615c791dfeb6c8d365a0e">isRunning</a>();
+<a name="l00077"></a>00077                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#6b19e3e51a584b13e79c44fc5b842c2b">isFinished</a>();
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#4b6bb128d63569e855684128b5e09f1c">startMachine</a>();
+<a name="l00080"></a>00080                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#f4cdf5d80b7a169e2dfdebffe2588e4b">restartMachine</a>();
+<a name="l00081"></a>00081                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#fa30f1871832c1af18519db03c397ac0">stopMachine</a>();
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#219cd1d08de6d3d5a9117eecc5348d9c">isVerbose</a>();
+<a name="l00084"></a>00084                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#1e48dcf68b3b80d7f6d3c67b3f796e51">toggleVerbosity</a>();
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086                 <span class="comment">// TODO zastanowic sie jaki typ ma zwracac</span>
+<a name="l00087"></a>00087                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#40e1780e122ce7fe4ebadc526c47fbea">executeAllInstr</a>(); <span class="comment">// wykonywanie instrukcji do końca działania programu</span>
+<a name="l00088"></a>00088                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#7bbb22aabe782de2208139bc01f65050">executeSingleInstr</a>(); <span class="comment">// wykonanie jednej instrukcji</span>
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#6daa9fea05af4bfc30b881c893fbd725">pointIsBlackOrOutside</a>(<a class="code" href="structstruct__point.html">PPoint</a>);
+<a name="l00091"></a>00091                 <span class="keywordtype">bool</span> <a class="code" href="classPVirtualMachine.html#cae537f70c35487220818e8d18978e07">pointIsWhite</a>(<a class="code" href="structstruct__point.html">PPoint</a>);
+<a name="l00092"></a>00092                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#e37d4dfa512c3dd97b9958f013ffb7b3">slidePointerAcrossWhiteBlock</a>();
+<a name="l00093"></a>00093                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#4b2ebb998393324c5240dc48fdb14f3a">slideAcrossWhiteBlock</a>(<a class="code" href="structstruct__point.html">PPoint</a> &amp;);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> <a class="code" href="classPVirtualMachine.html#29279548406a588bce03e320354cd857">movePointerAndGetInstructionToExecute</a>(); <span class="comment">// jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera</span>
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097                 <a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a> <a class="code" href="classPVirtualMachine.html#69d12176d3f9719b2bdf93a9f55cefde">getInstructionByIndex</a>(<span class="keywordtype">int</span>);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         <span class="comment">// development:</span>
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#91c888349242ed7700d5ddff5b187c19">__dev__printInstruction</a>(<a class="code" href="penums_8h.html#797d2a71195500b970298fbf455ff83a" title="instrukcje Pieta">PInstructions</a>);
+<a name="l00102"></a>00102                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#d0ac4994cbf5c218a40442df49a3cd29">__dev__printImageInfo</a>();
+<a name="l00103"></a>00103                 <span class="keywordtype">void</span> <a class="code" href="classPVirtualMachine.html#9fbb7c0313e22051eebfd2e316ec609b">__dev__printConsole</a>();
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 };
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Wygenerowano Tue Sep 22 04:20:20 2009 dla Projekt Piet programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

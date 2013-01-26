@@ -1,0 +1,281 @@
+\hypertarget{classPColorManager}{
+\section{Dokumentacja klasy PColorManager}
+\label{classPColorManager}\index{PColorManager@{PColorManager}}
+}
+Maszyna kodu.  
+
+
+{\tt \#include $<$pcolormanager.h$>$}
+
+\subsection*{Metody publiczne}
+\begin{CompactItemize}
+\item 
+void \hyperlink{classPColorManager_ee267bb2056457f73dcf1115e7d3c973}{setVerbosity} (bool)
+\item 
+int \hyperlink{classPColorManager_36a84d6e85c87edf65fdb511690ed434}{getInstructionIndex} (QRgb, QRgb)
+\item 
+\hyperlink{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}{PStdColors} \hyperlink{classPColorManager_27aeb6623eaf527db2d7428ab038958c}{getColorName} (QRgb)
+\item 
+void \hyperlink{classPColorManager_e9793e8da1800653b11609376098695c}{initColorValues} ()
+\item 
+void \hyperlink{classPColorManager_83e07cad55aed7d9133e42a71d514d26}{\_\-\_\-dev\_\-\_\-printColor} (\hyperlink{penums_8h_4fb01e50a2da85245f7cea7856eca8ec}{PStdColors})
+\end{CompactItemize}
+\subsection*{Atrybuty publiczne}
+\begin{CompactItemize}
+\item 
+QRgb \hyperlink{classPColorManager_cbc4c8b260f0ba856d8454ae2f9320d5}{LIGHT\_\-RED}
+\item 
+QRgb \hyperlink{classPColorManager_c6f06fc1bb188fe7d7f573ff3c46df8d}{NORMAL\_\-RED}
+\item 
+QRgb \hyperlink{classPColorManager_3690840932799e3d910dd3d673f90363}{DARK\_\-RED}
+\item 
+QRgb \hyperlink{classPColorManager_945305800d979369bb29d9f3ec5fe7f3}{LIGHT\_\-YELLOW}
+\item 
+QRgb \hyperlink{classPColorManager_a1086408be008b97df57f579702d624e}{NORMAL\_\-YELLOW}
+\item 
+QRgb \hyperlink{classPColorManager_347da61b74a87e7eed4b8849a8128e11}{DARK\_\-YELLOW}
+\item 
+QRgb \hyperlink{classPColorManager_45eba1a3facb6995710a2d1e9026ca7c}{LIGHT\_\-GREEN}
+\item 
+QRgb \hyperlink{classPColorManager_a2e75d69d65d6a7f87a470c0782a7624}{NORMAL\_\-GREEN}
+\item 
+QRgb \hyperlink{classPColorManager_ec8d0fe14a68b42be5c5d8d77f914411}{DARK\_\-GREEN}
+\item 
+QRgb \hyperlink{classPColorManager_4b0005532d50c98afdbde28fb3081e47}{LIGHT\_\-CYAN}
+\item 
+QRgb \hyperlink{classPColorManager_9b51000ba56bf9a5f0581fd6c9a51ab6}{NORMAL\_\-CYAN}
+\item 
+QRgb \hyperlink{classPColorManager_d7dcde24002d9fa0ee9600d37720a930}{DARK\_\-CYAN}
+\item 
+QRgb \hyperlink{classPColorManager_861249c4294f958c0043a1d1b7468435}{LIGHT\_\-BLUE}
+\item 
+QRgb \hyperlink{classPColorManager_530893a4eed2d71ce67dff0d500bd0d6}{NORMAL\_\-BLUE}
+\item 
+QRgb \hyperlink{classPColorManager_2d7a0c5c065fa5b662cb53748e5347ed}{DARK\_\-BLUE}
+\item 
+QRgb \hyperlink{classPColorManager_435503e14622c3bf22d82a4c5ac12884}{LIGHT\_\-MAGENTA}
+\item 
+QRgb \hyperlink{classPColorManager_28bb798b6307bd6b6bdd59204f3dc131}{NORMAL\_\-MAGENTA}
+\item 
+QRgb \hyperlink{classPColorManager_eabafba23c771c3ad19f67938e11f68b}{DARK\_\-MAGENTA}
+\item 
+QRgb \hyperlink{classPColorManager_c15cc3f24bec369e9e30fee77ca8899a}{WHITE}
+\item 
+QRgb \hyperlink{classPColorManager_13278cb96706ed743a3f86a6cf4232cb}{BLACK}
+\end{CompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Maszyna kodu. 
+
+Klasa odpowiedzialna za właściwe interpretowanie kolorów, determinowanie czy kolor jest standardowy, jeśli niestandardowy - przydziela go do odpowiedniego koloru standardowego wg odpowiedniego algorytmu. 
+
+\subsection{Dokumentacja funkcji składowych}
+\hypertarget{classPColorManager_83e07cad55aed7d9133e42a71d514d26}{
+\index{PColorManager@{PColorManager}!\_\-\_\-dev\_\-\_\-printColor@{\_\-\_\-dev\_\-\_\-printColor}}
+\index{\_\-\_\-dev\_\-\_\-printColor@{\_\-\_\-dev\_\-\_\-printColor}!PColorManager@{PColorManager}}
+\subsubsection[{\_\-\_\-dev\_\-\_\-printColor}]{\setlength{\rightskip}{0pt plus 5cm}void PColorManager::\_\-\_\-dev\_\-\_\-printColor ({\bf PStdColors} {\em color})}}
+\label{classPColorManager_83e07cad55aed7d9133e42a71d514d26}
+
+
+METODA TESTOWA. Wyświetla nazwę koloru \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em color}]kolor \end{description}
+\end{Desc}
+\hypertarget{classPColorManager_27aeb6623eaf527db2d7428ab038958c}{
+\index{PColorManager@{PColorManager}!getColorName@{getColorName}}
+\index{getColorName@{getColorName}!PColorManager@{PColorManager}}
+\subsubsection[{getColorName}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PStdColors} PColorManager::getColorName (QRgb {\em color})}}
+\label{classPColorManager_27aeb6623eaf527db2d7428ab038958c}
+
+
+Zwraca kolor jako element enumeracji dla zadanej wartości koloru typu QRgb. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em color}]zadany kolor (wartość) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]kolor (element enumeracji) \end{Desc}
+\hypertarget{classPColorManager_36a84d6e85c87edf65fdb511690ed434}{
+\index{PColorManager@{PColorManager}!getInstructionIndex@{getInstructionIndex}}
+\index{getInstructionIndex@{getInstructionIndex}!PColorManager@{PColorManager}}
+\subsubsection[{getInstructionIndex}]{\setlength{\rightskip}{0pt plus 5cm}int PColorManager::getInstructionIndex (QRgb {\em old\_\-color}, \/  QRgb {\em new\_\-color})}}
+\label{classPColorManager_36a84d6e85c87edf65fdb511690ed434}
+
+
+Wyznacza instrukcję Pieat jaka ma zostać wykonana na podstawie dwóch kolorów bloków: pierwszy - który głowica opuściła i drugi - do którego głowica weszła. Metoda implementuje algorytm wyznaczania instrukcji opisany w tabeli 1.2 w rozdziale 1 pracy magisterskiej. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em old\_\-color}]kolor bloku który głowica opuściła \item[{\em new\_\-color}]kolor bloku do którego głowica weszła \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Zwraca:]indeks instrukcji która powinna zostać wykonana \end{Desc}
+\hypertarget{classPColorManager_e9793e8da1800653b11609376098695c}{
+\index{PColorManager@{PColorManager}!initColorValues@{initColorValues}}
+\index{initColorValues@{initColorValues}!PColorManager@{PColorManager}}
+\subsubsection[{initColorValues}]{\setlength{\rightskip}{0pt plus 5cm}void PColorManager::initColorValues ()}}
+\label{classPColorManager_e9793e8da1800653b11609376098695c}
+
+
+Inicjuje wartości zmiennych typu QRgb reprezentujących wszystkie 20 kolorów standardowych Pieta. Są one potem wykorzystywane praktycznie cały czas: do wyznaczania instrukcji które powinny być wykonane, do sprawdzania białych lub czarnych bloków. \hypertarget{classPColorManager_ee267bb2056457f73dcf1115e7d3c973}{
+\index{PColorManager@{PColorManager}!setVerbosity@{setVerbosity}}
+\index{setVerbosity@{setVerbosity}!PColorManager@{PColorManager}}
+\subsubsection[{setVerbosity}]{\setlength{\rightskip}{0pt plus 5cm}void PColorManager::setVerbosity (bool {\em verbosity})}}
+\label{classPColorManager_ee267bb2056457f73dcf1115e7d3c973}
+
+
+Ustala tryb gadatliwy. \begin{Desc}
+\item[Parametry:]
+\begin{description}
+\item[{\em verbosity}]tryb gadatliwy \end{description}
+\end{Desc}
+
+
+\subsection{Dokumentacja atrybutów składowych}
+\hypertarget{classPColorManager_13278cb96706ed743a3f86a6cf4232cb}{
+\index{PColorManager@{PColorManager}!BLACK@{BLACK}}
+\index{BLACK@{BLACK}!PColorManager@{PColorManager}}
+\subsubsection[{BLACK}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::BLACK}}}
+\label{classPColorManager_13278cb96706ed743a3f86a6cf4232cb}
+
+
+kolor czarny \hypertarget{classPColorManager_2d7a0c5c065fa5b662cb53748e5347ed}{
+\index{PColorManager@{PColorManager}!DARK\_\-BLUE@{DARK\_\-BLUE}}
+\index{DARK\_\-BLUE@{DARK\_\-BLUE}!PColorManager@{PColorManager}}
+\subsubsection[{DARK\_\-BLUE}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::DARK\_\-BLUE}}}
+\label{classPColorManager_2d7a0c5c065fa5b662cb53748e5347ed}
+
+
+kolor ciemny niebieski \hypertarget{classPColorManager_d7dcde24002d9fa0ee9600d37720a930}{
+\index{PColorManager@{PColorManager}!DARK\_\-CYAN@{DARK\_\-CYAN}}
+\index{DARK\_\-CYAN@{DARK\_\-CYAN}!PColorManager@{PColorManager}}
+\subsubsection[{DARK\_\-CYAN}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::DARK\_\-CYAN}}}
+\label{classPColorManager_d7dcde24002d9fa0ee9600d37720a930}
+
+
+kolor ciemny błękitny \hypertarget{classPColorManager_ec8d0fe14a68b42be5c5d8d77f914411}{
+\index{PColorManager@{PColorManager}!DARK\_\-GREEN@{DARK\_\-GREEN}}
+\index{DARK\_\-GREEN@{DARK\_\-GREEN}!PColorManager@{PColorManager}}
+\subsubsection[{DARK\_\-GREEN}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::DARK\_\-GREEN}}}
+\label{classPColorManager_ec8d0fe14a68b42be5c5d8d77f914411}
+
+
+kolor ziemny zielony \hypertarget{classPColorManager_eabafba23c771c3ad19f67938e11f68b}{
+\index{PColorManager@{PColorManager}!DARK\_\-MAGENTA@{DARK\_\-MAGENTA}}
+\index{DARK\_\-MAGENTA@{DARK\_\-MAGENTA}!PColorManager@{PColorManager}}
+\subsubsection[{DARK\_\-MAGENTA}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::DARK\_\-MAGENTA}}}
+\label{classPColorManager_eabafba23c771c3ad19f67938e11f68b}
+
+
+kolor ciemny magenta \hypertarget{classPColorManager_3690840932799e3d910dd3d673f90363}{
+\index{PColorManager@{PColorManager}!DARK\_\-RED@{DARK\_\-RED}}
+\index{DARK\_\-RED@{DARK\_\-RED}!PColorManager@{PColorManager}}
+\subsubsection[{DARK\_\-RED}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::DARK\_\-RED}}}
+\label{classPColorManager_3690840932799e3d910dd3d673f90363}
+
+
+kolor ciemny czerwony \hypertarget{classPColorManager_347da61b74a87e7eed4b8849a8128e11}{
+\index{PColorManager@{PColorManager}!DARK\_\-YELLOW@{DARK\_\-YELLOW}}
+\index{DARK\_\-YELLOW@{DARK\_\-YELLOW}!PColorManager@{PColorManager}}
+\subsubsection[{DARK\_\-YELLOW}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::DARK\_\-YELLOW}}}
+\label{classPColorManager_347da61b74a87e7eed4b8849a8128e11}
+
+
+kolor ciemny żółty \hypertarget{classPColorManager_861249c4294f958c0043a1d1b7468435}{
+\index{PColorManager@{PColorManager}!LIGHT\_\-BLUE@{LIGHT\_\-BLUE}}
+\index{LIGHT\_\-BLUE@{LIGHT\_\-BLUE}!PColorManager@{PColorManager}}
+\subsubsection[{LIGHT\_\-BLUE}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::LIGHT\_\-BLUE}}}
+\label{classPColorManager_861249c4294f958c0043a1d1b7468435}
+
+
+kolor jasny niebieski \hypertarget{classPColorManager_4b0005532d50c98afdbde28fb3081e47}{
+\index{PColorManager@{PColorManager}!LIGHT\_\-CYAN@{LIGHT\_\-CYAN}}
+\index{LIGHT\_\-CYAN@{LIGHT\_\-CYAN}!PColorManager@{PColorManager}}
+\subsubsection[{LIGHT\_\-CYAN}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::LIGHT\_\-CYAN}}}
+\label{classPColorManager_4b0005532d50c98afdbde28fb3081e47}
+
+
+kolor jasny błękitny \hypertarget{classPColorManager_45eba1a3facb6995710a2d1e9026ca7c}{
+\index{PColorManager@{PColorManager}!LIGHT\_\-GREEN@{LIGHT\_\-GREEN}}
+\index{LIGHT\_\-GREEN@{LIGHT\_\-GREEN}!PColorManager@{PColorManager}}
+\subsubsection[{LIGHT\_\-GREEN}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::LIGHT\_\-GREEN}}}
+\label{classPColorManager_45eba1a3facb6995710a2d1e9026ca7c}
+
+
+kolor jasny zielony \hypertarget{classPColorManager_435503e14622c3bf22d82a4c5ac12884}{
+\index{PColorManager@{PColorManager}!LIGHT\_\-MAGENTA@{LIGHT\_\-MAGENTA}}
+\index{LIGHT\_\-MAGENTA@{LIGHT\_\-MAGENTA}!PColorManager@{PColorManager}}
+\subsubsection[{LIGHT\_\-MAGENTA}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::LIGHT\_\-MAGENTA}}}
+\label{classPColorManager_435503e14622c3bf22d82a4c5ac12884}
+
+
+kolor jasny magenta \hypertarget{classPColorManager_cbc4c8b260f0ba856d8454ae2f9320d5}{
+\index{PColorManager@{PColorManager}!LIGHT\_\-RED@{LIGHT\_\-RED}}
+\index{LIGHT\_\-RED@{LIGHT\_\-RED}!PColorManager@{PColorManager}}
+\subsubsection[{LIGHT\_\-RED}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::LIGHT\_\-RED}}}
+\label{classPColorManager_cbc4c8b260f0ba856d8454ae2f9320d5}
+
+
+kolor jasny czerwony \hypertarget{classPColorManager_945305800d979369bb29d9f3ec5fe7f3}{
+\index{PColorManager@{PColorManager}!LIGHT\_\-YELLOW@{LIGHT\_\-YELLOW}}
+\index{LIGHT\_\-YELLOW@{LIGHT\_\-YELLOW}!PColorManager@{PColorManager}}
+\subsubsection[{LIGHT\_\-YELLOW}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::LIGHT\_\-YELLOW}}}
+\label{classPColorManager_945305800d979369bb29d9f3ec5fe7f3}
+
+
+kolor jasny żółty \hypertarget{classPColorManager_530893a4eed2d71ce67dff0d500bd0d6}{
+\index{PColorManager@{PColorManager}!NORMAL\_\-BLUE@{NORMAL\_\-BLUE}}
+\index{NORMAL\_\-BLUE@{NORMAL\_\-BLUE}!PColorManager@{PColorManager}}
+\subsubsection[{NORMAL\_\-BLUE}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::NORMAL\_\-BLUE}}}
+\label{classPColorManager_530893a4eed2d71ce67dff0d500bd0d6}
+
+
+kolor niebieski \hypertarget{classPColorManager_9b51000ba56bf9a5f0581fd6c9a51ab6}{
+\index{PColorManager@{PColorManager}!NORMAL\_\-CYAN@{NORMAL\_\-CYAN}}
+\index{NORMAL\_\-CYAN@{NORMAL\_\-CYAN}!PColorManager@{PColorManager}}
+\subsubsection[{NORMAL\_\-CYAN}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::NORMAL\_\-CYAN}}}
+\label{classPColorManager_9b51000ba56bf9a5f0581fd6c9a51ab6}
+
+
+kolor błękitny \hypertarget{classPColorManager_a2e75d69d65d6a7f87a470c0782a7624}{
+\index{PColorManager@{PColorManager}!NORMAL\_\-GREEN@{NORMAL\_\-GREEN}}
+\index{NORMAL\_\-GREEN@{NORMAL\_\-GREEN}!PColorManager@{PColorManager}}
+\subsubsection[{NORMAL\_\-GREEN}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::NORMAL\_\-GREEN}}}
+\label{classPColorManager_a2e75d69d65d6a7f87a470c0782a7624}
+
+
+kolor zielony \hypertarget{classPColorManager_28bb798b6307bd6b6bdd59204f3dc131}{
+\index{PColorManager@{PColorManager}!NORMAL\_\-MAGENTA@{NORMAL\_\-MAGENTA}}
+\index{NORMAL\_\-MAGENTA@{NORMAL\_\-MAGENTA}!PColorManager@{PColorManager}}
+\subsubsection[{NORMAL\_\-MAGENTA}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::NORMAL\_\-MAGENTA}}}
+\label{classPColorManager_28bb798b6307bd6b6bdd59204f3dc131}
+
+
+kolor magenta \hypertarget{classPColorManager_c6f06fc1bb188fe7d7f573ff3c46df8d}{
+\index{PColorManager@{PColorManager}!NORMAL\_\-RED@{NORMAL\_\-RED}}
+\index{NORMAL\_\-RED@{NORMAL\_\-RED}!PColorManager@{PColorManager}}
+\subsubsection[{NORMAL\_\-RED}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::NORMAL\_\-RED}}}
+\label{classPColorManager_c6f06fc1bb188fe7d7f573ff3c46df8d}
+
+
+kolor czerwony \hypertarget{classPColorManager_a1086408be008b97df57f579702d624e}{
+\index{PColorManager@{PColorManager}!NORMAL\_\-YELLOW@{NORMAL\_\-YELLOW}}
+\index{NORMAL\_\-YELLOW@{NORMAL\_\-YELLOW}!PColorManager@{PColorManager}}
+\subsubsection[{NORMAL\_\-YELLOW}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::NORMAL\_\-YELLOW}}}
+\label{classPColorManager_a1086408be008b97df57f579702d624e}
+
+
+kolor żółty \hypertarget{classPColorManager_c15cc3f24bec369e9e30fee77ca8899a}{
+\index{PColorManager@{PColorManager}!WHITE@{WHITE}}
+\index{WHITE@{WHITE}!PColorManager@{PColorManager}}
+\subsubsection[{WHITE}]{\setlength{\rightskip}{0pt plus 5cm}QRgb {\bf PColorManager::WHITE}}}
+\label{classPColorManager_c15cc3f24bec369e9e30fee77ca8899a}
+
+
+kolor biały 
+
+Dokumentacja dla tej klasy została wygenerowana z plików:\begin{CompactItemize}
+\item 
+src/core/\hyperlink{pcolormanager_8h}{pcolormanager.h}\item 
+src/core/\hyperlink{pcolormanager_8cpp}{pcolormanager.cpp}\end{CompactItemize}
