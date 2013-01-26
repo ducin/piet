@@ -4,6 +4,11 @@
 # Documentation
 doc/*
 
+# Compilation output
+build
+obj/*
+bin/*
+
 # Compiled Object files
 *.slo
 *.lo

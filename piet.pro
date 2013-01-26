@@ -3,7 +3,8 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+DESTDIR = bin
+TARGET = piet
 DEPENDPATH += . src src/core
 INCLUDEPATH += . src/core src
 
@@ -12,7 +13,6 @@ HEADERS += src/debug.h \
            src/core/pblockmanager.h \
            src/core/pcalcstack.h \
            src/core/pcodepointer.h \
-           src/core/pcodestats.h \
            src/core/pcolormanager.h \
            src/core/pconsole.h \
            src/core/penums.h \
@@ -22,7 +22,6 @@ SOURCES += src/test.cpp \
            src/core/pblockmanager.cpp \
            src/core/pcalcstack.cpp \
            src/core/pcodepointer.cpp \
-           src/core/pcodestats.cpp \
            src/core/pcolormanager.cpp \
            src/core/pconsole.cpp \
            src/core/pvirtualmachine.cpp
