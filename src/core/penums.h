@@ -99,7 +99,7 @@ enum PInstructions {
 	pietInstr_io_in_char, /** 15 - instrukcja IN(char) */
 	pietInstr_io_out_number, /** 16 - instrukcja OUT(number) */
 	pietInstr_io_out_char, /** 17 - instrukcja OUT(char) */
-	pietInstr_special_terminate, /* 18 - instrukcja TERMINATE */
+	pietInstr_special_terminate, /** 18 - instrukcja TERMINATE */
 };
 
 #endif

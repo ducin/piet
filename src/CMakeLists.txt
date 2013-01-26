@@ -1,0 +1,6 @@
+INCLUDE(${QT_USE_FILE})
+
+ADD_SUBDIRECTORY(core)
+
+ADD_EXECUTABLE(piet test.cpp)
+TARGET_LINK_LIBRARIES(piet PietCore)

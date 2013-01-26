@@ -2,7 +2,7 @@
 *.kdev4
 
 # Documentation
-doc/*
+doc/output
 
 # Compilation output
 build
