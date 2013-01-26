@@ -6,6 +6,7 @@
 #include "debug.h"
 
 // C++
+#include <ostream>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -176,11 +177,13 @@ int main(int argc, char **argv)
 		printFormattedMessage("Podaj nazwę programu przez argument");
 		return 1;
 	}
-	std::string STD_STR_code_path = "data/" + std::string(argv[1]);
+	std::string STD_STR_code_path = std::string(argv[1]);
 	std::ifstream fin(STD_STR_code_path.c_str());
 	if ( !fin )
 	{
-		printFormattedMessage("Plik nie istnieje, sprawdź przyczynę błędu i spróbuj ponownie");
+		std::string message("Plik ");
+		message.append(STD_STR_code_path.c_str()).append(" nie istnieje. Sprawdź przyczynę błędu i spróbuj ponownie");
+		printFormattedMessage(message);
 		return 2;
 	}
 	// zmienna robocza przechowująca ścieżkę do pliku z kodem Pieta
@@ -190,3 +193,4 @@ int main(int argc, char **argv)
 	runProgram();
 	m->~PVirtualMachine();
 }
+

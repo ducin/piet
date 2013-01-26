@@ -4,10 +4,6 @@ PROJECT(piet)
 
 FIND_PACKAGE(Qt4 REQUIRED)
 
-IF(QT4_FOUND)
-  MESSAGE(STATUS "Qt found!")
-ENDIF()
-
 ADD_SUBDIRECTORY(src)
 
 # generating documentation with Doxygen
