@@ -1,4 +1,7 @@
-#Documentation
+# IDEs
+*.kdev4
+
+# Documentation
 doc/*
 
 # Compiled Object files
