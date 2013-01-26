@@ -11,3 +11,9 @@ Compilation
     cmake ..
     make
 
+Run
+===
+
+Execute the `piet` binary file in command line with one parameter, specifying the program to execute:
+
+    $ piet path_to_img_programs/2toN.png
