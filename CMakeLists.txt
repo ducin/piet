@@ -17,8 +17,8 @@ if(DOXYGEN_FOUND)
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Generating API documentation with Doxygen" VERBATIM)
   execute_process(COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_CONFIG}
-    OUTPUT_FILE "${DOXYGEN_DIR}/doxygen.exec.log"
-    ERROR_FILE "${DOXYGEN_DIR}/doxygen.error.log")
+    OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/doxygen.exec.log"
+    ERROR_FILE "${CMAKE_CURRENT_BINARY_DIR}/doxygen.error.log")
 else(DOXYGEN_FOUND)
   message(STATUS "Documentation could not be generated")
 endif(DOXYGEN_FOUND)
