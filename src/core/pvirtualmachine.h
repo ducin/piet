@@ -13,7 +13,8 @@
 #include "pcalcstack.h"
 
 // C++
-// none
+#include <ostream>
+#include <sstream>
 
 // STL
 // none
@@ -45,6 +46,7 @@ class PVirtualMachine {
 		PCodePointer *pointer; // wskaźnik czytający obraz powyższy kodu
 		PColorManager *color_manager; // maszyna zajmująca się przetwarzaniem i interpretacją kolorów
 		PBlockManager *block_manager;
+		std::stringstream &stream;
 
 		int step;
 
@@ -69,7 +71,7 @@ class PVirtualMachine {
 
 	public:
 
-		PVirtualMachine(QString);
+		PVirtualMachine(QString, std::stringstream &);
 		~PVirtualMachine();
 
 		bool isReady();
@@ -82,6 +84,7 @@ class PVirtualMachine {
 
 		bool isVerbose();
 		void toggleVerbosity();
+		void setVerbosity(bool);
 
 		// TODO zastanowic sie jaki typ ma zwracac
 		void executeAllInstr(); // wykonywanie instrukcji do końca działania programu

@@ -11,7 +11,7 @@
 #include "pcalcstack.h"
 
 // C++
-#include <iostream>
+#include <sstream>
 
 // STL
 // none
@@ -30,7 +30,7 @@
 /**
  * Konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet. Tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
  */
-PVirtualMachine::PVirtualMachine(QString filename)
+PVirtualMachine::PVirtualMachine(QString filename, std::stringstream &str) : stream(str)
 {
 	debug("CONSTRUCTOR - virtual-machine START\n");
 
@@ -54,7 +54,7 @@ PVirtualMachine::PVirtualMachine(QString filename)
 	stack = new PCalcStack();
 
 	// obiekt odpowiedzialny za wczytywanie i wyświetlanie danych od użytkownika
-	console = new PConsole();
+	console = new PConsole(str);
 
 	// przygotowanie maszyny do uruchomienia ("wyzerowanie")
 	prepareToExecute();
@@ -211,6 +211,11 @@ void PVirtualMachine::toggleVerbosity()
 	}
 }
 
+void PVirtualMachine::setVerbosity(bool verbose)
+{
+	setVerbosityRecursively(verbose);
+}
+
 //=========================================================
 
 /**
@@ -232,7 +237,7 @@ void PVirtualMachine::executeAllInstr()
 bool PVirtualMachine::executeSingleInstr()
 {
 	if (verbose) {
-		std::cout << std::endl << "krok:" << step << "; ";
+		stream << std::endl << "krok:" << step << "; ";
 		__dev__printConsole();
 	}
 	bool result = true; // czy operacja została wykonana
@@ -240,7 +245,9 @@ bool PVirtualMachine::executeSingleInstr()
 	if ( isRunning() ) {
 		PInstructions instruction = movePointerAndGetInstructionToExecute();
 		if (verbose) {
-			std::cout << "instr: "; __dev__printInstruction(instruction); std::cout << std::endl;
+			stream << "instr: ";
+			__dev__printInstruction(instruction);
+			stream << std::endl;
 		}
 		// w zależności od tego jaką instrukcję zwróci maszyna kodu
 		switch(instruction)
@@ -361,12 +368,12 @@ bool PVirtualMachine::executeSingleInstr()
 			case pietInstr_special_terminate:
 				// 8 nieudanych prób przesunięcia głowicy do następnego kodela kończy pracę interpretera
 				if ( !stopMachine() ) {
-					std::cout << "ERROR: bool PVirtualMachine::executeSingleInstr()" << std::endl;
+					stream << "ERROR: bool PVirtualMachine::executeSingleInstr()" << std::endl;
 					exit(1);
 				}
 				break;
 			default:
-				std::cout << "ERROR: bool PVirtualMachine::executeSingleInstr()" << std::endl;
+				stream << "ERROR: bool PVirtualMachine::executeSingleInstr()" << std::endl;
 				exit(1);
 		}
 	} else {
@@ -467,7 +474,7 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 		isBlack = isWhite = false; // odznaczenie informacji na początek każdego obrotu pętli (odświeżenie)
 		possible_point = block_manager->getNextPossibleCodel(); // wyznacz hipotetyczny nowy kodel
 		if (verbose) {
-			std::cout << "próba:" << attempts << "[" << possible_point.x << "," << possible_point.y << "]; ";
+			stream << "próba:" << attempts << "[" << possible_point.x << "," << possible_point.y << "]; ";
 		}
 
 		if ( pointIsBlackOrOutside(possible_point) ) {
@@ -492,7 +499,7 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 		} else {
 			pointer->setCoordinates(possible_point);
 			if (verbose)
-				std::cout << "nowe:[" << possible_point.x << "," << possible_point.y << "]" << "; ";
+				stream << "nowe:[" << possible_point.x << "," << possible_point.y << "]" << "; ";
 			continued = false;
 		}
 	}
@@ -557,7 +564,7 @@ PInstructions PVirtualMachine::getInstructionByIndex(int index)
 		case 18:
 			return pietInstr_special_terminate;
 		default:
-			std::cout << "ERROR: PInstructions PVirtualMachine::getInstructionByIndex(int index)" << std::endl;
+			stream << "ERROR: PInstructions PVirtualMachine::getInstructionByIndex(int index)" << std::endl;
 			exit(1);
 	}
 }
@@ -572,61 +579,61 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 {
 	switch(instr) {
 		case 0:
-			std::cout << "empty";
+			stream << "empty";
 			break;
 		case 1:
-			std::cout << "push";
+			stream << "push";
 			break;
 		case 2:
-			std::cout << "pop";
+			stream << "pop";
 			break;
 		case 3:
-			std::cout << "add";
+			stream << "add";
 			break;
 		case 4:
-			std::cout << "sub";
+			stream << "sub";
 			break;
 		case 5:
-			std::cout << "mul";
+			stream << "mul";
 			break;
 		case 6:
-			std::cout << "div";
+			stream << "div";
 			break;
 		case 7:
-			std::cout << "mod";
+			stream << "mod";
 			break;
 		case 8:
-			std::cout << "not";
+			stream << "not";
 			break;
 		case 9:
-			std::cout << "greater";
+			stream << "greater";
 			break;
 		case 10:
-			std::cout << "pointer";
+			stream << "pointer";
 			break;
 		case 11:
-			std::cout << "switch";
+			stream << "switch";
 			break;
 		case 12:
-			std::cout << "duplicate";
+			stream << "duplicate";
 			break;
 		case 13:
-			std::cout << "roll";
+			stream << "roll";
 			break;
 		case 14:
-			std::cout << "in(number)";
+			stream << "in(number)";
 			break;
 		case 15:
-			std::cout << "in(char)";
+			stream << "in(char)";
 			break;
 		case 16:
-			std::cout << "out(number)";
+			stream << "out(number)";
 			break;
 		case 17:
-			std::cout << "out(char)";
+			stream << "out(char)";
 			break;
 		case 18:
-			std::cout << "terminate";
+			stream << "terminate";
 			break;
 	}
 }
@@ -636,7 +643,7 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
  */
 void PVirtualMachine::__dev__printImageInfo()
 {
-	std::cout << std::endl << "IMAGE/ " << "[" << image->width() << "x" << image->height() << "]" << std::endl;
+	stream << std::endl << "IMAGE/ " << "[" << image->width() << "x" << image->height() << "]" << std::endl;
 }
 
 /**

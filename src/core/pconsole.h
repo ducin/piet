@@ -8,7 +8,7 @@
 #include "pstructs.h"
 
 // C++
-// none
+#include <sstream>
 
 // STL
 // none
@@ -35,9 +35,11 @@ class PConsole {
 		 */
 		bool verbose;
 
+		std::stringstream &stream;
+
 	public:
 
-		PConsole();
+		PConsole(std::stringstream &);
 		~PConsole();
 
 		void setVerbosity(bool);

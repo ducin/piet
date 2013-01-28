@@ -27,7 +27,7 @@
 /**
  * Konstruktor konsoli wejścia/wyjścia. Nie robi nic szczególnego.
  */
-PConsole::PConsole()
+PConsole::PConsole(std::stringstream &str) : stream(str)
 {
 	debug("CONSTRUCTOR ----- console START\n");
 	verbose = false;
@@ -60,10 +60,10 @@ void PConsole::setVerbosity(bool verbosity)
 void PConsole::printNumber(int I)
 {
 	if (verbose)
-		std::cout << "CONSOLE/out-number: ";
-	std::cout << I;
+		stream << "CONSOLE/out-number: ";
+	stream << I;
 	if (verbose)
-		std::cout << std::endl;
+		stream << std::endl;
 }
 
 /**
@@ -74,11 +74,11 @@ void PConsole::printChar(int I)
 {
 	unsigned char UC = I;
 	if (verbose)
-		std::cout << "CONSOLE/out-char: ";
-//	std::cout << std::setw(3) << UC;
-	std::cout << UC;
+		stream << "CONSOLE/out-char: ";
+//	stream << std::setw(3) << UC;
+	stream << UC;
 	if (verbose)
-		std::cout << " (" << I << ")" << std::endl;
+		stream << " (" << I << ")" << std::endl;
 }
 
 /**
@@ -89,9 +89,9 @@ int PConsole::readNumber()
 {
 	int var;
 	if (verbose) {
-		std::cout << "CONSOLE/in-number: ";
+		stream << "CONSOLE/in-number: ";
 	} else {
-		std::cout << "? ";
+		stream << "? ";
 	}
 	std::cin >> var;
 	return var;
@@ -105,9 +105,9 @@ int PConsole::readChar()
 {
 	char C;
 	if (verbose) {
-	std::cout << "CONSOLE/in-char: ";
+		stream << "CONSOLE/in-char: ";
 	} else {
-		std::cout << "? ";
+		stream << "? ";
 	}
 	std::cin >> C;
 	int I = (int) C;

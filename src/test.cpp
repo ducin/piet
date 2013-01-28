@@ -12,7 +12,7 @@
 #include <string>
 
 // STL
-// none
+#include <sstream>
 
 // Qt
 #include <QString>
@@ -70,6 +70,7 @@ void printFormattedMessage(std::string message)
  * Wirtualna maszyna Pieta - globalna zmienna
  */
 PVirtualMachine *m;
+std::stringstream stream;
 
 /**
  * Wyświetla tekst powitalny programu.
@@ -189,8 +190,9 @@ int main(int argc, char **argv)
 	// zmienna robocza przechowująca ścieżkę do pliku z kodem Pieta
 	QString QSTR_code_path(STD_STR_code_path.c_str());
 	// tworzenie wirtualnej maszyny Pieta, odpalenie aplikacji, zniszczenie maszyny
-	m = new PVirtualMachine(QSTR_code_path);
+	m = new PVirtualMachine(QSTR_code_path, stream);
 	runProgram();
+	std::cout << stream.str() << std::endl;
 	m->~PVirtualMachine();
 }
 
