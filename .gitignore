@@ -1,5 +1,6 @@
 # IDEs
 *.kdev4
+*~
 
 # Documentation
 doc/output
