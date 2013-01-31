@@ -4,6 +4,7 @@ ADD_LIBRARY(PietCore
   pcodepointer.cpp
   pcolormanager.cpp
   pconsole.cpp
-  pvirtualmachine.cpp)
+  pvirtualmachine.cpp
+  pconsolevirtualmachine.cpp)
 
 TARGET_LINK_LIBRARIES(PietCore ${QT_LIBRARIES})

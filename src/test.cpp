@@ -1,7 +1,7 @@
 //// includes
 
 // piet core
-#include "core/pvirtualmachine.h"
+#include "core/pconsolevirtualmachine.h"
 #include "core/penums.h"
 #include "debug.h"
 
@@ -67,12 +67,6 @@ void printFormattedMessage(std::string message)
 }
 
 /**
- * Wirtualna maszyna Pieta - globalna zmienna
- */
-PVirtualMachine *m;
-std::stringstream stream;
-
-/**
  * Wyświetla tekst powitalny programu.
  */
 void runWelcome()
@@ -91,7 +85,7 @@ void runWelcome()
  * Wyświetla menu programu, prosi użytkownika o wybór zadania i zwraca ów wybór.
  * @return numer zadania wybrany przez użytkownika
  */
-int runMenu()
+int runMenu(PConsoleVirtualMachine *m)
 {
 	std::cout << "wybierz opcję:" << std::endl;
 	std::cout << "1. uruchom maszynę i wykonuj instrukcje krok po kroku" << std::endl;
@@ -111,7 +105,7 @@ int runMenu()
 /**
  * Główna procedura całej aplikacji. Wyświetla przywitanie, potem w pętli pobiera od użytkownika numer zadania i wykonuje je. Działanie programu zależy od decyzji użytkownika.
  */
-void runProgram()
+void runProgram(PConsoleVirtualMachine *m)
 {
 	// wyświetlanie informacji o programie
 	runWelcome();
@@ -122,7 +116,7 @@ void runProgram()
 	while (continued)
 	{
 		// wyświetlanie menu programu i pobranie odpowiedzi od użytkownika
-		choice = runMenu();
+		choice = runMenu(m);
 		// wykonanie danego zadania w zależności od odpowiedzi użytkownika
 		switch (choice)
 		{
@@ -178,7 +172,7 @@ int main(int argc, char **argv)
 		printFormattedMessage("Podaj nazwę programu przez argument");
 		return 1;
 	}
-	std::string STD_STR_code_path = std::string(argv[1]);
+	std::string STD_STR_code_path(argv[1]);
 	std::ifstream fin(STD_STR_code_path.c_str());
 	if ( !fin )
 	{
@@ -190,8 +184,9 @@ int main(int argc, char **argv)
 	// zmienna robocza przechowująca ścieżkę do pliku z kodem Pieta
 	QString QSTR_code_path(STD_STR_code_path.c_str());
 	// tworzenie wirtualnej maszyny Pieta, odpalenie aplikacji, zniszczenie maszyny
-	m = new PVirtualMachine(QSTR_code_path, stream);
-	runProgram();
+	std::stringstream stream;
+	PConsoleVirtualMachine *m = new PConsoleVirtualMachine(QSTR_code_path, stream);
+	runProgram(m);
 	std::cout << stream.str() << std::endl;
 	m->~PVirtualMachine();
 }

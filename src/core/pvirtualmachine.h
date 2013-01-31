@@ -64,16 +64,19 @@ class PVirtualMachine {
 		 */
 		PConsole *console;
 
-		PMachineStates getState();
 		void setState(PMachineStates);
 
 		void prepareToExecute();
+
+		virtual void readNumber() = 0;
+		virtual void readChar() = 0;
 
 	public:
 
 		PVirtualMachine(QString, std::stringstream &);
 		~PVirtualMachine();
 
+		PMachineStates getState();
 		bool isReady();
 		bool isRunning();
 		bool isFinished();
@@ -85,6 +88,9 @@ class PVirtualMachine {
 		bool isVerbose();
 		void toggleVerbosity();
 		void setVerbosity(bool);
+
+		std::list<int>::iterator calc_stack_begin_iterator();
+		std::list<int>::iterator calc_stack_end_iterator();
 
 		// TODO zastanowic sie jaki typ ma zwracac
 		void executeAllInstr(); // wykonywanie instrukcji do końca działania programu

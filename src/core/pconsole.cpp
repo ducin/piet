@@ -82,7 +82,7 @@ void PConsole::printChar(int I)
 }
 
 /**
- * Wczytuje z koncoli liczbę.
+ * Wczytuje z konsoli liczbę.
  * @return wczytana liczba
  */
 int PConsole::readNumber()
@@ -98,7 +98,7 @@ int PConsole::readNumber()
 }
 
 /**
- * Wczytuje z koncoli znak.
+ * Wczytuje z konsoli znak.
  * @return wczytany znak reprezentowany maszynowo przez liczbę
  */
 int PConsole::readChar()

@@ -76,6 +76,16 @@ int PCalcStack::size()
 	return values.size();
 }
 
+std::list<int>::iterator PCalcStack::begin_iterator()
+{
+	return values.begin();
+}
+
+std::list<int>::iterator PCalcStack::end_iterator()
+{
+	return values.end();
+}
+
 /**
  * Sprawdza, czy stos posiada co najmniej zadaną liczbę elementów na stosie. Metoda wykorzystywana np. przed wykonaniem operacji ADD: muszą być na stosie co najmniej dwa elementy, aby udało się wykonać operację.
  * @param elements minimalna liczba elementów stosu

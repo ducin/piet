@@ -55,6 +55,8 @@ class PCalcStack {
 		void prepareToExecute();
 
 		int size();
+		std::list<int>::iterator begin_iterator();
+		std::list<int>::iterator end_iterator();
 		bool hasAtLeastNElements(unsigned int);
 
 	// operacje podstawowe:

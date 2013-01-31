@@ -218,6 +218,18 @@ void PVirtualMachine::setVerbosity(bool verbose)
 
 //=========================================================
 
+std::list<int>::iterator PVirtualMachine::calc_stack_begin_iterator()
+{
+	return stack->begin_iterator();
+}
+
+std::list<int>::iterator PVirtualMachine::calc_stack_end_iterator()
+{
+	return stack->end_iterator();
+}
+
+//=========================================================
+
 /**
  * Wykonuje WSZYSTKIE instrukcje aż do zakończenia pracy programu. Jeśli tryb gadatliwy został uprzednio włączony, wszystkie informacje o przebeigu pracy są wyświetlane.
  */
@@ -346,10 +358,10 @@ bool PVirtualMachine::executeSingleInstr()
 				}
 				break;
 			case pietInstr_io_in_number:
-				stack->instrPush(console->readNumber());
+				readNumber();
 				break;
 			case pietInstr_io_in_char:
-				stack->instrPush(console->readChar());
+				readChar();
 				break;
 			case pietInstr_io_out_number:
 				if (stack->hasAtLeastNElements(1)) {
