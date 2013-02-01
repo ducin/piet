@@ -1,14 +1,14 @@
 //// includes
 
 // header file
-#include "pvirtualmachine.h"
+#include "p_virtual_machine.h"
 
 // piet core
 #include "../debug.h"
-#include "penums.h"
-#include "pstructs.h"
-#include "pconsole.h"
-#include "pcalcstack.h"
+#include "p_enums.h"
+#include "p_structs.h"
+#include "p_console.h"
+#include "p_calc_stack.h"
 
 // C++
 #include <sstream>

@@ -4,9 +4,9 @@
 //// includes
 
 // piet core
-#include "penums.h"
-#include "pstructs.h"
-#include "pcodepointer.h"
+#include "p_enums.h"
+#include "p_structs.h"
+#include "p_code_pointer.h"
 
 // C++
 // none

@@ -1,12 +1,12 @@
 //// includes
 
 // header file
-#include "pcolormanager.h"
+#include "p_color_manager.h"
 
 // piet core
 #include "../debug.h"
-#include "penums.h"
-#include "pstructs.h"
+#include "p_enums.h"
+#include "p_structs.h"
 
 //C
 #include <cstdlib>

@@ -4,13 +4,13 @@
 //// includes
 
 // piet core
-#include "penums.h"
-#include "pstructs.h"
-#include "pconsole.h"
-#include "pblockmanager.h"
-#include "pcolormanager.h"
-#include "pcodepointer.h"
-#include "pcalcstack.h"
+#include "p_enums.h"
+#include "p_structs.h"
+#include "p_console.h"
+#include "p_block_manager.h"
+#include "p_color_manager.h"
+#include "p_code_pointer.h"
+#include "p_calc_stack.h"
 
 // C++
 #include <ostream>

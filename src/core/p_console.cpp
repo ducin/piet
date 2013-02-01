@@ -1,12 +1,12 @@
 //// includes
 
 // header file
-#include "pconsole.h"
+#include "p_console.h"
 
 // piet core
 #include "../debug.h"
-#include "penums.h"
-#include "pstructs.h"
+#include "p_enums.h"
+#include "p_structs.h"
 
 // C++
 #include <iostream>

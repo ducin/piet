@@ -1,19 +1,9 @@
 #ifndef P_GUI_VIRTUAL_MACHINE
 #define P_GUI_VIRTUAL_MACHINE
 
-//// includes
-
-// piet core
-#include "pvirtualmachine.h"
-
-// C++
-// none
-
-// STL
-// none
-
-// Qt
 #include <QString>
+
+#include "p_virtual_machine.h"
 
 /** \file pguivirtualmachine.h
  * \brief plik nagłówkowy klasy PGuiVirtualMachine

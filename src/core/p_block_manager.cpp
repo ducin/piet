@@ -1,13 +1,13 @@
 //// includes
 
 // header file
-#include "pblockmanager.h"
+#include "p_block_manager.h"
 
 // piet core
 #include "../debug.h"
-#include "penums.h"
-#include "pstructs.h"
-#include "pcodepointer.h"
+#include "p_enums.h"
+#include "p_structs.h"
+#include "p_code_pointer.h"
 
 // C++
 #include <iostream>

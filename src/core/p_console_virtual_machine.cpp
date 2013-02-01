@@ -1,7 +1,7 @@
 //// includes
 
 // header file
-#include "pconsolevirtualmachine.h"
+#include "p_console_virtual_machine.h"
 
 // piet core
 #include "../debug.h"

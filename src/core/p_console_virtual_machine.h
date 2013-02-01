@@ -4,7 +4,7 @@
 //// includes
 
 // piet core
-#include "pvirtualmachine.h"
+#include "p_virtual_machine.h"
 
 // C++
 // none

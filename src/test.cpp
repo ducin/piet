@@ -1,8 +1,8 @@
 //// includes
 
 // piet core
-#include "core/pconsolevirtualmachine.h"
-#include "core/penums.h"
+#include "core/p_console_virtual_machine.h"
+#include "core/p_enums.h"
 #include "debug.h"
 
 // C++
