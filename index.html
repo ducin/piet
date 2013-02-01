@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Piet by tkoomzaaskz</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/tkoomzaaskz/piet">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/tkoomzaaskz/piet/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/tkoomzaaskz/piet/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Piet</h1>
+          <p>Piet graphical programming language interpreter</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/tkoomzaaskz">tkoomzaaskz</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>Piet</h1>
+
+<p><a href="http://en.wikipedia.org/wiki/Piet_(programming_language%29">Piet</a> is a graphical programming language designed by <a href="http://en.wikipedia.org/wiki/David_Morgan-Mar">David Morgan-Mar</a>. Read more about Piet at <a href="http://www.dangermouse.net/esoteric/piet.html">http://www.dangermouse.net/esoteric/piet.html</a>.</p>
+
+<p>This project provides Piet interpreter lib which is additionally used inside a console and gui aplications. </p>
+
+<h1>Compilation</h1>
+
+<p>The project uses <a href="http://www.cmake.org/">CMake</a> for deployment process. You need to have at 2.8.2 version installed. Once cmake is installed, you may compile with following commands:</p>
+
+<pre><code>mkdir build
+cd build
+cmake ..
+make
+</code></pre>
+
+<p>and it will create all binary files (libs, console and gui application).</p>
+
+<h1>Doxygen</h1>
+
+<p>If you have doxygen documentation tool installed, cmake will additionally generate HTML documentation.</p>
+
+<h1>Qt Creator</h1>
+
+<p>You may use the Qt Creator tool within the gui project (sources are located in src/gui). Open the project with the <code>gui.pro</code> file. But before you can compile the gui application in the Qt Creator, libpietcore.a library has to be compiled (which is done by cmake). Basically, compile entire project with cmake and after this you can use Qt Creator with no limits.</p>
+
+<h1>Run</h1>
+
+<p>Execute the <code>piet</code> binary file in command line with one parameter, specifying the program to execute:</p>
+
+<pre><code>$ piet path_to_img_programs/2toN.png
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
