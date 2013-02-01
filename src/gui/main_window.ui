@@ -20,7 +20,7 @@
    <string>Piet Esoteric Language Interpreter</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="application.qrc">
+   <iconset resource="images.qrc">
     <normaloff>:/images/view-form-action.png</normaloff>:/images/view-form-action.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -65,7 +65,7 @@
   </widget>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="application.qrc">
+    <iconset resource="images.qrc">
      <normaloff>:/images/help-contents.png</normaloff>:/images/help-contents.png</iconset>
    </property>
    <property name="text">
@@ -80,7 +80,7 @@
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset resource="application.qrc">
+    <iconset resource="images.qrc">
      <normaloff>:/images/application-exit.png</normaloff>:/images/application-exit.png</iconset>
    </property>
    <property name="text">
@@ -95,7 +95,7 @@
   </action>
   <action name="actionRun">
    <property name="icon">
-    <iconset resource="application.qrc">
+    <iconset resource="images.qrc">
      <normaloff>:/images/quickopen.png</normaloff>:/images/quickopen.png</iconset>
    </property>
    <property name="text">
@@ -107,7 +107,7 @@
   </action>
  </widget>
  <resources>
-  <include location="application.qrc"/>
+  <include location="images.qrc"/>
  </resources>
  <connections>
   <connection>

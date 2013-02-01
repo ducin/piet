@@ -30,4 +30,4 @@ FORMS += \
     machine_widget.ui
 
 RESOURCES += \
-    application.qrc
+    images.qrc

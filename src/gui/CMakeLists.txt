@@ -28,7 +28,7 @@ SET(gui_FORMS
 )
 
 SET(gui_RESOURCES
-  application.qrc
+  images.qrc
 )
 
 QT4_WRAP_CPP(gui_HEADERS_MOC ${gui_HEADERS})
