@@ -7,8 +7,7 @@ doc/output
 
 # Compilation output
 build
-obj/*
-bin/*
+src/gui-build-desktop
 
 # Compiled Object files
 *.slo

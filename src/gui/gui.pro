@@ -9,8 +9,8 @@ QT       += core gui
 TARGET = gui
 TEMPLATE = app
 
-LIBS += ./../../build/src/core/libPietCore.a
-INCLUDEPATH += ./../core
+LIBS += ../../build/src/core/libPietCore.a
+INCLUDEPATH += ../core
 
 SOURCES += \
     main.cpp\
