@@ -1,3 +1,6 @@
+# Read more about configuring cmake with Qt at:
+# http://qt-project.org/quarterly/view/using_cmake_to_build_qt_projects
+
 INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
