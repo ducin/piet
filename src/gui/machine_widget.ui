@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MachineWidget</class>
+ <widget class="QWidget" name="MachineWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Virtual Machine</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item>
+    <widget class="QGroupBox" name="groupBoxSource">
+     <property name="title">
+      <string>Program Source Image</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QPushButton" name="pushButtonBrowse">
+        <property name="text">
+         <string>Browse...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGraphicsView" name="graphicsView"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QPushButton" name="pushButtonZoomIn">
+          <property name="text">
+           <string>ZoomIn</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonZoomOut">
+          <property name="text">
+           <string>ZoomOut</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalCenter">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayoutRightTop">
+       <item>
+        <widget class="QGroupBox" name="groupBoxState">
+         <property name="title">
+          <string>State actions</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayoutState">
+            <item>
+             <widget class="QPushButton" name="pushButtonStop">
+              <property name="text">
+               <string>stop</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonStart">
+              <property name="text">
+               <string>start</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonRestart">
+              <property name="text">
+               <string>restart</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxInstructions">
+         <property name="title">
+          <string>Instructions</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayoutInstructions">
+            <item>
+             <widget class="QPushButton" name="pushButtonExecuteSingleInstruction">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonExecuteAllInstructions">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>&gt;&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayoutRightMiddle">
+       <item>
+        <widget class="QLabel" name="labelState">
+         <property name="text">
+          <string>State:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelStateValue">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBoxVerbose">
+         <property name="text">
+          <string>Verbose</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBoxOutput">
+       <property name="title">
+        <string>Output</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QTextBrowser" name="consoleOutputBrowser">
+          <property name="font">
+           <font>
+            <family>Courier 10 Pitch</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBoxCalcStack">
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Data</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QListWidget" name="listWidgetCalcStack"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>graphicsView</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonBrowse</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>chooseFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>86</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>87</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonExecuteAllInstructions</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>executeAllInstructions()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>561</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonExecuteSingleInstruction</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>executeSingleInstruction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>517</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>268</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxVerbose</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>toggleVerbosity(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>67</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonRestart</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>restartMachine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>461</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>301</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonStart</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>startMachine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonStop</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>stopMachine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonZoomIn</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonZoomOut</sender>
+   <signal>clicked()</signal>
+   <receiver>MachineWidget</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>205</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>chooseFile()</slot>
+  <slot>executeSingleInstruction()</slot>
+  <slot>executeAllInstructions()</slot>
+  <slot>toggleVerbosity(bool)</slot>
+  <slot>startMachine()</slot>
+  <slot>restartMachine()</slot>
+  <slot>stopMachine()</slot>
+  <slot>zoomIn()</slot>
+  <slot>zoomOut()</slot>
+ </slots>
+</ui>
