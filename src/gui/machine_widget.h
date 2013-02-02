@@ -4,10 +4,10 @@
 #include <sstream>
 
 #include <QtGui>
-#include <QImage>
 #include <QWidget>
 
-#include "pguivirtualmachine.h"
+#include "p_gui_virtual_machine.h"
+#include "program_image_widget.h"
 
 namespace Ui {
     class MachineWidget;
@@ -21,16 +21,17 @@ public:
     explicit MachineWidget(QWidget *parent = 0);
     ~MachineWidget();
 
-    void createMachine(QImage *);
     void enableMachineInterface();
     void disableMachineInterface();
 
+signals:
+    void fileChosen(QString);
+
 public slots:
     void chooseFile();
-    void toggleVerbosity(bool);
+    void createMachine(QString);
 
-    void zoomIn();
-    void zoomOut();
+    void toggleVerbosity(bool);
 
     void executeSingleInstruction();
     void executeAllInstructions();
@@ -41,19 +42,12 @@ public slots:
 
 private:
     Ui::MachineWidget *ui;
-
-    QString filepath;
-    QGraphicsScene *scene;
-
-    signed char zoom_scale;
-    QImage *image;
+    ProgramImageWidget *program_image;
 
     PGuiVirtualMachine *piet;
-    bool machine_created;
-
     std::stringstream *stream;
 
-    unsigned char getZoomSize();
+    bool machine_created;
 
     void clearCalcStack();
     void fillCalcStack();

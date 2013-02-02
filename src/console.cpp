@@ -16,6 +16,7 @@
 
 // Qt
 #include <QString>
+#include <QImage>
 
 /** \file test.cpp
  * \brief Plik z kodem źródłowym aplikacji
@@ -172,22 +173,20 @@ int main(int argc, char **argv)
 		printFormattedMessage("Podaj nazwę programu przez argument");
 		return 1;
 	}
-	std::string STD_STR_code_path(argv[1]);
-	std::ifstream fin(STD_STR_code_path.c_str());
+	std::string program_path(argv[1]);
+	std::ifstream fin(program_path.c_str());
 	if ( !fin )
 	{
 		std::string message("Plik ");
-		message.append(STD_STR_code_path.c_str()).append(" nie istnieje. Sprawdź przyczynę błędu i spróbuj ponownie");
+		message.append(program_path.c_str()).append(" nie istnieje. Sprawdź przyczynę błędu i spróbuj ponownie");
 		printFormattedMessage(message);
 		return 2;
 	}
-	// zmienna robocza przechowująca ścieżkę do pliku z kodem Pieta
-	QString QSTR_code_path(STD_STR_code_path.c_str());
 	// tworzenie wirtualnej maszyny Pieta, odpalenie aplikacji, zniszczenie maszyny
 	std::stringstream stream;
-	PConsoleVirtualMachine *m = new PConsoleVirtualMachine(QSTR_code_path, stream);
+	PConsoleVirtualMachine *m = new PConsoleVirtualMachine(program_path.c_str(), stream);
 	runProgram(m);
 	std::cout << stream.str() << std::endl;
-	m->~PVirtualMachine();
+	delete m;
 }
 

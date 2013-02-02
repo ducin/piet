@@ -20,7 +20,6 @@
 // none
 
 // Qt
-#include <QString>
 #include <QImage>
 
 /** \file pvirtualmachine.h
@@ -47,6 +46,7 @@ class PVirtualMachine {
 		PColorManager *color_manager; // maszyna zajmująca się przetwarzaniem i interpretacją kolorów
 		PBlockManager *block_manager;
 		std::stringstream &stream;
+		void construct();
 
 		int step;
 
@@ -73,7 +73,7 @@ class PVirtualMachine {
 
 	public:
 
-		PVirtualMachine(QString, std::stringstream &);
+		PVirtualMachine(const char *, std::stringstream &);
 		~PVirtualMachine();
 
 		PMachineStates getState();
@@ -91,6 +91,8 @@ class PVirtualMachine {
 
 		std::list<int>::iterator calc_stack_begin_iterator();
 		std::list<int>::iterator calc_stack_end_iterator();
+
+		const QImage* getImage() const;
 
 		// TODO zastanowic sie jaki typ ma zwracac
 		void executeAllInstr(); // wykonywanie instrukcji do końca działania programu

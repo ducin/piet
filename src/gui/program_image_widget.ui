@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProgramImageWidget</class>
+ <widget class="QWidget" name="ProgramImageWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>276</width>
+    <height>295</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGraphicsView" name="graphicsView"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayoutZoom">
+     <item>
+      <widget class="QPushButton" name="pushButtonZoomIn">
+       <property name="text">
+        <string>ZoomIn</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonZoomOut">
+       <property name="text">
+        <string>ZoomOut</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonZoomIn</sender>
+   <signal>clicked()</signal>
+   <receiver>ProgramImageWidget</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>43</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonZoomOut</sender>
+   <signal>clicked()</signal>
+   <receiver>ProgramImageWidget</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>241</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>zoomIn()</slot>
+  <slot>zoomOut()</slot>
+ </slots>
+</ui>

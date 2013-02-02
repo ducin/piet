@@ -39,27 +39,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QGraphicsView" name="graphicsView"/>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QPushButton" name="pushButtonZoomIn">
-          <property name="text">
-           <string>ZoomIn</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButtonZoomOut">
-          <property name="text">
-           <string>ZoomOut</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
      </layout>
     </widget>
    </item>
@@ -202,9 +181,6 @@
    </item>
   </layout>
  </widget>
- <tabstops>
-  <tabstop>graphicsView</tabstop>
- </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -319,38 +295,6 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>pushButtonZoomIn</sender>
-   <signal>clicked()</signal>
-   <receiver>MachineWidget</receiver>
-   <slot>zoomIn()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>67</x>
-     <y>296</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonZoomOut</sender>
-   <signal>clicked()</signal>
-   <receiver>MachineWidget</receiver>
-   <slot>zoomOut()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>205</x>
-     <y>295</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
  <slots>
   <slot>chooseFile()</slot>
@@ -360,7 +304,5 @@
   <slot>startMachine()</slot>
   <slot>restartMachine()</slot>
   <slot>stopMachine()</slot>
-  <slot>zoomIn()</slot>
-  <slot>zoomOut()</slot>
  </slots>
 </ui>

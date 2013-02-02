@@ -10,6 +10,7 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(gui_SOURCES
+  program_image_widget.cpp
   machine_widget.cpp
   child_window.cpp
   main_window.cpp
@@ -20,9 +21,11 @@ SET(gui_HEADERS
   main_window.h
   child_window.h
   machine_widget.h
+  program_image_widget.h
 )
 
 SET(gui_FORMS
+  program_image_widget.ui
   machine_widget.ui
   main_window.ui
 )
@@ -36,7 +39,7 @@ QT4_WRAP_UI(gui_FORMS_HEADERS ${gui_FORMS})
 QT4_ADD_RESOURCES(gui_RESOURCES_RCC ${gui_RESOURCES})
 
 ADD_EXECUTABLE(gui
-  pguivirtualmachine.cpp # this is not a UI file (no moc generated)
+  p_gui_virtual_machine.cpp # this is not a UI file (no moc generated)
   ${gui_SOURCES} 
   ${gui_HEADERS_MOC}
   ${gui_FORMS_HEADERS}

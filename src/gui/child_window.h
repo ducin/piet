@@ -7,7 +7,7 @@
 
 #include "machine_widget.h"
 
-#include "pvirtualmachine.h"
+#include "p_virtual_machine.h"
 
 namespace Ui {
     class ChildWindow;

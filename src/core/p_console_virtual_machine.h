@@ -13,6 +13,7 @@
 // none
 
 // Qt
+// none
 
 /** \file pconsolevirtualmachine.h
  * \brief plik nagłówkowy klasy PConsoleVirtualMachine
@@ -28,7 +29,7 @@ class PConsoleVirtualMachine : public PVirtualMachine {
 
 	public:
 
-		PConsoleVirtualMachine(QString , std::stringstream& );
+		PConsoleVirtualMachine(const char *, std::stringstream& );
   
 	protected:
 

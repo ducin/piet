@@ -8,39 +8,47 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
-#include "penums.h"
-#include "pguivirtualmachine.h"
+#include "p_enums.h"
+#include "p_gui_virtual_machine.h"
+#include "program_image_widget.h"
 
 MachineWidget::MachineWidget(QWidget *parent) :
   QWidget(parent),
   ui(new Ui::MachineWidget)
 {
-  ui->setupUi(this);
-  disableMachineInterface();
-  stream = new std::stringstream();
-  std::cout << "machine widget constructed" << std::endl;
+    ui->setupUi(this);
+    connect(this, SIGNAL(fileChosen(QString)), this, SLOT(createMachine(QString)));
+
+    program_image = new ProgramImageWidget();
+    ui->groupBoxSource->layout()->addWidget(program_image);
+    program_image->show();
+
+    stream = new std::stringstream();
+
+    disableMachineInterface();
+    std::cout << "machine widget constructed" << std::endl;
 }
 
 MachineWidget::~MachineWidget()
 {
-    delete ui;
     if (machine_created)
     {
         delete piet;
-        delete image;
     }
     delete stream;
+    delete program_image;
+    delete ui;
     std::cout << "machine widget destructed" << std::endl;
 }
 
 void MachineWidget::toggleVerbosity(bool verbose)
 {
-  piet->setVerbosity(verbose);
+    piet->setVerbosity(verbose);
 }
 
 void MachineWidget::chooseFile()
 {
-  filepath = QFileDialog::getOpenFileName(this,
+  QString filepath = QFileDialog::getOpenFileName(this,
     tr("Open File"), "", tr("Files (*.*)"));
 
   if (!filepath.isEmpty()) {
@@ -50,61 +58,29 @@ void MachineWidget::chooseFile()
         "Image Viewer"), tr("Cannot load %1.").arg(filepath));
       return;
     } else {
-        createMachine(image);
+        emit fileChosen(filepath);
     }
   }
 }
 
-unsigned char MachineWidget::getZoomSize()
+void MachineWidget::createMachine(QString filepath)
 {
-    unsigned char zoom_size = 1;
-    for (int i = 0; i < zoom_scale; i++)
-        zoom_size *= 2;
-    return zoom_size;
-}
+    this->setWindowTitle(filepath);
+    ui->consoleOutputBrowser->setText("");
 
-void MachineWidget::zoomIn()
-{
     if (machine_created)
     {
-        zoom_scale++;
-        unsigned char zoom_size = getZoomSize();
-        QImage scaled_image = image->scaled(QSize(image->width() * zoom_size, image->height() * zoom_size));
-        QPixmap scaled_pixmap = QPixmap::fromImage(scaled_image);
-        QGraphicsScene *scene = ui->graphicsView->scene();
-        scene->clear();
-        scene->addPixmap(scaled_pixmap);
+      delete piet;
     }
+
+    piet = new PGuiVirtualMachine(filepath.toStdString().c_str(), *stream);
+    program_image->setPiet(piet);
+    program_image->render();
+    machine_created = true;
+    updateInformation();
 }
 
-void MachineWidget::zoomOut()
-{
-
-}
-
-void MachineWidget::createMachine(QImage *image)
-{
-  QPixmap pixmap = QPixmap::fromImage(*image);
-  scene = new QGraphicsScene(this);
-  scene->addPixmap(pixmap);
-  ui->graphicsView->setScene(scene);
-//  ui->graphicsView->setGeometry(20, 20, image.width() + 50, image.height() + 50);
-  this->setWindowTitle(filepath);
-  ui->consoleOutputBrowser->setText("");
-
-  if (machine_created)
-  {
-    delete piet;
-    delete this->image;
-  }
-
-  // store the reference to the QImage
-  this->image = image;
-  zoom_scale = 0;
-  piet = new PGuiVirtualMachine(filepath, *stream);
-  machine_created = true;
-  updateInformation();
-}
+///////////////////////////////////////////////////////////////////////////////
 
 void MachineWidget::enableMachineInterface()
 {
@@ -124,20 +100,20 @@ void MachineWidget::disableMachineInterface()
 
 void MachineWidget::executeSingleInstruction()
 {
-  piet->executeSingleInstr();
-  std::string output(stream->str());
-  stream->str(""); // clearing
-  ui->consoleOutputBrowser->setText(ui->consoleOutputBrowser->toPlainText().append(output.c_str()));
-  updateInformation();
+    piet->executeSingleInstr();
+    std::string output(stream->str());
+    stream->str(""); // clearing
+    ui->consoleOutputBrowser->setText(ui->consoleOutputBrowser->toPlainText().append(output.c_str()));
+    updateInformation();
 }
 
 void MachineWidget::executeAllInstructions()
 {
-  piet->executeAllInstr();
-  std::string output(stream->str());
-  stream->str(""); // clearing
-  ui->consoleOutputBrowser->setText(ui->consoleOutputBrowser->toPlainText().append(output.c_str()));
-  updateInformation();
+    piet->executeAllInstr();
+    std::string output(stream->str());
+    stream->str(""); // clearing
+    ui->consoleOutputBrowser->setText(ui->consoleOutputBrowser->toPlainText().append(output.c_str()));
+    updateInformation();
 }
 
 void MachineWidget::startMachine()
@@ -164,13 +140,13 @@ void MachineWidget::stopMachine()
 void MachineWidget::clearCalcStack()
 {
     while(ui->listWidgetCalcStack->count())
-      ui->listWidgetCalcStack->takeItem(0);
+        ui->listWidgetCalcStack->takeItem(0);
 }
 
 void MachineWidget::fillCalcStack()
 {
     for (std::list<int>::iterator it = piet->calc_stack_begin_iterator(); it != piet->calc_stack_end_iterator(); ++it)
-      ui->listWidgetCalcStack->addItem(QString::number(*it));
+        ui->listWidgetCalcStack->addItem(QString::number(*it));
 }
 
 void MachineWidget::updateState()

@@ -1,7 +1,8 @@
 //// includes
 
 // header file
-#include "pguivirtualmachine.h"
+#include "p_virtual_machine.h"
+#include "p_gui_virtual_machine.h"
 
 // piet core
 #include "../debug.h"
@@ -22,7 +23,7 @@
  * Plik zawiera kod źródłowy klasy PConsoleVirtualMachine.
  */
 
-PGuiVirtualMachine::PGuiVirtualMachine(QString filename, std::stringstream &str)
+PGuiVirtualMachine::PGuiVirtualMachine(const char * filename, std::stringstream &str)
 : PVirtualMachine(filename, str)
 {
     std::cout << "GUI VM" << std::endl;

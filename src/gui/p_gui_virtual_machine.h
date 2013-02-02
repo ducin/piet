@@ -5,7 +5,7 @@
 
 #include "p_virtual_machine.h"
 
-/** \file pguivirtualmachine.h
+/** \file p_gui_virtual_machine.h
  * \brief plik nagłówkowy klasy PGuiVirtualMachine
  *
  * Plik nagłówkowy zawiera definicję klasy PGuiVirtualMachine.
@@ -17,17 +17,15 @@
  */
 class PGuiVirtualMachine : public PVirtualMachine {
 
-    public:
+public:
+    PGuiVirtualMachine(const char *, std::stringstream& );
 
-        PGuiVirtualMachine(QString , std::stringstream& );
-  
-    protected:
+protected:
+    bool validateNumber(int);
+    virtual void readNumber();
 
-        bool validateNumber(int);
-        virtual void readNumber();
-
-        bool validateChar(QString);
-        virtual void readChar();
+    bool validateChar(QString);
+    virtual void readChar();
 
 public slots:
     void inputSubmitted();

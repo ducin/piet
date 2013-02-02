@@ -17,7 +17,6 @@
 // none
 
 // Qt
-#include <QString>
 #include <QImage>
 #include <QRgb>
 
@@ -30,13 +29,14 @@
 /**
  * Konstruktor maszyny wirtualnej interpretującej dowolny program w języku Piet. Tworzy wszystkie pomocnicze obiekty których działanie jest wykorzystywane i koordynowane przez wirtualną maszynę.
  */
-PVirtualMachine::PVirtualMachine(QString filename, std::stringstream &str) : stream(str)
+PVirtualMachine::PVirtualMachine(const char * filename, std::stringstream &str) : stream(str)
 {
 	debug("CONSTRUCTOR - virtual-machine START\n");
 
 	verbose = false;
 
 	// stworzenie obiektu obrazu kodu, po którym będzie poruszać się głowica
+
 	image = new QImage(filename);
 
 	// punkt współrzędnych początkowych - oraz stworzenie głowicy poruszającej się po powyższym obrazie
@@ -69,12 +69,12 @@ PVirtualMachine::~PVirtualMachine()
 {
 	debug("DESTRUCTOR - virtual-machine START\n");
 	// likwidacja kolejnych pomocniczych obiektów używanych przez wirtualną maszynę
-	image->~QImage();
-	pointer->~PCodePointer();
-	block_manager->~PBlockManager();
-	color_manager->~PColorManager();
-	stack->~PCalcStack();
-	console->~PConsole();
+	delete image;
+	delete pointer;
+	delete block_manager;
+	delete color_manager;
+	delete stack;
+	delete console;
 	debug("DESTRUCTOR - virtual-machine END\n");
 }
 
@@ -226,6 +226,13 @@ std::list<int>::iterator PVirtualMachine::calc_stack_begin_iterator()
 std::list<int>::iterator PVirtualMachine::calc_stack_end_iterator()
 {
 	return stack->end_iterator();
+}
+
+//=========================================================
+
+const QImage* PVirtualMachine::getImage() const
+{
+	return this->image;
 }
 
 //=========================================================

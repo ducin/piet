@@ -13,7 +13,7 @@
 // none
 
 // Qt
-#include <QString>
+// none
 
 /** \file pconsolevirtualmachine.cpp
  * \brief Plik z kodem źródłowym klasy PConsoleVirtualMachine
@@ -21,8 +21,8 @@
  * Plik zawiera kod źródłowy klasy PConsoleVirtualMachine.
  */
 
-PConsoleVirtualMachine::PConsoleVirtualMachine(QString filename, std::stringstream &str)
-: PVirtualMachine(filename, str)
+PConsoleVirtualMachine::PConsoleVirtualMachine(const char * filepath, std::stringstream &str)
+: PVirtualMachine(filepath, str)
 {
 }
 

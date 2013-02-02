@@ -10,6 +10,7 @@ doc/output
 # Compilation output
 build
 src/gui-build-desktop
+src/gui/gui.pro.user
 
 # Compiled Object files
 *.slo
