@@ -1,5 +1,7 @@
 # IDEs
 *.kdev4
+.project
+.cproject
 *~
 
 # Documentation
