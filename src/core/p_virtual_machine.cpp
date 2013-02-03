@@ -264,9 +264,7 @@ bool PVirtualMachine::executeSingleInstr()
 	if ( isRunning() ) {
 		PInstructions instruction = movePointerAndGetInstructionToExecute();
 		if (verbose) {
-			stream << "instr: ";
-			__dev__printInstruction(instruction);
-			stream << std::endl;
+			stream << "instr: " << PEnums::instruction(instruction) << std::endl;
 		}
 		// w zależności od tego jaką instrukcję zwróci maszyna kodu
 		switch(instruction)
@@ -493,7 +491,7 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 		isBlack = isWhite = false; // odznaczenie informacji na początek każdego obrotu pętli (odświeżenie)
 		possible_point = block_manager->getNextPossibleCodel(); // wyznacz hipotetyczny nowy kodel
 		if (verbose) {
-			stream << "próba:" << attempts << "[" << possible_point.x << "," << possible_point.y << "]; ";
+			stream << "try:" << attempts << "[" << possible_point.x << "," << possible_point.y << "]; ";
 		}
 
 		if ( pointIsBlackOrOutside(possible_point) ) {
@@ -585,75 +583,6 @@ PInstructions PVirtualMachine::getInstructionByIndex(int index)
 		default:
 			stream << "ERROR: PInstructions PVirtualMachine::getInstructionByIndex(int index)" << std::endl;
 			exit(1);
-	}
-}
-
-//=========================================================
-
-/**
- * METODA TESTOWA. Wyświetla nazwę zadanej instrukcji Pieta.
- * @param instr instrukcja
- */
-void PVirtualMachine::__dev__printInstruction(PInstructions instr)
-{
-	switch(instr) {
-		case 0:
-			stream << "empty";
-			break;
-		case 1:
-			stream << "push";
-			break;
-		case 2:
-			stream << "pop";
-			break;
-		case 3:
-			stream << "add";
-			break;
-		case 4:
-			stream << "sub";
-			break;
-		case 5:
-			stream << "mul";
-			break;
-		case 6:
-			stream << "div";
-			break;
-		case 7:
-			stream << "mod";
-			break;
-		case 8:
-			stream << "not";
-			break;
-		case 9:
-			stream << "greater";
-			break;
-		case 10:
-			stream << "pointer";
-			break;
-		case 11:
-			stream << "switch";
-			break;
-		case 12:
-			stream << "duplicate";
-			break;
-		case 13:
-			stream << "roll";
-			break;
-		case 14:
-			stream << "in(number)";
-			break;
-		case 15:
-			stream << "in(char)";
-			break;
-		case 16:
-			stream << "out(number)";
-			break;
-		case 17:
-			stream << "out(char)";
-			break;
-		case 18:
-			stream << "terminate";
-			break;
 	}
 }
 

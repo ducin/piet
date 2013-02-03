@@ -8,12 +8,10 @@ ChildWindow::ChildWindow(QWidget *parent) :
   QMdiSubWindow(parent)
 {
     machineWidget = new MachineWidget(this);
-    //machineWidget->show();
     this->setWidget(machineWidget);
-
 }
 
 ChildWindow::~ChildWindow()
 {
-    machineWidget->~MachineWidget();
+    delete machineWidget;
 }

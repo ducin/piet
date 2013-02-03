@@ -1,13 +1,7 @@
 #ifndef CHILD_WINDOW_H
 #define CHILD_WINDOW_H
 
-#include <QtGui>
-#include <QWidget>
-#include <QMdiSubWindow>
-
 #include "machine_widget.h"
-
-#include "p_virtual_machine.h"
 
 namespace Ui {
     class ChildWindow;

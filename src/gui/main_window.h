@@ -2,9 +2,6 @@
 #define MAIN_WINDOW_H
 
 #include <QMainWindow>
-#include <QList>
-
-#include "child_window.h"
 
 namespace Ui {
     class MainWindow;
@@ -24,7 +21,6 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
-    ChildWindow *childWindow;
 };
 
 #endif // MAIN_WINDOW_H

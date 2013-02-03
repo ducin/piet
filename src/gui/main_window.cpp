@@ -3,10 +3,6 @@
 
 #include "child_window.h"
 
-#include <QList>
-#include <QMdiArea>
-#include <QMdiSubWindow>
-
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
@@ -35,7 +31,7 @@ void MainWindow::displayAbout()
 
 void MainWindow::openChildWindow()
 {
-  childWindow = new ChildWindow(ui->mdiArea);
+  ChildWindow *childWindow = new ChildWindow(ui->mdiArea);
   childWindow->setAttribute(Qt::WA_DeleteOnClose);
   childWindow->show();
 }
