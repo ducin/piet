@@ -102,4 +102,16 @@ enum PInstructions {
 	pietInstr_special_terminate, /** 18 - instrukcja TERMINATE */
 };
 
+class PEnums {
+
+	public:
+		static const char * stdColor(PStdColors);
+		static const char * nonStdColorBehavior(PNonStdColorBehavior);
+		static const char * codelChooser(PCodelChooserValues);
+		static const char * directionPointer(PDirectionPointerValues);
+		static const char * machineState(PMachineStates);
+		static const char * instruction(PInstructions);
+
+};
+
 #endif

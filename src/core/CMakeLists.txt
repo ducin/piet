@@ -1,4 +1,5 @@
 ADD_LIBRARY(PietCore
+  p_enums.cpp
   p_block_manager.cpp
   p_calc_stack.cpp
   p_code_pointer.cpp

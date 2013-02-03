@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>600</width>
     <height>320</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>640</width>
+    <width>600</width>
     <height>320</height>
    </size>
   </property>
   <property name="baseSize">
    <size>
-    <width>640</width>
-    <height>480</height>
+    <width>600</width>
+    <height>320</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -49,7 +49,7 @@
        <item>
         <widget class="QGroupBox" name="groupBoxState">
          <property name="title">
-          <string>State actions</string>
+          <string>State</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
@@ -77,6 +77,97 @@
             </item>
            </layout>
           </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QLabel" name="labelState">
+              <property name="text">
+               <string>State:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelStateValue">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxPointer">
+         <property name="title">
+          <string>Pointer</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLabel" name="labelPointerX">
+              <property name="text">
+               <string>X:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelPointerXValue">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelPointerY">
+              <property name="text">
+               <string>Y:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelPointerYValue">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="labelPointerCC">
+              <property name="text">
+               <string>CC:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelPointerCCValue">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelPointerDP">
+              <property name="text">
+               <string>DP:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelPointerDPValue">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
          </layout>
         </widget>
        </item>
@@ -87,17 +178,17 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
+           <widget class="QPushButton" name="pushButtonExecuteSingleInstruction">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayoutInstructions">
-            <item>
-             <widget class="QPushButton" name="pushButtonExecuteSingleInstruction">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="text">
-               <string>&gt;</string>
-              </property>
-             </widget>
-            </item>
             <item>
              <widget class="QPushButton" name="pushButtonExecuteAllInstructions">
               <property name="enabled">
@@ -117,20 +208,6 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayoutRightMiddle">
-       <item>
-        <widget class="QLabel" name="labelState">
-         <property name="text">
-          <string>State:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelStateValue">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="QCheckBox" name="checkBoxVerbose">
          <property name="text">

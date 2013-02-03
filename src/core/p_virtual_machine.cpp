@@ -518,7 +518,7 @@ PInstructions PVirtualMachine::movePointerAndGetInstructionToExecute()
 		} else {
 			pointer->setCoordinates(possible_point);
 			if (verbose)
-				stream << "nowe:[" << possible_point.x << "," << possible_point.y << "]" << "; ";
+				stream << "new:[" << possible_point.x << "," << possible_point.y << "]" << "; ";
 			continued = false;
 		}
 	}
@@ -657,12 +657,27 @@ void PVirtualMachine::__dev__printInstruction(PInstructions instr)
 	}
 }
 
+PPoint PVirtualMachine::getCodePointerCoordinates()
+{
+	return pointer->getCoordinates();
+}
+
+PDirectionPointerValues PVirtualMachine::getDirectionPointer()
+{
+	return pointer->getDirectionPointerValue();
+}
+
+PCodelChooserValues PVirtualMachine::getCodelChooser()
+{
+	return pointer->getCodelChooserValue();
+}
+
 /**
  * METODA TESTOWA. Wyświetla informacje o obrazie kodu.
  */
 void PVirtualMachine::__dev__printImageInfo()
 {
-	stream << std::endl << "IMAGE/ " << "[" << image->width() << "x" << image->height() << "]" << std::endl;
+	stream << std::endl << "CODE IMAGE/ " << "[" << image->width() << "x" << image->height() << "]" << std::endl;
 }
 
 /**
@@ -670,7 +685,21 @@ void PVirtualMachine::__dev__printImageInfo()
  */
 void PVirtualMachine::__dev__printConsole()
 {
-	//__dev__printImageInfo();
-	pointer->__dev__printConsole();
-	stack->__dev__printConsole();
+	stream << "CODE POINTER/";
+
+	PPoint coords = pointer->getCoordinates();
+	stream << "[" << coords.x << "," << coords.y << "]";
+
+	PDirectionPointerValues dp = pointer->getDirectionPointerValue();
+	stream << "DP:" << PEnums::directionPointer(dp) << "(" << (int) dp << ")";
+
+	PCodelChooserValues cc = pointer->getCodelChooserValue();
+	stream << "CC:" << PEnums::codelChooser(cc) << "(" << (int) cc << ")";
+
+	stream << "DATA STACK/";
+	stream << "rozm:" << stack->size() << " elem: ";
+	for (std::list<int>::iterator it = stack->begin_iterator(); it != stack->end_iterator(); ++it) {
+		stream << *it << " ";
+	}
+	stream << std::endl;
 }

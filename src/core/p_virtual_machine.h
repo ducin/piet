@@ -76,7 +76,6 @@ class PVirtualMachine {
 		PVirtualMachine(const char *, std::stringstream &);
 		~PVirtualMachine();
 
-		PMachineStates getState();
 		bool isReady();
 		bool isRunning();
 		bool isFinished();
@@ -106,6 +105,13 @@ class PVirtualMachine {
 		PInstructions movePointerAndGetInstructionToExecute(); // jedna z najważniejszych metod tej klasy - koordynuje wykonywanie pojedynczego polecenia interpretera
 
 		PInstructions getInstructionByIndex(int);
+
+		PMachineStates getState();
+
+		// code pointer
+		PPoint getCodePointerCoordinates();
+		PDirectionPointerValues getDirectionPointer();
+		PCodelChooserValues getCodelChooser();
 
 	// development:
 

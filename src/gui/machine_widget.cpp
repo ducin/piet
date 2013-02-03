@@ -9,6 +9,7 @@
 #include <QMessageBox>
 
 #include "p_enums.h"
+#include "p_structs.h"
 #include "p_gui_virtual_machine.h"
 #include "program_image_widget.h"
 
@@ -121,6 +122,7 @@ void MachineWidget::startMachine()
     piet->startMachine();
     std::cout << "STARTED" << std::endl;
     enableMachineInterface();
+    updateCodeCoordinates();
     updateState();
 }
 
@@ -152,18 +154,24 @@ void MachineWidget::fillCalcStack()
 void MachineWidget::updateState()
 {
     PMachineStates state = piet->getState();
-    switch (state)
-    {
-    case state_ready:
-        ui->labelStateValue->setText("Ready");
-        break;
-    case state_running:
-        ui->labelStateValue->setText("Running");
-        break;
-    case state_finished:
-        ui->labelStateValue->setText("Finished");
-        break;
+    ui->labelStateValue->setText(PEnums::machineState(state));
+    if (state == state_finished) {
+        ui->pushButtonExecuteAllInstructions->setEnabled(false);
+        ui->pushButtonExecuteSingleInstruction->setEnabled(false);
     }
+}
+
+void MachineWidget::updateCodeCoordinates()
+{
+    PPoint coords = piet->getCodePointerCoordinates();
+    ui->labelPointerXValue->setText(QString::number(coords.x));
+    ui->labelPointerYValue->setText(QString::number(coords.y));
+
+    PCodelChooserValues cc = piet->getCodelChooser();
+    ui->labelPointerCCValue->setText(PEnums::codelChooser(cc));
+
+    PDirectionPointerValues dp = piet->getDirectionPointer();
+    ui->labelPointerDPValue->setText(PEnums::directionPointer(dp));
 }
 
 void MachineWidget::updateInformation()
@@ -171,4 +179,5 @@ void MachineWidget::updateInformation()
     clearCalcStack();
     fillCalcStack();
     updateState();
+    updateCodeCoordinates();
 }

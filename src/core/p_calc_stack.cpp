@@ -251,30 +251,3 @@ void PCalcStack::instrRoll()
 		}
 	}
 }
-
-//==========================================================================
-	// development:
-
-/**
- * METODA TESTOWA. Wyświetla wartości wszystkich elementów stosu.
- */
-void PCalcStack::__dev__printAllStackValues()
-{
-	std::cout << "rozm:" << values.size() << " elem: ";
-	std::list<int>::iterator it;
-	for (it = values.begin(); it != values.end(); ++it) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-}
-
-/**
- * METODA TESTOWA. Wyświetla wszystkie informacje o stosie.
- */
-void PCalcStack::__dev__printConsole()
-{
-	std::cout << "STOS/";
-	__dev__printAllStackValues();
-}
-
-

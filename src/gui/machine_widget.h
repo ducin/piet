@@ -52,6 +52,7 @@ private:
     void clearCalcStack();
     void fillCalcStack();
     void updateState();
+    void updateCodeCoordinates();
     void updateInformation();
 };
 

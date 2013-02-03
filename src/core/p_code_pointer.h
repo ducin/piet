@@ -94,12 +94,6 @@ class PCodePointer {
 		void toggleDirectionPointer();
 		void toggle();
 
-	// development:
-
-		void __dev__printCoordinates();
-		void __dev__printDirectionPointer();
-		void __dev__printCodelChooser();
-		void __dev__printConsole();
 };
 
 #endif

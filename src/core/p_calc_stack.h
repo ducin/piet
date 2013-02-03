@@ -82,11 +82,6 @@ class PCalcStack {
 		void instrDuplicate();
 		void instrRoll();
 
-	// development:
-
-		void __dev__printAllStackValues();
-		void __dev__printConsole();
-
 };
 
 #endif
