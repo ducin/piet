@@ -106,7 +106,7 @@ int runMenu(PConsoleVirtualMachine *m)
 /**
  * Główna procedura całej aplikacji. Wyświetla przywitanie, potem w pętli pobiera od użytkownika numer zadania i wykonuje je. Działanie programu zależy od decyzji użytkownika.
  */
-void runProgram(PConsoleVirtualMachine *m)
+void runProgram(PConsoleVirtualMachine *m, std::stringstream &stream)
 {
 	// wyświetlanie informacji o programie
 	runWelcome();
@@ -123,19 +123,21 @@ void runProgram(PConsoleVirtualMachine *m)
 		{
 			case 1: // uruchom maszynę i wykonuj instrukcje krok po kroku
 				if ( m->startMachine() ) {
-					printFormattedMessage("maszyna uruchomiona");
+					std::cout << "hit enter after each step" << std::endl << std::endl;
 					std::string confirm_str;
 					while (m->isRunning())
 					{
 						if ( m->executeSingleInstr() ) {
-							printFormattedMessage("\r\ninstrukcja wykonana");
+							std::cout << stream.str() << std::endl;
+							stream.str("");
+							printFormattedMessage("\r\ninstruction executed");
 						} else {
-							printFormattedError("błąd wykonywania instrukcji");
+							printFormattedError("instruction error");
 						}
-						std::cout << "naciśnij enter"; getline(std::cin, confirm_str);
+						getline(std::cin, confirm_str);
 					}
 				} else {
-					printFormattedError("maszyna nie jest gotowa");
+					printFormattedError("machine is not ready");
 				}
 				break;
 			case 2: // uruchom maszynę i wykonaj wszystkie instrukcje
@@ -185,7 +187,7 @@ int main(int argc, char **argv)
 	// tworzenie wirtualnej maszyny Pieta, odpalenie aplikacji, zniszczenie maszyny
 	std::stringstream stream;
 	PConsoleVirtualMachine *m = new PConsoleVirtualMachine(program_path.c_str(), stream);
-	runProgram(m);
+	runProgram(m, stream);
 	std::cout << stream.str() << std::endl;
 	delete m;
 }

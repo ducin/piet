@@ -12,7 +12,7 @@
 // none
 
 // STL
-// none
+#include <sstream>
 
 // Qt
 #include <QRgb>
@@ -53,6 +53,8 @@ class PBlockManager {
 		 */
 		bool verbose;
 
+		std::stringstream &stream;
+
 	protected:
 
 		/**
@@ -78,7 +80,7 @@ class PBlockManager {
 
 	public:
 
-		PBlockManager(QImage *, PCodePointer *);
+		PBlockManager(QImage *, PCodePointer *, std::stringstream &);
 		~PBlockManager();
 
 		void setVerbosity(bool);

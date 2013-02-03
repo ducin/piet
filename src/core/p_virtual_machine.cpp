@@ -45,10 +45,10 @@ PVirtualMachine::PVirtualMachine(const char * filename, std::stringstream &str) 
 	pointer = new PCodePointer(image, initial);
 
 	// obiekt odpowiedzialny za geometryczną interpretację bloków kolorów
-	block_manager = new PBlockManager(image, pointer);
+	block_manager = new PBlockManager(image, pointer, str);
 
 	// obiekt przetwarzający wszystko związane z kolorami
-	color_manager = new PColorManager();
+	color_manager = new PColorManager(str);
 
 	// stos przechowujący tymczasowe wartości
 	stack = new PCalcStack();
@@ -696,7 +696,7 @@ void PVirtualMachine::__dev__printConsole()
 	PCodelChooserValues cc = pointer->getCodelChooserValue();
 	stream << "CC:" << PEnums::codelChooser(cc) << "(" << (int) cc << ")";
 
-	stream << "DATA STACK/";
+	stream << std::endl << "DATA STACK/";
 	stream << "rozm:" << stack->size() << " elem: ";
 	for (std::list<int>::iterator it = stack->begin_iterator(); it != stack->end_iterator(); ++it) {
 		stream << *it << " ";

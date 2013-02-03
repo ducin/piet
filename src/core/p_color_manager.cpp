@@ -12,7 +12,7 @@
 #include <cstdlib>
 
 // C++
-#include <iostream>
+#include <sstream>
 
 // STL
 // none
@@ -26,7 +26,7 @@
  * Plik zawiera kod źródłowy klasy PColorManager.
  */
 
-PColorManager::PColorManager()
+PColorManager::PColorManager(std::stringstream &str) : stream(str)
 {
 	debug("CONSTRUCTOR ----- color-manager START\n");
 	verbose = false;
@@ -91,7 +91,7 @@ void PColorManager::initColorValues()
  */
 PStdColors PColorManager::getColorName(QRgb color)
 {
-	if (color ==  LIGHT_RED) {
+	if (color == LIGHT_RED) {
 		return color_light_red;
 	} else if (color == NORMAL_RED) {
 		return color_normal_red;
@@ -132,8 +132,8 @@ PStdColors PColorManager::getColorName(QRgb color)
 	} else if (color == BLACK) {
 		return color_black;
 	} else {
-		std::cout << "ERROR: PStdColors PColorManager::getColorName(QRgb color)" << std::endl;
-		std::cout << "R:" << qRed(color) << " G:" << qGreen(color) << " B:" << qBlue(color) << std::endl;
+		stream << "ERROR: PStdColors PColorManager::getColorName(QRgb color)" << std::endl;
+		stream << "R:" << qRed(color) << " G:" << qGreen(color) << " B:" << qBlue(color) << std::endl;
 		exit(1);
 	}
 }
@@ -147,10 +147,6 @@ int PColorManager::lightnessCycleDifference(PStdColors c1, PStdColors c2)
 int PColorManager::saturationCycleDifference(PStdColors c1, PStdColors c2)
 {
 	int c1code = (int) c1, c2code = (int) c2;
-//	std::cout << "---- color ---- " << c1code << ", " << c2code << std::endl;
-//	std::cout << c1code / 3 << ", " << c2code / 3 << " / ";
-//	std::cout << (c1code / 3) - (c2code / 3) << " / ";
-//	std::cout << ( ( (c1code / 3) - (c2code / 3) + 6 ) % 6) << std::endl;
 	return ( ( (c1code / 3) - (c2code / 3) + 6) % 6);
 }
 
@@ -166,90 +162,13 @@ int PColorManager::getInstructionIndex(QRgb old_color, QRgb new_color)
 	PStdColors p_new_color = getColorName(new_color);
 
 	if (verbose) {
-		__dev__printColor(p_old_color); std::cout << "(" << ( (int) p_old_color ) << ")";
-		std::cout << " -> ";
-		__dev__printColor(p_new_color); std::cout << "(" << ( (int) p_new_color ) << ")" << "; ";
+		stream << PEnums::stdColor(p_old_color) << "(" << ( (int) p_old_color ) << ")";
+		stream << " -> ";
+		stream << PEnums::stdColor(p_new_color) << "(" << ( (int) p_new_color ) << ")" << "; ";
 	}
 
 	int lightness_diff = lightnessCycleDifference(p_new_color, p_old_color);
 	int saturation_diff = saturationCycleDifference(p_new_color, p_old_color);
 
 	return ( 3 * saturation_diff + lightness_diff );
-}
-
-//=========================================================================
- // development
-//=========================================================================
-
-/**
- * METODA TESTOWA. Wyświetla nazwę koloru
- * @param color kolor
- */
-void PColorManager::__dev__printColor(PStdColors color)
-{
-	switch (color) {
-		case color_light_red:
-			std::cout << "light red";
-			break;
-		case color_normal_red:
-			std::cout << "normal red";
-			break;
-		case color_dark_red:
-			std::cout << "dark red";
-			break;
-		case color_light_yellow:
-			std::cout << "light yellow";
-			break;
-		case color_normal_yellow:
-			std::cout << "normal yellow";
-			break;
-		case color_dark_yellow:
-			std::cout << "dark yellow";
-			break;
-		case color_light_green:
-			std::cout << "light green";
-			break;
-		case color_normal_green:
-			std::cout << "normal green";
-			break;
-		case color_dark_green:
-			std::cout << "dark green";
-			break;
-		case color_light_cyan:
-			std::cout << "light cyan";
-			break;
-		case color_normal_cyan:
-			std::cout << "normal cyan";
-			break;
-		case color_dark_cyan:
-			std::cout << "dark cyan";
-			break;
-		case color_light_blue:
-			std::cout << "light blue";
-			break;
-		case color_normal_blue:
-			std::cout << "normal blue";
-			break;
-		case color_dark_blue:
-			std::cout << "dark blue";
-			break;
-		case color_light_magenta:
-			std::cout << "light magenta";
-			break;
-		case color_normal_magenta:
-			std::cout << "normal magenta";
-			break;
-		case color_dark_magenta:
-			std::cout << "dark magenta";
-			break;
-		case color_white:
-			std::cout << "white";
-			break;
-		case color_black:
-			std::cout << "black";
-			break;
-		default:
-			std::cout << "error";
-			break;
-	}
 }

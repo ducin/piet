@@ -10,7 +10,7 @@
 #include "p_code_pointer.h"
 
 // C++
-#include <iostream>
+#include <sstream>
 
 // STL
 // none
@@ -28,7 +28,7 @@
 /** 
  * Konstruktor menadżera bloków. Pobiera informacje o obrazie z których będzie korzystał za każdym razem gdy wirtualna maszyna będzie chciała wykonać jakąkolwiek instrukcję. Ponadto, alokuje pamięć pod 2-wymiarową tablicę pomocniczą służącą do obliczania ilości kodeli w danym bloku koloru.
  */
-PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer)
+PBlockManager::PBlockManager(QImage *given_image, PCodePointer *given_pointer, std::stringstream &str) : stream(str)
 {
 	debug("CONSTRUCTOR ----- block-manager START\n");
 	verbose = false;
@@ -309,9 +309,6 @@ PPoint PBlockManager::getNextPossibleCodel()
 			}
 			new_point.y = border_up_codel - 1;
 			break;
-		default:
-			std::cout << "ERROR: PPoint PBlockManager::getNextPossibleCodel()" << std::endl;
-			exit(1);
 	}
 	return new_point;
 }
@@ -325,11 +322,11 @@ void PBlockManager::__dev__showMultiArray()
 {
 	for (int i=0; i<height; i++) {
 		for (int j=0; j<width; j++) {
-			std::cout << "[" << fields[i][j] << "]";
+			stream << "[" << fields[i][j] << "]";
 		}
-		std::cout << std::endl;
+		stream << std::endl;
 	}
-	std::cout << std::endl;
+	stream << std::endl;
 }
 
 /**
@@ -337,6 +334,6 @@ void PBlockManager::__dev__showMultiArray()
  */
 void PBlockManager::__dev__showCountAndBorderCodels()
 {
-	std::cout << "kodele:" << codel_block_count;
-	std::cout << ",graniczne: right=" << border_right_codel << " down=" << border_down_codel << " left=" << border_left_codel << " up=" << border_up_codel << std::endl;
+	stream << "kodele:" << codel_block_count;
+	stream << ",graniczne: right=" << border_right_codel << " down=" << border_down_codel << " left=" << border_left_codel << " up=" << border_up_codel << std::endl;
 }
