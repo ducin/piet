@@ -79,7 +79,7 @@ void PBlockManager::allocateMultiArray()
 void PBlockManager::deallocateMultiArray()
 {
 	for (int i=0; i<height; i++) {
-		delete fields[i];
+		delete [] fields[i];
 	}
 	delete [] fields;
 }
