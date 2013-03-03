@@ -33,3 +33,10 @@ Run
 Execute the `piet` binary file in command line with one parameter, specifying the program to execute:
 
     $ piet path_to_img_programs/2toN.png
+
+Travis continuous integration
+=============================
+
+Piet project code is integrated with travis, where it is compiled using Qt4 and cmake:
+
+[![Build Status](https://travis-ci.org/tkoomzaaskz/piet.png?branch=master)](https://travis-ci.org/tkoomzaaskz/piet)
