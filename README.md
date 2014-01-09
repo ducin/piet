@@ -8,7 +8,7 @@ This project provides Piet interpreter lib which is additionally used inside a c
 Compilation
 ===========
 
-The project uses [CMake](http://www.cmake.org/) for deployment process. You need to have at 2.8.2 version installed. Once cmake is installed, you may compile with following commands:
+The project uses [CMake](http://www.cmake.org/) for deployment process. You need to have installed version 2.8.2 or higher. Once cmake is installed, you may compile with following commands:
 
     mkdir build
     cd build
