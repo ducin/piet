@@ -39,4 +39,4 @@ Travis continuous integration
 
 Piet project code is integrated with travis, where it is compiled using Qt4 and cmake:
 
-[![Build Status](https://travis-ci.org/tkoomzaaskz/piet.png?branch=master)](https://travis-ci.org/tkoomzaaskz/piet)
+[![Build Status](https://travis-ci.org/ducin/piet.png?branch=master)](https://travis-ci.org/tkoomzaaskz/piet)
